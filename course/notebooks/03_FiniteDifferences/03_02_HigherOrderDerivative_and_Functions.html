@@ -1,0 +1,1223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Higher order derivatives, functions and matrix formulation &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3. Boundary value problems" href="03_03_BoundaryValueProblems.html" />
+    <link rel="prev" title="1. First-order derivative and slicing" href="03_01_FirstOrderDerivative_and_Slicing.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/course/notebooks/03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/course/notebooks/03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#higher-order-derivatives">
+   2.2. Higher order derivatives
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-order-derivative">
+     2.2.1. Second-order derivative
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#higher-order-derivatives-and-one-sided-stencils">
+     2.2.2. Higher order derivatives and one-sided stencils
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   2.3. Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parameters">
+     2.3.1. Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#return-statement">
+     2.3.2. Return statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-scope">
+     2.3.3. Variable scope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-passing-by-object-reference-in-python">
+     2.3.4. Beware passing by object reference in Python!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-formulation">
+   2.4. Matrix formulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   2.5. Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="higher-order-derivatives-functions-and-matrix-formulation">
+<h1><span class="section-number">2. </span>Higher order derivatives, functions and matrix formulation<a class="headerlink" href="#higher-order-derivatives-functions-and-matrix-formulation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, we start with importing some modules needed below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this notebook we extend the concept of finite differences to higher order derivatives. We also discuss the use of Python <code class="docutils literal notranslate"><span class="pre">functions</span></code> and finally we describe how to construct matrices corresponding to the finite-difference operators. This is very useful when solving boundary value problems or eigenvalue problems.</p>
+</div>
+<div class="section" id="higher-order-derivatives">
+<h2><span class="section-number">2.2. </span>Higher order derivatives<a class="headerlink" href="#higher-order-derivatives" title="Permalink to this headline">¶</a></h2>
+<p>Using finite differences, we can construct derivatives up to any order. Before we discuss this, we first explicitly describe in detail the second-order derivative that is later used extensively in the course.</p>
+<div class="section" id="second-order-derivative">
+<h3><span class="section-number">2.2.1. </span>Second-order derivative<a class="headerlink" href="#second-order-derivative" title="Permalink to this headline">¶</a></h3>
+<p>Using Taylor’s theorem we can write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp; f(x+\Delta x) = f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2+\frac16 f'''(x)\Delta x^3+O(\Delta^4) \\
+&amp; f(x-\Delta x) = f(x)-f'(x)\Delta x+\frac12 f''(x)\Delta x^2-\frac16 f'''(x)\Delta x^3+O(\Delta^4).\end{split}\]</div>
+<p>If we add these two equations, we can define a centered second-order accurate formula for <span class="math notranslate nohighlight">\(f''\)</span> at grid point <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-centereddiff2">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-centereddiff2" title="Permalink to this equation">¶</a></span>\[f''_i=\frac{f_{i-1}-2f_i+f_{i+1}}{\Delta x^2}.\]</div>
+<p>The stencil for this expression is the sequence <span class="math notranslate nohighlight">\([-1,0,1]\)</span> and we represent it as:</p>
+<a class="reference internal image-reference" href="../../../_images/centeredDiff2.png"><img alt="../../../_images/centeredDiff2.png" src="../../../_images/centeredDiff2.png" style="width: 600px;" /></a>
+<p>The centered second-order derivative cannot be used at the boundary nodes. Some one-sided formulas are needed at those locations.</p>
+<p>Let us write a Python code to check that expression <a class="reference internal" href="#equation-eq-centereddiff2">(30)</a> works as expected. We use the same test function as in the previous notebook - <span class="math notranslate nohighlight">\(f(x)=e^x \sin(3\pi x)\)</span> - and we first represent it on a fine grid in the interval <span class="math notranslate nohighlight">\(x\in [O, \pi]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>       <span class="c1"># 3.14...</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">200</span>         <span class="c1"># number of grid points (fine grid)</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="n">pi</span>          <span class="c1"># length of the interval</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># grid spacing</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>   <span class="c1"># coordinates for the fine grid</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="c1"># function on the fine grid</span>
+
+<span class="c1"># Let us build a numpy array for the exact repre-</span>
+<span class="c1"># sentation of the second-order derivative of f(x):</span>
+<span class="n">ddf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now build a coarse grid with <span class="math notranslate nohighlight">\(80\)</span> points, and evaluate the second-order derivative using the centered finite difference formula; note how we use the slicing technique we described in the previous notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">80</span> <span class="c1"># number of grid points (coarse grid)</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="n">pi</span> <span class="c1"># length of interval</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># grid spacing</span>
+<span class="n">x_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span> <span class="c1"># coordinates of points on the coarse grid</span>
+
+<span class="n">f_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x_c</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x_c</span><span class="p">)</span> <span class="c1"># function on the coarse grid</span>
+
+<span class="n">ddf_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span>
+<span class="n">ddf_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_c</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">f_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span><span class="n">f_c</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># boundary nodes are included</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ddf</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ddf_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;^g&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$f</span><span class="se">\&#39;</span><span class="s1">$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As the centered formula for <span class="math notranslate nohighlight">\(f''\)</span> is not defined at the boundary nodes, they have been excluded in the computation. But in the next section, we will provide information on how to cope with this issue.</p>
+</div>
+<div class="section" id="higher-order-derivatives-and-one-sided-stencils">
+<h3><span class="section-number">2.2.2. </span>Higher order derivatives and one-sided stencils<a class="headerlink" href="#higher-order-derivatives-and-one-sided-stencils" title="Permalink to this headline">¶</a></h3>
+<p>It should now be clear that the construction of finite difference formulas to compute differential operators can be done using Taylor’s theorem. In general, as we increase the order of the derivative, we have to increase the number of points in the corresponding stencil. The construction of these stencils is not complicated and is well documented in several places, so we will not repeat it here. Instead we refer to the very detailed <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a> page that contains finite difference formulas for all the cases we use in this course, and many more.</p>
+<p>To make this notebook self contained, we list here some of the formulas we will/might need later on.</p>
+<p>We begin we some <strong>centered finite difference</strong> expressions:</p>
+<br>
+<table class="wikitable" style="text-align:center">
+	<tbody>
+		<tr>
+			<th>Derivative</th>
+			<th>Accuracy</th>
+			<th>&minus;3</th>
+			<th>&minus;2</th>
+			<th>&minus;1</th>
+			<th>0</th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+		</tr>
+		<tr>
+			<td rowspan="2">1</td>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&minus;1/2</td>
+			<td>0</td>
+			<td>1/2</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>&nbsp;</td>
+			<td>1/12</td>
+			<td>&minus;2/3</td>
+			<td>0</td>
+			<td>2/3</td>
+			<td>&minus;1/12</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="2">2</td>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>1</td>
+			<td>&minus;2</td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>&nbsp;</td>
+			<td>&minus;1/12</td>
+			<td>4/3</td>
+			<td>&minus;5/2</td>
+			<td>4/3</td>
+			<td>&minus;1/12</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="2">3</td>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>&minus;1/2</td>
+			<td>1</td>
+			<td>0</td>
+			<td>&minus;1</td>
+			<td>1/2</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>1/8</td>
+			<td>&minus;1</td>
+			<td>13/8</td>
+			<td>0</td>
+			<td>&minus;13/8</td>
+			<td>1</td>
+			<td>&minus;1/8</td>
+		</tr>
+		<tr>
+			<td rowspan="2">4</td>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>1</td>
+			<td>&minus;4</td>
+			<td>6</td>
+			<td>&minus;4</td>
+			<td>1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>&minus;1/6</td>
+			<td>2</td>
+			<td>&minus;13/2</td>
+			<td>28/3</td>
+			<td>&minus;13/2</td>
+			<td>2</td>
+			<td>&minus;1/6</td>
+		</tr>
+	</tbody>
+</table>
+<p>You should recognize the centered difference stencils we have already discussed for the first- and second-order derivatives. Each line contains the coefficients <span class="math notranslate nohighlight">\(c_j\)</span> to be applied at the corresponding stencil point; to complete the finite difference formula, we also need to divide the finite difference by <span class="math notranslate nohighlight">\(\Delta x^k\)</span> where <span class="math notranslate nohighlight">\(k\)</span> is the order of derivative. For example, the second-order accurate formula for the fourth-order derivative is:</p>
+<div class="math notranslate nohighlight">
+\[f''''_i = \frac{f_{i-2}-4f_{i-1}+6f_{i}-4f_{i+1}+f_{i+2}}{\Delta x^4}.\]</div>
+<p>Graphically we have:</p>
+<a class="reference internal image-reference" href="../../../_images/centeredDiff4.png"><img alt="../../../_images/centeredDiff4.png" src="../../../_images/centeredDiff4.png" style="width: 800px;" /></a>
+<p>We have seen that centered stencils are not applicable at boundary nodes. Thankfully, alternate finite difference formulas can be constructed for these nodes and the <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a>
+page also lists a large collections of such <strong>one-sided formulas</strong>. Here we limit our attention to first- and second-order accurate expressions.</p>
+<p><strong>Forward one-sided finite difference formulas:</strong></p>
+<table class="wikitable" style="text-align:center">
+	<tbody>
+		<tr>
+			<th>Derivative </th>
+			<th>Accuracy </th>
+			<th>0 </th>
+			<th>1 </th>
+			<th>2 </th>
+			<th>3 </th>
+			<th>4 </th>
+			<th>5 </th>
+		</tr>
+		<tr>
+			<td rowspan="2">1 </td>
+			<td>1</td>
+			<td>−1</td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>−3/2</td>
+			<td>2</td>
+			<td>−1/2</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="2">2 </td>
+			<td>1</td>
+			<td>1</td>
+			<td>−2</td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>2</td>
+			<td>−5</td>
+			<td>4</td>
+			<td>−1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="2">3 </td>
+			<td>1</td>
+			<td>−1</td>
+			<td>3</td>
+			<td>−3</td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>−5/2</td>
+			<td>9</td>
+			<td>−12</td>
+			<td>7</td>
+			<td>−3/2</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="2">4 </td>
+			<td>1</td>
+			<td>1</td>
+			<td>−4</td>
+			<td>6</td>
+			<td>−4</td>
+			<td>1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>3</td>
+			<td>−14</td>
+			<td>26</td>
+			<td>−24</td>
+			<td>11</td>
+			<td>−2</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>Backward one-sided finite difference formulas:</strong></p>
+<table class="wikitable" style="text-align:center">
+	<tbody>
+		<tr>
+			<th>Derivative </th>
+			<th>Accuracy </th>
+			<th>−5 </th>
+			<th>−4 </th>
+			<th>−3 </th>
+			<th>−2 </th>
+			<th>−1 </th>
+			<th>0 </th>
+		</tr>
+		<tr>
+			<td rowspan="2">1 </td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>−1</td>
+			<td>1 </td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>1/2</td>
+			<td>−2</td>
+			<td>3/2 </td>
+		</tr>
+		<tr>
+			<td rowspan="2">2 </td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>1</td>
+			<td>−2</td>
+			<td>1 </td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>−1</td>
+			<td>4</td>
+			<td>−5</td>
+			<td>2 </td>
+		</tr>
+		<tr>
+			<td rowspan="2">3 </td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>−1</td>
+			<td>3</td>
+			<td>−3</td>
+			<td>1 </td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>&nbsp;</td>
+			<td>3/2</td>
+			<td>−7</td>
+			<td>12</td>
+			<td>−9</td>
+			<td>5/2 </td>
+		</tr>
+		<tr>
+			<td rowspan="2">4 </td>
+			<td>1</td>
+			<td>&nbsp;</td>
+			<td>1</td>
+			<td>−4</td>
+			<td>6</td>
+			<td>−4</td>
+			<td>1 </td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>−2</td>
+			<td>11</td>
+			<td>−24</td>
+			<td>26</td>
+			<td>−14</td>
+			<td>3 </td>
+		</tr>
+	</tbody>
+</table><p>Again, you should recognize the one-sided formulas we described in the previous notebook for the first-order derivative.</p>
+</div>
+</div>
+<div class="section" id="functions">
+<h2><span class="section-number">2.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Up to now, we have explicitly written new Python code whenever we implemented a particular concept. In the long term, this is not convenient as we often need to re-use the same pieces of code over and over again. Fortunately, most programming languages - including Python - make this task easy to achieve through the use of <em>functions</em>. Don’t confuse the concept of functions in programming languages and mathematical functions. This section is devoted to Python functions. Further in the course we will try to be explicit about what is meant but you can normally figure it out from the context. Before digging into more detail, let’s consider an example. Say we want to create a (Python) function that computes the centered second-order derivative of some (mathematical) function. We may implement this function as follows (details about how to do this are given below):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_ddf_c</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+
+    <span class="n">ddf_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">ddf_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="c1"># boundary nodes are not included</span>
+    <span class="n">ddf_c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># f&#39;&#39; at left boundary node</span>
+    <span class="n">ddf_c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># f&#39;&#39; at right boundary node</span>
+
+    <span class="k">return</span> <span class="n">ddf_c</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To compute the second-order derivative of our previously defined (mathematical) function <code class="docutils literal notranslate"><span class="pre">f_c</span></code>, we call the (Python) function like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ddf_c_from_func</span> <span class="o">=</span> <span class="n">compute_ddf_c</span><span class="p">(</span><span class="n">f_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The prototype of a Python function looks like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+
+    <span class="n">statements</span>
+
+    <span class="k">return</span> <span class="n">something</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">parameters</span></code> is the list of arguments (e.g. variables, objects,…) that are passed to the function when calling it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">statements</span></code> constitute the actual Python commands executed within the function. These can be any legal Python code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">something</span></code> is what the programmer wants to provide as output from the function after execution of all the statements (e.g. the result of some arithmetic operations). The return statement is optional.</p>
+<p>To make things less abstract, let’s discuss some examples.</p>
+<div class="section" id="parameters">
+<h3><span class="section-number">2.3.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_data</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1">, measure </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1"> m and weigh </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s1"> kg.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">print_name_and_data</span></code> function has four input parameters. It simply prints a statement using these four parameters and is called like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function requires four <em>positional arguments</em> and they must be supplied exactly like in its definition. The term “positional arguments” speaks for itself. Their position must be respected when you pass them to the function - the order must be the same as in the definition of a function. Calling the function like,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>results in an undesired ouput. If you want to specify the arguments in the ‘wrong’ order, you may pass them as <em>keyword arguments:</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you omit one or more of the parameters, Python will throw an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can mix positional and keyword parameters. The only restriction is that keyword arguments must come after all positional arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You may also define the function with some default values for the parameters. In that case, they become optional and assume their default values when omitted in the function call. For example let’s define a new function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_handedness</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">handedness</span><span class="o">=</span><span class="s1">&#39;right-handed&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">handedness</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you call the function without passing the second argument, you get:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_handedness</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But you can supply a different value if needed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_handedness</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="s1">&#39;left-handed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="return-statement">
+<h3><span class="section-number">2.3.2. </span>Return statement<a class="headerlink" href="#return-statement" title="Permalink to this headline">¶</a></h3>
+<p>The last statement of a function can be a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, with which the programmer can send some information or data produced within the function back to the main program or calling routine. As an example, let’s define a function that returns the body mass index of an individual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_bmi</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. I am returning your body mass index...&#39;</span><span class="p">)</span>
+
+    <span class="n">bmi</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">height</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">bmi</span> <span class="c1"># we could have written directly: return weight / height**2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then store the return value in any variable like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">luke_bmi</span> <span class="o">=</span> <span class="n">compute_bmi</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">luke_bmi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function can return any Python object (dictionaries, arrays, numbers, …) or a collection of them. In the example below, we return the average of two numbers and their difference:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_avg_diff</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">):</span>
+
+    <span class="n">average</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">number1</span><span class="o">+</span><span class="n">number2</span><span class="p">)</span>
+    <span class="n">difference</span> <span class="o">=</span> <span class="n">number1</span><span class="o">-</span><span class="n">number2</span>
+
+    <span class="k">return</span> <span class="n">average</span><span class="p">,</span> <span class="n">difference</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note how the two return values are separated by a comma. This function can be called like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">avg1</span><span class="p">,</span> <span class="n">diff1</span> <span class="o">=</span> <span class="n">compute_avg_diff</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The average is </span><span class="si">{</span><span class="n">avg1</span><span class="si">}</span><span class="s1"> and the difference is </span><span class="si">{</span><span class="n">diff1</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variable-scope">
+<h3><span class="section-number">2.3.3. </span>Variable scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h3>
+<p>A very important concept when discussing functions is the so-called <em>scope</em> of a variable. There are generally speaking two types of variables: <strong>global</strong> variables or <strong>local</strong> variables. Global variables can be accessed anywhere in a program. Local variables can only be accessed within the function, in which they are defined. But you may always return their values outside of the function by using a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement.</p>
+<p>Let first consider an example involving a global variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">print_a</span><span class="p">()</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">print_a</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code executed without errors and each time we modify <code class="docutils literal notranslate"><span class="pre">a</span></code> the function prints the correct value because this global variable, defined outside of the function, is accessible within the function. Let’s try something else:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply_a_and_b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">prod</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The product between a and b is </span><span class="si">{</span><span class="n">prod</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prod</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">multiply_a_and_b</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Here prod is equal to </span><span class="si">{</span><span class="n">prod</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we get two different outputs. Outside of the function, we have defined the global variable <code class="docutils literal notranslate"><span class="pre">prod</span></code> and assigned it the value <span class="math notranslate nohighlight">\(3\)</span>. But inside the function, we re-use the name <code class="docutils literal notranslate"><span class="pre">prod</span></code> to store the product of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>. By doing so, we are creating a new variable <code class="docutils literal notranslate"><span class="pre">prod</span></code> that is qualified as a <em>local variable</em>. This variable only exists inside the function and when it is addressed by name in the function, it has <em>priority</em> over the global variable. The global variable will therefore not be changed by any statement in the function. You must be very careful with the usage of global variables, it’s very easy to be confused about what you are doing if you or another programmer later introduces a local variable with the same name in a function. Usually, it is recommended to avoid using global variables or to really keep their numbers to a strict minimum.</p>
+<p>NB: there is a way to freely use global variables within the scope of a function; it requires the usage of the <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword associated with a variable. But we won’t document this feature as we discourage you to use it in the context of this course.</p>
+</div>
+<div class="section" id="beware-passing-by-object-reference-in-python">
+<h3><span class="section-number">2.3.4. </span>Beware passing by object reference in Python!<a class="headerlink" href="#beware-passing-by-object-reference-in-python" title="Permalink to this headline">¶</a></h3>
+<p>There is another common source of errors when manipulating sequences (or numpy arrays) as arguments of functions. Remember what we discussed in the section “Referenced or copied?” of the previous notebook. We observed a fundamental difference when assigning a new name to a variable depending on whether it was a number or a list. We recall here two examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the second line of the above cell, we are referencing with <code class="docutils literal notranslate"><span class="pre">b</span></code> the same number as <code class="docutils literal notranslate"><span class="pre">a</span></code>. In the third line, we are changing the number to which <code class="docutils literal notranslate"><span class="pre">b</span></code> is referencing and this does not affect <code class="docutils literal notranslate"><span class="pre">a</span></code>. When we manipulate lists, the situation is different. Let’s consider this example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the second line of the cell, we are referencing with <code class="docutils literal notranslate"><span class="pre">b</span></code> the same sequence as <code class="docutils literal notranslate"><span class="pre">a</span></code> and we are not copying this sequence to another location in memory. So when we write <code class="docutils literal notranslate"><span class="pre">b[0]</span> <span class="pre">=</span> <span class="pre">5</span></code> we are affecting the same list as if we had written <code class="docutils literal notranslate"><span class="pre">a[0]</span> <span class="pre">=</span> <span class="pre">5</span></code>.</p>
+<p>Now consider how this can cause possible unwanted behaviors when calling functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
+    <span class="n">sequence</span> <span class="o">=</span> <span class="n">seq1</span>
+    <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inside the function, the sequence is </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">test_func</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Outside of the function, the sequence is </span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we did not make a copy of the original sequence when writing <code class="docutils literal notranslate"><span class="pre">sequence</span> <span class="pre">=</span> <span class="pre">seq1</span></code> we are changing its content with <code class="docutils literal notranslate"><span class="pre">sequence[0]</span> <span class="pre">=</span> <span class="pre">0</span></code>. Therefore, such statements can have an effect outside of the function and you must be really careful depending on whether it is intended or not. If you do not want to modify the sequence outside of the function, you could write instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
+    <span class="n">sequence</span> <span class="o">=</span> <span class="n">seq1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inside the function, the sequence is </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">test_func</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Outside of the function, the sequence is </span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another possibility is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
+    <span class="n">sequence</span> <span class="o">=</span> <span class="n">seq1</span>
+    <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inside the function, the sequence is </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">test_func</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Outside of the function, the sequence is </span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We prefer this second option, as the original sequence is never within reach of the inside the function. We explicitly call it with a copy of the sequence.</p>
+<p>One more word of caution: here we illustrated the possible outcomes using sequences of numbers. When the sequences contain nested Python objects and you don’t want to affect the sequence at all inside the function, you must use <code class="docutils literal notranslate"><span class="pre">deepcopy()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">copy()</span></code>. But this should not be a source of concern for the type of objects we manipulate in this course.</p>
+</div>
+</div>
+<div class="section" id="matrix-formulation">
+<h2><span class="section-number">2.4. </span>Matrix formulation<a class="headerlink" href="#matrix-formulation" title="Permalink to this headline">¶</a></h2>
+<p>At this stage we know how to build Python functions that return the derivatives of functions based on finite difference formulas. Conceptually, we have defined the <em>action</em> of differential operators on functions: we pass a function to a Python function and it returns the derivative. This means that we have not explicitly constructed the differential operator. For some problems, this is needed and in this section we show how this is done.</p>
+<p>Mathematically, we denote the action of any linear operator <span class="math notranslate nohighlight">\(\cal{A}\)</span> acting on a function <span class="math notranslate nohighlight">\(f\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[    h(x)=\cal{A}f(x)\]</div>
+<p>If we discretize this equation on a numerical grid, we need a discretized version of the operator <span class="math notranslate nohighlight">\(\cal{A}\)</span> that maps the values of <span class="math notranslate nohighlight">\(f\)</span> at the grid points onto the values of <span class="math notranslate nohighlight">\(h\)</span> at the grid points. As the operation is linear, this mapping is done through the action of a matrix:</p>
+<div class="math notranslate nohighlight">
+\[    h_i=A_{ij}f_j\;\;\;\; \hbox{(repeated indices are summed)}\]</div>
+<p>Let’s first lay out the matrix <span class="math notranslate nohighlight">\(A_{ij}\)</span> corresponding to the centered (second-order accurate) first-order derivative; as we want to build the operator everywhere in the domain including the boundary nodes, we use second-order one-sided finite differences at these locations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+    h_0 \\
+    h_1 \\
+    \vdots \\
+    h_{j-1}\\
+    h_j \\
+    h_{j+1}\\
+    \\
+    \vdots \\
+    h_{n-2} \\
+    h_{n-1}
+\end{pmatrix}
+=
+\frac{1}{\Delta x}
+\begin{pmatrix}
+-3/2 &amp; 2 &amp; -1/2 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+-1/2 &amp; 0 &amp; 1/2 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; -1/2 &amp; 0 &amp; 1/2 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1/2 &amp; 0 &amp; 1/2 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0  &amp; \dots &amp; -1/2 &amp; 0 &amp; 1/2 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; -1/2 &amp; 0 &amp; 1/2 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; -1/2 &amp; 0 &amp; 1/2 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 1/2 &amp; -2 &amp; 3/2
+\end{pmatrix}
+\begin{pmatrix}
+    f_0 \\
+    f_1 \\
+    \vdots \\
+    f_{j-1}\\
+    f_j \\
+    f_{j+1}\\
+    \\
+    \vdots \\
+    f_{n-2} \\
+    f_{n-1}
+\end{pmatrix}\end{split}\]</div>
+<p>By performing the matrix multiplication, we see that the matrix <span class="math notranslate nohighlight">\(A_{ij}\)</span> produces exactly the desired mapping. We can now define a Python function to create this matrix. Its input parameters are the number of grid points and <span class="math notranslate nohighlight">\(\Delta x\)</span>. Remember that in the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> terminology, a matrix is considered a 2D array (<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>).</p>
+<p>We use here the Python package <code class="docutils literal notranslate"><span class="pre">scipy</span></code> that we briefly described in the <em>01_Introduction</em> notebook. It contains a useful function, <code class="docutils literal notranslate"><span class="pre">diags</span></code> to create matrices that are essentially diagonal (you should look at its <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.diags.html">documentation page</a> for its exact definition). A matrix is referred to as <em>sparse</em> when it contains mostly zeros, except at sparse locations; these are usually concentrated around the diagonal. The function <code class="docutils literal notranslate"><span class="pre">diags</span></code> belongs to the <code class="docutils literal notranslate"><span class="pre">sparse</span></code> submodule of <code class="docutils literal notranslate"><span class="pre">scipy</span></code> and you import it using the following command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">diags</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d1_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the centered second-order accurate first-order derivative</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nx : integer</span>
+<span class="sd">        number of grid points</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        grid spacing</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    d1mat : numpy.ndarray</span>
+<span class="sd">        matrix to compute the centered second-order accurate first-order derivative</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">diagonals</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">]]</span> <span class="c1"># main diagonal elements</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># positions of the diagonal entries relative to the main diagonal</span>
+
+    <span class="c1"># Call to the diags routine; note that diags returns a *representation* of the array;</span>
+    <span class="c1"># to explicitly obtain its ndarray realisation, the call to .toarray() is needed.</span>
+    <span class="n">d1mat</span> <span class="o">=</span> <span class="n">diags</span><span class="p">(</span><span class="n">diagonals</span><span class="p">,</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+    <span class="c1"># We replace the first and last lines of d1mat with the proper</span>
+    <span class="c1"># one-sided finite differences</span>
+    <span class="n">d1mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">3.</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">])</span> <span class="c1"># first line</span>
+    <span class="n">d1mat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.</span><span class="o">/</span><span class="mf">2.</span><span class="p">])</span> <span class="c1"># second line</span>
+
+    <span class="c1"># Return the final array divided by the grid spacing</span>
+    <span class="k">return</span> <span class="n">d1mat</span> <span class="o">/</span> <span class="n">dx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then obtain an instance of the array by calling <code class="docutils literal notranslate"><span class="pre">d1_mat</span></code>. As an example and to make sure the coefficients are properly set, we call it with a value of <span class="math notranslate nohighlight">\(\Delta x=1\)</span> and output the result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># number of grid points for the example</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># grid spacing</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1mat</span> <span class="o">=</span> <span class="n">d1_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d1mat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks good!</p>
+<p>Using exactly the same ideas, the explicit representation of a discrete version of the second-order derivative can be constructed. Here is a Python function that returns the matrix corresponding to the centered second-order accurate finite difference formula:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d2_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the centered second-order accurate second-order derivative</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nx : integer</span>
+<span class="sd">        number of grid points</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        grid spacing</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    d2mat : numpy.ndarray</span>
+<span class="sd">        matrix to compute the centered second-order accurate first-order derivative</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">diagonals</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">]]</span> <span class="c1"># main diagonal elements</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># positions of the diagonal entries relative to the main diagonal</span>
+
+    <span class="c1"># Call to the diags routine; note that diags return a representation of the array;</span>
+    <span class="c1"># to explicitly obtain its ndarray realisation, the call to .toarray() is needed.</span>
+    <span class="n">d2mat</span> <span class="o">=</span> <span class="n">diags</span><span class="p">(</span><span class="n">diagonals</span><span class="p">,</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+    <span class="c1"># We replace the first and last lines of d1mat with the proper</span>
+    <span class="c1"># one-sided finite differences</span>
+    <span class="n">d2mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">])</span> <span class="c1"># first line</span>
+    <span class="n">d2mat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">])</span> <span class="c1"># second line</span>
+
+    <span class="c1"># Return the final array divided by the grid spacing **2</span>
+    <span class="k">return</span> <span class="n">d2mat</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check again that everything works as expected:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d2mat</span> <span class="o">=</span> <span class="n">d2_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d2mat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again we obtain the desired result.</p>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">2.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we have explained how to obtain a second-order accurate finite difference formula for the second-order derivative of a function and we have provided recipes to construct many other differential operators - many more can be found on this <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a> page. We also discussed the concept of Python functions to produce re-usable pieces of source code. Finally, we have shown how to explicitly construct discrete versions of differential operators in matrix form. These will be used in the following notebook to solve what are known as boundary value problems.</p>
+<p id="bibtex-bibliography-course/notebooks/03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions-0"></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./course/notebooks/03_FiniteDifferences"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03_01_FirstOrderDerivative_and_Slicing.html" title="previous page"><span class="section-number">1. </span>First-order derivative and slicing</a>
+    <a class='right-next' id="next-link" href="03_03_BoundaryValueProblems.html" title="next page"><span class="section-number">3. </span>Boundary value problems</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
