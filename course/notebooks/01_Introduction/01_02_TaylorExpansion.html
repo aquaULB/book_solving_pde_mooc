@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Approximations and Taylor expansion &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="1. Euler methods" href="../02_TimeIntegration/02_01_EulerMethod.html" />
+    <link rel="prev" title="1. Toolkit Setup" href="01_01_ToolkitSetup.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/course/notebooks/01_Introduction/01_02_TaylorExpansion.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/course/notebooks/01_Introduction/01_02_TaylorExpansion.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taylor-s-theorem">
+   2.2. Taylor’s theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expansion-of-exponential-function">
+     2.2.1. Expansion of exponential function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   2.3. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.4. Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   2.5. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="approximations-and-taylor-expansion">
+<h1><span class="section-number">2. </span>Approximations and Taylor expansion<a class="headerlink" href="#approximations-and-taylor-expansion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In general, the resolution of numerical problems require some approximations.</p>
+<p><strong>The first one</strong> is related to the fact that most real numbers need an infinite numbers of digits after the decimal point to be properly represented. To store these numbers in the memory of a computer one, therefore, needs to cut their representation at some point beyond the decimal point. To quantify the numerical representation of data, one uses <em>precision</em>. Precision is usually measured <em>in bits or number of decimal digits</em>. For example, a number in <em>single precision</em> usually occupies 32 bits of computer memory. At the same time it is associated with 7 or fewer decimal digits. The number of digits kept is called the precision of the representation. To make a concrete example, in <em>single precision</em> and <em>double precision</em>, <span class="math notranslate nohighlight">\(\pi\)</span> is approximated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\pi &amp;= 3.1415927 \quad\quad &amp;\text{(single precision)}\\
+\pi &amp;= 3.141592653589793 \quad\quad &amp;\text{(double precision)}\\\end{split}\]</div>
+<p>In this course we always use double precision for real numbers, as this is the default precision used by Python. It provides a good approximation for the kind of numerical problems we consider, but the reader should still be aware that rounding off errors can cause some difficulties, as they can get amplified when certain operations are performed or when some iterative procedures are used. Two good references to get started on the subject are:</p>
+<ul class="simple">
+<li><p>https://docs.python.org/3/tutorial/floatingpoint.html</p></li>
+<li><p>https://floating-point-gui.de</p></li>
+</ul>
+<p>In the context of the numerical solution of ordinary or partial diffential equations, <strong>the second more significant approximation</strong> comes from that the computer resources are limited. From the physical point of view, both time and space are continuous variables, but continuous data does not exist in the numerical world, as it would require infinite computer memory. Therefore, continuous variables are approximated using a discrete representation. For that purpose, we can for example introduce <em>grid points</em> at which the functions are evaluated. A small grid spacing results in a higher accuracy, but it comes at a higher computational cost. Some balance always has to be found.</p>
+</div>
+<div class="section" id="taylor-s-theorem">
+<h2><span class="section-number">2.2. </span>Taylor’s theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Taylor’s theorem provides a valuable tool to estimate the accuracy of discretized differential operators or time integration schemes <a class="bibtex reference internal" href="#arfken2012" id="id1">[AWH12]</a>.</p>
+<p><em><strong>Theorem.</strong> Let <span class="math notranslate nohighlight">\(x\)</span> be any point in the interval <span class="math notranslate nohighlight">\([a\ b]\)</span> and <span class="math notranslate nohighlight">\(\Delta x\)</span> a small positive real number. Schematically we have</em>:</p>
+<img alt="../../../_images/taylor.png" src="../../../_images/taylor.png" />
+<p><em>Let <span class="math notranslate nohighlight">\(f(x)\)</span> be some <span class="math notranslate nohighlight">\(k+1\)</span> times differentiable function defined in <span class="math notranslate nohighlight">\([a\ b]\)</span>, then for each <span class="math notranslate nohighlight">\(\Delta x&gt;0\)</span> there exists a <span class="math notranslate nohighlight">\(\xi\)</span>, so that</em></p>
+<div class="math notranslate nohighlight" id="equation-eq-taylorexpansion">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-taylorexpansion" title="Permalink to this equation">¶</a></span>\[f(x+\Delta x)=f(x)+f'(x)\Delta x+\frac{f''(x)}{2!}\Delta x^2+\dots + \frac{f^{(k)}(x)}{k!}\Delta x^k + R_{k+1}\]</div>
+<p><em>where <span class="math notranslate nohighlight">\(R_{k+1}\)</span> is a <strong>remainder term</strong>:</em></p>
+<div class="math notranslate nohighlight">
+\[R_{k+1} = \frac{f^{(k+1)}(\xi)}{(k+1)!}\Delta x^{k+1}, \quad\quad x\leq \xi \leq x+\Delta x.\]</div>
+<p>In the above formula, <span class="math notranslate nohighlight">\(f^{(k)}\)</span> denotes the <span class="math notranslate nohighlight">\(k\)</span>-th derivative of <span class="math notranslate nohighlight">\(f\)</span>. Note, that at this stage, no approximations have been made.</p>
+<p>Assuming that <span class="math notranslate nohighlight">\(\vert f^{(k+1)}\vert\)</span> is bounded by a constant <span class="math notranslate nohighlight">\(C\)</span> in <span class="math notranslate nohighlight">\([a\ b]\)</span>, read <span class="math notranslate nohighlight">\(\vert f^{(k+1)} \vert \leq C\)</span>, we can then write:</p>
+<div class="math notranslate nohighlight" id="equation-eq-remainder">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-remainder" title="Permalink to this equation">¶</a></span>\[\vert R_{k+1}\vert \leq \frac{C}{(k+1)!}\Delta x^{k+1}\]</div>
+<p>Equation <a class="reference internal" href="#equation-eq-remainder">(2)</a> gives a bound on the error made by dropping terms beyond <span class="math notranslate nohighlight">\(\displaystyle\frac{f^{(k)}(x)}{k!}\Delta x^k\)</span> in <a class="reference internal" href="#equation-eq-taylorexpansion">(1)</a>. One then gets as estimate for the remainder <span class="math notranslate nohighlight">\(R_{k+1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[R_{k+1} = O(\Delta x^{k+1})\]</div>
+<p>The above notation means that <span class="math notranslate nohighlight">\(\vert R_{k+1}\vert\)</span> goes to <span class="math notranslate nohighlight">\(0\)</span> at least as fast as <span class="math notranslate nohighlight">\(\Delta x^{k+1}\)</span> for <span class="math notranslate nohighlight">\(\Delta x \rightarrow 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{\Delta x^{k+1}\rightarrow 0} R_{k+1} = 0.\]</div>
+<p>We then say that the approximation,</p>
+<div class="math notranslate nohighlight">
+\[f(x+\Delta x)\approx f(x)+f'(x)\Delta x+\frac{f''(x)}{2!}\Delta x^2+\dots + \frac{f^{(k)}(x)}{k!}\Delta x^k\]</div>
+<p>is of order <span class="math notranslate nohighlight">\(k+1\)</span>. Importantly, this implies that the remainder is at least reduced by a factor of <span class="math notranslate nohighlight">\(2^{k+1}\)</span> if <span class="math notranslate nohighlight">\(\Delta x\)</span> is divided by <span class="math notranslate nohighlight">\(2\)</span>. This is a very important concept that will be discussed numerous times in this course.</p>
+<div class="section" id="expansion-of-exponential-function">
+<h3><span class="section-number">2.2.1. </span>Expansion of exponential function<a class="headerlink" href="#expansion-of-exponential-function" title="Permalink to this headline">¶</a></h3>
+<p>To make things more concrete and to write our first Python code of the course, let us consider the Taylor expansion of the exponential function <span class="math notranslate nohighlight">\(e^x\)</span> around <span class="math notranslate nohighlight">\(x=0\)</span>. According to <a class="reference internal" href="#equation-eq-taylorexpansion">(1)</a>, one has:</p>
+<div class="math notranslate nohighlight" id="equation-eq-residual">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-residual" title="Permalink to this equation">¶</a></span>\[e^{\Delta x} = 1 + \Delta x + \frac{\Delta x^2}{2} + R_3,\quad\quad R_3=e^{\xi} \frac{\Delta x^3}{3!}, \quad\quad 0\leq \xi \leq \Delta x.\]</div>
+<p>As <span class="math notranslate nohighlight">\(e^x\)</span> is monotonously increasing, we certainly can bound <span class="math notranslate nohighlight">\(e^{\xi}\)</span> by <span class="math notranslate nohighlight">\(e\)</span> when <span class="math notranslate nohighlight">\(\Delta x \rightarrow 0\)</span>. Therefore, <span class="math notranslate nohighlight">\(\vert R_3 \vert \leq e \frac{\Delta x^3}{3!} = \mathcal{O}(\Delta x^3)\)</span>.</p>
+<p>Let’s write a Python code to check if this is indeed the case.</p>
+<p>First of all, we need to <em>import</em> some Python packages into our code. One Python file can access the content of another by <em>importing</em> it. Packages we are going to be interested in the most throughout the course are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NumPy</span></code></p>
+<blockquote>
+<div><p><a class="reference external" href="https://numpy.org/doc/stable/user/whatisnumpy.html">NumPy</a> is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SciPy</span></code></p>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/tutorial/general.html">SciPy</a> is a collection of mathematical algorithms and convenience functions built on the NumPy extension of Python. It adds significant power to the interactive Python session by providing the user with high-level commands and classes for manipulating and visualizing data. With SciPy, an interactive Python session becomes a data-processing and system-prototyping environment rivaling systems, such as MATLAB, IDL, Octave, R-Lab, and SciLab.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></p>
+<blockquote>
+<div><p><a class="reference external" href="https://matplotlib.org">Matplotlib</a> is a comprehensive library for creating static, animated, and interactive visualizations in Python.</p>
+</div></blockquote>
+</li>
+</ul>
+<p><em>NumPy</em>, <em>SciPy</em> and <em>Matplotlib</em> are fundamental packages for scientific computations in Python.</p>
+<p><em>NumPy</em> and <em>SciPy</em> are better to be understood together, because <em>SciPy actually builds on NumPy</em>.</p>
+<blockquote>
+<div><p><a class="reference external" href="https://medium.com/edureka/scipy-tutorial-38723361ba4b">Both NumPy and SciPy</a> are Python libraries used for used mathematical and numerical analysis. NumPy contains array data and basic operations such as sorting, indexing, etc, whereas SciPy consists of all the numerical code. Though NumPy provides a number of functions that can help resolve linear algebra, Fourier transforms, etc, SciPy is the library that actually contains fully-featured versions of these functions along with many others.</p>
+</div></blockquote>
+<p><em>Matplotlib</em> provides tools to visualize any kind of numerical data.</p>
+<p>Imports in Python are performed using <code class="docutils literal notranslate"><span class="pre">import</span></code> statement:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to access the tools of a module (unit of Python code), we put the name of this module in front of the name of a given object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another option is to create a <strong>shortcut</strong> for the module name using the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<p>In some cases it will even make more sense to import <strong>only</strong> the object you require from module:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Imports are usually performed at the beginning of the Python file before any other code.</p>
+<p>In order to create comments in Python (text in your code which will be ignored by Python), put <code class="docutils literal notranslate"><span class="pre">#</span></code> in front of the text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note that numpy has already been imported above.</span>
+<span class="c1"># Here it is imported repeatedly for the sake of</span>
+<span class="c1"># demonstrating what your code should look like.</span>
+<span class="c1">#</span>
+<span class="c1"># matplotlib.pyplot provides all the tools which</span>
+<span class="c1"># are usually necessary for 2D plotting.</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we are working in <em>Jupyter</em>, we will take advantage of so-called <strong>magic commands</strong>. They are crazily helpful in some cases, but note that they are <em>specific to IPython and Jupyter</em> (IPython and Jupyter are projects offering interactive shell for Python programming).</p>
+<p>What magic command does? It basically creates an <em>alias</em> to some command.</p>
+<p>Magic commands have <code class="docutils literal notranslate"><span class="pre">%</span></code> in front of them.</p>
+<p>A simple example of the usefulness of a magic command can be made with <code class="docutils literal notranslate"><span class="pre">%pinfo</span></code>. It outputs the documentation of an object, which is useful both for beginners and for the advanced programmers, and spares you the need to ‘google’ it. We’ve already used the <code class="docutils literal notranslate"><span class="pre">print</span></code> function above to output the value of <span class="math notranslate nohighlight">\(\pi\)</span> - run the following cell to see documentation of <code class="docutils literal notranslate"><span class="pre">print</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pinfo</span> print
+</pre></div>
+</div>
+</div>
+</div>
+<p>To use matplotlib in notebooks, a very useful magic command is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>From now on, whatever we plot will appear inline - in our notebook, right below the code which produced graphical output.</p>
+<p>We then set the style of our plots, which will be universal throughout the whole course. Matplotlib has several predefined styles encoded in files. You, of course, can always create your own style.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us now create the first mathematical object that will represent the error term <span class="math notranslate nohighlight">\(R_3\)</span> of the approximation of the exponential function (see <a class="reference internal" href="#equation-eq-residual">(3)</a>).</p>
+<p>When we want to define a given quantity at a set of points, we might use <em>either</em> built-in <em>Python</em> sequences (list, tuple, range etc.) <em>or</em> 1D <em>NumPy</em> arrays. What to choose? In many cases your choice will not affect the result, <strong>but</strong> usually a <em>NumPy</em> array is better because of the following <a class="reference external" href="https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference">reasons</a>:</p>
+<ul>
+<li><p><em>Memory</em></p>
+<p>They occupy less space.</p>
+</li>
+<li><p><em>Performance</em></p>
+<p>They are faster.</p>
+</li>
+<li><p><em>Functionality</em></p>
+<p>They support <strong>way more</strong> mathematical operations.</p>
+</li>
+</ul>
+<p>Keep in mind, though, that you will encounter situations when it will be more convenient for you to create a list first and then transform it into <em>NumPy</em> array.</p>
+<p>Let us consider <a name="exc1"> a few ways </a> of building a numerical sequence. Assume <span class="math notranslate nohighlight">\(\Delta x=f(k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is an integer number defined in <span class="math notranslate nohighlight">\(k=1, 2,...,9\)</span>. To demonstrate the advantages of one approach over the others, we will use the <em>cell</em> magic command <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code>. Double <code class="docutils literal notranslate"><span class="pre">%</span></code> here means that the command is applied to the <em>whole</em> cell. A word of caution is necessary. <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> or <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> execute the measured code in a <em>private</em> scope. This means that they don’t affect the values of the variables outside of the cell (or line for %timeit) in which the execution takes places. This also means than any variable defined within the cell (or line for %timeit) cease to exist after the timing operation.</p>
+<p>Note, that the concept of <em>cell</em> in Python does not exist - it is unique to Jupyter Notebook, just as magic commands are unique to IPython. A notebook in Jupyter Notebook is a sequence of cells, which can be filled with Python code, documentation text written in <a class="reference external" href="https://www.markdownguide.org/getting-started/">Markdown</a>, or <em>raw</em> text, that is not evaluated by Jupyter Notebook.</p>
+<ol class="simple">
+<li><p><em>Create a Python list in a loop and then transform it into a NumPy array</em></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+
+<span class="c1"># First create an empty Python list, which</span>
+<span class="c1"># will contain values of delta for all k.</span>
+<span class="n">delta_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># We loop for k = 1, 2, ..., 9. We use the built-in</span>
+<span class="c1"># range(min, max, step) function. It returns the</span>
+<span class="c1"># sequence of integer numbers, such as:</span>
+<span class="c1"># min, min+step, min+2*step,..., max-step.</span>
+<span class="c1"># As you can see, max value is not included in</span>
+<span class="c1"># the sequence. Min and step arguments are OPTIONAL</span>
+<span class="c1"># for the range function =&gt; if you don&#39;t pass them</span>
+<span class="c1"># to the function, they will be at their default values:</span>
+<span class="c1"># min = 0, step = 1.</span>
+<span class="c1"># For more info:</span>
+<span class="c1"># https://docs.python.org/3/library/functions.html#func-range</span>
+<span class="c1">#</span>
+<span class="c1"># Example:</span>
+<span class="c1"># range(5) will produce the following sequence:</span>
+<span class="c1"># 0, 1, 2, 3, 4.</span>
+<span class="c1">#</span>
+<span class="c1"># We use the append method of Python class to add</span>
+<span class="c1"># values to the list at each iteration. As</span>
+<span class="c1"># a function method it is a piece of code which</span>
+<span class="c1"># executes specific task, BUT unlike a simple</span>
+<span class="c1"># function it is bound to a specific object.</span>
+<span class="c1"># In this particular case, the append method is bound to</span>
+<span class="c1"># the list.</span>
+<span class="c1"># For more info:</span>
+<span class="c1"># https://docs.python.org/3/tutorial/datastructures.html#more-on-lists</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">delta_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">))</span>
+
+<span class="c1"># We now convert the list into a NumPy array.</span>
+<span class="c1"># For that particular purpose there is a NumPy</span>
+<span class="c1"># function - numpy.array(a). Here a is some</span>
+<span class="c1"># sequence.</span>
+<span class="c1"># For more info:</span>
+<span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.array.html</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">delta_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.71 µs ± 61 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<ol>
+<li><p><em>Create a Python list using a list comprehension and then convert it to a NumPy array</em></p>
+<p>This method is conceptually equivalent to the one described above, except for that we use a <em>list comprehension</em> for the list creation - it is a shortened way to generate lists in Python. Such an approach is the preferred one when possible.</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+
+<span class="c1"># As you can see we managed to shorten our code - </span>
+<span class="c1"># what has been previously accomplished in 3 lines,</span>
+<span class="c1"># is now done in 1 line.</span>
+<span class="c1"># For more info:</span>
+<span class="c1"># https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions</span>
+<span class="n">delta_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">delta_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.62 µs ± 80.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p><em>Create an empty NumPy array and then fill it with values in a loop</em></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">)):</span>
+    <span class="n">delta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.29 µs ± 63 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For such a small piece of data we cannot see any advantages in speed for one method over the other. Sometimes you will certainly encounter situations when the efficiency advantage of one approach over the other will not be evident. A good recommendation would be <strong>to keep the balance between efficiency and good programming style in your code</strong>. You might think that style only affects the looks and, therefore, is not that important for production code, but this would be wrong. Whatever your results, you will barely find a person who is going to get interested in your code if it is not readable. Moreover, in 99% of the cases, programming is a collaborative work, so there are <em>coding conventions</em> in each programmimg language which regulate the style of coding. Python’s coding conventions are provided by <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>.</p>
+<p>We are now <a name="exc2"> all set to build <span class="math notranslate nohighlight">\(R_3\)</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here you can clearly see the advantage of</span>
+<span class="c1"># NumPy over built-in tools of Python. </span>
+<span class="c1">#</span>
+<span class="c1"># NumPy functions, such as exp, sin, cos, log etc.,</span>
+<span class="c1"># can be applied on the WHOLE array and</span>
+<span class="c1"># the corresponding mathematical operation will</span>
+<span class="c1"># be applied on each element of array. This is</span>
+<span class="c1"># not possible with the corresponding functions from</span>
+<span class="c1"># Python&#39;s standard math module - there you</span>
+<span class="c1"># would have to loop.</span>
+<span class="c1">#</span>
+<span class="c1"># NumPy arrays provide the possibility to avoid</span>
+<span class="c1"># looping when applying the same operation</span>
+<span class="c1"># on each element.</span>
+
+<span class="c1"># Because %timeit executes all the code in a</span>
+<span class="c1"># `private` scope, we need to redefine delta here</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">)):</span>
+    <span class="n">delta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">R3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">delta</span> <span class="o">+</span> <span class="n">delta</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="n">delta</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we have built the set of numerical data, we are ready to visualize it.</p>
+<p>The fundamental object of <em>Matplotlib</em> is <a class="reference external" href="https://matplotlib.org/3.3.0/api/_as_gen/matplotlib.pyplot.figure.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.figure</span></code></a>. Whenever you created a plot, all the data is stored inside the instance of this object. <em>If you don’t create the figure explicitly, it will be created implicitly</em>, but an explicit call to the object allows you to manipulate your plots in a more flexible way.</p>
+<p>Figure is just your <em>blank sheet of paper</em> (metaphorically) - it is empty from the start. To have a plot, we would need to draw axes.</p>
+<p>The most efficient way to add <em>Matplotlib</em> axes to a figure is through the methods of figure dedicated to this purpose. These are <code class="docutils literal notranslate"><span class="pre">add_axes</span></code> and <code class="docutils literal notranslate"><span class="pre">add_subplot</span></code> methods - they both return instances of a <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code> object - <em>Matplotlib</em> object which contains all the tools corresponding to the visualization of axes. The difference is that <code class="docutils literal notranslate"><span class="pre">add_axes</span></code> accepts as its arguments the <em>location</em> at which you place your axes - location is passed in units of figure sizing; <code class="docutils literal notranslate"><span class="pre">add_subplot</span></code> allows you to divide your figure in parts and you configure the locations of these parts by setting the amount of <em>rows and columns</em> in your figures.</p>
+<p>We have create 2 figures - <em>figure 0</em> and <em>figure 1</em>, - and use them to demonstrate each of these two approaches.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We create first figures of the course.</span>
+<span class="c1"># When creating figure 0, we set tight_layout</span>
+<span class="c1"># keyword to False. We do it, because in a</span>
+<span class="c1"># style we use it is set to True. tight_layout,</span>
+<span class="c1"># when set to True, tries to optimize organi-</span>
+<span class="c1"># zation of your plot - how the subplots, labels,</span>
+<span class="c1"># legends are placed in a figure. In most cases</span>
+<span class="c1"># it is a useful feature, but sometimes you </span>
+<span class="c1"># will face a problem, that it won&#39;t know</span>
+<span class="c1"># how to optimize your figure just because of</span>
+<span class="c1"># how you have organized it manually. We disable</span>
+<span class="c1"># it for the first figure, so that it doesn&#39;t</span>
+<span class="c1"># complain about that we INTENTIONALLY overlap</span>
+<span class="c1"># one subplot with another.</span>
+<span class="n">fig_0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig_1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># Position axes in figure 0 using add_axes.</span>
+<span class="c1"># We pass coordinates for our axes in a list</span>
+<span class="c1"># of 4 floats as [left, bottom, width, height].</span>
+<span class="c1"># See that axes, which are given name ax_1,</span>
+<span class="c1"># is positioned at 0.25 of a figure from the left,</span>
+<span class="c1"># 0.1 - from the bottom, and its width=height=0.65.</span>
+<span class="n">ax_0</span> <span class="o">=</span> <span class="n">fig_0</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">ax_1</span> <span class="o">=</span> <span class="n">fig_0</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+
+<span class="c1"># Add title to figure 0.</span>
+<span class="n">fig_0</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Random axes&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Add 4 subplots to the figure 1. See that the</span>
+<span class="c1"># first two numbers are the same for all sub-</span>
+<span class="c1"># plots, which means that we specify that</span>
+<span class="c1"># there are 2 subplots per row and 2 subplots</span>
+<span class="c1"># per column. The third numbers identify the order</span>
+<span class="c1"># in which subplots appear.</span>
+<span class="n">ax_2</span> <span class="o">=</span> <span class="n">fig_1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">ax_3</span> <span class="o">=</span> <span class="n">fig_1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">ax_4</span> <span class="o">=</span> <span class="n">fig_1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">ax_5</span> <span class="o">=</span> <span class="n">fig_1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+
+<span class="n">fig_1</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Subplots&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Subplots&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/01_02_TaylorExpansion_26_1.png" src="../../../_images/01_02_TaylorExpansion_26_1.png" />
+<img alt="../../../_images/01_02_TaylorExpansion_26_2.png" src="../../../_images/01_02_TaylorExpansion_26_2.png" />
+</div>
+</div>
+<p>It is mostly a matter of your taste which approach you use, but certainly, in cases where you want to create multiple subplots in one figure, the approach of using <code class="docutils literal notranslate"><span class="pre">add_subplots</span></code> is more convenient and, therefore, more reasonable.</p>
+<p>Let’s now talk even more reasonable. It has already been mentioned how important it is to shorten your code when possible. There is a way to create a figure with multiple subplots in it <em>in one call</em> by means of <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.subplots</span></code></a>. <strong>It is recommended that you stick to it</strong>. While there is nothing one can have against the previously described ways, programmers should take as a habit to make their code <em>reasonably short</em>.</p>
+<p>The logic behind subplotting with <code class="docutils literal notranslate"><span class="pre">subplots</span></code> is very similar to the one of <code class="docutils literal notranslate"><span class="pre">add_subplots</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume I want 3 subplots per row</span>
+<span class="c1"># and 1 - per column.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_1</span><span class="p">,</span> <span class="n">ax_2</span><span class="p">,</span> <span class="n">ax_3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01_02_TaylorExpansion_28_0.png" src="../../../_images/01_02_TaylorExpansion_28_0.png" />
+</div>
+</div>
+<p>But we only need to create one plot at the moment, so we don’t provide any arguments to <code class="docutils literal notranslate"><span class="pre">subplots</span></code> - single subplot in a figure is its default.</p>
+<p>We then want to plot <span class="math notranslate nohighlight">\(R_3\)</span> as a function of <span class="math notranslate nohighlight">\(\Delta x\)</span> and use <em>log scaling</em> for both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> axes - there is a function just for that - <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.loglog.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.loglog</span></code></a>. For the plot with linear scaling refer to <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot</span></code></a>, which has the same syntax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Create a plot with log scaling.</span>
+<span class="c1"># Pass x-data as first argument, y-data</span>
+<span class="c1"># as second argument, other arguments are</span>
+<span class="c1"># optional. &#39;*&#39; means that we want a dot</span>
+<span class="c1"># plot with stars as markers. label argument</span>
+<span class="c1"># defines the description for the data, which will</span>
+<span class="c1"># be displayed in the legend.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">R3</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$R_3$&#39;</span><span class="p">)</span>
+
+<span class="c1"># We plot delta^3 with the same log scaling</span>
+<span class="c1"># to show that R3 is of order delta^3. See</span>
+<span class="c1"># that you can configure the color of dots and</span>
+<span class="c1"># lines you plot with the color argument.</span>
+<span class="c1">#</span>
+<span class="c1"># This is one way to set a color of a curve - </span>
+<span class="c1"># by simply passing the name of a color to</span>
+<span class="c1"># the function. But this way is limited to only</span>
+<span class="c1"># 8 colors. If you need bigger variety, </span>
+<span class="c1"># Matplotlib supports RGBA format. You can either</span>
+<span class="c1"># pass a tuple of float values in range [0, 1]</span>
+<span class="c1"># as (red, green, blue, alpha), or you can</span>
+<span class="c1"># pass an RGBA string.</span>
+<span class="c1"># More info</span>
+<span class="c1"># https://matplotlib.org/3.1.1/tutorials/colors/colors.html</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Delta^</span><span class="si">{3}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="c1"># We set labels of x axis and y axis.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta x$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$R_3$&#39;</span><span class="p">)</span>
+
+<span class="c1"># We set the title, which in this case is only</span>
+<span class="c1"># related to the subplot referred by ax, but</span>
+<span class="c1"># as we have only 1 subplot, it is then re-</span>
+<span class="c1"># lated to the whole figure and can be used</span>
+<span class="c1"># instead of &#39;fig.suptitle&#39;.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
+
+<span class="c1"># Enable automatic detection of elements</span>
+<span class="c1"># to be shown in legend.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Save figure. Default format is png.</span>
+<span class="c1"># dpi defines the resolution in dots per inch.</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../figures/taylorSlope&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01_02_TaylorExpansion_30_0.png" src="../../../_images/01_02_TaylorExpansion_30_0.png" />
+</div>
+</div>
+<p>You’ve seen above textual sequences created as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>text_data = &#39;Hello, world!&#39;
+</pre></div>
+</div>
+<p>They are called <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">strings</a>. There are special characters in Python called <em>escape characters</em> which are meant for formatting. For example, <code class="docutils literal notranslate"><span class="pre">\n</span></code> would mean that the line is broken. The following code</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&#39;Hello\nworld&#39;)
+</pre></div>
+</div>
+<p>will produce the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hello
+world
+</pre></div>
+</div>
+<p>But there are also so-called <em>raw strings</em> in Python. All escape characters are ignored in a raw string. We would have this</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(r&#39;Hello\nworld&#39;)
+</pre></div>
+</div>
+<p>to produce the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hello\nworld
+</pre></div>
+</div>
+<p>A nice feature of matplotlib is that it can display rendered LaTeX equations in place of regular strings. This is possible by enclosing the desired LaTeX code between <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">$</span></code> as we did above.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">2.3. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we have introduced the concepts of numerical precision and numerical error. We also discussed different approaches to build numerical sequences in Python and learned about NumPy arrays - fundamental objects for scientific programming in Python. Using the Matplotlib package, we gave a trivial overview on 2D visualization and illustrated that the error term in Taylor series is of order <span class="math notranslate nohighlight">\(\mathcal{O}(\Delta x^{n+1})\)</span> when the last expansion term considered is of order <span class="math notranslate nohighlight">\(\mathcal{O}(\Delta x^{n})\)</span>.</p>
+<p>In the next notebook we will introduce Euler time-advancement schemes - numerical procedures for solving ordinary differential equations -, define numerical stability of the time-advancement scheme and the concepts of explicit and implicit time integration methods.</p>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Some exercises’ prefixes are links, click on them to see what part of text they refer to.</p>
+<p><a class="reference external" href="#exc1"><strong>Exercise 1:</strong></a> If you were to make a valid estimate of which approach to generate the deltas is the fastest, how would you proceed? What result do you then get?</p>
+<p><a class="reference external" href="#exc2"><strong>Exercise 2:</strong></a> In order to see by yourself the advantages of <em>NumPy</em>, generate the <span class="math notranslate nohighlight">\(R_3\)</span> sequence using <em>Python’s</em> standard <code class="docutils literal notranslate"><span class="pre">math</span></code> module. For that purpose, only use the <code class="docutils literal notranslate"><span class="pre">delta_list</span></code> object instead of the <code class="docutils literal notranslate"><span class="pre">delta</span></code> numpy array. Time both the referenced cell and your code. <em>Note</em> that by design, cell magic commands <em>must</em> be at the very top of the cell. In order to import the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, run</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+<p><strong>Exercise 3:</strong> Expand these functions into series using Taylor’s expansion:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle f(x)=2x\cos^2\frac{x}{2}-x\)</span> at <span class="math notranslate nohighlight">\(x=0\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle f(x)=\frac{1}{2x-x^2}\)</span> at <span class="math notranslate nohighlight">\(x=1\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)=3x\)</span> at <span class="math notranslate nohighlight">\(x=1\)</span>.</p></li>
+</ul>
+<p>Make a figure of 9 subplots (3 rows by 3 columns). Each line must correspond to one of three expansions for the functions above. For each subplot in a row, increase amount of expansion terms taken into account - in this way each row must demonstrate the growth in accuracy. Each subplot must also contain an <em>exact curve</em> for the function. This is a great way to check if your expansions are correct.</p>
+<p>For a better understanding of the task consider the following example:</p>
+<img alt="../../../_images/TaylorExampleExercise.png" src="../../../_images/TaylorExampleExercise.png" />
+<p>Source: Find expansion of the example function on <a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series"><em>Wikipedia</em></a>.</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">2.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-course/notebooks/01_Introduction/01_02_TaylorExpansion-0"><dl class="citation">
+<dt class="bibtex label" id="arfken2012"><span class="brackets"><a class="fn-backref" href="#id1">AWH12</a></span></dt>
+<dd><p>GB Arfken, HJ Weber, and FE Harris. Mathematical methods for physicists: a comprehensive guide. 2012.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./course/notebooks/01_Introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_01_ToolkitSetup.html" title="previous page"><span class="section-number">1. </span>Toolkit Setup</a>
+    <a class='right-next' id="next-link" href="../02_TimeIntegration/02_01_EulerMethod.html" title="next page"><span class="section-number">1. </span>Euler methods</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
