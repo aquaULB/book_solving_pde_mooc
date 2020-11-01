@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Matrix and modified wavenumber stability analysis &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="1. The first-order wave equation" href="04_01_Advection.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/course/notebooks/04_PartialDifferentialEquations/04_02_StabilityAnalysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/course/notebooks/04_PartialDifferentialEquations/04_02_StabilityAnalysis.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability-matrix-analysis">
+   2.2. Stability: matrix analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-euler-method-with-first-order-forward-finite-differentiation">
+     2.2.1. Forward Euler method with first-order forward finite differentiation.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-euler-method-with-backward-first-order-finite-differentiation">
+     2.2.2. Forward Euler method with backward first-order finite differentiation.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-euler-method-with-centered-second-order-finite-differentiation">
+     2.2.3. Forward Euler method with centered second-order finite differentiation.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability-modified-wavenumber-analysis">
+   2.3. Stability: modified wavenumber analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-finite-differentiation">
+     2.3.1. Forward finite differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#centered-finite-differentiation">
+     2.3.2. Centered finite differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#backward-finite-differentiation">
+     2.3.3. Backward finite differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphical-summary">
+     2.3.4. Graphical summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   2.4. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.5. Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   2.6. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="matrix-and-modified-wavenumber-stability-analysis">
+<h1><span class="section-number">2. </span>Matrix and modified wavenumber stability analysis<a class="headerlink" href="#matrix-and-modified-wavenumber-stability-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, we start by importing some modules needed below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous notebook, we have shown how to transform a partial differential equation into a system of coupled ordinary differential equations using semi-discretization. We stressed that the success of our numerical methods depends on the combination chosen for the time integration scheme <em>and</em> the spatial discretization scheme for the right-hand side. In this notebook we explore this question in more details. To illustrate the concepts, we use again the example of the first order wave equation:</p>
+<div class="math notranslate nohighlight" id="equation-eq-advection">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-advection" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u}{\partial t}+c\frac{\partial u}{\partial x}=0,\; c&gt;0.\]</div>
+<p>Before proceeding, we recall an important result discussed in notebook <code class="docutils literal notranslate"><span class="pre">02_01_EulerMethod</span></code>. If an equation takes the form:</p>
+<div class="math notranslate nohighlight" id="equation-eq-basicform">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq-basicform" title="Permalink to this equation">¶</a></span>\[  \frac{dx}{dt}=\lambda x\]</div>
+<p>for any complex number <span class="math notranslate nohighlight">\(\lambda\)</span>, the forward Euler integration scheme provides a bounded solution only if <span class="math notranslate nohighlight">\(\lambda dt\)</span> is contained in its stability domain. For the forward Euler method, the stability domain consists of disk of radius <span class="math notranslate nohighlight">\(1\)</span> in the complex plane <span class="math notranslate nohighlight">\(z=x+iy\)</span>, centered around the point <span class="math notranslate nohighlight">\(x=-1\)</span>.</p>
+<p>Although we focus in this notebook on the forward Euler method for simplicity, the discussion can be readily adapted to other time integration schemes.</p>
+</div>
+<div class="section" id="stability-matrix-analysis">
+<h2><span class="section-number">2.2. </span>Stability: matrix analysis<a class="headerlink" href="#stability-matrix-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="forward-euler-method-with-first-order-forward-finite-differentiation">
+<h3><span class="section-number">2.2.1. </span>Forward Euler method with first-order forward finite differentiation.<a class="headerlink" href="#forward-euler-method-with-first-order-forward-finite-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>The first scheme we used in the previous notebook is based on the forward Euler method for time discretization, and on the forward first-order accurate finite difference scheme for the spatial derivative. If we adopt the same notations as before, the algorithm reads:</p>
+<div class="math notranslate nohighlight">
+\[u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}.\]</div>
+<p>With the parameters used, we saw that the solution rapidly blew up.</p>
+<p>Let us write our algorithm in matrix notation:</p>
+<div class="math notranslate nohighlight">
+\[    \boldsymbol{u}^{n+1} = A\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = A^{n+1}\boldsymbol{u}^{0}.\]</div>
+<p>As before (see previous notebook), we adopt homogeneous Dirichlet boundary conditions: <span class="math notranslate nohighlight">\(u_0^m = u_{nx-1}^m=0, \forall m\)</span>. This means that our unknowns are <span class="math notranslate nohighlight">\(u^m_1,\ldots,u^m_{nx-2}\)</span> and that the matrix <span class="math notranslate nohighlight">\(A\)</span> has dimensions <span class="math notranslate nohighlight">\((nx-2)\times (nx-2)\)</span>. Its expression is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A =
+\begin{pmatrix}
+\lambda &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; \lambda &amp; 1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \lambda &amp; 1 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0  &amp; \dots &amp; 0 &amp; \lambda &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; \lambda &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; \lambda &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \lambda
+\end{pmatrix}.\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\displaystyle{\lambda=-(1+\frac{dx}{cdt})}\)</span>. In linear algebra terminology, <span class="math notranslate nohighlight">\(A\)</span> has the form of a Jordan block.</p>
+<p>A useful result for us is that the powers of a Jordan block may be evaluated without too much effort. As an example, let’s consider the powers of a <span class="math notranslate nohighlight">\(5\times 5\)</span> Jordan block:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+ \lambda &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; \lambda &amp; 1 &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; \lambda &amp; 1 &amp; 0 \\ 
+ 0 &amp; 0 &amp; 0 &amp; \lambda &amp; 1 \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; \lambda
+\end{pmatrix}^n
+=\begin{pmatrix}
+ \lambda^n &amp; \tbinom{n}{1}\lambda^{n-1} &amp; \tbinom{n}{2}\lambda^{n-2} &amp; \tbinom{n}{3}\lambda^{n-3}   &amp; \tbinom{n}{4}\lambda^{n-4} \\
+ 0  &amp; \lambda^n &amp; \tbinom{n}{1}\lambda^{n-1} &amp; \tbinom{n}{2}\lambda^{n-2}   &amp; \tbinom{n}{3}\lambda^{n-3} \\
+ 0  &amp; 0  &amp; \lambda^n &amp; \tbinom{n}{1}\lambda^{n-1}   &amp; \tbinom{n}{2}\lambda^{n-2} \\ 
+ 0  &amp; 0  &amp; 0  &amp; \lambda^n &amp; \tbinom{n}{1}\lambda^{n-1} \\
+ 0  &amp; 0  &amp; 0  &amp; 0   &amp; \lambda^n
+\end{pmatrix}\end{split}\]</div>
+<p>where the binomial coefficients are defined as <span class="math notranslate nohighlight">\(\tbinom{n}{k}=\prod_{i=1}^k \tfrac{n+1-i}{i}\)</span>. One can show that the matrix entries remain bounded if and only if <span class="math notranslate nohighlight">\(\vert \lambda \vert &lt;1\)</span> - the fact that the entries blow up for <span class="math notranslate nohighlight">\(\vert \lambda \vert \geq 1\)</span> is evident. A detailed proof of this property may be found in <a class="bibtex reference internal" href="#horn2013" id="id1">[HJ13]</a>.</p>
+<p>The entries of the above discretization matrix <span class="math notranslate nohighlight">\(A\)</span> are specific to the combined choice of the forward Euler method and the forward first-order finite differentiation. As these entries blow up as we power iterate the matrix, whatever the value of <span class="math notranslate nohighlight">\(dt\)</span>, this choice of discretization is <em>unconditionnally unstable</em> for the first order wave equation.</p>
+</div>
+<div class="section" id="forward-euler-method-with-backward-first-order-finite-differentiation">
+<h3><span class="section-number">2.2.2. </span>Forward Euler method with backward first-order finite differentiation.<a class="headerlink" href="#forward-euler-method-with-backward-first-order-finite-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>We now turn our attention to the second method we used in the previous notebook. Instead of the first-order forward finite differentiation we used the first-order backward finite differentiation.</p>
+<p>The time marching then proceeds as,</p>
+<div class="math notranslate nohighlight">
+\[u^{n+1}_i = u^n_i -cdt \frac{u^n_{i} - u^n_{i-1}}{\Delta x}.\]</div>
+<p>In matrix notation we have,</p>
+<div class="math notranslate nohighlight">
+\[    \boldsymbol{u}^{n+1} = \tilde A\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = \tilde A^{n+1}\boldsymbol{u}^{0}.\]</div>
+<p>If we use the same boundary conditions as before, the matrix <span class="math notranslate nohighlight">\(\tilde A\)</span> is expressed as,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\tilde A = 
+\begin{pmatrix}
+\tilde \lambda &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; \tilde \lambda &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; \tilde \lambda &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0  &amp; \dots &amp; 1 &amp; \tilde \lambda &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 1 &amp; \tilde \lambda &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 1 &amp; \tilde \lambda &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; \tilde \lambda
+\end{pmatrix},\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(\displaystyle{\tilde \lambda = \frac{dx}{cdt}-1}\)</span>. This time, <span class="math notranslate nohighlight">\(\tilde A\)</span> is the transpose of a Jordan block. Using the same argument as in the previous section, we conclude that the powers of <span class="math notranslate nohighlight">\(\tilde A\)</span> will remain bounded if and only if <span class="math notranslate nohighlight">\(\vert \tilde \lambda \vert \leq 1\)</span>. Compared to the case of the forward Euler method with forward first-order finite differentiation, the situation is therefore very different. By choosing <span class="math notranslate nohighlight">\(dt\)</span> such that,</p>
+<div class="math notranslate nohighlight" id="equation-eq-cfl">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-cfl" title="Permalink to this equation">¶</a></span>\[ dt &lt; \frac{dx}{c}\]</div>
+<p>we can avoid instability of the numerical scheme when using the forward Euler method with backward first-order finite differentiation. Go back to the previous notebook and check that this criteria was indeed satisfied. Run again the simulation with <span class="math notranslate nohighlight">\(dt &gt; \frac{dx}{c}\)</span> and check what happens.</p>
+<p>The non-dimensional number,</p>
+<div class="math notranslate nohighlight">
+\[C = \frac{cdt}{dx}\]</div>
+<p>is called the CFL number after the mathematicians Courant, Friedrich and Lewy. Here the condition for stability is:</p>
+<div class="math notranslate nohighlight">
+\[C&lt;1.\]</div>
+<p>This condition limits the allowed time step for a given grid spacing and has a very important practical consequence. If you increase the numerical resolution by using a finer grid, you also need to reduce the time step. You pay the price twice. But at least the method is <em>conditionnally stable</em> for the first order wave equation.</p>
+</div>
+<div class="section" id="forward-euler-method-with-centered-second-order-finite-differentiation">
+<h3><span class="section-number">2.2.3. </span>Forward Euler method with centered second-order finite differentiation.<a class="headerlink" href="#forward-euler-method-with-centered-second-order-finite-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>Let us study the stability of one more discretization scheme through matrix analysis.</p>
+<p>Consider the forward Euler method with centered second-order finite differentiation. The algorithm reads:</p>
+<div class="math notranslate nohighlight">
+\[u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_{i-1}}{2\Delta x}\]</div>
+<p>In matrix notation, we can write:</p>
+<div class="math notranslate nohighlight" id="equation-eq-iterunp1">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-iterunp1" title="Permalink to this equation">¶</a></span>\[    \boldsymbol{u}^{n+1} = (I-\frac{cdt}{2\Delta x}B)\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = (I-\frac{cdt}{2\Delta x}B)^{n+1}\boldsymbol{u}^{0}\]</div>
+<p>Using our usual boundary conditions, the matrix <span class="math notranslate nohighlight">\(B\)</span> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-discb">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-discb" title="Permalink to this equation">¶</a></span>\[\begin{split}B =
+\begin{pmatrix}
+0 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; -1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0  &amp; \dots &amp; 1 &amp; 0 &amp; -1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}.\end{split}\]</div>
+<p>This matrix belongs to the family of triadiagonal Toeplitz matrices. Their general form is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T_m = 
+\begin{pmatrix}
+a &amp; b &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; c &amp; a &amp; b &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0  &amp; \dots &amp; c &amp; a &amp; b &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; c &amp; a &amp; b &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; c &amp; a &amp; b \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; c &amp; a \\
+\end{pmatrix}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\times m\)</span> are the matrix dimensions. Contrary to the matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(\tilde A\)</span> described earlier, <span class="math notranslate nohighlight">\(T_m\)</span> is diagonalizable when <span class="math notranslate nohighlight">\(bc \not = 0\)</span>. The eigenvalues are then distinct and given by <a class="bibtex reference internal" href="#horn2013" id="id2">[HJ13]</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-eigenvals1">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-eigenvals1" title="Permalink to this equation">¶</a></span>\[\lambda_k = (a+2\sqrt{bc}\cos(\frac{\pi k}{m+1})),\; k=1,\ldots, m.\]</div>
+<p>This property is very useful here as it allows us to make a direct connexion with the stability analysis discussed in the notebook <em>02_01_EulerMethod</em>. To that end, let us denote by <span class="math notranslate nohighlight">\(\boldsymbol{z}^{m}\)</span> the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol{u}^m\)</span> in the basis of eigenvectors. Because <span class="math notranslate nohighlight">\(B\)</span> is diagonal in this basis we have:</p>
+<div class="math notranslate nohighlight">
+\[    \boldsymbol{z}^{n+1} = (I-\frac{cdt}{2\Delta x}\Lambda) \boldsymbol{z}^{n}
+    \; \; \Leftrightarrow \; \; \boldsymbol{z}^{n+1} = (I-\frac{cdt}{2\Delta x}\Lambda)^{n+1}\boldsymbol{z}^{0}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix built with the <span class="math notranslate nohighlight">\((nx-2)\)</span> eigenvalues of <span class="math notranslate nohighlight">\(B\)</span>. In these coordinates, our problem is reduced to a system of <span class="math notranslate nohighlight">\(nx-2\)</span> uncoupled equations.</p>
+<p>Our solution will remain finite as long as the condition <span class="math notranslate nohighlight">\(\vert 1  -\frac{cdt}{2\Delta x}\Lambda_k\vert &lt;1, \forall k\)</span>. Unfortunately there is no way to satisfy these constraints as the eigenvalues <a class="reference internal" href="#equation-eq-eigenvals1">(39)</a> are purely imaginary with <span class="math notranslate nohighlight">\(b=-1\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>. The numerical scheme discussed here is therefore <em>unconditionnally unstable</em> for the first order wave equation.</p>
+</div>
+</div>
+<div class="section" id="stability-modified-wavenumber-analysis">
+<h2><span class="section-number">2.3. </span>Stability: modified wavenumber analysis<a class="headerlink" href="#stability-modified-wavenumber-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Matrix stability analysis allows to determine the stability properties of any algorithm combined with its boundary conditions. However, it requires to know if the successive powers of the discretization matrix remain bounded or not. This is not too difficult with pen and paper for certain specific matrices or when they can be diagonalized and the eigenvalues explicitly computed. But for cases where this is not possible, one can rely on several other methods.</p>
+<p>One of them is called the modified wavenumber analysis. It works for linear, constant-coefficients partial differential equations discretized on uniform grids.</p>
+<p>Consider again the first order wave equation:</p>
+<div class="math notranslate nohighlight">
+\[   \frac{\partial u}{\partial t}+c\frac{\partial u}{\partial x}=0,\; c&gt;0.\]</div>
+<p>For the modified wavenumber stability analysis, we need to use periodic boundary conditions. Strictly speaking, the results therefore only apply to this case. In practice, the stability criteria inferred through this method is quite robust because boundary conditions do not often play a significant role.</p>
+<p>If our domain is periodic, we may decompose the exact solution <span class="math notranslate nohighlight">\(u(x,t)\)</span> in Fourier series:</p>
+<div class="math notranslate nohighlight" id="equation-eq-wave">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-wave" title="Permalink to this equation">¶</a></span>\[    u(x,t)=\sum_{m} \hat{u}(k_m,t) e^{ik_m x},\; \; k_m = \frac{2\pi m}{L}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_m\)</span> are the wavenumbers, <span class="math notranslate nohighlight">\(L\)</span> is the periodicity of the domain and <span class="math notranslate nohighlight">\(\hat{u}(k_m,t)\)</span> are the time dependent Fourier coefficients of the decomposition. If we substitute this series in <a class="reference internal" href="#equation-eq-wave">(40)</a> we get,</p>
+<div class="math notranslate nohighlight">
+\[    \frac{d\hat{u}(k_m,t)}{dt}=-ick_m \hat{u}(k_m,t)\]</div>
+<p>where we have taken into account that all Fourier components are linearly independent to eliminate the summation.
+This equation is exact and shows that each Fourier mode oscillates with a pulsation equal to <span class="math notranslate nohighlight">\(ck_m\)</span>.</p>
+<div class="section" id="forward-finite-differentiation">
+<h3><span class="section-number">2.3.1. </span>Forward finite differentiation<a class="headerlink" href="#forward-finite-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>We now turn our attention to the discretized equation and first consider backward differentiation. In semi-discretized form, the equation obtained after substitution of the Fourier decomposition reads:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\sum_{m} \frac{d\hat{u}(k_m,t)}{dt} e^{ik_m x_j} &amp;=  -\frac{c}{\Delta x} \left(\sum_{m} \hat{u}(k_m,t) e^{ik_m x_{j+1}} - \sum_{m} \hat{u}(k_m,t) e^{ik_m x_j}\right)\\
+&amp;\Leftrightarrow \nonumber \\
+\frac{d\hat{u}(k_m,t)}{dt}&amp;=-\frac{c}{\Delta x}\left(e^{ik_m \Delta x}-1\right)\hat{u}(k_m,t)\end{split}\]</div>
+<p>Similarly to the exact equation, the problem now consists in a system of decoupled ordinary differential equations. The quantities,</p>
+<div class="math notranslate nohighlight">
+\[\tilde k_m = \frac{1}{i\Delta x}\left(e^{ik_m \Delta x}-1\right)\]</div>
+<p>are referred to as the modified wavenumbers. In terms of these, the semi-discretized equation is identical to the original equation expressed in terms of Fourier components.</p>
+<p>Denoting <span class="math notranslate nohighlight">\(\lambda_m = -ic\tilde k_m\)</span>, we also have:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\hat{u}(k_m,t)}{dt}=\lambda_m\hat{u}(k_m,t),\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight" id="equation-eq-modesbackward">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-modesbackward" title="Permalink to this equation">¶</a></span>\[\lambda_{m} = \frac{c}{\Delta x}\left(1-e^{ik_m \Delta x}\right).\]</div>
+<p>The locus on which those values lie is, the complex plane <span class="math notranslate nohighlight">\(z=x+iy\)</span>, a circle of radius <span class="math notranslate nohighlight">\(\frac{c}{\Delta x}\)</span> centered around <span class="math notranslate nohighlight">\((1,0)\)</span>.</p>
+<p>Using the Fourier decomposition, we have transformed the original equation into a set of coupled ordinary differential equations. Each has now the same form as <a class="reference internal" href="#equation-eq-basicform">(35)</a>.</p>
+<p>If use the forward Euler scheme for the time integration, the algorithm is therefore unconditionally unstable as the coefficents <span class="math notranslate nohighlight">\(\lambda_m\)</span> lie outside of its domain of stability.</p>
+</div>
+<div class="section" id="centered-finite-differentiation">
+<h3><span class="section-number">2.3.2. </span>Centered finite differentiation<a class="headerlink" href="#centered-finite-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>Repeating the analysis of the previous section using centered finite differentiation we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{d\hat{u}(k_m,t)}{dt}&amp;=-\frac{c}{2\Delta x}\left(e^{ik_m \Delta x}-e^{-ik_m \Delta x}\right)\hat{u}(k_m,t)\\
+&amp;=-\frac{ic}{\Delta x}\sin(k_m\Delta x)\hat{u}(k_m,t)\end{split}\]</div>
+<p>For this scheme, the modified wavenumbers are:</p>
+<div class="math notranslate nohighlight">
+\[\tilde k_m = \frac{\sin(k_m \Delta x)}{\Delta x}\]</div>
+<p>Denoting again <span class="math notranslate nohighlight">\(\lambda_m = -ic\tilde k_m\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\lambda_{m} = -\frac{ic}{\Delta x}\sin(k_m\Delta x).\]</div>
+<p>The locus on which those values lie is the vertical segment of length <span class="math notranslate nohighlight">\(2\frac{c}{\Delta x}\)</span> centered around origin. Time integration with the forward Euler scheme is therefore also unconditionally unstable in this case.</p>
+</div>
+<div class="section" id="backward-finite-differentiation">
+<h3><span class="section-number">2.3.3. </span>Backward finite differentiation<a class="headerlink" href="#backward-finite-differentiation" title="Permalink to this headline">¶</a></h3>
+<p>As a final example, let us consider backward finite differentiation.</p>
+<p>The Fourier modes evolve according to,</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\hat{u}(k_m,t)}{dt}=-\frac{c}{\Delta x}\left(1 - e^{-ik_m \Delta x}\right)\hat{u}(k_m,t)\]</div>
+<p>and the modified wavenumbers are:</p>
+<div class="math notranslate nohighlight">
+\[\tilde k_m = \frac{1}{i\Delta x}\left(1 - e^{-ik_m \Delta x}\right)\]</div>
+<p>Very importantly we now have:</p>
+<div class="math notranslate nohighlight">
+\[\lambda_{m} = -\frac{c}{\Delta x}\left(1 - e^{-ik_m \Delta x}\right).\]</div>
+<p>The locus on which those values lie is a circle of radius <span class="math notranslate nohighlight">\(\frac{c}{\Delta x}\)</span> centered around <span class="math notranslate nohighlight">\((-1,0)\)</span>.</p>
+<p>By restricting the time step with the condition</p>
+<div class="math notranslate nohighlight">
+\[    dt &lt; \frac{dx}{c}\]</div>
+<p>we can satisfy the stability criteria for the forward Euler time integration scheme. We also see that see that the modified wavenumber stability analysis imposes the following CFL condition:</p>
+<div class="math notranslate nohighlight">
+\[C&lt;1.\]</div>
+<p>Note that this criteria is identical to the one obtained through matrix stability analysis. But there is no guarantee that this is the case !</p>
+</div>
+<div class="section" id="graphical-summary">
+<h3><span class="section-number">2.3.4. </span>Graphical summary<a class="headerlink" href="#graphical-summary" title="Permalink to this headline">¶</a></h3>
+<p>In this section we have seen that the forward Euler method with backward finite differentiation is conditionally stable for the first order wave equation, while the two other methods considered are unconditionally unstable.</p>
+<p>Stability for the forward Euler method with backward finite differentiation can be achieved by choosing <span class="math notranslate nohighlight">\(dt&lt; dx/c\)</span>. In the diagram below, we represent the locus of the coefficients <span class="math notranslate nohighlight">\(\lambda_m\)</span> for the particular choice <span class="math notranslate nohighlight">\(dt=0.8*dx/c\)</span> for all three methods.</p>
+<a class="reference internal image-reference" href="../../../_images/modified_k.png"><img alt="../../../_images/modified_k.png" class="align-center" src="../../../_images/modified_k.png" style="width: 500px;" /></a>
+</div>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">2.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook, we have introduced two methods to analyse the stability of the discretization of partial differential equations: matrix stability analysis and modified wavenumber stability analysis. The first one highlights the role of the discretization matrix in the amplification of the solution through the process of power iteration. It is quite general but its application using pen and paper is limited to certain classes of matrices. The modified wavenumber stability analysis is in principal restricted to problems in periodic domains but it is easier to carry out in many cases. In the next notebooks of this chapter, we will consider the heat equation in 1D and 2D, and further discuss how the concepts developed here apply in that context.</p>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p><strong>Exercise 1:</strong> Provide an expression similar to eq. <a class="reference internal" href="#equation-eq-iterunp1">(37)</a> when using the Runge-Kutta 4th-order time advancement scheme and centered second-order finite differentiation for the semi-discretization of the first order wave equation.</p>
+<p><strong>Exercise 2:</strong> Using matrix stability analysis, determine the stability criteria for this algorithm. What is the corresponding CFL number ?</p>
+<p><strong>Exercise 3:</strong> Using the modified wavenumber stability analysis, determine the stability criteria for the same algorithm as in exercises 1 &amp; 2. What is the corresponding CFL number?</p>
+<p><strong>Exercise 4:</strong> Using the modified wavenumber stability analysis, determine the stability criteria when using the Runge-Kutta 4th-order time advancement scheme and backward first-order finite differentiation for the semi-discretization of the first order wave equation. What is the corresponding CFL number?</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">2.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-course/notebooks/04_PartialDifferentialEquations/04_02_StabilityAnalysis-0"><dl class="citation">
+<dt class="bibtex label" id="horn2013"><span class="brackets">HJ13</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>RA Horn and CR Johnson. Matrix analysis. 2013.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./course/notebooks/04_PartialDifferentialEquations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04_01_Advection.html" title="previous page"><span class="section-number">1. </span>The first-order wave equation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
