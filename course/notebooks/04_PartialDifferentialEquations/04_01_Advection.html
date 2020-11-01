@@ -300,6 +300,11 @@
    1.6. Summary
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   1.7. Exercises
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -571,7 +576,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <p>Parameters for the simulation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="mf">1.</span>          <span class="c1"># wave or advection speed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mf">1.</span>        <span class="c1"># wave or advection speed</span>
 <span class="n">lx</span> <span class="o">=</span> <span class="mf">1.</span>       <span class="c1"># length of the computational domain</span>
 <span class="n">t_final</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># final time of for the computation (assuming t0=0)</span>
 </pre></div>
@@ -636,7 +641,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fefe2798fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ff28a4f40&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/04_01_Advection_35_1.png" src="../../../_images/04_01_Advection_35_1.png" />
@@ -721,7 +726,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fefe297ce80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ff2bf68b0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/04_01_Advection_43_1.png" src="../../../_images/04_01_Advection_43_1.png" />
@@ -780,8 +785,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    -------</span>
 <span class="sd">    f : array of float</span>
 <span class="sd">        right-hand side of the wave equation with</span>
-<span class="sd">        boundary conditions implemented (periodic</span>
-<span class="sd">        boundary conditions)</span>
+<span class="sd">        boundary conditions implemented</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nx</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span>
@@ -847,7 +851,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fefe2c59a30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ff2c6e580&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/04_01_Advection_55_1.png" src="../../../_images/04_01_Advection_55_1.png" />
@@ -1159,42 +1163,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img8e4ff094b192407ca31ef9fdc3b9aa16">
+  <img id="_anim_img509831e712264d878270473e55d7c382">
   <div class="anim-controls">
-    <input id="_anim_slider8e4ff094b192407ca31ef9fdc3b9aa16" type="range" class="anim-slider"
+    <input id="_anim_slider509831e712264d878270473e55d7c382" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim8e4ff094b192407ca31ef9fdc3b9aa16.set_frame(parseInt(this.value));"></input>
+           oninput="anim509831e712264d878270473e55d7c382.set_frame(parseInt(this.value));"></input>
     <div class="anim-buttons">
-      <button title="Decrease speed" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.slower()">
+      <button title="Decrease speed" onclick="anim509831e712264d878270473e55d7c382.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.first_frame()">
+      <button title="First frame" onclick="anim509831e712264d878270473e55d7c382.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.previous_frame()">
+      <button title="Previous frame" onclick="anim509831e712264d878270473e55d7c382.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.reverse_animation()">
+      <button title="Play backwards" onclick="anim509831e712264d878270473e55d7c382.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.pause_animation()">
+      <button title="Pause" onclick="anim509831e712264d878270473e55d7c382.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.play_animation()">
+      <button title="Play" onclick="anim509831e712264d878270473e55d7c382.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.next_frame()">
+      <button title="Next frame" onclick="anim509831e712264d878270473e55d7c382.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.last_frame()">
+      <button title="Last frame" onclick="anim509831e712264d878270473e55d7c382.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" onclick="anim8e4ff094b192407ca31ef9fdc3b9aa16.faster()">
+      <button title="Increase speed" onclick="anim509831e712264d878270473e55d7c382.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" action="#n" name="_anim_loop_select8e4ff094b192407ca31ef9fdc3b9aa16"
+    <form title="Repetition mode" action="#n" name="_anim_loop_select509831e712264d878270473e55d7c382"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_8e4ff094b192407ca31ef9fdc3b9aa16"
+      <input type="radio" name="state" value="once" id="_anim_radio1_509831e712264d878270473e55d7c382"
              checked>
-      <label for="_anim_radio1_8e4ff094b192407ca31ef9fdc3b9aa16">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_8e4ff094b192407ca31ef9fdc3b9aa16"
+      <label for="_anim_radio1_509831e712264d878270473e55d7c382">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_509831e712264d878270473e55d7c382"
              >
-      <label for="_anim_radio2_8e4ff094b192407ca31ef9fdc3b9aa16">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_8e4ff094b192407ca31ef9fdc3b9aa16"
+      <label for="_anim_radio2_509831e712264d878270473e55d7c382">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_509831e712264d878270473e55d7c382"
              >
-      <label for="_anim_radio3_8e4ff094b192407ca31ef9fdc3b9aa16">Reflect</label>
+      <label for="_anim_radio3_509831e712264d878270473e55d7c382">Reflect</label>
     </form>
   </div>
 </div>
@@ -1204,9 +1208,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img8e4ff094b192407ca31ef9fdc3b9aa16";
-    var slider_id = "_anim_slider8e4ff094b192407ca31ef9fdc3b9aa16";
-    var loop_select_id = "_anim_loop_select8e4ff094b192407ca31ef9fdc3b9aa16";
+    var img_id = "_anim_img509831e712264d878270473e55d7c382";
+    var slider_id = "_anim_slider509831e712264d878270473e55d7c382";
+    var loop_select_id = "_anim_loop_select509831e712264d878270473e55d7c382";
     var frames = new Array(101);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAAFoCAYAAAB+JswZAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -37327,7 +37331,7 @@ RCQOSqBFREREROKgBFpEREREJA5KoEVERERE4vD/AYBvHS5eb52RAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim8e4ff094b192407ca31ef9fdc3b9aa16 = new Animation(frames, img_id, slider_id, 100.0,
+        anim509831e712264d878270473e55d7c382 = new Animation(frames, img_id, slider_id, 100.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -37343,7 +37347,24 @@ RCQOSqBFREREROKgBFpEREREJA5KoEVERERE4vD/AYBvHS5eb52RAAAAAElFTkSuQmCC\
 <p>We also introduced the notion of periodic boundary conditions and discussed some of the situations in which they are useful.</p>
 <p>Finally, we showed how to create animations using <code class="docutils literal notranslate"><span class="pre">matplotlib.animation.FuncAnimation</span></code> to visualize results of time dependent problems.</p>
 <p>In the next notebook, we discuss in detail how to determine the stability of the numerical algorithms obtained through semi-discretization.</p>
-<p id="bibtex-bibliography-course/notebooks/04_PartialDifferentialEquations/04_01_Advection-0"></p>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p><strong>Exercise 1:</strong> Using the same parameters as in Section <a class="reference external" href="#Advection-in-a-1D-periodic-domain">Section 4.2</a>, compute the solution of the first order wave equation at <span class="math notranslate nohighlight">\(t=0.68\)</span> using the explicit RK4 method for time discretization and second-order centered finite differentiation for the spatial derivative.</p>
+<p><em>Constraints:</em></p>
+<ol class="simple">
+<li><p>You must use and import the <code class="docutils literal notranslate"><span class="pre">rk4_step</span></code> function provided in the <code class="docutils literal notranslate"><span class="pre">steppers.py</span></code> module file</p></li>
+<li><p>You must implement a function for the right-hand side of <a class="reference internal" href="#equation-eq-semidiscrete">(33)</a> with proper boundary conditions (see above for examples)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Plot your solution at time <span class="math notranslate nohighlight">\(t=0.68\)</span>.</p></li>
+<li><p>What is the maximum value of <span class="math notranslate nohighlight">\(u\)</span> at that time?</p></li>
+</ul>
+<p><strong>Exercise 2:</strong> Using the same parameters as in <a class="reference external" href="#Advection-in-a-1D-periodic-domain">Section 4.2</a>, rerun the simulation using the MacCormack method described in Wikipedia: https://en.wikipedia.org/wiki/MacCormack_method.</p>
+<ul class="simple">
+<li><p>Provide an animation of your solution up to <span class="math notranslate nohighlight">\(t=3\)</span>.</p></li>
+<li><p>What is the maximum value of <span class="math notranslate nohighlight">\(u\)</span> at that time?</p></li>
+</ul>
 </div>
 </div>
 
