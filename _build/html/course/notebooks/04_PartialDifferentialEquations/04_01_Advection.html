@@ -499,13 +499,13 @@
 </div>
 <div class="section" id="advection-equation">
 <h2><span class="section-number">1.3. </span>Advection equation<a class="headerlink" href="#advection-equation" title="Permalink to this headline">¶</a></h2>
-<p>We first consider advection with a constant velocity <span class="math notranslate nohighlight">\(c\)</span>. This process is described by equation <a class="reference internal" href="04_02_StabilityAnalysis.html#equation-eq-advection">(34)</a>. If <span class="math notranslate nohighlight">\(u\)</span> is our unknown, the solution to the equation is:</p>
+<p>We first consider advection with a constant velocity <span class="math notranslate nohighlight">\(c\)</span>. This process is described by equation <a class="reference internal" href="#equation-eq-advection">(32)</a>. If <span class="math notranslate nohighlight">\(u\)</span> is our unknown, the solution to the equation is:</p>
 <div class="math notranslate nohighlight">
 \[u(x,t) = u_0(x-ct),\]</div>
 <p>where <span class="math notranslate nohighlight">\(u_0(x) = u(x,0)\)</span> is the initial condition. At time <span class="math notranslate nohighlight">\(t\)</span>, the mathematical solution to the problem is therefore the initial condition shifted by an mount <span class="math notranslate nohighlight">\(ct\)</span>. To obtain this solution we don’t need a computer, so why bother trying to solve it numerically? It turns out that it constitutes a rich and interesting laboratory for developing general methods and analyze their shortcomings.</p>
 <div class="section" id="forward-euler-forward-finite-differentiation">
 <h3><span class="section-number">1.3.1. </span>Forward Euler, forward finite differentiation<a class="headerlink" href="#forward-euler-forward-finite-differentiation" title="Permalink to this headline">¶</a></h3>
-<p>For our first attempt at solving equation <a class="reference internal" href="04_02_StabilityAnalysis.html#equation-eq-advection">(34)</a>, we choose the forward Euler method for the time integration and the first-order accurate forward finite difference formula for the derivative.</p>
+<p>For our first attempt at solving equation <a class="reference internal" href="#equation-eq-advection">(32)</a>, we choose the forward Euler method for the time integration and the first-order accurate forward finite difference formula for the derivative.</p>
 <p>The discretization then proceeds as follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\frac{d u^n_i}{dt} &amp;\approx \frac{u^{n+1}_i - u^n_i}{dt}, \; \; \; \frac{\partial u}{\partial x}(x_i, t^n) \approx \frac{u^n_{i+1} - u^n_i}{\Delta x} \\
@@ -636,15 +636,12 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Advection with forward Euler scheme - forward finite differences&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ff28a4f40&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/04_01_Advection_35_1.png" src="../../../_images/04_01_Advection_35_1.png" />
+<img alt="../../../_images/04_01_Advection_35_0.png" src="../../../_images/04_01_Advection_35_0.png" />
 </div>
 </div>
 <p>What is happening ? The solution rapidly deteriorates; it is not peacefully translated at constant wave speed <span class="math notranslate nohighlight">\(c\)</span>: the maximum increases and some wiggles appear at the trailing edge. If you were to run the simulation just a bit longer, the solution would completely blow up. Try it !</p>
@@ -721,15 +718,12 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Advection with forward Euler scheme - backward finite differences&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ff2bf68b0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/04_01_Advection_43_1.png" src="../../../_images/04_01_Advection_43_1.png" />
+<img alt="../../../_images/04_01_Advection_43_0.png" src="../../../_images/04_01_Advection_43_0.png" />
 </div>
 </div>
 <p>This time, the solution does not seem to be unstable, but it’s still not what we would like: the maximum decreases as the wave is advected and close inspection reveals that the packet widens. By reducing the time step and grid spacing we can however reduce this phenomenon. You should however rerun this version of the discretization with a lager time step, for example <span class="math notranslate nohighlight">\(dt=0.05\)</span>. What happens in that case?</p>
@@ -846,15 +840,12 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Advection with periodic boundary conditions&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ff2c6e580&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/04_01_Advection_55_1.png" src="../../../_images/04_01_Advection_55_1.png" />
+<img alt="../../../_images/04_01_Advection_55_0.png" src="../../../_images/04_01_Advection_55_0.png" />
 </div>
 </div>
 <p>Quite satisfactorily, the algorithm works as expected !</p>
@@ -897,15 +888,12 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Advection with periodic boundary conditions&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Advection with periodic boundary conditions&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Advection with periodic boundary conditions&#39;)
-</pre></div>
-</div>
-<img alt="../../../_images/04_01_Advection_62_1.png" src="../../../_images/04_01_Advection_62_1.png" />
+<img alt="../../../_images/04_01_Advection_62_0.png" src="../../../_images/04_01_Advection_62_0.png" />
 </div>
 </div>
 <p>Now that we have created our template plot, we need to define a function to tell <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> how to modify it for each frame added to the animation. Here we call this function <code class="docutils literal notranslate"><span class="pre">animate</span></code> but you may give it whatever valid name you want. At minimum, it should contain one argument to indicate the value of an iterator.</p>
@@ -1163,42 +1151,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img509831e712264d878270473e55d7c382">
+  <img id="_anim_img40f50d0aae824f25a06dbe027f720aab">
   <div class="anim-controls">
-    <input id="_anim_slider509831e712264d878270473e55d7c382" type="range" class="anim-slider"
+    <input id="_anim_slider40f50d0aae824f25a06dbe027f720aab" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim509831e712264d878270473e55d7c382.set_frame(parseInt(this.value));"></input>
+           oninput="anim40f50d0aae824f25a06dbe027f720aab.set_frame(parseInt(this.value));"></input>
     <div class="anim-buttons">
-      <button title="Decrease speed" onclick="anim509831e712264d878270473e55d7c382.slower()">
+      <button title="Decrease speed" onclick="anim40f50d0aae824f25a06dbe027f720aab.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" onclick="anim509831e712264d878270473e55d7c382.first_frame()">
+      <button title="First frame" onclick="anim40f50d0aae824f25a06dbe027f720aab.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" onclick="anim509831e712264d878270473e55d7c382.previous_frame()">
+      <button title="Previous frame" onclick="anim40f50d0aae824f25a06dbe027f720aab.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" onclick="anim509831e712264d878270473e55d7c382.reverse_animation()">
+      <button title="Play backwards" onclick="anim40f50d0aae824f25a06dbe027f720aab.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" onclick="anim509831e712264d878270473e55d7c382.pause_animation()">
+      <button title="Pause" onclick="anim40f50d0aae824f25a06dbe027f720aab.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" onclick="anim509831e712264d878270473e55d7c382.play_animation()">
+      <button title="Play" onclick="anim40f50d0aae824f25a06dbe027f720aab.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" onclick="anim509831e712264d878270473e55d7c382.next_frame()">
+      <button title="Next frame" onclick="anim40f50d0aae824f25a06dbe027f720aab.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" onclick="anim509831e712264d878270473e55d7c382.last_frame()">
+      <button title="Last frame" onclick="anim40f50d0aae824f25a06dbe027f720aab.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" onclick="anim509831e712264d878270473e55d7c382.faster()">
+      <button title="Increase speed" onclick="anim40f50d0aae824f25a06dbe027f720aab.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" action="#n" name="_anim_loop_select509831e712264d878270473e55d7c382"
+    <form title="Repetition mode" action="#n" name="_anim_loop_select40f50d0aae824f25a06dbe027f720aab"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_509831e712264d878270473e55d7c382"
+      <input type="radio" name="state" value="once" id="_anim_radio1_40f50d0aae824f25a06dbe027f720aab"
              checked>
-      <label for="_anim_radio1_509831e712264d878270473e55d7c382">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_509831e712264d878270473e55d7c382"
+      <label for="_anim_radio1_40f50d0aae824f25a06dbe027f720aab">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_40f50d0aae824f25a06dbe027f720aab"
              >
-      <label for="_anim_radio2_509831e712264d878270473e55d7c382">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_509831e712264d878270473e55d7c382"
+      <label for="_anim_radio2_40f50d0aae824f25a06dbe027f720aab">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_40f50d0aae824f25a06dbe027f720aab"
              >
-      <label for="_anim_radio3_509831e712264d878270473e55d7c382">Reflect</label>
+      <label for="_anim_radio3_40f50d0aae824f25a06dbe027f720aab">Reflect</label>
     </form>
   </div>
 </div>
@@ -1208,9 +1196,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img509831e712264d878270473e55d7c382";
-    var slider_id = "_anim_slider509831e712264d878270473e55d7c382";
-    var loop_select_id = "_anim_loop_select509831e712264d878270473e55d7c382";
+    var img_id = "_anim_img40f50d0aae824f25a06dbe027f720aab";
+    var slider_id = "_anim_slider40f50d0aae824f25a06dbe027f720aab";
+    var loop_select_id = "_anim_loop_select40f50d0aae824f25a06dbe027f720aab";
     var frames = new Array(101);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAAFoCAYAAAB+JswZAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -37331,7 +37319,7 @@ RCQOSqBFREREROKgBFpEREREJA5KoEVERERE4vD/AYBvHS5eb52RAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim509831e712264d878270473e55d7c382 = new Animation(frames, img_id, slider_id, 100.0,
+        anim40f50d0aae824f25a06dbe027f720aab = new Animation(frames, img_id, slider_id, 100.0,
                                  loop_select_id);
     }, 0);
   })()

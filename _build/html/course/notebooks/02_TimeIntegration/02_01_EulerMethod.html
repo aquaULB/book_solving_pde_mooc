@@ -594,17 +594,18 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># Add a legend to the plot. Note how we added a semi-</span>
+<span class="c1"># colon at the end of the statement. This removes an</span>
+<span class="c1"># unnecessary ipython output just below the cell.</span>
+<span class="c1"># Remove it and see the difference.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 
 <span class="c1"># fig.savefig(&#39;../figures/eulerSlope.png&#39;, dpi=300)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f99ac974490&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/02_01_EulerMethod_15_1.png" src="../../../_images/02_01_EulerMethod_15_1.png" />
+<img alt="../../../_images/02_01_EulerMethod_15_0.png" src="../../../_images/02_01_EulerMethod_15_0.png" />
 </div>
 </div>
 <p>Do you notice something ‘surprising’ in this plot? Earlier we mentioned an accuracy of second order for the forward Euler method but here we observe an accuracy of first order. In fact, there is a straightforward explanation for this. We said “…that the forward Euler method is of second order for going from <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t+dt\)</span>”. Here we are comparing values after <span class="math notranslate nohighlight">\(N\)</span> time steps with <span class="math notranslate nohighlight">\(\displaystyle N=\frac{t_f-t_i}{dt}\)</span>. The total error is proportional to the product of the error made at each time step multiplied by the number of steps. As the latter scales as <span class="math notranslate nohighlight">\(dt^{-1}\)</span>, the total error scales like <span class="math notranslate nohighlight">\(dt^2 / dt = dt\)</span>. One says that <strong>the error made during one time step accumulates during the computation</strong>.</p>
@@ -1237,15 +1238,12 @@ Q=
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Radioactive decay&#39;</span><span class="p">)</span>
 
 <span class="c1"># Make the legend visible.</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f99ad375550&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/02_01_EulerMethod_33_1.png" src="../../../_images/02_01_EulerMethod_33_1.png" />
+<img alt="../../../_images/02_01_EulerMethod_33_0.png" src="../../../_images/02_01_EulerMethod_33_0.png" />
 </div>
 </div>
 <p>Here we observe some interesting things. The solutions predicted by the explicit and implicit Euler schemes differ noticeably. Even though they are both of the same order of accuracy, they are obviously not identical and the implicit Euler scheme matches the exact solution a bit better. Also, for the chosen time step, both methods are stable in this case. <a class="reference external" href="#exc3">In the exercise 3</a> we ask you to explain this phenomenon.</p>
@@ -1392,7 +1390,7 @@ dt.\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-back-stab">
 <span class="eqno">(16)<a class="headerlink" href="#equation-eq-back-stab" title="Permalink to this equation">¶</a></span>\[\vert \sigma \vert = A\vert e^{i\phi} \vert = A \le 1 \Rightarrow (1-\lambda_r dt)^2 + \lambda_i^2 dt^2 \ge 1.\]</div>
 <p>Condition <a class="reference internal" href="#equation-eq-back-stab">(16)</a> implies that the region of stability of the implicit Euler is <em>outside</em> of the circle of radius 1 centered at <span class="math notranslate nohighlight">\(\lambda_r dt=1\)</span> and <span class="math notranslate nohighlight">\(\lambda_i dt=0\)</span>, which is, obviously, an infinite domain.</p>
-<p>In the literature you will often encounter the statement that <em>the implicit Euler scheme is unconditionally stable</em> for linear autonomous homogeneous problems. You might think that this contradicts <a class="reference internal" href="#equation-eq-back-stab">(16)</a>, but in fact, when stating so, people usually imply that <span class="math notranslate nohighlight">\(\lambda_r \le 0\)</span>, so that the equation <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html#equation-eq-generic">(23)</a> only admits decaying solutions.</p>
+<p>In the literature you will often encounter the statement that <em>the implicit Euler scheme is unconditionally stable</em> for linear autonomous homogeneous problems. You might think that this contradicts <a class="reference internal" href="#equation-eq-back-stab">(16)</a>, but in fact, when stating so, people usually imply that <span class="math notranslate nohighlight">\(\lambda_r \le 0\)</span>, so that the equation <a class="reference internal" href="#equation-eq-generic">(14)</a> only admits decaying solutions.</p>
 </div>
 <div class="section" id="summary">
 <h2><span class="section-number">1.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>

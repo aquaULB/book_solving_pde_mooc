@@ -323,10 +323,10 @@
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
 </pre></div>
@@ -353,7 +353,7 @@
 <p>Let us write a Python code to check that expression <a class="reference internal" href="#equation-eq-centereddiff2">(30)</a> works as expected. We use the same test function as in the previous notebook - <span class="math notranslate nohighlight">\(f(x)=e^x \sin(3\pi x)\)</span> - and we first represent it on a fine grid in the interval <span class="math notranslate nohighlight">\(x\in [O, \pi]\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>       <span class="c1"># 3.14...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>       <span class="c1"># 3.14...</span>
 <span class="n">nx</span> <span class="o">=</span> <span class="mi">200</span>         <span class="c1"># number of grid points (fine grid)</span>
 <span class="n">lx</span> <span class="o">=</span> <span class="n">pi</span>          <span class="c1"># length of the interval</span>
 <span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># grid spacing</span>
@@ -363,7 +363,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>   <span class="c1"># coordinates for the fine grid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>   <span class="c1"># coordinates for the fine grid</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="c1"># function on the fine grid</span>
 
 <span class="c1"># Let us build a numpy array for the exact repre-</span>
@@ -376,7 +376,7 @@
 <p>We now build a coarse grid with <span class="math notranslate nohighlight">\(80\)</span> points, and evaluate the second-order derivative using the centered finite difference formula; note how we use the slicing technique we described in the previous notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">80</span> <span class="c1"># number of grid points (coarse grid)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">80</span> <span class="c1"># number of grid points (coarse grid)</span>
 <span class="n">lx</span> <span class="o">=</span> <span class="n">pi</span> <span class="c1"># length of interval</span>
 <span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># grid spacing</span>
 <span class="n">x_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span> <span class="c1"># coordinates of points on the coarse grid</span>
@@ -391,14 +391,17 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ddf</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ddf_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;^g&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$f</span><span class="se">\&#39;</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$f</span><span class="se">\&#39;</span><span class="s1">$&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/03_02_HigherOrderDerivative_and_Functions_7_0.png" src="../../../_images/03_02_HigherOrderDerivative_and_Functions_7_0.png" />
 </div>
 </div>
 <p>As the centered formula for <span class="math notranslate nohighlight">\(f''\)</span> is not defined at the boundary nodes, they have been excluded in the computation. But in the next section, we will provide information on how to cope with this issue.</p>
@@ -704,7 +707,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Up to now, we have explicitly written new Python code whenever we implemented a particular concept. In the long term, this is not convenient as we often need to re-use the same pieces of code over and over again. Fortunately, most programming languages - including Python - make this task easy to achieve through the use of <em>functions</em>. Don’t confuse the concept of functions in programming languages and mathematical functions. This section is devoted to Python functions. Further in the course we will try to be explicit about what is meant but you can normally figure it out from the context. Before digging into more detail, let’s consider an example. Say we want to create a (Python) function that computes the centered second-order derivative of some (mathematical) function. We may implement this function as follows (details about how to do this are given below):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_ddf_c</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_ddf_c</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
 
     <span class="n">ddf_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="n">ddf_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="c1"># boundary nodes are not included</span>
@@ -719,7 +722,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>To compute the second-order derivative of our previously defined (mathematical) function <code class="docutils literal notranslate"><span class="pre">f_c</span></code>, we call the (Python) function like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ddf_c_from_func</span> <span class="o">=</span> <span class="n">compute_ddf_c</span><span class="p">(</span><span class="n">f_c</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf_c_from_func</span> <span class="o">=</span> <span class="n">compute_ddf_c</span><span class="p">(</span><span class="n">f_c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -727,7 +730,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>The prototype of a Python function looks like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
 
     <span class="n">statements</span>
 
@@ -744,7 +747,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <h3><span class="section-number">2.3.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_data</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_data</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1">, measure </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1"> m and weigh </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s1"> kg.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -753,7 +756,12 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>The <code class="docutils literal notranslate"><span class="pre">print_name_and_data</span></code> function has four input parameters. It simply prints a statement using these four parameters and is called like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. You are 28, measure 1.75 m and weigh 72 kg.
 </pre></div>
 </div>
 </div>
@@ -761,7 +769,12 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>The function requires four <em>positional arguments</em> and they must be supplied exactly like in its definition. The term “positional arguments” speaks for itself. Their position must be respected when you pass them to the function - the order must be the same as in the definition of a function. Calling the function like,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. You are 28, measure 72 m and weigh 1.75 kg.
 </pre></div>
 </div>
 </div>
@@ -769,7 +782,12 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>results in an undesired ouput. If you want to specify the arguments in the ‘wrong’ order, you may pass them as <em>keyword arguments:</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. You are 28, measure 1.75 m and weigh 72 kg.
 </pre></div>
 </div>
 </div>
@@ -777,7 +795,17 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>If you omit one or more of the parameters, Python will throw an error:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">e35381385fe3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: print_name_and_data() missing 3 required positional arguments: &#39;age&#39;, &#39;height&#39;, and &#39;weight&#39;
 </pre></div>
 </div>
 </div>
@@ -785,7 +813,12 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>You can mix positional and keyword parameters. The only restriction is that keyword arguments must come after all positional arguments:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. You are 28, measure 1.75 m and weigh 72 kg.
 </pre></div>
 </div>
 </div>
@@ -793,7 +826,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>You may also define the function with some default values for the parameters. In that case, they become optional and assume their default values when omitted in the function call. For example let’s define a new function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_handedness</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">handedness</span><span class="o">=</span><span class="s1">&#39;right-handed&#39;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_handedness</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">handedness</span><span class="o">=</span><span class="s1">&#39;right-handed&#39;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">handedness</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -802,7 +835,12 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>If you call the function without passing the second argument, you get:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_handedness</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_handedness</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. You are right-handed.
 </pre></div>
 </div>
 </div>
@@ -810,7 +848,12 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>But you can supply a different value if needed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_handedness</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="s1">&#39;left-handed&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_name_and_handedness</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="s1">&#39;left-handed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. You are left-handed.
 </pre></div>
 </div>
 </div>
@@ -821,7 +864,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>The last statement of a function can be a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, with which the programmer can send some information or data produced within the function back to the main program or calling routine. As an example, let’s define a function that returns the body mass index of an individual:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_bmi</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_bmi</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. I am returning your body mass index...&#39;</span><span class="p">)</span>
 
     <span class="n">bmi</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">height</span><span class="o">**</span><span class="mi">2</span>
@@ -834,8 +877,14 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>We can then store the return value in any variable like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">luke_bmi</span> <span class="o">=</span> <span class="n">compute_bmi</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">luke_bmi</span> <span class="o">=</span> <span class="n">compute_bmi</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">luke_bmi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Luke. I am returning your body mass index...
+22.857142857142858
 </pre></div>
 </div>
 </div>
@@ -843,7 +892,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>The function can return any Python object (dictionaries, arrays, numbers, …) or a collection of them. In the example below, we return the average of two numbers and their difference:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_avg_diff</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_avg_diff</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span> <span class="n">number2</span><span class="p">):</span>
 
     <span class="n">average</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">number1</span><span class="o">+</span><span class="n">number2</span><span class="p">)</span>
     <span class="n">difference</span> <span class="o">=</span> <span class="n">number1</span><span class="o">-</span><span class="n">number2</span>
@@ -856,8 +905,13 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Note how the two return values are separated by a comma. This function can be called like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">avg1</span><span class="p">,</span> <span class="n">diff1</span> <span class="o">=</span> <span class="n">compute_avg_diff</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg1</span><span class="p">,</span> <span class="n">diff1</span> <span class="o">=</span> <span class="n">compute_avg_diff</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The average is </span><span class="si">{</span><span class="n">avg1</span><span class="si">}</span><span class="s1"> and the difference is </span><span class="si">{</span><span class="n">diff1</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average is 9.0 and the difference is 2.
 </pre></div>
 </div>
 </div>
@@ -869,7 +923,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Let first consider an example involving a global variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -877,10 +931,16 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
 <span class="n">print_a</span><span class="p">()</span>
 <span class="n">a</span><span class="o">=</span><span class="mi">2</span>
 <span class="n">print_a</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
 </pre></div>
 </div>
 </div>
@@ -888,7 +948,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>The code executed without errors and each time we modify <code class="docutils literal notranslate"><span class="pre">a</span></code> the function prints the correct value because this global variable, defined outside of the function, is accessible within the function. Let’s try something else:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply_a_and_b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply_a_and_b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">prod</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The product between a and b is </span><span class="si">{</span><span class="n">prod</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
@@ -897,9 +957,15 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prod</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prod</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">multiply_a_and_b</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Here prod is equal to </span><span class="si">{</span><span class="n">prod</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The product between a and b is 18.
+Here prod is equal to 3.
 </pre></div>
 </div>
 </div>
@@ -912,10 +978,15 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>There is another common source of errors when manipulating sequences (or numpy arrays) as arguments of functions. Remember what we discussed in the section “Referenced or copied?” of the previous notebook. We observed a fundamental difference when assigning a new name to a variable depending on whether it was a number or a list. We recall here two examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -923,10 +994,15 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>In the second line of the above cell, we are referencing with <code class="docutils literal notranslate"><span class="pre">b</span></code> the same number as <code class="docutils literal notranslate"><span class="pre">a</span></code>. In the third line, we are changing the number to which <code class="docutils literal notranslate"><span class="pre">b</span></code> is referencing and this does not affect <code class="docutils literal notranslate"><span class="pre">a</span></code>. When we manipulate lists, the situation is different. Let’s consider this example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 1, 2, 4]
 </pre></div>
 </div>
 </div>
@@ -935,7 +1011,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Now consider how this can cause possible unwanted behaviors when calling functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
     <span class="n">sequence</span> <span class="o">=</span> <span class="n">seq1</span>
     <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inside the function, the sequence is </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
@@ -945,10 +1021,19 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">test_func</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Outside of the function, the sequence is </span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inside the function, the sequence is [0, 1, 1, 1].
+Outside of the function, the sequence is [0, 1, 1, 1].
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -956,7 +1041,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Because we did not make a copy of the original sequence when writing <code class="docutils literal notranslate"><span class="pre">sequence</span> <span class="pre">=</span> <span class="pre">seq1</span></code> we are changing its content with <code class="docutils literal notranslate"><span class="pre">sequence[0]</span> <span class="pre">=</span> <span class="pre">0</span></code>. Therefore, such statements can have an effect outside of the function and you must be really careful depending on whether it is intended or not. If you do not want to modify the sequence outside of the function, you could write instead:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
     <span class="n">sequence</span> <span class="o">=</span> <span class="n">seq1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inside the function, the sequence is </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
@@ -966,10 +1051,16 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">test_func</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Outside of the function, the sequence is </span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inside the function, the sequence is [0, 1, 1, 1].
+Outside of the function, the sequence is [1, 1, 1, 1].
 </pre></div>
 </div>
 </div>
@@ -977,7 +1068,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Another possibility is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">seq1</span><span class="p">):</span>
     <span class="n">sequence</span> <span class="o">=</span> <span class="n">seq1</span>
     <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inside the function, the sequence is </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
@@ -987,10 +1078,16 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">test_func</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Outside of the function, the sequence is </span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inside the function, the sequence is [0, 1, 1, 1].
+Outside of the function, the sequence is [1, 1, 1, 1].
 </pre></div>
 </div>
 </div>
@@ -1052,14 +1149,14 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>We use here the Python package <code class="docutils literal notranslate"><span class="pre">scipy</span></code> that we briefly described in the <em>01_Introduction</em> notebook. It contains a useful function, <code class="docutils literal notranslate"><span class="pre">diags</span></code> to create matrices that are essentially diagonal (you should look at its <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.diags.html">documentation page</a> for its exact definition). A matrix is referred to as <em>sparse</em> when it contains mostly zeros, except at sparse locations; these are usually concentrated around the diagonal. The function <code class="docutils literal notranslate"><span class="pre">diags</span></code> belongs to the <code class="docutils literal notranslate"><span class="pre">sparse</span></code> submodule of <code class="docutils literal notranslate"><span class="pre">scipy</span></code> and you import it using the following command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">diags</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">diags</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d1_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d1_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the centered second-order accurate first-order derivative</span>
 
@@ -1096,7 +1193,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>We can then obtain an instance of the array by calling <code class="docutils literal notranslate"><span class="pre">d1_mat</span></code>. As an example and to make sure the coefficients are properly set, we call it with a value of <span class="math notranslate nohighlight">\(\Delta x=1\)</span> and output the result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># number of grid points for the example</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># number of grid points for the example</span>
 <span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># grid spacing</span>
 </pre></div>
 </div>
@@ -1104,8 +1201,22 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d1mat</span> <span class="o">=</span> <span class="n">d1_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1mat</span> <span class="o">=</span> <span class="n">d1_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d1mat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1.5  2.  -0.5  0.   0.   0.   0.   0.   0.   0. ]
+ [-0.5  0.   0.5  0.   0.   0.   0.   0.   0.   0. ]
+ [ 0.  -0.5  0.   0.5  0.   0.   0.   0.   0.   0. ]
+ [ 0.   0.  -0.5  0.   0.5  0.   0.   0.   0.   0. ]
+ [ 0.   0.   0.  -0.5  0.   0.5  0.   0.   0.   0. ]
+ [ 0.   0.   0.   0.  -0.5  0.   0.5  0.   0.   0. ]
+ [ 0.   0.   0.   0.   0.  -0.5  0.   0.5  0.   0. ]
+ [ 0.   0.   0.   0.   0.   0.  -0.5  0.   0.5  0. ]
+ [ 0.   0.   0.   0.   0.   0.   0.  -0.5  0.   0.5]
+ [ 0.   0.   0.   0.   0.   0.   0.   0.5 -2.   1.5]]
 </pre></div>
 </div>
 </div>
@@ -1114,7 +1225,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Using exactly the same ideas, the explicit representation of a discrete version of the second-order derivative can be constructed. Here is a Python function that returns the matrix corresponding to the centered second-order accurate finite difference formula:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d2_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d2_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the centered second-order accurate second-order derivative</span>
 
@@ -1151,8 +1262,22 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p>Let’s check again that everything works as expected:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d2mat</span> <span class="o">=</span> <span class="n">d2_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d2mat</span> <span class="o">=</span> <span class="n">d2_mat</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d2mat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2. -5.  4. -1.  0.  0.  0.  0.  0.  0.]
+ [ 1. -2.  1.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  1. -2.  1.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  1. -2.  1.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  1. -2.  1.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  1. -2.  1.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  1. -2.  1.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  1. -2.  1.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  1. -2.  1.]
+ [ 0.  0.  0.  0.  0.  0. -1.  4. -5.  2.]]
 </pre></div>
 </div>
 </div>

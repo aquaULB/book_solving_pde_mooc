@@ -482,7 +482,7 @@
 </div>
 </div>
 </div>
-<p>We now import the <code class="docutils literal notranslate"><span class="pre">scipy.linalg.inv</span></code> function to compute the inverse of <code class="docutils literal notranslate"><span class="pre">d2mat</span></code>and act with it on the right-hand side vector <span class="math notranslate nohighlight">\(b\)</span>. This operation is performed with the help of the <code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code> function that allows many sorts of vector and matrix multiplications. You should have a look at its <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.inv.html">documentation page</a>.</p>
+<p>We now import the <code class="docutils literal notranslate"><span class="pre">scipy.linalg.inv</span></code> function to compute the inverse of <code class="docutils literal notranslate"><span class="pre">d2mat</span></code>and act with it on the right-hand side vector <span class="math notranslate nohighlight">\(b\)</span>. This operation is performed with the help of the <code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code> function that allows many sorts of vector and matrix multiplications. You should have a look at its <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html">documentation page</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
@@ -522,15 +522,12 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Heat equation - Homogeneous Dirichlet boundary conditions&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe8a15b5910&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/03_03_BoundaryValueProblems_16_1.png" src="../../../_images/03_03_BoundaryValueProblems_16_1.png" />
+<img alt="../../../_images/03_03_BoundaryValueProblems_16_0.png" src="../../../_images/03_03_BoundaryValueProblems_16_0.png" />
 </div>
 </div>
 </div>
@@ -573,15 +570,12 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Heat equation - Mixed Dirichlet boundary conditions&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe8a18ccbb0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/03_03_BoundaryValueProblems_22_1.png" src="../../../_images/03_03_BoundaryValueProblems_22_1.png" />
+<img alt="../../../_images/03_03_BoundaryValueProblems_22_0.png" src="../../../_images/03_03_BoundaryValueProblems_22_0.png" />
 </div>
 </div>
 <p>The solution looks just as expected!</p>
@@ -664,15 +658,12 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Heat equation - Mixed boundary conditions&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe8a188b9d0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/03_03_BoundaryValueProblems_30_1.png" src="../../../_images/03_03_BoundaryValueProblems_30_1.png" />
+<img alt="../../../_images/03_03_BoundaryValueProblems_30_0.png" src="../../../_images/03_03_BoundaryValueProblems_30_0.png" />
 </div>
 </div>
 <p>Once again, the computed solution behaves appropriately!</p>
