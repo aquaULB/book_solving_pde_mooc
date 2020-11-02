@@ -65,7 +65,7 @@ We will refer to the continuous variable defined in $[x_0,x_n]$ by $x$, and to i
 Using these notations, the approximation of a derivative through a finite-difference expression is generically given by:
 
 ```{math}
-:label: eq:generic
+:label: eq:diffgeneric
 f^{(k)}_i = \frac{1}{(\Delta x)^k}\sum_{j\in\mathcal{J}}c_j f_{i+j},
 ```
 
@@ -96,7 +96,7 @@ To approximate {eq}`eq:forwardTaylorDiff1` on the grid $x_0, x_1,\dots, x_i,\dot
 f^{' \rm f}_i = \frac{f_{i+1} - f_i}{\Delta x},\;\; \hbox{forward finite difference}.
 ```
 
-The stencil for this expression is given by the sequence $[0, 1]$, where 0 stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are $[-1, 1]$ (see {eq}`eq:generic`).
+The stencil for this expression is given by the sequence $[0, 1]$, where 0 stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are $[-1, 1]$ (see {eq}`eq:diffgeneric`).
 
 In the following figure we illustrate the stencil and mark in red the points involved in the computation:
 
@@ -236,7 +236,7 @@ ax[1].plot(x, dfdx)
 ax[1].plot(x_c[1:nx], df_backward[1: nx], '^m')
 
 ax[2].plot(x, dfdx)
-ax[2].plot(x_c[1:nx-1], df_centered[1: nx-1], '^c')
+ax[2].plot(x_c[1:nx-1], df_centered[1: nx-1], '^c');
 ```
 
 What do you think about the agreement? What happens when you increase the number of points in the coarse grid?
@@ -601,7 +601,7 @@ ax.plot(x_c, df_2, '^g', label='Approximated')
 ax.set_xlabel('$x$')
 ax.set_ylabel("$f'$")
 
-ax.legend(loc='upper left')
+ax.legend(loc='upper left');
 ```
 
 ## Summary

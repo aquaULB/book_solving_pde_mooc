@@ -322,8 +322,8 @@
 <p>with the endpoints of the grid located respectively at <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_n\)</span>.</p>
 <p>We will refer to the continuous variable defined in <span class="math notranslate nohighlight">\([x_0,x_n]\)</span> by <span class="math notranslate nohighlight">\(x\)</span>, and to its discrete representation by <span class="math notranslate nohighlight">\(x_i\)</span>. <span class="math notranslate nohighlight">\(x_i\)</span> is called a <em>grid point</em> or sometimes a <em>grid node</em>. The value of some function <span class="math notranslate nohighlight">\(f(x)\)</span> at the grid point <span class="math notranslate nohighlight">\(x_i\)</span> is then denoted as <span class="math notranslate nohighlight">\(f_i\)</span>.</p>
 <p>Using these notations, the approximation of a derivative through a finite-difference expression is generically given by:</p>
-<div class="math notranslate nohighlight" id="equation-eq-generic">
-<span class="eqno">(23)<a class="headerlink" href="#equation-eq-generic" title="Permalink to this equation">¶</a></span>\[f^{(k)}_i = \frac{1}{(\Delta x)^k}\sum_{j\in\mathcal{J}}c_j f_{i+j},\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-diffgeneric">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-diffgeneric" title="Permalink to this equation">¶</a></span>\[f^{(k)}_i = \frac{1}{(\Delta x)^k}\sum_{j\in\mathcal{J}}c_j f_{i+j},\]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> represents the order of derivative, <span class="math notranslate nohighlight">\(\mathcal{J}\)</span> is called the <em>stencil</em> - the group of points used to build the finite-difference approximation - and <span class="math notranslate nohighlight">\(c_j\)</span> is the finite-difference coefficient defined at the stencil point of index <span class="math notranslate nohighlight">\(j\)</span>.</p>
 </div>
 <div class="section" id="first-order-derivative">
@@ -338,7 +338,7 @@
 <p>To approximate <a class="reference internal" href="#equation-eq-forwardtaylordiff1">(25)</a> on the grid <span class="math notranslate nohighlight">\(x_0, x_1,\dots, x_i,\dots x_{n-1}, x_n\)</span>, we define the following first-oder accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-forwardnodal">
 <span class="eqno">(26)<a class="headerlink" href="#equation-eq-forwardnodal" title="Permalink to this equation">¶</a></span>\[f^{' \rm f}_i = \frac{f_{i+1} - f_i}{\Delta x},\;\; \hbox{forward finite difference}.\]</div>
-<p>The stencil for this expression is given by the sequence <span class="math notranslate nohighlight">\([0, 1]\)</span>, where 0 stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are <span class="math notranslate nohighlight">\([-1, 1]\)</span> (see <a class="reference internal" href="#equation-eq-generic">(23)</a>).</p>
+<p>The stencil for this expression is given by the sequence <span class="math notranslate nohighlight">\([0, 1]\)</span>, where 0 stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are <span class="math notranslate nohighlight">\([-1, 1]\)</span> (see <a class="reference internal" href="#equation-eq-diffgeneric">(23)</a>).</p>
 <p>In the following figure we illustrate the stencil and mark in red the points involved in the computation:</p>
 <a class="reference internal image-reference" href="../../../_images/forwardDiff1.png"><img alt="../../../_images/forwardDiff1.png" src="../../../_images/forwardDiff1.png" style="width: 600px;" /></a>
 <p>Above the stencil, we display the quantity computed, and below the stencil we display the quantities involved in its computations.</p>
@@ -450,15 +450,12 @@
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">nx</span><span class="p">],</span> <span class="n">df_backward</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="n">nx</span><span class="p">],</span> <span class="s1">&#39;^m&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dfdx</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">df_centered</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;^c&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">df_centered</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;^c&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fda1600d880&gt;]
-</pre></div>
-</div>
-<img alt="../../../_images/03_01_FirstOrderDerivative_and_Slicing_10_1.png" src="../../../_images/03_01_FirstOrderDerivative_and_Slicing_10_1.png" />
+<img alt="../../../_images/03_01_FirstOrderDerivative_and_Slicing_10_0.png" src="../../../_images/03_01_FirstOrderDerivative_and_Slicing_10_0.png" />
 </div>
 </div>
 <p>What do you think about the agreement? What happens when you increase the number of points in the coarse grid?</p>
@@ -520,7 +517,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.61 ms ± 112 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.84 ms ± 75.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -533,7 +530,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>275 µs ± 10.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>301 µs ± 6.67 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -546,7 +543,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>276 µs ± 14.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 µs ± 4.47 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -923,15 +920,12 @@ f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$f&#39;$&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fda170f4e20&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/03_01_FirstOrderDerivative_and_Slicing_61_1.png" src="../../../_images/03_01_FirstOrderDerivative_and_Slicing_61_1.png" />
+<img alt="../../../_images/03_01_FirstOrderDerivative_and_Slicing_61_0.png" src="../../../_images/03_01_FirstOrderDerivative_and_Slicing_61_0.png" />
 </div>
 </div>
 </div>
