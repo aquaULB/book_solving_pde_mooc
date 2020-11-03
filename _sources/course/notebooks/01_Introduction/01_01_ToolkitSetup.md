@@ -28,6 +28,7 @@ toc:
 
 # Toolkit Setup
 
+
 ## Python and why Python
 
 All the pieces of code written in this course are written in Python 3. However, we try to make the required prior knowledge of Python as little as possible, and the reader is only expected to have a basic knowledge of any programming language and be familiar with concepts like variables, loops, conditional statements, functions etc. In fact, we also design the course in such a way that it can be viewed as a tutorial about Python numerical tools provided by numpy, matplotlib, scipy to name of few. Each time we need a new Python functionality, we try to thoroughly document it, so that the reader needs no prior knowledge of the different packages but rather learns to use them when progressing through the notebooks.
@@ -256,7 +257,7 @@ Now let's learn how to create commits. First, you tell what files to commit:
 
     git add README.md
 
-The changes to README.m d are not contained in the staging area.
+The changes to README.md are not contained in the staging area.
 
 If you run
 

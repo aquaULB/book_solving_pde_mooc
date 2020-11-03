@@ -28,6 +28,7 @@ toc:
 
 # The first-order wave equation
 
+
 ## Introduction
 
 For convenience, we start with importing some modules needed below:

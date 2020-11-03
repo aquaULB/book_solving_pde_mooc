@@ -28,6 +28,7 @@ toc:
 
 # Euler methods
 
+
 ## Introduction
 
 In this part of the course we discuss how to solve ordinary differential equations (ODEs). Although their numerical resolution is not the main subject of this course, their study nevertheless allows to introduce very important concepts that are essential in the numerical resolution of partial differential equations (PDEs).

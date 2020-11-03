@@ -28,6 +28,7 @@ toc:
 
 # Approximations and Taylor expansion
 
+
 ## Introduction
 
 In general, the resolution of numerical problems require some approximations.
