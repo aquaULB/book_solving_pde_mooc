@@ -1,4 +1,4 @@
-<img style="width: 300px" src="logo.png">
+<img style="width: 200px" src="logo.png">
 
 This book may be viewed online at this address:
 
