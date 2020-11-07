@@ -1,26 +1,26 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
-- file: course/notebooks/01_Introduction/01_00_Preface
+- file: solving_pde_mooc/notebooks/01_Introduction/01_00_Preface
   numbered: true
   
 - part: Introduction
   chapters:
-    - file: course/notebooks/01_Introduction/01_01_ToolkitSetup
-    - file: course/notebooks/01_Introduction/01_02_TaylorExpansion
+    - file: solving_pde_mooc/notebooks/01_Introduction/01_01_ToolkitSetup
+    - file: solving_pde_mooc/notebooks/01_Introduction/01_02_TaylorExpansion
 
 - part: Time integration
   chapters: 
-    - file: course/notebooks/02_TimeIntegration/02_01_EulerMethod
-    - file: course/notebooks/02_TimeIntegration/02_02_RungeKutta
+    - file: solving_pde_mooc/notebooks/02_TimeIntegration/02_01_EulerMethod
+    - file: solving_pde_mooc/notebooks/02_TimeIntegration/02_02_RungeKutta
   
 - part: Finite differences
   chapters: 
-    - file: course/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing
-    - file: course/notebooks/03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions
-    - file: course/notebooks/03_FiniteDifferences/03_03_BoundaryValueProblems
+    - file: solving_pde_mooc/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing
+    - file: solving_pde_mooc/notebooks/03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions
+    - file: solving_pde_mooc/notebooks/03_FiniteDifferences/03_03_BoundaryValueProblems
   
 - part: Partial differential equations
   chapters: 
-    - file: course/notebooks/04_PartialDifferentialEquations/04_01_Advection
-    - file: course/notebooks/04_PartialDifferentialEquations/04_02_StabilityAnalysis
+    - file: solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection
+    - file: solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_02_StabilityAnalysis
