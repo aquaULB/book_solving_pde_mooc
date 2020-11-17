@@ -306,7 +306,7 @@ def rhs_forward(u, dx, c):
     
     Parameters
     ----------
-    u : array of float
+    u : array of floats
         solution at the current time-step.
     dx : float
         grid spacing
@@ -315,7 +315,7 @@ def rhs_forward(u, dx, c):
     
     Returns
     -------
-    f : array of float
+    f : array of floats
         right-hand side of the wave equation with
         boundary conditions implemented (initial values
         of u are kept constant)
@@ -370,9 +370,9 @@ for n in range(nt):
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(x, u[0], label='Initial condition')
-ax.plot(x, u[int(0.10 / dt)], lw=1.5, color='green', label='t=0.10')
-ax.plot(x, u[int(0.15 / dt)], lw=1.5, color='indigo', label='t=0.15')
-ax.plot(x, u[int(t_final / dt)], lw=1.5, color='brown', label=f't={t_final}')
+ax.plot(x, u[int(0.10 / dt)], color='green', label='t=0.10')
+ax.plot(x, u[int(0.15 / dt)], color='indigo', label='t=0.15')
+ax.plot(x, u[int(t_final / dt)], color='brown', label=f't={t_final}')
 
 ax.set_xlabel('$x$')
 ax.set_ylabel('$u$')
@@ -401,7 +401,7 @@ def rhs_backward(u, dx, c):
     
     Parameters
     ----------
-    u : array of float
+    u : array of floats
         solution at the current time-step.
     dx : float
         grid spacing
@@ -410,7 +410,7 @@ def rhs_backward(u, dx, c):
     
     Returns
     -------
-    f : array of float
+    f : array of floats
         right-hand side of the wave equation with
         boundary conditions implemented (initial values
         of u are kept constant)
@@ -445,9 +445,9 @@ for n in range(nt):
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(x, u[0], label='Initial condition')
-ax.plot(x, u[int(0.10 / dt)], lw=1.5, color='green', label='t=0.10')
-ax.plot(x, u[int(0.15 / dt)], lw=1.5, color='indigo', label='t=0.15')
-ax.plot(x, u[int(t_final / dt)], lw=1.5, color='brown', label=f't={t_final}')
+ax.plot(x, u[int(0.10 / dt)], color='green', label='t=0.10')
+ax.plot(x, u[int(0.15 / dt)], color='indigo', label='t=0.15')
+ax.plot(x, u[int(t_final / dt)], color='brown', label=f't={t_final}')
 
 ax.set_xlabel('$x$')
 ax.set_ylabel('$u$')
@@ -530,7 +530,7 @@ def rhs_backward_periodic(u, dx, c):
     
     Parameters
     ----------
-    u : array of float
+    u : array of floats
         solution at the current time-step.
     dx : float
         grid spacing
@@ -539,7 +539,7 @@ def rhs_backward_periodic(u, dx, c):
     
     Returns
     -------
-    f : array of float
+    f : array of floats
         right-hand side of the wave equation with
         boundary conditions implemented
     """
@@ -587,7 +587,7 @@ To check our results, let us plot the solution at a time when the wave crosses t
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(x, u[0], label='Initial condition')
-ax.plot(x, u[int(0.68 / dt)], lw=1.5, color='green', label='t=0.68')
+ax.plot(x, u[int(0.68 / dt)], color='green', label='t=0.68')
 
 ax.set_xlabel('$x$')
 ax.set_ylabel('$u$')

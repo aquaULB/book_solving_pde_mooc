@@ -171,6 +171,16 @@
    2. Matrix and modified wavenumber stability analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -1391,7 +1401,7 @@ dt.\end{split}\]</div>
 <p>Let’s compute the region of stability of the implicit Euler scheme.</p>
 <p>The problem we are solving can be written as follows:</p>
 <div class="math notranslate nohighlight" id="equation-eq-generic">
-<span class="eqno">(14)<a class="headerlink" href="#equation-eq-generic" title="Permalink to this equation">¶</a></span>\[y^{n+1} = \sigma y^{n} = \sigma^n y^{0}.\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-generic" title="Permalink to this equation">¶</a></span>\[y^{n+1} = \sigma y^{n} = \sigma^{n+1} y^{0}.\]</div>
 <p>In the case of the implicit Euler scheme we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-back-stab-sigma">
 <span class="eqno">(15)<a class="headerlink" href="#equation-eq-back-stab-sigma" title="Permalink to this equation">¶</a></span>\[\sigma = (1-\lambda dt)^{-1} = (1-\lambda_r dt - i\lambda_i dt)^{-1}.\]</div>

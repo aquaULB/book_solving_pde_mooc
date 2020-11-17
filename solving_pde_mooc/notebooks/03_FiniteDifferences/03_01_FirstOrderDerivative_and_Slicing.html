@@ -171,6 +171,16 @@
    2. Matrix and modified wavenumber stability analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -530,7 +540,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.48 ms ± 149 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.81 ms ± 83.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -543,7 +553,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>292 µs ± 8.35 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>289 µs ± 11.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -556,7 +566,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286 µs ± 9.73 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>308 µs ± 41.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -869,28 +879,20 @@ slice: [9999999, 2, 3, {&#39;hello&#39;: &#39;world&#39;, &#39;bye&#39;: &#39;wo
     \end{cases}\end{split}\]</div>
 <p>The inconvenience of this formulation is that it is second-order accurate for interior grid points but only first-order accurate at boundary nodes. It might not seem a big issue, but for certain problems the overall accuracy of the solution will be first order throughout the domain and not second order as we might have wished. We will give an example of this behavior later on.</p>
 <p>To improve our discretized operator, we have to find second-order accurate expressions for the boundary nodes and we can use Taylor’s theorem to achieve this goal. At the left boundary node we have:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-f(x_0 + \Delta) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
-f(x_0 + 2\Delta) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)
-\end{align*}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}f(x_0 + \Delta) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
+f(x_0 + 2\Delta) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\end{split}\]</div>
 <p>If we multiply the first equation by two and then substract the second one, we get:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-4 f(x_0 + \Delta) - f(x_0 + 2\Delta) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[4 f(x_0 + \Delta) - f(x_0 + 2\Delta) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)\]</div>
 <p>We can then define the following second-oder accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_0\)</span>:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}\]</div>
 <p>The stencil for this expression is represented as:</p>
 <a class="reference internal image-reference" href="../../../_images/onesideDiff1.png"><img alt="../../../_images/onesideDiff1.png" src="../../../_images/onesideDiff1.png" style="width: 600px;" /></a>
 <p>Similarly, the following expression constitutes a second-oder accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_n\)</span>,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}\]</div>
 <p>and its stencil is:</p>
 <a class="reference internal image-reference" href="../../../_images/onesideDiff1_2.png"><img alt="../../../_images/onesideDiff1_2.png" src="../../../_images/onesideDiff1_2.png" style="width: 600px;" /></a>
 <p>We can now construct a second-order discretized operator throughout the domain by using the above two expressions at the boundary nodes. Our complete computation of the second-order accurate first-order derivative then looks like (for the sake of completeness, we repeat the whole code here):</p>

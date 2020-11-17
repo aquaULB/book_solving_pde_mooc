@@ -1131,7 +1131,7 @@ Let's compute the region of stability of the implicit Euler scheme.
 The problem we are solving can be written as follows:
 ```{math}
 :label: eq:generic
-y^{n+1} = \sigma y^{n} = \sigma^n y^{0}.
+y^{n+1} = \sigma y^{n} = \sigma^{n+1} y^{0}.
 ```
 
 In the case of the implicit Euler scheme we have:

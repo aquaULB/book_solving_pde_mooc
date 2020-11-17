@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. One dimensional heat equation: implicit methods &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="3. One dimensional heat equation" href="04_03_Diffusion_Explicit.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_04_Diffusion_Implicit.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_04_Diffusion_Implicit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   4.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backward-euler-method">
+   4.2. Backward Euler method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crank-nicolson-method">
+   4.3. Crank-Nicolson method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-solution">
+   4.4. Numerical solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   4.5. Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="one-dimensional-heat-equation-implicit-methods">
+<h1><span class="section-number">4. </span>One dimensional heat equation: implicit methods<a class="headerlink" href="#one-dimensional-heat-equation-implicit-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, we start by importing some modules needed below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous notebook we have described some explicit methods to solve the one dimensional heat equation;</p>
+<div class="math notranslate nohighlight" id="equation-eq-1dheat2">
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq-1dheat2" title="Permalink to this equation">¶</a></span>\[   \partial_t T(x,t) = \alpha \frac{d^2 T} {dx^2}(x,t) + \sigma (x,t).\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the temperature and <span class="math notranslate nohighlight">\(\sigma\)</span> is an optional heat source term.</p>
+<p>In all cases considered, we have observed that stability of the algorithm requires a restriction on the time step proportional to <span class="math notranslate nohighlight">\(\Delta x^2\)</span>. As this is rather restrictive, we focus here on some implicit methods and see how they compare.</p>
+</div>
+<div class="section" id="backward-euler-method">
+<h2><span class="section-number">4.2. </span>Backward Euler method<a class="headerlink" href="#backward-euler-method" title="Permalink to this headline">¶</a></h2>
+<p>We begin by considering the backward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span> and we do not include the source term for the stability analysis.</p>
+<p>We recall that for a generic ordinary differential equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span>, the backward Euler method is,</p>
+<div class="math notranslate nohighlight">
+\[y^{n+1} = y^{n} + \Delta t f(y^{n+1},t).\]</div>
+<p>In our case, the discretization is therefore,</p>
+<div class="math notranslate nohighlight">
+\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}\]</div>
+<p>In matrix notation this is equivalent to:</p>
+<div class="math notranslate nohighlight">
+\[    (I-A)\boldsymbol{T}^{n+1} = \boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; (I-A)^{n+1}\boldsymbol{T}^{n+1} = \boldsymbol{T}^{0},\]</div>
+<p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix. If we adopt Dirichlet boundary conditions, the matrix <span class="math notranslate nohighlight">\(A\)</span> is identical to its counterpart for the forward Euler scheme (see previous notebook). For reference, the eigenvalues <span class="math notranslate nohighlight">\(m_k\)</span> of <span class="math notranslate nohighlight">\(A\)</span> are real and negative:</p>
+<div class="math notranslate nohighlight">
+\[m_k = 2\frac{\alpha dt}{dx^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.\]</div>
+<p>If we diagonalize <span class="math notranslate nohighlight">\(A\)</span> and denote by <span class="math notranslate nohighlight">\(\boldsymbol z=(z_1,\ldots,z_{nx-2})\)</span> the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol T\)</span> in the basis of eigenvectors, we have:</p>
+<div class="math notranslate nohighlight">
+\[(I-\Lambda)^{n+1} \boldsymbol z^{n+1} = \boldsymbol z^0 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix containing the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. Each of the <span class="math notranslate nohighlight">\(nx-2\)</span> decoupled equations may therefore be written as:</p>
+<div class="math notranslate nohighlight">
+\[z_k^{n+1} = \left(\frac{1}{1-m_k}\right)^{n+1} z_k^0 \]</div>
+<p>Since <span class="math notranslate nohighlight">\(m_k &lt; 0\; \forall k\)</span>, all the coordinates <span class="math notranslate nohighlight">\(z_k\)</span> remain bounded and the algorithm is unconditionally stable.</p>
+<p>We can also examine the stability of the algorithm for the case of periodic boundary conditions using the modified wavenumber analysis. We adopt the same notations as in the previous notebook and get the same expression for the evolution of the Fourier modes,</p>
+<div class="math notranslate nohighlight" id="equation-eq-matheatbackwardeulerfourier">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-matheatbackwardeulerfourier" title="Permalink to this equation">¶</a></span>\[\begin{split}    \frac{d\hat T(k_m,t)}{dt}&amp;=\alpha\left(\frac{e^{-ik_m \Delta x} - 2 + e^{ik_m \Delta x}}{\Delta x^2}\right) \hat{T}(k_m,t) \\
+    &amp;= -\alpha k_m'^2 \hat T(k_m,t) \nonumber\end{split}\]</div>
+<p>with the modified wavenumbers being real and defined by,</p>
+<div class="math notranslate nohighlight">
+\[k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).\]</div>
+<p>Because all the coefficients <span class="math notranslate nohighlight">\(-\alpha k_m'^2\)</span> are real and negative, the Fourier components remain bounded if we discretize eq. <a class="reference internal" href="#equation-eq-matheatbackwardeulerfourier">(48)</a> using the backward time integration method. The algorithm is therefore also unconditionally stable in the case of periodic boundary conditions.</p>
+</div>
+<div class="section" id="crank-nicolson-method">
+<h2><span class="section-number">4.3. </span>Crank-Nicolson method<a class="headerlink" href="#crank-nicolson-method" title="Permalink to this headline">¶</a></h2>
+<p>A popular method for discretizing the diffusion term in the heat equation is the Crank-Nicolson scheme. It is a second-order accurate implicit method that is defined for a generic equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).\]</div>
+<p>You should check that this method is indeed second-order accurate in time by expanding <span class="math notranslate nohighlight">\(f(y^{n+1}, t^{n+1})\)</span> in Taylor series.</p>
+<p>For the heat equation, the Crank-Nicolson method yields the following expression:</p>
+<div class="math notranslate nohighlight" id="equation-eq-heatcn">
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq-heatcn" title="Permalink to this equation">¶</a></span>\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\frac{\alpha}{2} \left(\frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}  + 
+\frac{T^{n}_{i}-2T^{n}_i+T^{n}_{i}}{\Delta x^2}\right)\]</div>
+<p>In matrix form (assuming Dirichlet boundary conditions), this is equivalent to:</p>
+<div class="math notranslate nohighlight">
+\[    (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.\]</div>
+<p>with <span class="math notranslate nohighlight">\(A_{cn}\)</span> being the same matrix as in the previous section except for the prefactor that is now <span class="math notranslate nohighlight">\(\displaystyle\frac{\alpha \Delta t}{2\Delta x^2}\)</span>.</p>
+<p>Both sides of the equation can be diagonalized using the same eigenvectors. Therefore, the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol{T}\)</span> in the basis of eigenvectors evolve according to:</p>
+<div class="math notranslate nohighlight">
+\[    (I-\frac{\Lambda}{2}) \boldsymbol z^{n+1} = (I+\frac{\Lambda}{2})\boldsymbol z^n \Rightarrow \boldsymbol z^{n}_k = \left(\frac{1+m_k/2}{1-m_k/2}\right)^n z^0_k.\]</div>
+<p>Since <span class="math notranslate nohighlight">\(m_k &lt; 0\; \forall k\)</span>, all the coordinates <span class="math notranslate nohighlight">\(z_k\)</span> remain again bounded and the algorithm is unconditionally stable.</p>
+<p>In the case of periodic boundary conditions, we may again study the stability of the method by decomposing the temperature field in Fourier modes. According to eq. <a class="reference internal" href="#equation-eq-heatcn">(49)</a> we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \frac{\hat T^{n+1}(k_m)-\hat T^{n}(k_m)}{\Delta t}= \frac{\alpha}{2\Delta x^2}((&amp;2\cos(k_m\Delta x)-2)\hat T^{n+1}(k_m) \\ &amp;+(2\cos(k_m\Delta x)-2)\hat T^{n}(k_m))\end{split}\]</div>
+<p>or equivalently</p>
+<div class="math notranslate nohighlight">
+\[    \hat T^{n+1}(k_m) = \frac{1-\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}{1+\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}\hat T^{n}(k_m).\]</div>
+<p>As the denominator is always larger than the numerator, all the Fourier modes remain bounded and we conclude again the algorithm is unconditionally stable.</p>
+<p>Let’s use these implicit methods and compare them with the forward Euler method that we used in the previous notebook.</p>
+</div>
+<div class="section" id="numerical-solution">
+<h2><span class="section-number">4.4. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">¶</a></h2>
+<p>To test the above numerical methods we use the same example as in the previous notebook.
+The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2">(47)</a> is <span class="math notranslate nohighlight">\(\sigma = 2\sin(\pi x)\)</span> and the initial condition is <span class="math notranslate nohighlight">\(T_0(x) = \sin(2\pi x)\)</span>. To make the algorithms work a bit more, we increase the diffusivity parameter to <span class="math notranslate nohighlight">\(\alpha=0.1\)</span>. The exact solution of the equation is,</p>
+<div class="math notranslate nohighlight">
+\[T(x,t)=e^{-4\pi^2\alpha t}\sin(2\pi x) + \frac{2}{\pi^2\alpha}(1-e^{-\alpha\pi^2 t})\sin(\pi x).\]</div>
+<p>To get started we import some helper functions. The corresponding modules are part of the course’s <code class="docutils literal notranslate"><span class="pre">module</span></code> directory and its path has to be added to the Python search path. The only exception is the <code class="docutils literal notranslate"><span class="pre">pde_module</span></code> that is located in the current notebook’s directory, as it is not useful for other notebooks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../modules&#39;</span><span class="p">)</span>
+
+<span class="c1"># Euler step functions</span>
+<span class="kn">from</span> <span class="nn">steppers</span> <span class="kn">import</span> <span class="n">euler_step</span>
+
+<span class="c1"># Function to compute an error in L2 norm</span>
+<span class="kn">from</span> <span class="nn">norms</span> <span class="kn">import</span> <span class="n">l2_diff</span>
+
+<span class="c1"># Function to compute d^2 / dx^2 with second-order </span>
+<span class="c1"># accurate centered scheme</span>
+<span class="kn">from</span> <span class="nn">matrices</span> <span class="kn">import</span> <span class="n">d2_mat_dirichlet</span>
+
+<span class="c1"># Function for the RHS of the heat equation and</span>
+<span class="c1"># exact solution of our example problem</span>
+<span class="kn">from</span> <span class="nn">pde_module</span> <span class="kn">import</span> <span class="n">rhs_heat_centered</span><span class="p">,</span> <span class="n">exact_solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Physical and grid parameters to achieve a precision smaller than <span class="math notranslate nohighlight">\(10^{-6}\)</span> in L2-norm:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Physical parameters</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>                    <span class="c1"># Heat transfer coefficient</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="mf">1.</span>                        <span class="c1"># Size of computational domain</span>
+<span class="n">ti</span> <span class="o">=</span> <span class="mf">0.0</span>                       <span class="c1"># Initial time</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mf">5.0</span>                       <span class="c1"># Final time</span>
+
+<span class="c1"># Grid parameters</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">513</span>                       <span class="c1"># number of grid points</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># grid spacing</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>    <span class="c1"># coordinates of grid points</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To evaluate how much faster we can get our solution with the implicit scheme, we will time our algorithms. The first one we consider is the forward Euler scheme using the Euler step function. We know that in that case, we have to use a Fourier number <span class="math notranslate nohighlight">\(F&lt;0.5\)</span> (see the notebook <code class="docutils literal notranslate"><span class="pre">04_03_Diffusion_Explicit</span></code>).</p>
+<p><strong>Forward Euler method in component form:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time parameters</span>
+<span class="n">fourier</span> <span class="o">=</span> <span class="mf">0.49</span>                      <span class="c1"># Fourier number</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">fourier</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>            <span class="c1"># time step</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>              <span class="c1"># number of time steps</span>
+
+<span class="c1"># Solution parameters</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>              <span class="c1"># initial condition</span>
+<span class="n">source</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># heat source term</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>  <span class="c1"># Exact solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span> <span class="c1"># Allocate storage for the solution</span>
+<span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>         <span class="c1"># Set the initial condition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">euler_step</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">rhs_heat_centered</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.81 s ± 98.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156903923e-07
+Time integration required 267493 steps
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <span class="math notranslate nohighlight">\(nx=513\)</span>, the accuracy is below our set target but it requires <span class="math notranslate nohighlight">\(267493\)</span> time steps.</p>
+<p><strong>Forward Euler method in matrix form</strong></p>
+<p>For the implicit methods, we need to perform matrix multiplications to time advance the solution. As an extra test, we also evaluate the efficiency of the forward Euler scheme in matrix form to assess the time penalty required by the matrix multiplications.</p>
+<p>In this case, the time stepping is performed with:</p>
+<div class="math notranslate nohighlight">
+\[    \boldsymbol{T}^{n+1} = (I+A)\boldsymbol{T}^{n}\]</div>
+<p>The needed matrices are computed as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># d^2 / dx^2 matrix with Dirichlet boundary conditions</span>
+<span class="n">D2</span> <span class="o">=</span> <span class="n">d2_mat_dirichlet</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>     
+
+<span class="c1"># I+A matrix</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Timing of the solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>         <span class="c1"># Set the initial condition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dt</span>
+
+<span class="c1"># Set the boundary values</span>
+<span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.51 s ± 144 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316334259881643e-07
+Time integration required 267493 steps
+</pre></div>
+</div>
+</div>
+</div>
+<p>As expected, the algorithm in matrix form gives nearly identical results as in component form. The tiny differences are due to round-off errors.</p>
+<p>We note that the algorithm implemented in a matrix form is two times slower than that implemented in a component form.</p>
+<p>Let’s turn our attention to the implicit algorithms. For these, there is no limit on the time step but we still want to achieve the desired precision.</p>
+<p><strong>Backward Euler method</strong></p>
+<p>For this method, we have determined empirically that the desired precision is achieved by setting the Fourier number to <span class="math notranslate nohighlight">\(F=10\)</span>. To check this, let’s apply the algorithm:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span> <span class="o">=</span> <span class="mi">10</span>                   <span class="c1"># Fourier number</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">fourier</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>       <span class="c1"># time step</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>         <span class="c1"># number of time steps</span>
+
+<span class="c1"># I-A matrix</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
+<span class="n">Minv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span> <span class="c1"># Allocate storage for the solution    </span>
+<span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>         <span class="c1"># Set the initial condition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Timing of the solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Minv</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># Set boundary values</span>
+<span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>263 ms ± 4.54 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.6677344754043943e-07
+Time integration required 13107 steps
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the backward Euler method, the number of time steps has been reduced by a factor of 20 and the execution time by a factor 10 compared to the forward Euler method in component form!</p>
+<p><strong>Crank-Nicolson method</strong></p>
+<p>The last method we consider here is the Crank-Nicolson method. This methods is second-order accurate in time so we can expect even better improvement. After some testing, we have determined that the Fourier number could be raised to a value of <span class="math notranslate nohighlight">\(55\)</span>. Let’s check this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fourier</span> <span class="o">=</span> <span class="mi">55</span>              <span class="c1"># Fourier number</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">fourier</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>  <span class="c1"># time step</span>
+
+<span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span>      <span class="c1"># number of time steps</span>
+
+<span class="c1"># I-0.5*A matrix + inverse</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
+<span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># I+0.5*A matric</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
+
+<span class="c1"># (I+0.5A)^{-1} * (I-0.5*A)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ainv</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span> <span class="c1"># Allocate storage for the solution    </span>
+<span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>         <span class="c1"># Set the initial condition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ainv</span><span class="p">,</span><span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># Set boundary values</span>
+<span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>87.3 ms ± 2.43 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191192118759e-08
+Time integration required 2383 steps
+</pre></div>
+</div>
+</div>
+</div>
+<p>The number of time steps has been further reduced by a factor of 5 and the execution time is approximately 30 times faster than that with the forward Euler method!</p>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we have discussed implicit discretization techniques for the the one-dimensional heat equation. These are particularly useful as explicit scheme requires a time step scaling with <span class="math notranslate nohighlight">\(dx^2\)</span>. We have shown that the backward Euler and Crank-Nicolson methods are unconditionally stable for this problem. Although they require more complex arithmetical operations than explicit schemes, they result in very significant reduction in computational cost. These reductions are problem dependent because achieving enough accuracy depends on several factors. However, the discussion indicates that it is always important to explore the various algorithms when trying to solve a numerical problem and there is vast literature available to do this.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solving_pde_mooc/notebooks/04_PartialDifferentialEquations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04_03_Diffusion_Explicit.html" title="previous page"><span class="section-number">3. </span>One dimensional heat equation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

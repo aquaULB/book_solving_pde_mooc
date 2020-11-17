@@ -537,22 +537,22 @@ The inconvenience of this formulation is that it is second-order accurate for in
 
 To improve our discretized operator, we have to find second-order accurate expressions for the boundary nodes and we can use Taylor's theorem to achieve this goal. At the left boundary node we have:
 
-\begin{align*}
+```{math}
 f(x_0 + \Delta) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
 f(x_0 + 2\Delta) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)
-\end{align*}
+```
 
 If we multiply the first equation by two and then substract the second one, we get:
 
-\begin{equation*}
+```{math}
 4 f(x_0 + \Delta) - f(x_0 + 2\Delta) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)
-\end{equation*}
+```
 
 We can then define the following second-oder accurate approximation of $f'$ at $x_0$:
 
-\begin{equation*}
+```{math}
 f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}
-\end{equation*}
+```
 
 The stencil for this expression is represented as:
 
@@ -560,9 +560,9 @@ The stencil for this expression is represented as:
 
 Similarly, the following expression constitutes a second-oder accurate approximation of $f'$ at $x_n$,
 
-\begin{equation*}
+```{math}
 f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}
-\end{equation*}
+```
 
 and its stencil is:
 
