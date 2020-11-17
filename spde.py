@@ -52,6 +52,7 @@ class SpdeContent():
 
         print('Parsing finished')
 
+
 class SpdeFile():
     """ Class to manipulate the content
     of myst markdown files
@@ -75,7 +76,7 @@ class SpdeFile():
     def save(self, freeup=True):
         """ Saves the list contained in the lines
         instance variable to the corresponding file.
-    
+
         Parameter
         ---------
         freeup : bool (optional)
@@ -163,8 +164,10 @@ class SpdeFile():
         # To search for optional label.
         reg_label = re.compile(r'\\label{(.*?)}')
 
-        begin_envs = [r'\begin{equation}', r'\begin{align}', r'$$']
-        end_envs = [r'\end{equation}', r'\end{align}', r'$$']
+        begin_envs = [r'\begin{equation}', r'\begin{align}',
+                        r'\begin{equation*}', r'\begin{align*}', r'$$']
+        end_envs = [r'\end{equation}', r'\end{align}',
+                        r'\end{equation*}', r'\end{align*}', r'$$']
 
         for i, line in enumerate(self.lines):
 
@@ -174,7 +177,7 @@ class SpdeFile():
                     in_env = True
                     self.lines[i] = '```{math}\n'
                     continue
-            
+
             # Steps if environment beginning found
             else:
                 label = re.search(reg_label, line)
@@ -189,7 +192,7 @@ class SpdeFile():
         roles. The objective is to allow classic \ref, \eqref and
         \cite commands in the notebooks.
         """
-        
+
         # Patterns for equation references
         ref_types = ['ref', 'eqref']
 

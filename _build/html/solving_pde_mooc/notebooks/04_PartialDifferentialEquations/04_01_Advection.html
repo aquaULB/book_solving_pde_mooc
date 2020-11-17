@@ -171,6 +171,16 @@
    2. Matrix and modified wavenumber stability analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -561,7 +571,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    u : array of float</span>
+<span class="sd">    u : array of floats</span>
 <span class="sd">        solution at the current time-step.</span>
 <span class="sd">    dx : float</span>
 <span class="sd">        grid spacing</span>
@@ -570,7 +580,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    f : array of float</span>
+<span class="sd">    f : array of floats</span>
 <span class="sd">        right-hand side of the wave equation with</span>
 <span class="sd">        boundary conditions implemented (initial values</span>
 <span class="sd">        of u are kept constant)</span>
@@ -642,9 +652,9 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial condition&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.10</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.10&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.15&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t_final</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.10</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.10&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.15&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t_final</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
@@ -672,7 +682,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    u : array of float</span>
+<span class="sd">    u : array of floats</span>
 <span class="sd">        solution at the current time-step.</span>
 <span class="sd">    dx : float</span>
 <span class="sd">        grid spacing</span>
@@ -681,7 +691,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    f : array of float</span>
+<span class="sd">    f : array of floats</span>
 <span class="sd">        right-hand side of the wave equation with</span>
 <span class="sd">        boundary conditions implemented (initial values</span>
 <span class="sd">        of u are kept constant)</span>
@@ -724,9 +734,9 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial condition&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.10</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.10&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.15&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t_final</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.10</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.10&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.15&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t_final</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
@@ -781,7 +791,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    u : array of float</span>
+<span class="sd">    u : array of floats</span>
 <span class="sd">        solution at the current time-step.</span>
 <span class="sd">    dx : float</span>
 <span class="sd">        grid spacing</span>
@@ -790,7 +800,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    f : array of float</span>
+<span class="sd">    f : array of floats</span>
 <span class="sd">        right-hand side of the wave equation with</span>
 <span class="sd">        boundary conditions implemented</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -848,7 +858,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial condition&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.68</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.68&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.68</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t=0.68&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
@@ -1164,42 +1174,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgc1c6f6d214854f2d9f888f9281db002d">
+  <img id="_anim_img42c15d4bf97b438ca816ef1870cd37e2">
   <div class="anim-controls">
-    <input id="_anim_sliderc1c6f6d214854f2d9f888f9281db002d" type="range" class="anim-slider"
+    <input id="_anim_slider42c15d4bf97b438ca816ef1870cd37e2" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animc1c6f6d214854f2d9f888f9281db002d.set_frame(parseInt(this.value));"></input>
+           oninput="anim42c15d4bf97b438ca816ef1870cd37e2.set_frame(parseInt(this.value));"></input>
     <div class="anim-buttons">
-      <button title="Decrease speed" onclick="animc1c6f6d214854f2d9f888f9281db002d.slower()">
+      <button title="Decrease speed" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" onclick="animc1c6f6d214854f2d9f888f9281db002d.first_frame()">
+      <button title="First frame" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" onclick="animc1c6f6d214854f2d9f888f9281db002d.previous_frame()">
+      <button title="Previous frame" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" onclick="animc1c6f6d214854f2d9f888f9281db002d.reverse_animation()">
+      <button title="Play backwards" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" onclick="animc1c6f6d214854f2d9f888f9281db002d.pause_animation()">
+      <button title="Pause" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" onclick="animc1c6f6d214854f2d9f888f9281db002d.play_animation()">
+      <button title="Play" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" onclick="animc1c6f6d214854f2d9f888f9281db002d.next_frame()">
+      <button title="Next frame" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" onclick="animc1c6f6d214854f2d9f888f9281db002d.last_frame()">
+      <button title="Last frame" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" onclick="animc1c6f6d214854f2d9f888f9281db002d.faster()">
+      <button title="Increase speed" onclick="anim42c15d4bf97b438ca816ef1870cd37e2.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" action="#n" name="_anim_loop_selectc1c6f6d214854f2d9f888f9281db002d"
+    <form title="Repetition mode" action="#n" name="_anim_loop_select42c15d4bf97b438ca816ef1870cd37e2"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_c1c6f6d214854f2d9f888f9281db002d"
+      <input type="radio" name="state" value="once" id="_anim_radio1_42c15d4bf97b438ca816ef1870cd37e2"
              checked>
-      <label for="_anim_radio1_c1c6f6d214854f2d9f888f9281db002d">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_c1c6f6d214854f2d9f888f9281db002d"
+      <label for="_anim_radio1_42c15d4bf97b438ca816ef1870cd37e2">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_42c15d4bf97b438ca816ef1870cd37e2"
              >
-      <label for="_anim_radio2_c1c6f6d214854f2d9f888f9281db002d">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_c1c6f6d214854f2d9f888f9281db002d"
+      <label for="_anim_radio2_42c15d4bf97b438ca816ef1870cd37e2">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_42c15d4bf97b438ca816ef1870cd37e2"
              >
-      <label for="_anim_radio3_c1c6f6d214854f2d9f888f9281db002d">Reflect</label>
+      <label for="_anim_radio3_42c15d4bf97b438ca816ef1870cd37e2">Reflect</label>
     </form>
   </div>
 </div>
@@ -1209,9 +1219,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgc1c6f6d214854f2d9f888f9281db002d";
-    var slider_id = "_anim_sliderc1c6f6d214854f2d9f888f9281db002d";
-    var loop_select_id = "_anim_loop_selectc1c6f6d214854f2d9f888f9281db002d";
+    var img_id = "_anim_img42c15d4bf97b438ca816ef1870cd37e2";
+    var slider_id = "_anim_slider42c15d4bf97b438ca816ef1870cd37e2";
+    var loop_select_id = "_anim_loop_select42c15d4bf97b438ca816ef1870cd37e2";
     var frames = new Array(101);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtAAAAFoCAYAAAB+JswZAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -37332,7 +37342,7 @@ RCQOSqBFREREROKgBFpEREREJA5KoEVERERE4vD/AYBvHS5eb52RAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animc1c6f6d214854f2d9f888f9281db002d = new Animation(frames, img_id, slider_id, 100.0,
+        anim42c15d4bf97b438ca816ef1870cd37e2 = new Animation(frames, img_id, slider_id, 100.0,
                                  loop_select_id);
     }, 0);
   })()

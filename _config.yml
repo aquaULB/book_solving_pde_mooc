@@ -9,12 +9,14 @@ exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints",
                   solving_pde_mooc/notebooks/figures, 
                   solving_pde_mooc/notebooks/modules, 
                   solving_pde_mooc/notebooks/styles, 
-                  solving_pde_mooc/README.md]
+                  solving_pde_mooc/README.md,
+                  README.md, logo.png]
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: cache
   allow_errors: true
+  timeout: 300
 
 parse:
   myst_extended_syntax: true

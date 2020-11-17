@@ -24,3 +24,5 @@
   chapters: 
     - file: solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection
     - file: solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_02_StabilityAnalysis
+    - file: solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit
+    - file: solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_04_Diffusion_Implicit

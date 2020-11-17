@@ -1,0 +1,1137 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. One dimensional heat equation &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4. One dimensional heat equation: implicit methods" href="04_04_Diffusion_Implicit.html" />
+    <link rel="prev" title="2. Matrix and modified wavenumber stability analysis" href="04_02_StabilityAnalysis.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   3.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">
+   3.2. Explicit resolution of the 1D heat equation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-stability-analysis">
+     3.2.1. Matrix stability analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modified-wavenumber-analysis">
+     3.2.2. Modified wavenumber analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numerical-solution">
+     3.2.3. Numerical solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-loops">
+   3.3. Python loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-and-while-loops">
+     3.3.1.
+     <em>
+      for
+     </em>
+     and
+     <em>
+      while
+     </em>
+     loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-and-continue-statements">
+     3.3.2.
+     <em>
+      break
+     </em>
+     and
+     <em>
+      continue
+     </em>
+     statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#else-clause">
+     3.3.3.
+     <em>
+      else
+     </em>
+     clause
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">
+   3.4. Convergence of the numerical solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   3.5. Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="one-dimensional-heat-equation">
+<h1><span class="section-number">3. </span>One dimensional heat equation<a class="headerlink" href="#one-dimensional-heat-equation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, we start by importing some modules needed below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the first notebooks of this chapter, we have described several methods to numerically solve the first order wave equation. We showed that the stability of the algorithms depends on the combination of the time advancement method and the spatial discretization.</p>
+<p>Here we treat another case, the one dimensional heat equation:</p>
+<div class="math notranslate nohighlight" id="equation-eq-1dheat">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-1dheat" title="Permalink to this equation">¶</a></span>\[   \partial_t T(x,t) = \alpha \frac{d^2 T} {dx^2}(x,t) + \sigma (x,t).\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the temperature and <span class="math notranslate nohighlight">\(\sigma\)</span> is an optional heat source term.</p>
+<p>Besides discussing the stability of the algorithms used, we will also dig deeper into the accuracy of our solutions. Up to now we have discussed accuracy from the theoretical point of view and checked that the numerical solutions computed were in qualitative agreement with exact solutions. But this is not enough, we have to quantitatively validate our solutions and check their quality. Several ways to do this are described below.</p>
+</div>
+<div class="section" id="explicit-resolution-of-the-1d-heat-equation">
+<h2><span class="section-number">3.2. </span>Explicit resolution of the 1D heat equation<a class="headerlink" href="#explicit-resolution-of-the-1d-heat-equation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matrix-stability-analysis">
+<h3><span class="section-number">3.2.1. </span>Matrix stability analysis<a class="headerlink" href="#matrix-stability-analysis" title="Permalink to this headline">¶</a></h3>
+<p>We begin by considering the forward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span>. Without the source term, the algorithm then reads:</p>
+<div class="math notranslate nohighlight" id="equation-heateulerforward">
+<span class="eqno">(42)<a class="headerlink" href="#equation-heateulerforward" title="Permalink to this equation">¶</a></span>\[\begin{split}&amp; \frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^n_{i-1}-2T^n_i+T^{n}_{i+1}}{\Delta x^2} \\
+&amp;\Leftrightarrow
+T^{n+1}_i = T^n_i+\frac{\alpha \Delta t}{\Delta x^2} (T^n_{i-1}-2T^n_i+T^{n}_{i+1})\end{split}\]</div>
+<p>In matrix notation this is equivalent to:</p>
+<div class="math notranslate nohighlight" id="equation-eq-matheateuler">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-matheateuler" title="Permalink to this equation">¶</a></span>\[    \boldsymbol{T}^{n+1} = (I+A)\boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{T}^{n} = (I+A)^{n}\boldsymbol{T}^{0},\]</div>
+<p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix.</p>
+<p>Consider the case with homogeneous Dirichlet boundary conditions: <span class="math notranslate nohighlight">\(T_0^m = T_{nx-1}^m=0, \forall m\)</span>. This means that our unknowns are <span class="math notranslate nohighlight">\(T^m_1,\ldots,T^m_{nx-2}\)</span> and that the matrix <span class="math notranslate nohighlight">\(A\)</span> has dimensions <span class="math notranslate nohighlight">\((nx-2)\times (nx-2)\)</span>. Its expression is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \frac{\alpha \Delta t}{\Delta x^2}
+\begin{pmatrix}
+a &amp; b &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; c &amp; a &amp; b &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0  &amp; \dots &amp; c &amp; a &amp; b &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; c &amp; a &amp; b &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; c &amp; a &amp; b \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; c &amp; b
+\end{pmatrix},\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(a = -2\)</span> and <span class="math notranslate nohighlight">\(b = c = 1\)</span>. According to the theorem we quoted in the previous notebook concerning Toeplitz matrices, the eigenvalues <span class="math notranslate nohighlight">\(m_k\)</span> of <span class="math notranslate nohighlight">\(A\)</span> are in this case real and negative:</p>
+<div class="math notranslate nohighlight">
+\[m_k = 2\frac{\alpha \Delta t}{\Delta x^2}\left(\cos\left(\frac{\pi k}{nx}\right)-1\right),\; k=1,\ldots, nx-2.\]</div>
+<p>All the eigenvalues are distinct and as a consequence, the matrix <span class="math notranslate nohighlight">\(I+A\)</span> is diagonalizable with eigenvalues <span class="math notranslate nohighlight">\(\lambda_k = 1+m_k\)</span>. The algorithm is stable if all these eigenvalues satisfy <span class="math notranslate nohighlight">\(\vert \lambda_k \vert \leq 1\)</span> or in other words, if all the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are within the stability domain of the Euler method. This imposes the following constraint on <span class="math notranslate nohighlight">\(\Delta t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\Delta t\leq \frac{\Delta x^2}{2\alpha} \Leftrightarrow  F\leq 0.5\]</div>
+<p>where <span class="math notranslate nohighlight">\(F= \alpha \Delta t/\Delta x^2\)</span> is sometimes referred to as the Fourier number. This condition is quite strict as the limitation on the time step is proportional to <span class="math notranslate nohighlight">\(\Delta x^2\)</span>.  Explicit integration of the heat equation can therefore become problematic and implicit methods might be preferred if a high spatial resolution is needed.</p>
+<p>If we use the RK4 method instead of the Euler method for the time discretization, eq. <a class="reference internal" href="#equation-eq-matheateuler">(43)</a> becomes,</p>
+<div class="math notranslate nohighlight" id="equation-eq-matheatrk4">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-matheatrk4" title="Permalink to this equation">¶</a></span>\[   \boldsymbol{T}^{n} = \left(I+A+\frac12 A^2 + \frac16 A^3+\frac{1}{24}A^4\right)^{n}\boldsymbol{T}^{0}.\]</div>
+<p>and the algorithm is stable if all the eigenvalues <span class="math notranslate nohighlight">\(m_k\)</span> of <span class="math notranslate nohighlight">\(A\)</span> are contained in the stability region of the RK4 time integration scheme. The constraint on the time step is then,</p>
+<div class="math notranslate nohighlight">
+\[\Delta t\leq 2.79\frac{\Delta x^2}{4\alpha} \Leftrightarrow  F\leq 0.7\]</div>
+<p>This is a little bit less restrictive than the criteria for the forward Euler method.</p>
+</div>
+<div class="section" id="modified-wavenumber-analysis">
+<h3><span class="section-number">3.2.2. </span>Modified wavenumber analysis<a class="headerlink" href="#modified-wavenumber-analysis" title="Permalink to this headline">¶</a></h3>
+<p>We can also consider the stability of the algorithms when using periodic boundary conditions. In that case we may use the modified wavenumber analysis that we discussed in the previous notebook.</p>
+<p>The temperature field is decomposed into Fourier modes:</p>
+<div class="math notranslate nohighlight">
+\[    T(x,t)=\sum_{m} \hat{T}(k_m,t) e^{ik_m x},\; \; k_m = \frac{2\pi m}{L}\]</div>
+<p>If we substitute this expression in the heat equation (without source term) we get:</p>
+<div class="math notranslate nohighlight" id="equation-eq-fouriert">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq-fouriert" title="Permalink to this equation">¶</a></span>\[    \frac{d\hat T(k_m,t)}{dt}=-\alpha k_m^2 \hat{T}(k_m,t)\]</div>
+<p>This equation is ‘exact’. When discretizing the second-order derivative using the second-order accurate centered finite difference formula, we get instead:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \frac{d\hat T(k_m,t)}{dt}&amp;=\alpha\left(\frac{e^{-ik_m \Delta x} - 2 + e^{ik_m \Delta x}}{\Delta x^2}\right) \hat{T}(k_m,t) \\
+    &amp;= -\alpha k_m'^2 \hat T(k_m,t)\end{split}\]</div>
+<p>with the modified wavenumbers being real and defined by,</p>
+<div class="math notranslate nohighlight">
+\[k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).\]</div>
+<p>The semi-discretized equation is identical to the original equation <a class="reference internal" href="#equation-eq-fouriert">(45)</a> except for the modification of the wavenumber.</p>
+<p>In this formulation, all the Fourier modes are decoupled and evolve according to:</p>
+<div class="math notranslate nohighlight">
+\[    \frac{d\hat T(k_m,t)}{dt}=\lambda \hat{T}(k_m,t),\; \; \lambda = -\alpha k'^2_m\]</div>
+<p>Depending on how we discretize the time derivative we get different constraints on <span class="math notranslate nohighlight">\(dt\)</span> for stability: in each case, all the coefficients <span class="math notranslate nohighlight">\(\lambda_m\)</span> must lie within the stability domain of the corresponding scheme.</p>
+<p>For the forward Euler method we get:</p>
+<div class="math notranslate nohighlight">
+\[-2 \leq -\alpha \Delta t \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)) \leq 0\]</div>
+<p>To ensure that these constraints are satisfied for all values of <span class="math notranslate nohighlight">\(m\)</span>, the following restriction on the time step is required:</p>
+<div class="math notranslate nohighlight">
+\[\Delta t \leq \frac{\Delta x^2}{2\alpha}\; \; \; \hbox{(Forward Euler mehod)}\]</div>
+<p>For the RK4 time integration method we get:</p>
+<div class="math notranslate nohighlight">
+\[\Delta t \leq 2.79\frac{\Delta x^2}{4\alpha}\; \; \; \hbox{(RK4 mehod)}\]</div>
+<p>These conditions are identical to the ones we obtained using the matrix stability method. Keep in mind that the boundary conditions are different and in general there is no guarantee that the conditions for stability will match.</p>
+</div>
+<div class="section" id="numerical-solution">
+<h3><span class="section-number">3.2.3. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">¶</a></h3>
+<p>Let’s implement the algorithm <a class="reference internal" href="#equation-heateulerforward">(42)</a> and empirically check the above stability criteria. To make the problem more interesting, we include a source term in the equation by setting: <span class="math notranslate nohighlight">\(\sigma = 2\sin(\pi x)\)</span>. As initial condition we choose <span class="math notranslate nohighlight">\(T_0(x) = \sin(2\pi x)\)</span>. In that case, the exact solution of the equation reads,</p>
+<div class="math notranslate nohighlight" id="equation-eq-solution1dheat">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-solution1dheat" title="Permalink to this equation">¶</a></span>\[T(x,t)=e^{-4\pi^2\alpha t}\sin(2\pi x) + \frac{2}{\pi^2\alpha}(1-e^{-\pi^2\alpha t})\sin(\pi x).\]</div>
+<p>To get started we import the <code class="docutils literal notranslate"><span class="pre">euler_step</span></code> function from the <code class="docutils literal notranslate"><span class="pre">steppers</span></code> module (see notebook 04_01_Advection for further details):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../modules&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">steppers</span> <span class="kn">import</span> <span class="n">euler_step</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The heat equation is solved using the following parameters. Note that we have set <span class="math notranslate nohighlight">\(F=0.49\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Physical parameters</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>                     <span class="c1"># Heat transfer coefficient</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="mf">1.</span>                         <span class="c1"># Size of computational domain</span>
+
+<span class="c1"># Grid parameters</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">21</span>                         <span class="c1"># number of grid points </span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                <span class="c1"># grid spacing</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>     <span class="c1"># coordinates of grid points</span>
+
+<span class="c1"># Time parameters</span>
+<span class="n">ti</span> <span class="o">=</span> <span class="mf">0.</span>                         <span class="c1"># initial time</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mf">5.</span>                         <span class="c1"># final time</span>
+<span class="n">fourier</span> <span class="o">=</span> <span class="mf">0.49</span>                  <span class="c1"># Fourier number</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">fourier</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>        <span class="c1"># time step</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>          <span class="c1"># number of time steps</span>
+
+<span class="c1"># Initial condition</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># initial condition</span>
+<span class="n">source</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>      <span class="c1"># heat source term</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the function below we discretize the right-hand side of the heat equation using the centered finite difference formula of second-order accuracy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rhs_centered</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the right-hand side of the 1D heat</span>
+<span class="sd">    equation based on centered finite differences</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array of floats</span>
+<span class="sd">        solution at the current time-step.</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        grid spacing</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        heat conductivity</span>
+<span class="sd">    source : array of floats</span>
+<span class="sd">        source term for the heat equation</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f : array of floats</span>
+<span class="sd">        right-hand side of the heat equation with</span>
+<span class="sd">        Dirichlet boundary conditions implemented</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nx</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span>
+    
+    <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">/</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="o">+</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+    
+    <span class="k">return</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also define a function that returns the exact solution at any time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the exact solution of the 1D</span>
+<span class="sd">    heat equation with heat source term sin(np.pi*x)</span>
+<span class="sd">    and initial condition sin(2*np.pi*x)</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array of floats</span>
+<span class="sd">        grid points coordinates</span>
+<span class="sd">    t: float</span>
+<span class="sd">        time</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f : array of floats</span>
+<span class="sd">        exact solution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Note the &#39;Pythonic&#39; way to break the long line. You could</span>
+    <span class="c1"># split a long line using a backlash (\) but the conventional</span>
+    <span class="c1"># way is to embrace your code in parenthesis.</span>
+    <span class="c1">#</span>
+    <span class="c1"># For more info we refer you to PEP8:</span>
+    <span class="c1"># https://www.python.org/dev/peps/pep-0008/#id19 </span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+      <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">t</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> 
+      <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we perform the time stepping:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">nt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span>
+<span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">euler_step</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">rhs_centered</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the solution at several times</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial condition&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span><span class="o">/</span><span class="n">dt</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$t=0.5$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$t=</span><span class="si">{</span><span class="n">tf</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">),</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exact solution at $t=5$&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Heat transport with forward Euler scheme&#39;</span>
+             <span class="s1">&#39; - forward finite differences&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/04_03_Diffusion_Explicit_15_0.png" src="../../../_images/04_03_Diffusion_Explicit_15_0.png" />
+</div>
+</div>
+<p>The solution looks qualitatively very good!</p>
+<p>Run the code again with a slightly larger Fourier number equal to <span class="math notranslate nohighlight">\(0.53\)</span> and see what happens… The solution blows up and it is clear that the stability criteria needs to be satisfied to get a stable solution.</p>
+<p>At the beginning of this notebook we emphasized that we need better ways of checking the accuracy of our numerical solutions. To that end, let us create a function that returns the <span class="math notranslate nohighlight">\(L_2\)</span>-norm of the difference between two functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">l2_diff</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the l2-norm of the difference</span>
+<span class="sd">    between a function f1 and a function f2</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f1 : array of floats</span>
+<span class="sd">        function 1</span>
+<span class="sd">    f2 : array of floats</span>
+<span class="sd">        function 2</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    diff : float</span>
+<span class="sd">        The l2-norm of the difference.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">l2_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">f1</span> <span class="o">-</span> <span class="n">f2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">f1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">l2_diff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using this function we can compute the relative error - in <span class="math notranslate nohighlight">\(L_2\)</span>-norm - of our computed solution compared to the exact solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 0.0006625553699606054
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is already quite good: in terms of the <span class="math notranslate nohighlight">\(L_2\)</span> norm, the error is quite small. There are two ways to improve this:</p>
+<ol class="simple">
+<li><p>Increase the number of grid points</p></li>
+<li><p>Decrease the time step</p></li>
+</ol>
+<p>Before we explore these possibilities, we provide a short tutorial on how to control the flow of Python loops and also introduce the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. These notions are very useful to make our codes more flexible and in particular control the convergence of our numerical solutions.</p>
+</div>
+</div>
+<div class="section" id="python-loops">
+<h2><span class="section-number">3.3. </span>Python loops<a class="headerlink" href="#python-loops" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-and-while-loops">
+<h3><span class="section-number">3.3.1. </span><em>for</em> and <em>while</em> loops<a class="headerlink" href="#for-and-while-loops" title="Permalink to this headline">¶</a></h3>
+<p>You are already well familiar with Python <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. They are also called <strong>definite loops</strong> meaning that the number of iterations is known before entering the loop. <code class="docutils literal notranslate"><span class="pre">for</span></code> loops are useful when you need to iterate over a certain sequence, or, sticking to Python terminology, over a <em>collection</em>. There are generally <a class="reference external" href="https://realpython.com/python-for-loop/#a-survey-of-definite-iteration-in-programming">three concepts for <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a> in programming. The one that Python implements is called <em>Collection-Based loop</em>. Schematically the Collection-Based <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in Python has the following syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">&lt;</span><span class="n">element</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">collection</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">do</span> <span class="n">something</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;collection&gt;</span></code> must be <em>iterable</em>, or in other words it must be a sequence. For example you obviously cannot iterate over an integer or a function. The following code will raise Exceptions of type TypeError:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mi">785</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="o">---------------------------------------------------------------</span>
+<span class="ne">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">dec972479acc</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mi">784</span><span class="p">:</span>
+      <span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">iterable</span>
+   
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">len</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+<span class="o">---------------------------------------------------------------</span>
+<span class="ne">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">28</span><span class="n">a55301f0c9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">len</span><span class="p">:</span>
+      <span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;builtin_function_or_method&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">iterable</span>
+</pre></div>
+</div>
+<p>But what if we do <em>not</em> know the number of iterations we need to perform in advance? Imagine we have a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <span class="math notranslate nohighlight">\(10000\)</span> elements that are integers from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(9999\)</span>. Each integer only occurs once in the sequence but its location is <em>random</em>. We are determined to compute the index (location in the sequence) of the element that is equal to <span class="math notranslate nohighlight">\(7\)</span>. First, let’s implement this sequence, so that we can think of the routes we could take to solve our little problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This variable will store our solution - index of</span>
+<span class="c1"># the element that is equal to 7. We initially set</span>
+<span class="c1"># it -1 and change this value only if 7 is found </span>
+<span class="c1"># somewhere in the sequence (which should be the case</span>
+<span class="c1"># in our example)</span>
+<span class="n">ind_of_seven</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9999</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Right now our sequence is of course ordered. We can shuffle it using <a class="reference external" href="https://docs.python.org/3/library/random.html">Python’s <code class="docutils literal notranslate"><span class="pre">random</span></code> module</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">random.shuffle</span></code> returns the <code class="docutils literal notranslate"><span class="pre">None</span></code> object. It basically takes advantage of that mutable (modifiable) objects, when passed as functions arguments, are passed by object reference in Python. Or in other words, the <em>function does not receive a copy of an object but its address in memory</em>, and so it can modify or <em>mutate</em> the original object. And a numpy array is a mutable (modifiable) object.</p>
+<p>But let’s go back to our task. How are we going to approach it? In principle, we could use the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The enumerate built-in function will manage elements&#39;</span>
+<span class="c1"># indices for you. At each iteration it will return the</span>
+<span class="c1"># index of the current element and the element itself.</span>
+<span class="c1"># That&#39;s why we need two iteration variables instead of</span>
+<span class="c1"># usual one.</span>
+<span class="c1">#</span>
+<span class="c1"># For more info:</span>
+<span class="c1"># https://docs.python.org/3/library/functions.html#enumerate</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">ind_of_seven</span> <span class="o">=</span> <span class="n">i</span>
+        
+<span class="k">if</span> <span class="n">ind_of_seven</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Location of 7 in the sequence: </span><span class="si">{</span><span class="n">ind_of_seven</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Obviously this scenario should never happen.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Could not found 7 in the sequence&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1745
+</pre></div>
+</div>
+</div>
+</div>
+<p>We solved the problem but is our solution efficient or elegant? No. <span class="math notranslate nohighlight">\(7\)</span> can end up being located at <code class="docutils literal notranslate"><span class="pre">i=9999</span></code> but the odds are obviously quite low. It means that most probably we are going to perform unnecessary iterations. It can be <span class="math notranslate nohighlight">\(5\)</span> unnecessary iteration but it can as well be <span class="math notranslate nohighlight">\(9995\)</span>. <strong>That is why there are <code class="docutils literal notranslate"><span class="pre">while</span></code> loops</strong>. <code class="docutils literal notranslate"><span class="pre">while</span></code> loops are also called <strong>indefinite loops</strong>. They execute until a certain condition is satisfied. Schematically their syntax is the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">do</span> <span class="n">things</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The loop will execute until <code class="docutils literal notranslate"><span class="pre">&lt;condition&gt;</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>. A straightforward way to exit a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is to modify <code class="docutils literal notranslate"><span class="pre">&lt;condition&gt;</span></code> inside the loop. It is also worth mentioning that the code snippet</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">do</span> <span class="n">things</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>implements the <em>infinite loop</em>. Normally infinite loop executes until you exceed memory limits.</p>
+<p>Let’s approach our model problem with the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset solution</span>
+<span class="n">ind_of_seven</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># current index of element in sequence</span>
+<span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>    <span class="c1"># will evaluate to True when 7 is found</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">ind_of_seven</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># Increment i to proceed to the next element of seq</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    
+<span class="k">if</span> <span class="n">ind_of_seven</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Location of 7 in the sequence: </span><span class="si">{</span><span class="n">ind_of_seven</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Obviously this scenario should never happen.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Could not found 7 in the sequence&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1745
+</pre></div>
+</div>
+</div>
+</div>
+<p>Such solution is obviously the preferred one for our particular problem: <em>we performed exactly as many iterations as we needed</em>.</p>
+<p>To conclude this subsection we propose you to keep this philosophy in mind:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">for</span></code> loops if you know <em>exactly</em> the number of iterations you have to perform.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">while</span></code> loops if you don’t know the number of iterations in advance but you know what is the condition for the loop to terminate.</p></li>
+</ul>
+<p>You might wonder if there is another way to exit a loop before reaching the end of the sequence (in the case of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop), or to satisfy a certain condition? What if you are running your code on a supercomputer where you have requested just one hour of computation time, you are out of time and your code is still running? Or what if you perform series of computations at each iteration, end up with a singularity in the beginning of an iteration, and want to immediately proceed to the next iteration to avoid a division by zero? There are tools in Python to cover such cases, and they are the <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> statements.</p>
+</div>
+<div class="section" id="break-and-continue-statements">
+<h3><span class="section-number">3.3.2. </span><em>break</em> and <em>continue</em> statements<a class="headerlink" href="#break-and-continue-statements" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> provide the possibility to terminate iterations <em>before</em> the entire body of the loop is executed.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> immediately terminates execution of the loop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code> immediately terminates execution of the current iteration.</p></li>
+</ul>
+<p>The following little examples demonstrate the distinction between <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop is terminated if i == 5: mind the output</span>
+<span class="c1">#</span>
+<span class="c1"># Note the optional argument of print - end. You can configure</span>
+<span class="c1"># what your output ends with - by default its &#39;\n&#39; (new line).</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using break statement: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+<span class="c1"># Iteration is terminated if i == 5: mind the output</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Using continue statement: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using break statement: 0 1 2 3 4 
+Using continue statement: 0 1 2 3 4 6 7 8 9 
+</pre></div>
+</div>
+</div>
+</div>
+<p>How would we approach more “real life” problems - for instance the ones assumed in the end of the previous subsection? Obviously the problem of the time limit excess is to be addressed using the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement. Consider the following code snippet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For safety we want to terminate in 55 minutes from now.</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">55</span><span class="o">*</span><span class="mi">60</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># in principle infinite loop</span>
+    <span class="o">&lt;</span><span class="n">do</span> <span class="n">things</span><span class="o">&gt;</span>  
+    <span class="c1"># If the time limit has been reached, save data that has been computed</span>
+    <span class="c1"># to the files and terminate loop immediately.</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">timeout</span><span class="p">:</span>
+        <span class="o">&lt;</span><span class="n">save</span> <span class="n">data</span> <span class="n">to</span> <span class="n">the</span> <span class="n">files</span><span class="o">&gt;</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>This is the schematic example of how we would safely manage limited time resources. We have not only “gracefully” terminated our code but saved all the data we have collected to disk, so that it’s not lost if we couldn’t complete all of the iterations.</p>
+<p>Consider now the code snippet to address the problem of division by zero occurring for certain iterations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sol is the matrix filled with solution of the linear system of equations</span>
+<span class="c1"># at each iteration, and i is the line of a matrix that is filled at the</span>
+<span class="c1"># current iteration. Therefore n here is the number of grid points and num</span>
+<span class="c1"># is the number of iterations.</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="n">sol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">collection</span><span class="o">&gt;</span><span class="p">:</span> <span class="c1"># collection contains num elements</span>
+    <span class="o">&lt;</span><span class="n">compute</span> <span class="n">param</span><span class="o">&gt;</span>
+    <span class="c1"># We assume param occurs in the denominator in the equations.</span>
+    <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Delete the row of the matrix corresponding to the iteration</span>
+        <span class="c1"># that is to be skipped. In this case i doesn&#39;t need to be</span>
+        <span class="c1"># incremented.</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">continue</span>
+    <span class="o">&lt;</span><span class="n">solve</span> <span class="n">equations</span><span class="o">&gt;</span>
+    <span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_solution</span>
+    <span class="c1"># We now must increment i.</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>As a result, we obtain a matrix <code class="docutils literal notranslate"><span class="pre">sol</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(num-m,</span> <span class="pre">n)</span></code>, where <code class="docutils literal notranslate"><span class="pre">m</span></code> is the number of iterations, for which the singularity occurred.</p>
+<p>Note that this little demo does <em>not</em> implement optimal way of handling division by zero in Python. The more “Pythonic” approach is to use Exception handling. This is a more advanced topic of Python programming that is not covered in this course. You must know, though, that the above demo is perfectly valid for your understanding of the logic behind the use of the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement. <em><code class="docutils literal notranslate"><span class="pre">continue</span></code> would still be used in the same manner if the algorithm is implemented using Exception handling</em>.</p>
+</div>
+<div class="section" id="else-clause">
+<h3><span class="section-number">3.3.3. </span><em>else</em> clause<a class="headerlink" href="#else-clause" title="Permalink to this headline">¶</a></h3>
+<p>Let’s dig even deeper into the functionality of Python loops. Python implements something that is almost unique to this programming language: the <code class="docutils literal notranslate"><span class="pre">else</span></code> clause in loops. You could wonder how can there be <code class="docutils literal notranslate"><span class="pre">else</span></code> if there is no <code class="docutils literal notranslate"><span class="pre">if</span></code>? Indeed, <code class="docutils literal notranslate"><span class="pre">else</span></code> seems to make more sense along other conditional statements, such as <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code>. But <code class="docutils literal notranslate"><span class="pre">else</span></code> in loops is a convention that appears to be quite useful in some cases. Consider the following example using the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I let the loop run to the end: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">I have finished the loop.&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">I use break statement to get out of the loop: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">I never get here&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I let the loop run to the end: 0 1 2 3 4 5 6 7 8 9 
+I have finished the loop.
+
+I use break statement to get out of the loop: 0 1 2 3 4 
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can conclude from the output that the <code class="docutils literal notranslate"><span class="pre">else</span></code> clause executes <em>only</em> when the loop terminates because we have reached the end of the sequence. In the case when we break out of the loop before the iterations have been exhausted, <code class="docutils literal notranslate"><span class="pre">else</span></code> clause <em>never</em> executes.</p>
+<p>The same logic applies to using <code class="docutils literal notranslate"><span class="pre">else</span></code> clause in <code class="docutils literal notranslate"><span class="pre">while</span></code> loops:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I exit the loop by changing &lt;condition&gt; to False: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+    <span class="c1"># We don&#39;t want to exceed bounds of the sequence.</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> <span class="k">break</span>
+    <span class="k">if</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I end up in the else clause.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reset index and boolean.</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">I use break statement to get out of the loop.&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+    <span class="c1"># We don&#39;t want to exceed bounds of the sequence.</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> <span class="k">break</span>
+    <span class="k">if</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">999</span><span class="p">:</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">I never get here&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I exit the loop by changing &lt;condition&gt; to False: I end up in the else clause.
+
+I use break statement to get out of the loop.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usage of <code class="docutils literal notranslate"><span class="pre">else</span></code> clause allows you to shorten your code and make it more elegant. Imagine you wanted to perform extra computations but only in the case when a certain object has been found when executing the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. If not for the <code class="docutils literal notranslate"><span class="pre">else</span></code> clause, you would have to create a block of <code class="docutils literal notranslate"><span class="pre">if</span></code> conditional statement. This way you can perform these computation where they logically belong - at the end of the loop.</p>
+</div>
+</div>
+<div class="section" id="convergence-of-the-numerical-solution">
+<h2><span class="section-number">3.4. </span>Convergence of the numerical solution<a class="headerlink" href="#convergence-of-the-numerical-solution" title="Permalink to this headline">¶</a></h2>
+<p>Now that we know how to control the flow of python loops, let’s use this skill to study the convergence of our algorithm in more detail.</p>
+<p>Ideally, we would like to specify a maximum error for our solution and change the simulation parameters to meet this threshold. To do so we have to increase the number of grid points and reduce the time step.</p>
+<p>In practice we don’t have access to the exact solution to measure the error - otherwise why would we bother solving the problem numerically? To overcome this difficulty, we have to perform what is known as <em>a convergence study</em>. The technique relies again on Taylor’s theorem. When we design numerical algorithms, we do so in such a way that they have a given convergence rate: as we make the grid spacing and time step smaller and smaller, the solution should get closer and and closer to the exact solution. Therefore, at some point in the refinement process, the obtained solution should barely change as we refine the parameters further. When the difference between two consecutive solutions falls below a given threshold that we choose, we say that we have converged the solution up to a given precision.</p>
+<p>Let’s rewrite our numerical procedure to implement this strategy. First we define the precision we want to achieve. Strictly speaking, this is not  really a precision but rather a measure of how well the numerical solution is converged:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">precision</span> <span class="o">=</span> <span class="mf">1e-6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the current problem, we have to vary two parameters: the grid spacing and the time step. However, we don’t have to separately modify the time step as it is computed from the grid spacing to meet the stability criteria. To vary the grid spacing until convergence is met, we will use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. This while loop iterates until the L2 difference between two consecutive solutions gets smaller than the precision. However, as we don’t know in advance how many grid refinements are needed, we also add a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement that exits the loop after a given number of grid refinements. This avoids having the computer to run for an excessively long time. If that’s the case, it might be better to reconsider the discretization scheme and seek a higher order accurate discretization requiring fewer grid points for the same precision.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Physical parameters</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>                    <span class="c1"># Heat transfer coefficient</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="mf">1.</span>                        <span class="c1"># Size of computational domain</span>
+<span class="n">ti</span> <span class="o">=</span> <span class="mf">0.0</span>                       <span class="c1"># Initial time</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mf">5.0</span>                       <span class="c1"># Final time</span>
+<span class="n">fourier</span> <span class="o">=</span> <span class="mf">0.49</span>                 <span class="c1"># Fourier number to ensure stability</span>
+
+
+<span class="n">max_grid_refinements</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">grid_refinement</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Starting number of grid points</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Reference solution for comparison after first grid refinement.</span>
+<span class="c1"># It is arbitrarely set to zero</span>
+<span class="n">Tref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span>
+
+<span class="c1"># Initial value for the difference before entering the while loop</span>
+<span class="c1"># Any value larger than precision is fine</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="mf">1.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="n">precision</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">grid_refinement</span> <span class="o">&gt;</span> <span class="n">max_grid_refinements</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Solution did not converged within the maximum&#39;</span>
+              <span class="s1">&#39; allowed grid refinements&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Last number of grid points tested: nx = </span><span class="si">{</span><span class="n">nx</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+    
+    <span class="c1"># Grid parameters</span>
+    <span class="n">nx</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span>                  <span class="c1"># At each grid refinement dx is divided by 2</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># grid spacing</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>    <span class="c1"># coordinates of grid points</span>
+
+    <span class="n">Tn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># initial condition</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># heat source term</span>
+    
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">fourier</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>       <span class="c1"># time step</span>
+    <span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span>           <span class="c1"># number of time steps</span>
+    
+    <span class="c1"># Time stepping</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>
+        <span class="n">Tnp1</span> <span class="o">=</span> <span class="n">euler_step</span><span class="p">(</span><span class="n">Tn</span><span class="p">,</span> <span class="n">rhs_centered</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+        <span class="n">Tn</span> <span class="o">=</span> <span class="n">Tnp1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># diff computation</span>
+    <span class="c1"># Note how we sliced the Tnp1 array. As the grid has been</span>
+    <span class="c1"># refined by a factor of 2, we need to keep every other point</span>
+    <span class="c1"># when comparing with Tref.</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">Tnp1</span><span class="p">[::</span><span class="mi">2</span><span class="p">],</span> <span class="n">Tref</span><span class="p">)</span>
+    <span class="c1"># Pay attention that when you break an f-string in Python</span>
+    <span class="c1"># the &#39;f&#39; specifier must preceed each string segment starting</span>
+    <span class="c1"># from the new line.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;L2 difference after </span><span class="si">{</span><span class="n">grid_refinement</span><span class="si">}</span><span class="s1"> grid refinement(s)&#39;</span>
+          <span class="sa">f</span><span class="s1">&#39; (nx=</span><span class="si">{</span><span class="n">nx</span><span class="si">}</span><span class="s1">): </span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Perform another grid refinement but</span>
+    <span class="c1"># break if we have reached the maximum</span>
+    <span class="c1"># number of refinements allowed</span>
+    <span class="n">grid_refinement</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="c1"># Store the new reference solution</span>
+    <span class="n">Tref</span> <span class="o">=</span> <span class="n">Tnp1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Solution converged with required precision&#39;</span>
+          <span class="sa">f</span><span class="s1">&#39; for </span><span class="si">{</span><span class="n">nx</span><span class="si">}</span><span class="s1"> grid points&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2 difference after 1 grid refinement(s) (nx=5): 0.7081239220605324
+L2 difference after 2 grid refinement(s) (nx=9): 0.02404238267924408
+L2 difference after 3 grid refinement(s) (nx=17): 0.004590336332579714
+L2 difference after 4 grid refinement(s) (nx=33): 0.000864442170843211
+L2 difference after 5 grid refinement(s) (nx=65): 0.00015093478982971829
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2 difference after 6 grid refinement(s) (nx=129): 2.7452359086616254e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2 difference after 7 grid refinement(s) (nx=257): 4.95663880945805e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2 difference after 8 grid refinement(s) (nx=513): 8.796027749118885e-07
+
+Solution converged with required precision for 513 grid points
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code tells us that by going from <span class="math notranslate nohighlight">\(nx=257\)</span> to <span class="math notranslate nohighlight">\(nx=513\)</span>, the L2-norm of the difference between the solutions has gotten below <span class="math notranslate nohighlight">\(10^{-6}\)</span>. If that’s the precision we want to achieve we now we can stop there and we know we are fine with <span class="math notranslate nohighlight">\(nx=513\)</span>.</p>
+<p>Rerun the above code after setting <code class="docutils literal notranslate"><span class="pre">precision</span> <span class="pre">=</span> <span class="pre">1e-7</span></code> and see what happens. You should get a message informing you that the solution could not be converged within the required precision. This means that our break statement was useful; without it, the computations could run for a very long time before stopping.</p>
+<p>For reference, we also compare the converged solution (<code class="docutils literal notranslate"><span class="pre">nx=513</span></code>) with the exact solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">Tnp1</span><span class="p">,</span> <span class="n">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156903923e-07
+</pre></div>
+</div>
+</div>
+</div>
+<p>The strategy of comparing the solutions while refining the grid worked very well. By doing so, we converged towards the exact solution and the L2 norm of the error is about <span class="math notranslate nohighlight">\(10^{-7}\)</span>.</p>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">3.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we have discretized the one dimensional heat equation and analyzed its stability. We have shown that the restriction on the time step is quite strong as it scales with <span class="math notranslate nohighlight">\(\Delta x^2\)</span>. We also provided a tutorial on how to control the flow of Python loop. We then explained how to monitor the accuracy of our numerical solution by using performing a <em>convergence study</em>. In this method, one checks the accuracy of the solution by refining the temporal and spatial discretization parameters until the solution remains unchanged up to a chosen accuracy. In the next notebook we will revisit the discretization of the heat equation using implicit time advancements schemes.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solving_pde_mooc/notebooks/04_PartialDifferentialEquations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04_02_StabilityAnalysis.html" title="previous page"><span class="section-number">2. </span>Matrix and modified wavenumber stability analysis</a>
+    <a class='right-next' id="next-link" href="04_04_Diffusion_Implicit.html" title="next page"><span class="section-number">4. </span>One dimensional heat equation: implicit methods</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
