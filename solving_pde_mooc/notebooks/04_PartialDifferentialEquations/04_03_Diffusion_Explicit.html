@@ -412,7 +412,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 \end{pmatrix},\end{split}\]</div>
 <p>with <span class="math notranslate nohighlight">\(a = -2\)</span> and <span class="math notranslate nohighlight">\(b = c = 1\)</span>. According to the theorem we quoted in the previous notebook concerning Toeplitz matrices, the eigenvalues <span class="math notranslate nohighlight">\(m_k\)</span> of <span class="math notranslate nohighlight">\(A\)</span> are in this case real and negative:</p>
 <div class="math notranslate nohighlight">
-\[m_k = 2\frac{\alpha \Delta t}{\Delta x^2}\left(\cos\left(\frac{\pi k}{nx}\right)-1\right),\; k=1,\ldots, nx-2.\]</div>
+\[m_k = 2\frac{\alpha \Delta t}{\Delta x^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.\]</div>
 <p>All the eigenvalues are distinct and as a consequence, the matrix <span class="math notranslate nohighlight">\(I+A\)</span> is diagonalizable with eigenvalues <span class="math notranslate nohighlight">\(\lambda_k = 1+m_k\)</span>. The algorithm is stable if all these eigenvalues satisfy <span class="math notranslate nohighlight">\(\vert \lambda_k \vert \leq 1\)</span> or in other words, if all the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are within the stability domain of the Euler method. This imposes the following constraint on <span class="math notranslate nohighlight">\(\Delta t\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\Delta t\leq \frac{\Delta x^2}{2\alpha} \Leftrightarrow  F\leq 0.5\]</div>
