@@ -367,7 +367,7 @@
 <p>For the heat equation, the Crank-Nicolson method yields the following expression:</p>
 <div class="math notranslate nohighlight" id="equation-eq-heatcn">
 <span class="eqno">(49)<a class="headerlink" href="#equation-eq-heatcn" title="Permalink to this equation">¶</a></span>\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\frac{\alpha}{2} \left(\frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}  + 
-\frac{T^{n}_{i}-2T^{n}_i+T^{n}_{i}}{\Delta x^2}\right)\]</div>
+\frac{T^{n}_{i-1}-2T^{n}_i+T^{n}_{i+1}}{\Delta x^2}\right)\]</div>
 <p>In matrix form (assuming Dirichlet boundary conditions), this is equivalent to:</p>
 <div class="math notranslate nohighlight">
 \[    (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.\]</div>
