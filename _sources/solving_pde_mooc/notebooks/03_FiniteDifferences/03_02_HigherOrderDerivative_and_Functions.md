@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 plt.style.use('../styles/mainstyle.use')
 ```
 
-In this notebook we extend the concept of finite differences to higher order derivatives. We also discuss the use of Python `functions` and finally we describe how to construct matrices corresponding to the finite-difference operators. This is very useful when solving boundary value problems or eigenvalue problems.
+In this notebook we extend the concept of finite differences to higher-order derivatives. We also discuss the use of Python `functions` and finally we describe how to construct matrices corresponding to the finite-difference operators. This is very useful when solving boundary value problems or eigenvalue problems.
 
 ## Higher order derivatives
 
@@ -53,8 +53,8 @@ Using finite differences, we can construct derivatives up to any order. Before w
 Using Taylor's theorem we can write:
 
 ```{math}
-& f(x+\Delta x) = f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2+\frac16 f'''(x)\Delta x^3+O(\Delta^4) \\
-& f(x-\Delta x) = f(x)-f'(x)\Delta x+\frac12 f''(x)\Delta x^2-\frac16 f'''(x)\Delta x^3+O(\Delta^4).
+& f(x+\Delta x) = f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2+\frac16 f'''(x)\Delta x^3+O(\Delta x^4) \\
+& f(x-\Delta x) = f(x)-f'(x)\Delta x+\frac12 f''(x)\Delta x^2-\frac16 f'''(x)\Delta x^3+O(\Delta x^4).
 ```
 
 If we add these two equations, we can define a centered second-order accurate formula for $f''$ at grid point $x_i$:
@@ -113,7 +113,7 @@ ax.set_ylabel('$f\'$');
 
 As the centered formula for $f''$ is not defined at the boundary nodes, they have been excluded in the computation. But in the next section, we will provide information on how to cope with this issue.
 
-### Higher order derivatives and one-sided stencils
+### Higher-order derivatives and one-sided stencils
 
 It should now be clear that the construction of finite difference formulas to compute differential operators can be done using Taylor's theorem. In general, as we increase the order of the derivative, we have to increase the number of points in the corresponding stencil. The construction of these stencils is not complicated and is well documented in several places, so we will not repeat it here. Instead we refer to the very detailed [Wikipedia][21] page that contains finite difference formulas for all the cases we use in this course, and many more.
 
@@ -466,7 +466,7 @@ def some_function(parameters):
 
 `statements` constitute the actual Python commands executed within the function. These can be any legal Python code.
 
-`something` is what the programmer wants to provide as output from the function after execution of all the statements (e.g. the result of some arithmetic operations). The return statement is optional.
+`something` is what the programmer wants to provide as output from the function after execution of all the statements (e.g. the result of some arithmetic operations). The `return` statement is optional.
 
 To make things less abstract, let's discuss some examples.
 

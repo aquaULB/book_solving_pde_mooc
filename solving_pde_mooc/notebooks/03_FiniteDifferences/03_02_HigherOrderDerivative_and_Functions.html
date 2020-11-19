@@ -286,7 +286,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#higher-order-derivatives-and-one-sided-stencils">
-     2.2.2. Higher order derivatives and one-sided stencils
+     2.2.2. Higher-order derivatives and one-sided stencils
     </a>
    </li>
   </ul>
@@ -356,7 +356,7 @@
 </div>
 </div>
 </div>
-<p>In this notebook we extend the concept of finite differences to higher order derivatives. We also discuss the use of Python <code class="docutils literal notranslate"><span class="pre">functions</span></code> and finally we describe how to construct matrices corresponding to the finite-difference operators. This is very useful when solving boundary value problems or eigenvalue problems.</p>
+<p>In this notebook we extend the concept of finite differences to higher-order derivatives. We also discuss the use of Python <code class="docutils literal notranslate"><span class="pre">functions</span></code> and finally we describe how to construct matrices corresponding to the finite-difference operators. This is very useful when solving boundary value problems or eigenvalue problems.</p>
 </div>
 <div class="section" id="higher-order-derivatives">
 <h2><span class="section-number">2.2. </span>Higher order derivatives<a class="headerlink" href="#higher-order-derivatives" title="Permalink to this headline">¶</a></h2>
@@ -365,8 +365,8 @@
 <h3><span class="section-number">2.2.1. </span>Second-order derivative<a class="headerlink" href="#second-order-derivative" title="Permalink to this headline">¶</a></h3>
 <p>Using Taylor’s theorem we can write:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}&amp; f(x+\Delta x) = f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2+\frac16 f'''(x)\Delta x^3+O(\Delta^4) \\
-&amp; f(x-\Delta x) = f(x)-f'(x)\Delta x+\frac12 f''(x)\Delta x^2-\frac16 f'''(x)\Delta x^3+O(\Delta^4).\end{split}\]</div>
+\[\begin{split}&amp; f(x+\Delta x) = f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2+\frac16 f'''(x)\Delta x^3+O(\Delta x^4) \\
+&amp; f(x-\Delta x) = f(x)-f'(x)\Delta x+\frac12 f''(x)\Delta x^2-\frac16 f'''(x)\Delta x^3+O(\Delta x^4).\end{split}\]</div>
 <p>If we add these two equations, we can define a centered second-order accurate formula for <span class="math notranslate nohighlight">\(f''\)</span> at grid point <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-centereddiff2">
 <span class="eqno">(30)<a class="headerlink" href="#equation-eq-centereddiff2" title="Permalink to this equation">¶</a></span>\[f''_i=\frac{f_{i-1}-2f_i+f_{i+1}}{\Delta x^2}.\]</div>
@@ -430,7 +430,7 @@
 <p>As the centered formula for <span class="math notranslate nohighlight">\(f''\)</span> is not defined at the boundary nodes, they have been excluded in the computation. But in the next section, we will provide information on how to cope with this issue.</p>
 </div>
 <div class="section" id="higher-order-derivatives-and-one-sided-stencils">
-<h3><span class="section-number">2.2.2. </span>Higher order derivatives and one-sided stencils<a class="headerlink" href="#higher-order-derivatives-and-one-sided-stencils" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2. </span>Higher-order derivatives and one-sided stencils<a class="headerlink" href="#higher-order-derivatives-and-one-sided-stencils" title="Permalink to this headline">¶</a></h3>
 <p>It should now be clear that the construction of finite difference formulas to compute differential operators can be done using Taylor’s theorem. In general, as we increase the order of the derivative, we have to increase the number of points in the corresponding stencil. The construction of these stencils is not complicated and is well documented in several places, so we will not repeat it here. Instead we refer to the very detailed <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a> page that contains finite difference formulas for all the cases we use in this course, and many more.</p>
 <p>To make this notebook self contained, we list here some of the formulas we will/might need later on.</p>
 <p>We begin we some <strong>centered finite difference</strong> expressions:</p>
@@ -764,7 +764,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">parameters</span></code> is the list of arguments (e.g. variables, objects,…) that are passed to the function when calling it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">statements</span></code> constitute the actual Python commands executed within the function. These can be any legal Python code.</p>
-<p><code class="docutils literal notranslate"><span class="pre">something</span></code> is what the programmer wants to provide as output from the function after execution of all the statements (e.g. the result of some arithmetic operations). The return statement is optional.</p>
+<p><code class="docutils literal notranslate"><span class="pre">something</span></code> is what the programmer wants to provide as output from the function after execution of all the statements (e.g. the result of some arithmetic operations). The <code class="docutils literal notranslate"><span class="pre">return</span></code> statement is optional.</p>
 <p>To make things less abstract, let’s discuss some examples.</p>
 <div class="section" id="parameters">
 <h3><span class="section-number">2.3.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>

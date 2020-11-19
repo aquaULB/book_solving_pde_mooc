@@ -334,10 +334,10 @@
 <h2><span class="section-number">3.2. </span>Heated rod<a class="headerlink" href="#heated-rod" title="Permalink to this headline">¶</a></h2>
 <p>Let’s consider a rod made of heat conducting material. Under some simplifications, the temperature <span class="math notranslate nohighlight">\(T(x,t)\)</span> along the rod can be determined by solving the following heat equation based on Fourier’s law,</p>
 <div class="math notranslate nohighlight">
-\[    \partial_t T(x,t) = \alpha \frac{d^2 T}{dx^2}(x,t) + \sigma (x,t)\]</div>
+\[    \frac{\partial T}{\partial t}(x,t) = \alpha \frac{\partial^2 T} {\partial x^2}(x,t) + \sigma (x,t).\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the thermal conductivity of the rod and <span class="math notranslate nohighlight">\(\sigma (x,t)\)</span> is a heat source present along the rod. To close this equation, some boundary conditions at both ends of the rod need to be specified. If these boundary conditions and <span class="math notranslate nohighlight">\(\sigma\)</span> do not depend on time, the temperature within the rod ultimately settles to the solution of the steady-state equation:</p>
 <div class="math notranslate nohighlight">
-\[ \frac{d^2 T}{dx^2}(x) = b(x), \; \; \; b(x) = -\sigma(x)/\alpha.\]</div>
+\[    \frac{d^2 T}{dx^2}(x) = b(x), \; \; \; b(x) = -\sigma(x)/\alpha.\]</div>
 <p>In the examples below, we solve this equation with some common boundary conditions.</p>
 <p>To proceed, the equation is discretized on a numerical grid containing <span class="math notranslate nohighlight">\(nx\)</span> grid points, and the second-order derivative is computed using the centered second-order accurate finite-difference formula derived in the previous notebook. Without loss of generality, we assume that the length of the rod is equal to <span class="math notranslate nohighlight">\(1\)</span> so that <span class="math notranslate nohighlight">\(x\in [0,\ 1]\)</span>.</p>
 <p>If we denote respectively by <span class="math notranslate nohighlight">\(T_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> the values of <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(b\)</span> at the grid nodes, our discretized equation reads:</p>

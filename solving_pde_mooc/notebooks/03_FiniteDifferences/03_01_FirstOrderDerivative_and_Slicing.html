@@ -358,38 +358,38 @@
 <div class="math notranslate nohighlight" id="equation-eq-forwardtaylordiff1">
 <span class="eqno">(25)<a class="headerlink" href="#equation-eq-forwardtaylordiff1" title="Permalink to this equation">¶</a></span>\[f'(x) = \frac{f(x+\Delta x) - f(x)}{\Delta x}+O(\Delta x)\]</div>
 <p>This expression is the usual left derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
-<p>To approximate <a class="reference internal" href="#equation-eq-forwardtaylordiff1">(25)</a> on the grid <span class="math notranslate nohighlight">\(x_0, x_1,\dots, x_i,\dots x_{n-1}, x_n\)</span>, we define the following first-oder accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
+<p>To approximate <a class="reference internal" href="#equation-eq-forwardtaylordiff1">(25)</a> on the grid <span class="math notranslate nohighlight">\(x_0, x_1,\dots, x_i,\dots x_{n-1}, x_n\)</span>, we define the following first-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-forwardnodal">
 <span class="eqno">(26)<a class="headerlink" href="#equation-eq-forwardnodal" title="Permalink to this equation">¶</a></span>\[f^{' \rm f}_i = \frac{f_{i+1} - f_i}{\Delta x},\;\; \hbox{forward finite difference}.\]</div>
-<p>The stencil for this expression is given by the sequence <span class="math notranslate nohighlight">\([0, 1]\)</span>, where 0 stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are <span class="math notranslate nohighlight">\([-1, 1]\)</span> (see <a class="reference internal" href="#equation-eq-diffgeneric">(23)</a>).</p>
+<p>The stencil for this expression is given by the sequence <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>, where <code class="docutils literal notranslate"><span class="pre">0</span></code> stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> (see <a class="reference internal" href="#equation-eq-diffgeneric">(23)</a>).</p>
 <p>In the following figure we illustrate the stencil and mark in red the points involved in the computation:</p>
 <a class="reference internal image-reference" href="../../../_images/forwardDiff1.png"><img alt="../../../_images/forwardDiff1.png" src="../../../_images/forwardDiff1.png" style="width: 600px;" /></a>
 <p>Above the stencil, we display the quantity computed, and below the stencil we display the quantities involved in its computations.</p>
-<p>It is important to highlight that the <em>enumeration of a stencil has nothing to do with the enumeration of the grid points</em>. The enumeration of grid points usually starts at one of the grid boundaries (<span class="math notranslate nohighlight">\(x_0\)</span> in our cases) and ends at another boundary. The enumeration of a stencil is characteristic of each particular approximation. The stencil point labeled <span class="math notranslate nohighlight">\(0\)</span> corresponds to the grid point at which the derivative is being approximated. The stencil indices then decrease to the left of this point and increase to its right. This is why in the above example the stencil is <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
+<p>It is important to highlight that the <em>enumeration of a stencil has nothing to do with the enumeration of the grid points</em>. The enumeration of grid points usually starts at one of the grid boundaries (<span class="math notranslate nohighlight">\(x_0\)</span> in our cases) and ends at another boundary. The enumeration of a stencil is characteristic of each particular approximation. The stencil point labeled <span class="math notranslate nohighlight">\(0\)</span> corresponds to the grid point at which the derivative is being approximated. The stencil indices then decrease to the left of this point and increase to its right. This is why in the above example the stencil is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.</p>
 <p>In the above stencil, we use two grid points - <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_{i+1}\)</span> - to obtain a first-order accurate expression for the first-order derivative at <span class="math notranslate nohighlight">\(x_i\)</span>. It is obvious that the forward finite difference formula <a class="reference internal" href="#equation-eq-forwardnodal">(26)</a> cannot be used at the right boundary node <span class="math notranslate nohighlight">\(x_n\)</span>. In section <a class="reference external" href="#One-sided-finite-differences">One-sided finite differences</a>, we discuss how the boundary nodes can be handled when the derivatives are being evaluated using finite differences.</p>
 <p>Let us now define the backward finite-differences scheme in an identical manner. As Taylor’s theorem is valid for <span class="math notranslate nohighlight">\(x\)</span> in the interval <span class="math notranslate nohighlight">\(a &lt; x-\Delta x \le x \le x+\Delta x &lt; b\)</span>, we can approximate <span class="math notranslate nohighlight">\(f(x-\Delta x)\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
 \[f(x-\Delta x) \approx f(x) - f'(x)\Delta x. \]</div>
-<p>We can then define the first-order accurate backward finite-differences formula for the first order derivative of <span class="math notranslate nohighlight">\(f(x)\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span> as:</p>
+<p>We can then define the first-order accurate backward finite-differences formula for the first-order derivative of <span class="math notranslate nohighlight">\(f(x)\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span> as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-backwardnodal">
 <span class="eqno">(27)<a class="headerlink" href="#equation-eq-backwardnodal" title="Permalink to this equation">¶</a></span>\[f^{'\rm b}_i = \frac{f_i - f_{i-1}}{\Delta x}, \;\; \hbox{backward finite difference}. \]</div>
-<p>It is based on the right derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>. Highlighting in red the stencil points used to build expression <a class="reference internal" href="#equation-eq-backwardnodal">(27)</a> we have,</p>
+<p>It is based on the right derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>. Highlighting in red the stencil points used to build expression <a class="reference internal" href="#equation-eq-backwardnodal">(27)</a>, we have:</p>
 <a class="reference internal image-reference" href="../../../_images/backwardDiff1.png"><img alt="../../../_images/backwardDiff1.png" src="../../../_images/backwardDiff1.png" style="width: 600px;" /></a>
 <p>As the forward finite-difference approximation cannot be used at the right boundary node <span class="math notranslate nohighlight">\(x_n\)</span>, the backward finite-difference approximation cannot be used at the left boundary node <span class="math notranslate nohighlight">\(x_0\)</span>. We also note that <span class="math notranslate nohighlight">\(f^{'\rm b}_{i+1} = f^{'\rm f}_i\)</span>.</p>
-<p>Let us now derive a higher order accurate approximation for <span class="math notranslate nohighlight">\(f'(x)\)</span>. Resorting again to Taylor’s theorem we write:</p>
+<p>Let us now derive a higher-order accurate approximation for <span class="math notranslate nohighlight">\(f'(x)\)</span>. Resorting again to Taylor’s theorem we write:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}&amp; f(x+\Delta x) \approx f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2 \\
 &amp; f(x-\Delta x) \approx f(x)-f'(x)\Delta x+\frac12 f''(x)\Delta x^2.\end{split}\]</div>
 <p>We substract equations both equations and get:</p>
 <div class="math notranslate nohighlight" id="equation-eq-centeredtaylordiff">
 <span class="eqno">(28)<a class="headerlink" href="#equation-eq-centeredtaylordiff" title="Permalink to this equation">¶</a></span>\[f'(x) = \frac{f(x+\Delta x) - f(x-\Delta x)}{2\Delta x}+O(\Delta x^2),\]</div>
-<p>which leads us to the second-oder accurate approximation of <span class="math notranslate nohighlight">\(f'(x)\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
+<p>which leads us to the second-order accurate approximation of <span class="math notranslate nohighlight">\(f'(x)\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-centereddiff">
 <span class="eqno">(29)<a class="headerlink" href="#equation-eq-centereddiff" title="Permalink to this equation">¶</a></span>\[f^{' \rm c}_i = \frac{f_{i+1} - f_{i-1}}{2\Delta x},\;\; \hbox{centered finite difference}.\]</div>
 <p>This expression is called the centered finite difference first-order derivative and its stencil looks like this:</p>
 <a class="reference internal image-reference" href="../../../_images/centeredDiff1.png"><img alt="../../../_images/centeredDiff1.png" src="../../../_images/centeredDiff1.png" style="width: 600px;" /></a>
 <p>Using just two grid points, it’s not possible to achieve an accuracy of higher order than <span class="math notranslate nohighlight">\(2\)</span>. The centered finite-difference scheme cannot be used both at the left or right boundary nodes of the grid.</p>
-<p>Let us check that our formulas are correct. We first create a fine grid to accurately represent the function <a class="reference internal" href="#equation-eq-testfunc">(22)</a> and its derivative in the interval <span class="math notranslate nohighlight">\(x\in [O, \pi]\)</span>.</p>
+<p>Let us check that our formulas are correct. We first create a fine grid to accurately represent the function <a class="reference internal" href="#equation-eq-testfunc">(22)</a> and its derivative in the interval <span class="math notranslate nohighlight">\(x\in [0, \pi]\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>       <span class="c1"># 3.14...</span>
@@ -412,7 +412,7 @@
 </div>
 </div>
 </div>
-<p>We have built a numpy array for the exact expression of the first-order derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>. But what if we worked with a complicated function or required expressions for higher order derivatives? It is useful to keep in mind that there is Python package just for that - for symbolic computations - <a class="reference external" href="https://docs.sympy.org/latest/index.html">SymPy</a>. We won’t get into details and leave it to you to explore SymPy. Note that SymPy is not part of the basic distribution of Anaconda, you would have to install it.</p>
+<p>We have built a numpy array for the exact expression of the first-order derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>. But what if we worked with a complicated function or required expressions for higher-order derivatives? It is useful to keep in mind that there is Python package just for that - for symbolic computations - <a class="reference external" href="https://docs.sympy.org/latest/index.html">SymPy</a>. We won’t get into details and leave it to you to explore SymPy. Note that SymPy is not part of the basic distribution of Anaconda, you would have to install it.</p>
 <p>Sympy supports <a class="reference external" href="https://docs.sympy.org/latest/tutorial/calculus.html">basic symbolic calculus</a>, and provides <a class="reference external" href="https://docs.sympy.org/latest/modules/utilities/lambdify.html?highlight=lambdify">tools</a> to transform symbolic data to numerical representation.</p>
 <p>To experiment with our finite-difference approximations, we build a coarse grid with <span class="math notranslate nohighlight">\(80\)</span> points, and evaluate the derivative:</p>
 <div class="cell docutils container">
@@ -540,7 +540,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.81 ms ± 83.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.9 ms ± 120 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -553,7 +553,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>289 µs ± 11.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>303 µs ± 22.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -566,7 +566,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>308 µs ± 41.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300 µs ± 13.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -617,7 +617,7 @@ index: -3, value: first.
 </div>
 </div>
 </div>
-<p>The output basically tells us that when <code class="docutils literal notranslate"><span class="pre">start</span></code> is omitted it is implicitly set to <span class="math notranslate nohighlight">\(0\)</span>. Slicing a sequence with <code class="docutils literal notranslate"><span class="pre">sequence[:n]</span></code> is equivalent to <em>extracting subsequence of first <span class="math notranslate nohighlight">\(n\)</span> elements</em>. It is important to keep in mind that the above statement concerns the case of <code class="docutils literal notranslate"><span class="pre">step</span></code><span class="math notranslate nohighlight">\(&gt;0\)</span>. Consider the following example:</p>
+<p>The output basically tells us that when <code class="docutils literal notranslate"><span class="pre">start</span></code> is omitted it is implicitly set to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Slicing a sequence with <code class="docutils literal notranslate"><span class="pre">sequence[:n]</span></code> is equivalent to <em>extracting subsequence of first <span class="math notranslate nohighlight">\(n\)</span> elements</em>. It is important to keep in mind that the above statement concerns the case of <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>. Consider the following example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -648,7 +648,7 @@ index: -3, value: first.
 </div>
 </div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">stop</span></code> is omitted, <code class="docutils literal notranslate"><span class="pre">sequence[n::step]</span></code> for <code class="docutils literal notranslate"><span class="pre">step</span></code><span class="math notranslate nohighlight">\(&gt;0\)</span> extracts the relevant elements from index n up to (and including) the last element of the sequence. If the <code class="docutils literal notranslate"><span class="pre">step</span></code><span class="math notranslate nohighlight">\(&lt;0\)</span>, <code class="docutils literal notranslate"><span class="pre">sequence[n::step]</span></code> extracts the relevant elements from index n down to (and including) the first element of the sequence.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">stop</span></code> is omitted, <code class="docutils literal notranslate"><span class="pre">sequence[n::step]</span></code> for <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> extracts the relevant elements from index n up to (and including) the last element of the sequence. If the <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">sequence[n::step]</span></code> extracts the relevant elements from index n down to (and including) the first element of the sequence.</p>
 <ul class="simple">
 <li><p>Slicing when <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">stop</span></code> are omitted</p></li>
 </ul>
@@ -669,12 +669,12 @@ index: -3, value: first.
 <p>Let’s summarize our little tests by the exact citations taken from <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#sequence-types-list-tuple-range">documentation</a>:</p>
 <p>Consider the slice sequence <code class="docutils literal notranslate"><span class="pre">s</span></code> taken as follows: <code class="docutils literal notranslate"><span class="pre">s[i:j:k]</span></code>, then</p>
 <blockquote>
-<div><p>If i or j are omitted or None, they become “end” values (which end depends on the sign of k). Note, k cannot be zero. If k is None, it is treated like 1.</p>
+<div><p>If <em>i</em> or <em>j</em> are omitted or <code class="docutils literal notranslate"><span class="pre">None</span></code>, they become “end” values (which end depends on the sign of <em>k</em>). Note, <em>k</em> cannot be zero. If <em>k</em> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is treated like <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 </div></blockquote>
 <p>That is pretty much what we’ve observed so far. We would comment on that <code class="docutils literal notranslate"><span class="pre">k</span></code> cannot be zero. This limitation implies that the implementation of this case raises an <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">exception</a> of type <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>. By default occurrences of uncaught exceptions terminate code execution. We won’t get into the details of the treatment of exceptions, but you can read about it on your own if you are interested.</p>
 <p>We would also cite another important piece of documentation on sequences slicing:</p>
 <blockquote>
-<div><p>If i or j is greater than len(s), use len(s).</p>
+<div><p>If <em>i</em> or <em>j</em> is greater than <code class="docutils literal notranslate"><span class="pre">len(s)</span></code>, use <code class="docutils literal notranslate"><span class="pre">len(s)</span></code>.</p>
 </div></blockquote>
 <p>What is so curious about it exactly? Consider the following examples:</p>
 <div class="cell docutils container">
@@ -693,9 +693,9 @@ index: -3, value: first.
 <p>Do you see the point now? <strong>Index overflow does not raise exception in Python slicing</strong>.</p>
 <p>And another important property of slicing:</p>
 <blockquote>
-<div><p>If i is greater than or equal to j, the slice is empty.</p>
+<div><p>If <em>i</em> is greater than or equal to <em>j</em>, the slice is empty.</p>
 </div></blockquote>
-<p>Note that this particular statement concerns the case of <code class="docutils literal notranslate"><span class="pre">step</span></code><span class="math notranslate nohighlight">\(&gt;0\)</span>. Similarly, in the case <code class="docutils literal notranslate"><span class="pre">step</span></code><span class="math notranslate nohighlight">\(&lt;0\)</span>, if <code class="docutils literal notranslate"><span class="pre">j</span></code> is greater than or equal to <code class="docutils literal notranslate"><span class="pre">i</span></code>, the slice is empty. Consider the demo:</p>
+<p>Note that this particular statement concerns the case of <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>. Similarly, in the case <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, if <code class="docutils literal notranslate"><span class="pre">j</span></code> is greater than or equal to <code class="docutils literal notranslate"><span class="pre">i</span></code>, the slice is empty. Consider the demo:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -765,8 +765,8 @@ Value of a after re-assignment: [5, 1, 2, 3]
 </div>
 </div>
 <p>Do you notice something intriguing? The content of the list <code class="docutils literal notranslate"><span class="pre">a</span></code> has been modified by the statement <code class="docutils literal notranslate"><span class="pre">b[0]=5</span></code>. Let’s discuss why this is so.</p>
-<p>The first line of code creates 4 integer objects and a list object. It gives the name <code class="docutils literal notranslate"><span class="pre">a</span></code> to this list. <code class="docutils literal notranslate"><span class="pre">a[0],</span> <span class="pre">a[1],</span> <span class="pre">a[2],</span> <span class="pre">a[3]</span></code> are just shortcuts for the integer objects storing the values <span class="math notranslate nohighlight">\(0, 1, 2, 3\)</span>.</p>
-<p>In the second line of code, we give another name to the list; we tell the code that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are two different names pointing to the same list. <code class="docutils literal notranslate"><span class="pre">b[0],</span> <span class="pre">b[1],</span> <span class="pre">b[2],</span> <span class="pre">b[3]</span></code> are then names pointing to the same integer objects as <code class="docutils literal notranslate"><span class="pre">a[0],</span> <span class="pre">a[1],</span> <span class="pre">a[2],</span> <span class="pre">a[3]</span></code>. For that reason, the initial <code class="docutils literal notranslate"><span class="pre">print</span></code>statement outputs the content of the list <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>The first line of code creates 4 integer objects and a list object. It gives the name <code class="docutils literal notranslate"><span class="pre">a</span></code> to this list. <code class="docutils literal notranslate"><span class="pre">a[0],</span> <span class="pre">a[1],</span> <span class="pre">a[2],</span> <span class="pre">a[3]</span></code> are just shortcuts for the integer objects storing the values <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3</span></code>.</p>
+<p>In the second line of code, we give another name to the list; we tell the code that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are two different names pointing to the same list. <code class="docutils literal notranslate"><span class="pre">b[0],</span> <span class="pre">b[1],</span> <span class="pre">b[2],</span> <span class="pre">b[3]</span></code> are then names pointing to the same integer objects as <code class="docutils literal notranslate"><span class="pre">a[0],</span> <span class="pre">a[1],</span> <span class="pre">a[2],</span> <span class="pre">a[3]</span></code>. For that reason, the initial <code class="docutils literal notranslate"><span class="pre">print</span></code> statement outputs the content of the list <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
 <p>The statement <code class="docutils literal notranslate"><span class="pre">b[0]=5</span></code> then creates another integer object storing the value <span class="math notranslate nohighlight">\(5\)</span> and <code class="docutils literal notranslate"><span class="pre">b[0]</span></code> becomes a shortcut to this new object. The list <code class="docutils literal notranslate"><span class="pre">b</span></code> is obviously affected. But the system has been told that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are nicknames for the same list. Note that we have not re-assigned <code class="docutils literal notranslate"><span class="pre">b</span></code> to another list, we have only changed the content of the list; this is allowed as a list in Python is mutable (you can change its content). So <code class="docutils literal notranslate"><span class="pre">a[0]</span></code> now also points to the integer object storing <span class="math notranslate nohighlight">\(5\)</span> and this explains the output produced by the last print statement.</p>
 <p>If you really want to change the content of the list <code class="docutils literal notranslate"><span class="pre">b</span></code> without affecting <code class="docutils literal notranslate"><span class="pre">a</span></code>, you need to create a separate copy of <code class="docutils literal notranslate"><span class="pre">a</span></code> and give that copy the name <code class="docutils literal notranslate"><span class="pre">b</span></code>. This can be done as follows:</p>
 <div class="cell docutils container">
@@ -880,17 +880,17 @@ slice: [9999999, 2, 3, {&#39;hello&#39;: &#39;world&#39;, &#39;bye&#39;: &#39;wo
 <p>The inconvenience of this formulation is that it is second-order accurate for interior grid points but only first-order accurate at boundary nodes. It might not seem a big issue, but for certain problems the overall accuracy of the solution will be first order throughout the domain and not second order as we might have wished. We will give an example of this behavior later on.</p>
 <p>To improve our discretized operator, we have to find second-order accurate expressions for the boundary nodes and we can use Taylor’s theorem to achieve this goal. At the left boundary node we have:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}f(x_0 + \Delta) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
-f(x_0 + 2\Delta) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\end{split}\]</div>
+\[\begin{split}f(x_0 + \Delta x) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
+f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\end{split}\]</div>
 <p>If we multiply the first equation by two and then substract the second one, we get:</p>
 <div class="math notranslate nohighlight">
-\[4 f(x_0 + \Delta) - f(x_0 + 2\Delta) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)\]</div>
-<p>We can then define the following second-oder accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_0\)</span>:</p>
+\[4 f(x_0 + \Delta x) - f(x_0 + 2\Delta x) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)\]</div>
+<p>We can then define the following second-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}\]</div>
 <p>The stencil for this expression is represented as:</p>
 <a class="reference internal image-reference" href="../../../_images/onesideDiff1.png"><img alt="../../../_images/onesideDiff1.png" src="../../../_images/onesideDiff1.png" style="width: 600px;" /></a>
-<p>Similarly, the following expression constitutes a second-oder accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_n\)</span>,</p>
+<p>Similarly, the following expression constitutes a second-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_n\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}\]</div>
 <p>and its stencil is:</p>
@@ -947,7 +947,7 @@ f(x_0 + 2\Delta) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta
 <div class="section" id="summary">
 <h2><span class="section-number">1.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook, we learned how to approximate derivatives using finite differences. We illustrated how finite-difference formulas can be derived and showed how to treat boundary nodes in the numerical grid.</p>
-<p>Besides that, we’ve explained the Python slicing and motivated its usage showing its advantage over Python looping. In the next notebook we extend our knowledge on finite differences by considering higher order derivatives.</p>
+<p>Besides that, we’ve explained the Python slicing and motivated its usage showing its advantage over Python looping. In the next notebook we extend our knowledge on finite differences by considering higher-order derivatives.</p>
 </div>
 </div>
 
