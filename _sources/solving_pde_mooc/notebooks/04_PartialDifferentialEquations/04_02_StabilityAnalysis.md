@@ -212,7 +212,7 @@ In matrix notation, we can write:
 
 ```{math}
 :label: eq:iterunp1
-    \boldsymbol{u}^{n+1} = (I-\frac{cdt}{2\Delta x}B)\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = (I-\frac{cdt}{2\Delta x}B)^{n+1}\boldsymbol{u}^{0}
+    \boldsymbol{u}^{n+1} = (I+\frac{cdt}{2\Delta x}B)\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = (I+\frac{cdt}{2\Delta x}B)^{n+1}\boldsymbol{u}^{0}
 ```
 
 Using our usual boundary conditions, the matrix $B$ is defined as:
@@ -266,7 +266,7 @@ This property is very useful here as it allows us to make a direct connexion wit
 
 where $\Lambda$ is the diagonal matrix built with the $(nx-2)$ eigenvalues of $B$. In these coordinates, our problem is reduced to a system of $nx-2$ uncoupled equations.
 
-Our solution will remain finite as long as the condition $\vert 1  -\frac{cdt}{2\Delta x}\Lambda_k\vert <1, \forall k$. Unfortunately there is no way to satisfy these constraints as the eigenvalues {eq}`eq:eigenvals1` are purely imaginary with $b=-1$ and $c=1$. The numerical scheme discussed here is therefore *unconditionnally unstable* for the first order wave equation.
+Our solution will remain finite as long as the condition $\vert 1  -\frac{cdt}{2\Delta x}\lambda_k\vert <1, \forall k$. Unfortunately there is no way to satisfy these constraints as the eigenvalues {eq}`eq:eigenvals1` are purely imaginary with $b=-1$ and $c=1$. The numerical scheme discussed here is therefore *unconditionnally unstable* for the first order wave equation.
 
 +++
 

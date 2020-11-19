@@ -473,7 +473,7 @@
 \[u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_{i-1}}{2\Delta x}\]</div>
 <p>In matrix notation, we can write:</p>
 <div class="math notranslate nohighlight" id="equation-eq-iterunp1">
-<span class="eqno">(36)<a class="headerlink" href="#equation-eq-iterunp1" title="Permalink to this equation">¶</a></span>\[    \boldsymbol{u}^{n+1} = (I-\frac{cdt}{2\Delta x}B)\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = (I-\frac{cdt}{2\Delta x}B)^{n+1}\boldsymbol{u}^{0}\]</div>
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-iterunp1" title="Permalink to this equation">¶</a></span>\[    \boldsymbol{u}^{n+1} = (I+\frac{cdt}{2\Delta x}B)\boldsymbol{u}^{n}\; \; \Leftrightarrow \; \; \boldsymbol{u}^{n+1} = (I+\frac{cdt}{2\Delta x}B)^{n+1}\boldsymbol{u}^{0}\]</div>
 <p>Using our usual boundary conditions, the matrix <span class="math notranslate nohighlight">\(B\)</span> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-discb">
 <span class="eqno">(37)<a class="headerlink" href="#equation-eq-discb" title="Permalink to this equation">¶</a></span>\[\begin{split}B =
@@ -510,7 +510,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 \[    \boldsymbol{z}^{n+1} = (I-\frac{cdt}{2\Delta x}\Lambda) \boldsymbol{z}^{n}
     \; \; \Leftrightarrow \; \; \boldsymbol{z}^{n+1} = (I-\frac{cdt}{2\Delta x}\Lambda)^{n+1}\boldsymbol{z}^{0}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix built with the <span class="math notranslate nohighlight">\((nx-2)\)</span> eigenvalues of <span class="math notranslate nohighlight">\(B\)</span>. In these coordinates, our problem is reduced to a system of <span class="math notranslate nohighlight">\(nx-2\)</span> uncoupled equations.</p>
-<p>Our solution will remain finite as long as the condition <span class="math notranslate nohighlight">\(\vert 1  -\frac{cdt}{2\Delta x}\Lambda_k\vert &lt;1, \forall k\)</span>. Unfortunately there is no way to satisfy these constraints as the eigenvalues <a class="reference internal" href="#equation-eq-eigenvals1">(38)</a> are purely imaginary with <span class="math notranslate nohighlight">\(b=-1\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>. The numerical scheme discussed here is therefore <em>unconditionnally unstable</em> for the first order wave equation.</p>
+<p>Our solution will remain finite as long as the condition <span class="math notranslate nohighlight">\(\vert 1  -\frac{cdt}{2\Delta x}\lambda_k\vert &lt;1, \forall k\)</span>. Unfortunately there is no way to satisfy these constraints as the eigenvalues <a class="reference internal" href="#equation-eq-eigenvals1">(38)</a> are purely imaginary with <span class="math notranslate nohighlight">\(b=-1\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>. The numerical scheme discussed here is therefore <em>unconditionnally unstable</em> for the first order wave equation.</p>
 </div>
 </div>
 <div class="section" id="stability-modified-wavenumber-analysis">
