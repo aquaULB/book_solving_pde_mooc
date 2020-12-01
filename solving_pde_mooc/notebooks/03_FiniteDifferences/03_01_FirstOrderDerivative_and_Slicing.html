@@ -49,6 +49,8 @@
     <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -179,6 +181,23 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
    4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
+   1. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
+   2. The conjugate gradient method
   </a>
  </li>
 </ul>
@@ -540,7 +559,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.9 ms ± 120 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.27 ms ± 152 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -553,7 +572,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>303 µs ± 22.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>306 µs ± 7.13 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -566,7 +585,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300 µs ± 13.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>310 µs ± 7.46 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -879,20 +898,28 @@ slice: [9999999, 2, 3, {&#39;hello&#39;: &#39;world&#39;, &#39;bye&#39;: &#39;wo
     \end{cases}\end{split}\]</div>
 <p>The inconvenience of this formulation is that it is second-order accurate for interior grid points but only first-order accurate at boundary nodes. It might not seem a big issue, but for certain problems the overall accuracy of the solution will be first order throughout the domain and not second order as we might have wished. We will give an example of this behavior later on.</p>
 <p>To improve our discretized operator, we have to find second-order accurate expressions for the boundary nodes and we can use Taylor’s theorem to achieve this goal. At the left boundary node we have:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}f(x_0 + \Delta x) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
-f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+f(x_0 + \Delta x) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
+f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)
+\end{align*}\]</div>
 <p>If we multiply the first equation by two and then substract the second one, we get:</p>
-<div class="math notranslate nohighlight">
-\[4 f(x_0 + \Delta x) - f(x_0 + 2\Delta x) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+4 f(x_0 + \Delta x) - f(x_0 + 2\Delta x) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)
+\end{equation*}\]</div>
 <p>We can then define the following second-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_0\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}
+\end{equation*}\]</div>
 <p>The stencil for this expression is represented as:</p>
 <a class="reference internal image-reference" href="../../../_images/onesideDiff1.png"><img alt="../../../_images/onesideDiff1.png" src="../../../_images/onesideDiff1.png" style="width: 600px;" /></a>
 <p>Similarly, the following expression constitutes a second-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_n\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}
+\end{equation*}\]</div>
 <p>and its stencil is:</p>
 <a class="reference internal image-reference" href="../../../_images/onesideDiff1_2.png"><img alt="../../../_images/onesideDiff1_2.png" src="../../../_images/onesideDiff1_2.png" style="width: 600px;" /></a>
 <p>We can now construct a second-order discretized operator throughout the domain by using the above two expressions at the boundary nodes. Our complete computation of the second-order accurate first-order derivative then looks like (for the sake of completeness, we repeat the whole code here):</p>

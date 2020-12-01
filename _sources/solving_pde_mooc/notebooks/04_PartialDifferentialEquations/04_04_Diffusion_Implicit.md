@@ -65,39 +65,39 @@ We begin by considering the backward Euler time advancement scheme in combinatio
 
 We recall that for a generic ordinary differential equation $y'=f(y,t)$, the backward Euler method is,
 
-```{math}
+\begin{equation*}
 y^{n+1} = y^{n} + \Delta t f(y^{n+1},t).
-```
+\end{equation*}
 
 In our case, the discretization is therefore,
 
-```{math}
+\begin{align*}
 \frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}
-```
+\end{align*}
 
 In matrix notation this is equivalent to:
 
-```{math}
+\begin{equation*}
     (I-A)\boldsymbol{T}^{n+1} = \boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; (I-A)^{n+1}\boldsymbol{T}^{n+1} = \boldsymbol{T}^{0},
-```
+\end{equation*}
 
 where $I$ is the identity matrix. If we adopt Dirichlet boundary conditions, the matrix $A$ is identical to its counterpart for the forward Euler scheme (see previous notebook). For reference, the eigenvalues $m_k$ of $A$ are real and negative:
 
-```{math}
+\begin{equation*}
 m_k = 2\frac{\alpha dt}{dx^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.
-```
+\end{equation*}
 
 If we diagonalize $A$ and denote by $\boldsymbol z=(z_1,\ldots,z_{nx-2})$ the coordinates of $\boldsymbol T$ in the basis of eigenvectors, we have:
 
-```{math}
+\begin{equation*}
 (I-\Lambda)^{n+1} \boldsymbol z^{n+1} = \boldsymbol z^0 
-```
+\end{equation*}
 
 where $\Lambda$ is the diagonal matrix containing the eigenvalues of $A$. Each of the $nx-2$ decoupled equations may therefore be written as:
 
-```{math}
+\begin{equation*}
 z_k^{n+1} = \left(\frac{1}{1-m_k}\right)^{n+1} z_k^0 
-```
+\end{equation*}
 
 Since $m_k < 0\; \forall k$, all the coordinates $z_k$ remain bounded and the algorithm is unconditionally stable.
 
@@ -111,9 +111,9 @@ We can also examine the stability of the algorithm for the case of periodic boun
 
 with the modified wavenumbers being real and defined by,
 
-```{math}
+\begin{equation*}
 k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).
-```
+\end{equation*}
 
 Because all the coefficients $-\alpha k_m'^2$ are real and negative, the Fourier components remain bounded if we discretize eq. {eq}`eq:matHeatBackwardEulerFourier` using the backward time integration method. The algorithm is therefore also unconditionally stable in the case of periodic boundary conditions.
 
@@ -123,9 +123,9 @@ Because all the coefficients $-\alpha k_m'^2$ are real and negative, the Fourier
 
 A popular method for discretizing the diffusion term in the heat equation is the Crank-Nicolson scheme. It is a second-order accurate implicit method that is defined for a generic equation $y'=f(y,t)$ as:
 
-```{math}
+\begin{align*}
 \frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).
-```
+\end{align*}
 
 You should check that this method is indeed second-order accurate in time by expanding $f(y^{n+1}, t^{n+1})$ in Taylor series.
 
@@ -139,31 +139,31 @@ For the heat equation, the Crank-Nicolson method yields the following expression
 
 In matrix form (assuming Dirichlet boundary conditions), this is equivalent to:
 
-```{math}
+\begin{equation*}
     (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.
-```
+\end{equation*}
 
 with $A_{cn}$ being the same matrix as in the previous section except for the prefactor that is now $\displaystyle\frac{\alpha \Delta t}{2\Delta x^2}$.
 
 Both sides of the equation can be diagonalized using the same eigenvectors. Therefore, the coordinates of $\boldsymbol{T}$ in the basis of eigenvectors evolve according to:
 
-```{math}
+\begin{equation*}
     (I-\frac{\Lambda}{2}) \boldsymbol z^{n+1} = (I+\frac{\Lambda}{2})\boldsymbol z^n \Rightarrow \boldsymbol z^{n}_k = \left(\frac{1+m_k/2}{1-m_k/2}\right)^n z^0_k.
-```
+\end{equation*}
 
 Since $m_k < 0\; \forall k$, all the coordinates $z_k$ remain again bounded and the algorithm is unconditionally stable.
 
 In the case of periodic boundary conditions, we may again study the stability of the method by decomposing the temperature field in Fourier modes. According to eq. {eq}`eq:heatCN` we get:
 
-```{math}
+\begin{align*}
     \frac{\hat T^{n+1}(k_m)-\hat T^{n}(k_m)}{\Delta t}= \frac{\alpha}{2\Delta x^2}((&2\cos(k_m\Delta x)-2)\hat T^{n+1}(k_m) \\ &+(2\cos(k_m\Delta x)-2)\hat T^{n}(k_m))
-```
+\end{align*}
 
 or equivalently
 
-```{math}
+\begin{equation*}
     \hat T^{n+1}(k_m) = \frac{1-\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}{1+\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}\hat T^{n}(k_m).
-```
+\end{equation*}
 
 As the denominator is always larger than the numerator, all the Fourier modes remain bounded and we conclude again the algorithm is unconditionally stable.
 

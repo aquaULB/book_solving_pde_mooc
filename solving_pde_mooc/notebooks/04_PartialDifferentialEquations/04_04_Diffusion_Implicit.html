@@ -49,6 +49,8 @@
     <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -58,6 +60,7 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="1. Iteration methods" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" />
     <link rel="prev" title="3. One dimensional heat equation" href="04_03_Diffusion_Explicit.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -178,6 +181,23 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
+   1. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
+   2. The conjugate gradient method
   </a>
  </li>
 </ul>
@@ -331,57 +351,81 @@
 <h2><span class="section-number">4.2. </span>Backward Euler method<a class="headerlink" href="#backward-euler-method" title="Permalink to this headline">¶</a></h2>
 <p>We begin by considering the backward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span> and we do not include the source term for the stability analysis.</p>
 <p>We recall that for a generic ordinary differential equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span>, the backward Euler method is,</p>
-<div class="math notranslate nohighlight">
-\[y^{n+1} = y^{n} + \Delta t f(y^{n+1},t).\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+y^{n+1} = y^{n} + \Delta t f(y^{n+1},t).
+\end{equation*}\]</div>
 <p>In our case, the discretization is therefore,</p>
-<div class="math notranslate nohighlight">
-\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}
+\end{align*}\]</div>
 <p>In matrix notation this is equivalent to:</p>
-<div class="math notranslate nohighlight">
-\[    (I-A)\boldsymbol{T}^{n+1} = \boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; (I-A)^{n+1}\boldsymbol{T}^{n+1} = \boldsymbol{T}^{0},\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    (I-A)\boldsymbol{T}^{n+1} = \boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; (I-A)^{n+1}\boldsymbol{T}^{n+1} = \boldsymbol{T}^{0},
+\end{equation*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix. If we adopt Dirichlet boundary conditions, the matrix <span class="math notranslate nohighlight">\(A\)</span> is identical to its counterpart for the forward Euler scheme (see previous notebook). For reference, the eigenvalues <span class="math notranslate nohighlight">\(m_k\)</span> of <span class="math notranslate nohighlight">\(A\)</span> are real and negative:</p>
-<div class="math notranslate nohighlight">
-\[m_k = 2\frac{\alpha dt}{dx^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+m_k = 2\frac{\alpha dt}{dx^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.
+\end{equation*}\]</div>
 <p>If we diagonalize <span class="math notranslate nohighlight">\(A\)</span> and denote by <span class="math notranslate nohighlight">\(\boldsymbol z=(z_1,\ldots,z_{nx-2})\)</span> the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol T\)</span> in the basis of eigenvectors, we have:</p>
-<div class="math notranslate nohighlight">
-\[(I-\Lambda)^{n+1} \boldsymbol z^{n+1} = \boldsymbol z^0 \]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+(I-\Lambda)^{n+1} \boldsymbol z^{n+1} = \boldsymbol z^0 
+\end{equation*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix containing the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. Each of the <span class="math notranslate nohighlight">\(nx-2\)</span> decoupled equations may therefore be written as:</p>
-<div class="math notranslate nohighlight">
-\[z_k^{n+1} = \left(\frac{1}{1-m_k}\right)^{n+1} z_k^0 \]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+z_k^{n+1} = \left(\frac{1}{1-m_k}\right)^{n+1} z_k^0 
+\end{equation*}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(m_k &lt; 0\; \forall k\)</span>, all the coordinates <span class="math notranslate nohighlight">\(z_k\)</span> remain bounded and the algorithm is unconditionally stable.</p>
 <p>We can also examine the stability of the algorithm for the case of periodic boundary conditions using the modified wavenumber analysis. We adopt the same notations as in the previous notebook and get the same expression for the evolution of the Fourier modes,</p>
 <div class="math notranslate nohighlight" id="equation-eq-matheatbackwardeulerfourier">
 <span class="eqno">(48)<a class="headerlink" href="#equation-eq-matheatbackwardeulerfourier" title="Permalink to this equation">¶</a></span>\[\begin{split}    \frac{d\hat T(k_m,t)}{dt}&amp;=\alpha\left(\frac{e^{-ik_m \Delta x} - 2 + e^{ik_m \Delta x}}{\Delta x^2}\right) \hat{T}(k_m,t) \\
     &amp;= -\alpha k_m'^2 \hat T(k_m,t) \nonumber\end{split}\]</div>
 <p>with the modified wavenumbers being real and defined by,</p>
-<div class="math notranslate nohighlight">
-\[k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).
+\end{equation*}\]</div>
 <p>Because all the coefficients <span class="math notranslate nohighlight">\(-\alpha k_m'^2\)</span> are real and negative, the Fourier components remain bounded if we discretize eq. <a class="reference internal" href="#equation-eq-matheatbackwardeulerfourier">(48)</a> using the backward time integration method. The algorithm is therefore also unconditionally stable in the case of periodic boundary conditions.</p>
 </div>
 <div class="section" id="crank-nicolson-method">
 <h2><span class="section-number">4.3. </span>Crank-Nicolson method<a class="headerlink" href="#crank-nicolson-method" title="Permalink to this headline">¶</a></h2>
 <p>A popular method for discretizing the diffusion term in the heat equation is the Crank-Nicolson scheme. It is a second-order accurate implicit method that is defined for a generic equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span> as:</p>
-<div class="math notranslate nohighlight">
-\[\frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).
+\end{align*}\]</div>
 <p>You should check that this method is indeed second-order accurate in time by expanding <span class="math notranslate nohighlight">\(f(y^{n+1}, t^{n+1})\)</span> in Taylor series.</p>
 <p>For the heat equation, the Crank-Nicolson method yields the following expression:</p>
 <div class="math notranslate nohighlight" id="equation-eq-heatcn">
 <span class="eqno">(49)<a class="headerlink" href="#equation-eq-heatcn" title="Permalink to this equation">¶</a></span>\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\frac{\alpha}{2} \left(\frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}  + 
 \frac{T^{n}_{i-1}-2T^{n}_i+T^{n}_{i+1}}{\Delta x^2}\right)\]</div>
 <p>In matrix form (assuming Dirichlet boundary conditions), this is equivalent to:</p>
-<div class="math notranslate nohighlight">
-\[    (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.
+\end{equation*}\]</div>
 <p>with <span class="math notranslate nohighlight">\(A_{cn}\)</span> being the same matrix as in the previous section except for the prefactor that is now <span class="math notranslate nohighlight">\(\displaystyle\frac{\alpha \Delta t}{2\Delta x^2}\)</span>.</p>
 <p>Both sides of the equation can be diagonalized using the same eigenvectors. Therefore, the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol{T}\)</span> in the basis of eigenvectors evolve according to:</p>
-<div class="math notranslate nohighlight">
-\[    (I-\frac{\Lambda}{2}) \boldsymbol z^{n+1} = (I+\frac{\Lambda}{2})\boldsymbol z^n \Rightarrow \boldsymbol z^{n}_k = \left(\frac{1+m_k/2}{1-m_k/2}\right)^n z^0_k.\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    (I-\frac{\Lambda}{2}) \boldsymbol z^{n+1} = (I+\frac{\Lambda}{2})\boldsymbol z^n \Rightarrow \boldsymbol z^{n}_k = \left(\frac{1+m_k/2}{1-m_k/2}\right)^n z^0_k.
+\end{equation*}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(m_k &lt; 0\; \forall k\)</span>, all the coordinates <span class="math notranslate nohighlight">\(z_k\)</span> remain again bounded and the algorithm is unconditionally stable.</p>
 <p>In the case of periodic boundary conditions, we may again study the stability of the method by decomposing the temperature field in Fourier modes. According to eq. <a class="reference internal" href="#equation-eq-heatcn">(49)</a> we get:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}    \frac{\hat T^{n+1}(k_m)-\hat T^{n}(k_m)}{\Delta t}= \frac{\alpha}{2\Delta x^2}((&amp;2\cos(k_m\Delta x)-2)\hat T^{n+1}(k_m) \\ &amp;+(2\cos(k_m\Delta x)-2)\hat T^{n}(k_m))\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{\hat T^{n+1}(k_m)-\hat T^{n}(k_m)}{\Delta t}= \frac{\alpha}{2\Delta x^2}((&amp;2\cos(k_m\Delta x)-2)\hat T^{n+1}(k_m) \\ &amp;+(2\cos(k_m\Delta x)-2)\hat T^{n}(k_m))
+\end{align*}\]</div>
 <p>or equivalently</p>
-<div class="math notranslate nohighlight">
-\[    \hat T^{n+1}(k_m) = \frac{1-\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}{1+\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}\hat T^{n}(k_m).\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \hat T^{n+1}(k_m) = \frac{1-\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}{1+\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}\hat T^{n}(k_m).
+\end{equation*}\]</div>
 <p>As the denominator is always larger than the numerator, all the Fourier modes remain bounded and we conclude again the algorithm is unconditionally stable.</p>
 <p>Let’s use these implicit methods and compare them with the forward Euler method that we used in the previous notebook.</p>
 </div>
@@ -465,7 +509,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.86 s ± 45.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.71 s ± 40.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -524,7 +568,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.12 s ± 159 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.56 s ± 174 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -538,7 +582,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316334259881643e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.031633425988164e-07
 Time integration required 267493 steps
 </pre></div>
 </div>
@@ -584,7 +628,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>294 ms ± 12.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>264 ms ± 7.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -649,7 +693,7 @@ Time integration required 13107 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>106 ms ± 10.6 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92 ms ± 5.91 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -663,7 +707,7 @@ Time integration required 13107 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191192118759e-08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191192118762e-08
 Time integration required 2383 steps
 </pre></div>
 </div>
@@ -706,6 +750,7 @@ Time integration required 2383 steps
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="04_03_Diffusion_Explicit.html" title="previous page"><span class="section-number">3. </span>One dimensional heat equation</a>
+    <a class='right-next' id="next-link" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" title="next page"><span class="section-number">1. </span>Iteration methods</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. The conjugate gradient method &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="1. Iteration methods" href="05_01_Iteration_and_2D.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_01_Iteration_and_2D.html">
+   1. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. The conjugate gradient method
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_02_Conjugate_Gradient.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_02_Conjugate_Gradient.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projection-methods">
+   2.2. Projection methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steepest-descend-method">
+   2.3. Steepest descend method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conjugate-gradient-method">
+   2.4. Conjugate gradient method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   2.5. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   2.6. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-conjugate-gradient-method">
+<h1><span class="section-number">2. </span>The conjugate gradient method<a class="headerlink" href="#the-conjugate-gradient-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, we start by importing some modules needed below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">diags</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../modules&#39;</span><span class="p">)</span>
+<span class="c1"># Function to compute an error in L2 norm</span>
+<span class="kn">from</span> <span class="nn">norms</span> <span class="kn">import</span> <span class="n">l2_diff</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous notebooks we have already considered several ways to iteratively solve matrix problems like <span class="math notranslate nohighlight">\(A\boldsymbol p =\boldsymbol b\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> has some particular characteristics it’s possible to devise even faster methods. Here we will assume that <span class="math notranslate nohighlight">\(A\)</span> is symmetric and positive-definite:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \boldsymbol p\not = 0. 
+\end{equation*}\]</div>
+<p>The resolution of the linear system may then be viewed as a minimization problem and one of the most popular method to use in that case is the conjugate gradient method.</p>
+<p>In this notebook we will describe the conjugate gradient method algorithm but let us first introduce some key concepts and a more primitive algorithm called the method of steepest descent.</p>
+</div>
+<div class="section" id="projection-methods">
+<h2><span class="section-number">2.2. </span>Projection methods<a class="headerlink" href="#projection-methods" title="Permalink to this headline">¶</a></h2>
+<p>Let’s consider the following quadratic functional of the vector <span class="math notranslate nohighlight">\(\boldsymbol p\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  J (\boldsymbol p) = \frac12\boldsymbol{p}^{T}A\boldsymbol{p} - \boldsymbol{p}^{T}\boldsymbol{b},
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is a symmetric positive-definite matrix and <span class="math notranslate nohighlight">\(\boldsymbol b\)</span> is any vector. Then there is exactly one vector that minimizes <span class="math notranslate nohighlight">\(\boldsymbol J (\boldsymbol p)\)</span> and this vector is the solution of the linear equation,</p>
+<div class="math notranslate nohighlight" id="equation-eq-linearsystem">
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-linearsystem" title="Permalink to this equation">¶</a></span>\[  A\boldsymbol{p} = \boldsymbol{b}.\]</div>
+<p>The proof of this statement is straightforward. Let us compute the gradient of <span class="math notranslate nohighlight">\(J\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \boldsymbol{\nabla} J = A\boldsymbol{p}-\boldsymbol{b}
+\end{equation*}\]</div>
+<p>To get the above expression we have used <span class="math notranslate nohighlight">\(A=A^T\)</span>. The gradient of <span class="math notranslate nohighlight">\(J\)</span> is therefore equal to zero if <span class="math notranslate nohighlight">\(A\boldsymbol{p} = \boldsymbol{b}\)</span>. Furthermore, because <span class="math notranslate nohighlight">\(A\)</span> is positive-definite, <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> defines a minimum of <span class="math notranslate nohighlight">\(J\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol q\)</span> is not a solution of the linear system <a class="reference internal" href="#equation-eq-linearsystem">(57)</a>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol r = \boldsymbol b - A\boldsymbol q \not = 0\]</div>
+<p><span class="math notranslate nohighlight">\(\boldsymbol r\)</span> is called the <strong>residual</strong> and measures by how much the system is not satisfied. The residual is proportional to the gradient of <span class="math notranslate nohighlight">\(J\)</span> and therefore indicates the direction of steepest descent along <span class="math notranslate nohighlight">\(J\)</span>.</p>
+<p>In the projection methods we describe below, the residual is used to search for the solution. These methods are quite general and define the iteration procedure using the following formula:</p>
+<div class="math notranslate nohighlight">
+\[{\boldsymbol p}^{k+1}={\boldsymbol p}^k + \alpha_k {\boldsymbol d}^k\]</div>
+<p>Similarly to the Jacobi or Gauss-Seidel methods, the iteration starts with a guess <span class="math notranslate nohighlight">\(\boldsymbol p_0\)</span>. Each method also requires a definition of the so-called search directions <span class="math notranslate nohighlight">\(\boldsymbol d_k\)</span> and the coefficients <span class="math notranslate nohighlight">\(\alpha_k\)</span> defining the magnitude of the jumps along the search directions.</p>
+<p>Some projection methods are suitable for non-symmetric matrices <span class="math notranslate nohighlight">\(A\)</span> but we don’t consider them here.</p>
+</div>
+<div class="section" id="steepest-descend-method">
+<h2><span class="section-number">2.3. </span>Steepest descend method<a class="headerlink" href="#steepest-descend-method" title="Permalink to this headline">¶</a></h2>
+<p>The first method we consider is the <em>steepest descent method</em>.</p>
+<p>We showed in the previous section that the solution of the linear system minimizes the quadratic functional <span class="math notranslate nohighlight">\(J\)</span> and that the residual is aligned with the gradient of <span class="math notranslate nohighlight">\(J\)</span>. To rapidly lower the value of <span class="math notranslate nohighlight">\(J\)</span>, one can therefore head in that direction to go from <span class="math notranslate nohighlight">\({\boldsymbol p}^{k}\)</span> to <span class="math notranslate nohighlight">\({\boldsymbol p}^{k+1}\)</span>. This is exactly what the steepest descent method does and it also chooses <span class="math notranslate nohighlight">\(\alpha_k\)</span> so that <span class="math notranslate nohighlight">\(J({\boldsymbol p}^{k+1})\)</span> is as small as possible. We therefore have,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\boldsymbol d}^{k} &amp;= {\boldsymbol r}^{k}, \\
+\frac{\partial}{\partial \alpha_k}{J({\boldsymbol p}^{k+1})}=\frac{\partial}{\partial \alpha_k}J({\boldsymbol p}^{k}+ \alpha_k {\boldsymbol r}^{k})&amp;= 0.\end{split}\]</div>
+<p>The second condition implies that:</p>
+<div class="math notranslate nohighlight">
+\[\alpha_k = \frac{{\boldsymbol r}^k \cdot {\boldsymbol r}^k}{A{\boldsymbol r}^k \cdot {\boldsymbol r}^k}.\]</div>
+<p>Let’s see how this algorithm applies to the Poisson equation (with Dirichlet boundary conditions). We recall that our discretized equation reads:</p>
+<div class="math notranslate nohighlight">
+\[    \frac{p_{i-1,j}-2p_{i,j} + p_{i+1,j}}{\Delta x^2} + \frac{p_{i,j-1}-2p_{i,j} + p_{i,j+1}}{\Delta y^2}= b_{i,j} \]</div>
+<p>For the theoretical considerations developed above, the unknowns <span class="math notranslate nohighlight">\(p_{i,j}\)</span> are grouped into a <span class="math notranslate nohighlight">\(nx-2\times ny-2\)</span> vector <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> (for example using row major ordering). However, as we only have to know the action of the matrix on vectors, we never have to construct these 1D arrays explicitly and we can use the <span class="math notranslate nohighlight">\((i,j)\)</span> labeling directly (this will become clear when examining the algorithm below). There is however two conditions we need check. First, is the discretized Laplacian symmetric? If you look back at notebook <code class="docutils literal notranslate"><span class="pre">05_01_Iteration_and_2D</span></code> you will see that it is indeed the case. Second, is the corresponding matrix positive-definite? In fact, the discretized Laplacian is negative-definite because it is diagonalizable and all its eigenvalues are negative. They are given by <a class="bibtex reference internal" href="#watkins2010" id="id1">[Wat10]</a>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \lambda_{kl} = -4\left[\sin^2 \frac{k\pi}{2(nx-1)} + \sin^2 \frac{l\pi}{2(ny-1)}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
+\end{equation*}\]</div>
+<p>Because the the discretized Laplacian is negative-defined, we will solve the equivalent <span class="math notranslate nohighlight">\(-\nabla^2 p=-b\)</span> instead to stay connected with the conventions adopted above. But we could also think of the steepest iterative method in terms of a maximizing problem and rephrase all the statements accordingly.</p>
+<p>We will solve the Poisson equation with the same grid and parameters as in notebook <code class="docutils literal notranslate"><span class="pre">05_01_Iteration_and_2D</span></code>. We also choose the same right-hand side:</p>
+<div class="math notranslate nohighlight">
+\[b = \sin(\pi x) \cos(\pi y) + \sin(5\pi x) \cos(5\pi y)\]</div>
+<p>and the exact solution is again:</p>
+<div class="math notranslate nohighlight">
+\[p_e = -\frac{1}{2\pi^2}\sin(\pi x) \cos(\pi y) -\frac{1}{50\pi^2}\sin(5\pi x) \cos(5\pi y)\]</div>
+<p>These two functions can be obtained by calling the corresponding Python functions we have defined in the file <code class="docutils literal notranslate"><span class="pre">iter_module.py</span></code> so we import them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iter_module</span> <span class="kn">import</span> <span class="n">p_exact_2d</span><span class="p">,</span> <span class="n">rhs_2d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The grid parameters are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid parameters.</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">101</span>                  <span class="c1"># number of points in the x direction</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">101</span>                  <span class="c1"># number of points in the y direction</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span>     <span class="c1"># limits in the x direction</span>
+<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span>    <span class="c1"># limits in the y direction</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span>          <span class="c1"># domain length in the x direction</span>
+<span class="n">ly</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span>          <span class="c1"># domain length in the y direction</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># grid spacing in the x direction</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">ly</span> <span class="o">/</span> <span class="p">(</span><span class="n">ny</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># grid spacing in the y direction</span>
+
+<span class="c1"># Create the gridline locations and the mesh grid;</span>
+<span class="c1"># see notebook 02_02_Runge_Kutta for more details</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Create the source term.</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">rhs_2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Compute the exact solution.</span>
+<span class="n">p_exact</span> <span class="o">=</span> <span class="n">p_exact_2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now define a function that computes the action of <span class="math notranslate nohighlight">\(-A\)</span> on any vector. Remember, we still use <span class="math notranslate nohighlight">\((i, j)\)</span> labeling so that all we need to know is <span class="math notranslate nohighlight">\((-A\boldsymbol v)_{ij}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">A</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the action of (-) the Poisson operator on any</span>
+<span class="sd">    vector v_{ij} for the interior grid nodes</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    v : numpy.ndarray</span>
+<span class="sd">        input vector</span>
+<span class="sd">    dx : float</span>
+<span class="sd">         grid spacing in the x direction</span>
+<span class="sd">    dy : float</span>
+<span class="sd">        grid spacing in the y direction</span>
+<span class="sd">        </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Av : numpy.ndarray</span>
+<span class="sd">        action of A on v</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">Av</span> <span class="o">=</span> <span class="o">-</span><span class="p">((</span><span class="n">v</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> 
+       <span class="o">+</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:])</span><span class="o">/</span><span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">Av</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now compute the initial guess and create storages for the residual <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(A(r)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial guess</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+
+<span class="c1"># Place holders for the residual r and A(r)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+<span class="n">Ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then specify our convergence parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">max_it</span> <span class="o">=</span> <span class="mi">20000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we are now ready to iterate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">max_it</span><span class="p">)</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;iter / max_it&quot;</span><span class="p">);</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># iteration counter</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">tol_hist_jac</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">p0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">it</span> <span class="o">&gt;</span> <span class="n">max_it</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Solution did not converged within the maximum&#39;</span>
+              <span class="s1">&#39; number of iterations&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Last l2_diff was: </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s1">.5e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+    
+    <span class="c1"># Residual</span>
+    <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="c1"># Laplacian of the residual</span>
+    <span class="n">Ar</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="c1"># Magnitude of jump</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">Ar</span><span class="p">)</span>
+    <span class="c1"># Iterated solution</span>
+    <span class="n">pnew</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">r</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">tol_hist_jac</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+    
+    <span class="c1"># Get ready for next iteration</span>
+    <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">pnew</span><span class="p">)</span>
+    
+    <span class="c1"># We update our progress bar</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The solution converged after </span><span class="si">{</span><span class="n">it</span><span class="si">}</span><span class="s1"> iterations&#39;</span><span class="p">)</span>
+
+<span class="c1"># When the progress bar will not be used</span>
+<span class="c1"># further, it has to be closed</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "66709b1a9d9b4456a93fd12af6ef1d18", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 12154 iterations
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can measure the accuracy of our solution with the same diagnostics as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p_exact</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The l2 difference between the computed solution &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;and the exact solution is:</span><span class="se">\n</span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The l2 difference between the computed solution and the exact solution is:
+1.3690442902216607e-07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_1</span><span class="p">,</span> <span class="n">ax_2</span><span class="p">,</span> <span class="n">ax_3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># We shall now use the</span>
+<span class="c1"># matplotlib.pyplot.contourf function.</span>
+<span class="c1"># As X and Y, we pass the mesh data.</span>
+<span class="c1">#</span>
+<span class="c1"># For more info</span>
+<span class="c1"># https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.contourf.html</span>
+<span class="c1">#</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">pnew</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">p_exact</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># plot along the line y=0:</span>
+<span class="n">jc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ly</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p_exact</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$p_e$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pnew</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$pnew$&#39;</span><span class="p">)</span>
+
+<span class="c1"># add some labels and titles</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Exact solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x,0)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_02_Conjugate_Gradient_22_0.png" src="../../../_images/05_02_Conjugate_Gradient_22_0.png" />
+</div>
+</div>
+<p>This looks good: we have converged close to the exact solution. The bad news is that if you time the solution you will see that it more than two times slower than the Jacobi method. This is not a big surprise as the algorithm needs two evaluations of <span class="math notranslate nohighlight">\(A(v)\)</span> per iteration. But the good news is that by changing the algorithm a bit, we can drastically cut the number of iterations. To that end, let us discuss the conjugate gradient algorithm.</p>
+</div>
+<div class="section" id="conjugate-gradient-method">
+<h2><span class="section-number">2.4. </span>Conjugate gradient method<a class="headerlink" href="#conjugate-gradient-method" title="Permalink to this headline">¶</a></h2>
+<p>With steepest descent, we use the residual as the search direction. If you compute <span class="math notranslate nohighlight">\({\boldsymbol r}^{k+1}\cdot {\boldsymbol r}^k\)</span> you will see that two successive residuals are orthogonal and so are the search directions. But there is nothing to prevent the algorithm from making several jumps in the same (or a similar) direction.  Imagine you wanted to go from the intersection of the 5th avenue and 23rd street to the intersection of the 9th avenue and 30th street. Knowing that each segment costs the same number of computations (one iteration), would you follow the red path or green path?</p>
+<a class="reference internal image-reference" href="../../../_images/jumps.png"><img alt="../../../_images/jumps.png" src="../../../_images/jumps.png" style="width: 350px;" /></a>
+<p>The conjugate gradient method is built upon the idea of reducing the number of jumps and make sure the algorithm never selects the same direction twice. To achieve this, one needs the following choices for the size of the jumps and search directions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\alpha^n &amp;= \frac{{\boldsymbol r}^n \cdot {\boldsymbol r}^n}{A{\boldsymbol d}^n \cdot {\boldsymbol d}^n} \\
+{\boldsymbol d}^{n+1}&amp;={\boldsymbol r}^{n+1}+\beta^{n+1}{\boldsymbol d}^{n}, \hbox{ with } \beta^{n+1} = \frac{{\boldsymbol r}^{n+1} \cdot {\boldsymbol r}^{n+1}}{{\boldsymbol r}^n \cdot {\boldsymbol r}^n}\\ \hbox{ and } {\boldsymbol d}^{0} &amp;= {\boldsymbol r}^{0}.\end{split}\]</div>
+<p>Obviously, the search directions are no longer equal to the residuals but they are a linear combination of the residual and the previous search direction. What is remarkable about this algorithm is that the residual at iteration <span class="math notranslate nohighlight">\(k+1\)</span> is orthogonal not only to the previous residual but to all of them. As a vector space of dimension <span class="math notranslate nohighlight">\(n\)</span> can only contain <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors, we immediately conclude that the conjugate gradient method necessarily converges (remember the restriction we put on <span class="math notranslate nohighlight">\(A\)</span> though)! The derivation of the properties of the conjugate gradient method can cause some severe headaches. However, they are beautifully explained in this elegant paper: <a class="bibtex reference internal" href="#shewchuk1994" id="id2">[She94]</a>. Here we only apply the algorithm to our sample problem and refer the interested reader to this paper.</p>
+<p>A possible implementation of the method is as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial guess</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+
+<span class="c1"># Place holders for the residual r and A(d)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+<span class="n">Ad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">max_it</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">max_it</span><span class="p">)</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;iter / max_it&quot;</span><span class="p">);</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># iteration counter</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">tol_hist_jac</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">p0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Initial residual r0 and initial search direction d0</span>
+<span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">it</span> <span class="o">&gt;</span> <span class="n">max_it</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Solution did not converged within the maximum&#39;</span>
+              <span class="s1">&#39; number of iterations&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Last l2_diff was: </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s1">.5e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+    <span class="c1"># Laplacian of the search direction.</span>
+    <span class="n">Ad</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="c1"># Magnitude of jump.</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">Ad</span><span class="p">)</span>
+    <span class="c1"># Iterated solution</span>
+    <span class="n">pnew</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">d</span>
+    <span class="c1"># Intermediate computation</span>
+    <span class="n">beta_denom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">)</span>
+    <span class="c1"># Update the residual.</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">*</span><span class="n">Ad</span>
+    <span class="c1"># Compute beta</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta_denom</span>
+    <span class="c1"># Update the search direction.</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">d</span>
+    
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">tol_hist_jac</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+    
+    <span class="c1"># Get ready for next iteration</span>
+    <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">pnew</span><span class="p">)</span>
+    
+    <span class="c1"># We update our progress bar</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The solution converged after </span><span class="si">{</span><span class="n">it</span><span class="si">}</span><span class="s1"> iterations&#39;</span><span class="p">)</span>
+
+<span class="c1"># When the progress bar will not be used</span>
+<span class="c1"># further, it has to be closed</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "48f16e0dbdd344b1b6b4f53939777d76", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 3 iterations
+</pre></div>
+</div>
+</div>
+</div>
+<p>You are not mistaken, it only took 3 iterations to reach the desired tolerance! This is a rather a special case because the right-hand side of the equation is simple. But you can try other choices and still observe the conjugate gradient method to be much faster than the steepest descent method.</p>
+<p>To be sure, let’s measure the accuracy of our solution using our usual diagnostics:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p_exact</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The l2 difference between the computed solution &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;and the exact solution is:</span><span class="se">\n</span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The l2 difference between the computed solution and the exact solution is:
+2.890080056046258e-08
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_1</span><span class="p">,</span> <span class="n">ax_2</span><span class="p">,</span> <span class="n">ax_3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># We shall now use the</span>
+<span class="c1"># matplotlib.pyplot.contourf function.</span>
+<span class="c1"># As X and Y, we pass the mesh data.</span>
+<span class="c1">#</span>
+<span class="c1"># For more info</span>
+<span class="c1"># https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.contourf.html</span>
+<span class="c1">#</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">pnew</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">p_exact</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># plot along the line y=0:</span>
+<span class="n">jc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ly</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p_exact</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$p_e$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pnew</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$pnew$&#39;</span><span class="p">)</span>
+
+<span class="c1"># add some labels and titles</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Exact solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x,0)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_02_Conjugate_Gradient_32_0.png" src="../../../_images/05_02_Conjugate_Gradient_32_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">2.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we provided an illustration of methods known as projection methods. They are called in this way because the jump from one iteration to the next one is along specific search directions.</p>
+<p>The method of steepest descent and the conjugate gradient methods are basic methods belonging to this class. The literature on this topic is vast and there exists a large collection of sophisticated methods tailored to many specific cases. Here we have only scratched the surface.</p>
+<p>The last notebook of this chapter will be devoted to a programming topic. As promised, we will show you how to speed up your Python code when you cannot rely directly on some precompiled function available in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">scipy</span></code>.</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">2.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-solving_pde_mooc/notebooks/05_IterativeMethods/05_02_Conjugate_Gradient-0"><dl class="citation">
+<dt class="bibtex label" id="shewchuk1994"><span class="brackets"><a class="fn-backref" href="#id2">She94</a></span></dt>
+<dd><p>J Shewchuk. An Introduction to the Conjugate Gradient Method Without the Agonizing Pain. 1994.</p>
+</dd>
+<dt class="bibtex label" id="watkins2010"><span class="brackets"><a class="fn-backref" href="#id1">Wat10</a></span></dt>
+<dd><p>DS Watkins. Fondamentals of matrix computations - third edition. 2010.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"08e31d18c0e144fb8be037939b9b9eb9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "131cf18f2c2d47078b7eb9eb3c8a301e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "201b7ca855a24b4ead506bc4474a07d1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "27ddc40c49654db7a5bb1d9ae1b708e4": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "355f4dddb4c740929dd9f68b740951b9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_cb684cdfadfe41e58e8730177cf1a1dc", "placeholder": "\u200b", "style": "IPY_MODEL_201b7ca855a24b4ead506bc4474a07d1", "value": " 3/100 [00:00&lt;00:00, 127.65it/s]"}}, "4113812e5f2749e5928b72e937da1ec6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4698a2ab33224364aea1c619fce909ee": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_bf500359951640bc8289ce4cac80015a", "placeholder": "\u200b", "style": "IPY_MODEL_956354aff2554d77932a9cd7db4dfbd2", "value": "iter / max_it:   3%"}}, "48f16e0dbdd344b1b6b4f53939777d76": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_4698a2ab33224364aea1c619fce909ee", "IPY_MODEL_d2747c04c73046a9bad04661823f1ddd", "IPY_MODEL_355f4dddb4c740929dd9f68b740951b9"], "layout": "IPY_MODEL_4113812e5f2749e5928b72e937da1ec6"}}, "4f1210b76cbb400c93487eac8f48e9f5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_27ddc40c49654db7a5bb1d9ae1b708e4", "placeholder": "\u200b", "style": "IPY_MODEL_5d0f10f7174d4441a98e481aad0970a8", "value": "iter / max_it:  61%"}}, "5d0f10f7174d4441a98e481aad0970a8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "66709b1a9d9b4456a93fd12af6ef1d18": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_4f1210b76cbb400c93487eac8f48e9f5", "IPY_MODEL_a3e2326d027543eeba5e5e1e2597cae5", "IPY_MODEL_c2c8b35b987941219e038566faf64f44"], "layout": "IPY_MODEL_ca87eca937994746994fab9e46a6284a"}}, "78c766e7eb9a4f198ef359f5ea21b016": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "956354aff2554d77932a9cd7db4dfbd2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a3e2326d027543eeba5e5e1e2597cae5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_78c766e7eb9a4f198ef359f5ea21b016", "max": 20000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_e3a4d82de0dd4cd9af54b9568cefc3af", "value": 12154.0}}, "aef5365a876140b4ade7bb2ac95a4b2a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bf500359951640bc8289ce4cac80015a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c2c8b35b987941219e038566faf64f44": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_dbb298b4eb894c059954a35233282df5", "placeholder": "\u200b", "style": "IPY_MODEL_131cf18f2c2d47078b7eb9eb3c8a301e", "value": " 12154/20000 [00:03&lt;00:02, 3154.26it/s]"}}, "ca87eca937994746994fab9e46a6284a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "cb684cdfadfe41e58e8730177cf1a1dc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d2747c04c73046a9bad04661823f1ddd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_aef5365a876140b4ade7bb2ac95a4b2a", "max": 100.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_08e31d18c0e144fb8be037939b9b9eb9", "value": 3.0}}, "dbb298b4eb894c059954a35233282df5": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e3a4d82de0dd4cd9af54b9568cefc3af": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solving_pde_mooc/notebooks/05_IterativeMethods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_01_Iteration_and_2D.html" title="previous page"><span class="section-number">1. </span>Iteration methods</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
