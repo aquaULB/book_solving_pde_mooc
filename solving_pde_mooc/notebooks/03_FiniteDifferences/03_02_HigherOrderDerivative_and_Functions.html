@@ -1075,6 +1075,9 @@ Here prod is equal to 3.
 Outside of the function, the sequence is [0, 1, 1, 1].
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>Because we did not make a copy of the original sequence when writing <code class="docutils literal notranslate"><span class="pre">sequence</span> <span class="pre">=</span> <span class="pre">seq1</span></code> we are changing its content with <code class="docutils literal notranslate"><span class="pre">sequence[0]</span> <span class="pre">=</span> <span class="pre">0</span></code>. Therefore, such statements can have an effect outside of the function and you must be really careful depending on whether it is intended or not. If you do not want to modify the sequence outside of the function, you could write instead:</p>
