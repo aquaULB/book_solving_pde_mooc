@@ -49,6 +49,8 @@
     <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -179,6 +181,23 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
    4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
+   1. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
+   2. The conjugate gradient method
   </a>
  </li>
 </ul>
@@ -331,9 +350,9 @@
 <div class="section" id="taylor-s-theorem">
 <h2><span class="section-number">2.2. </span>Taylor’s theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
 <p>Taylor’s theorem provides a valuable tool to estimate the accuracy of discretized differential operators or time integration schemes <a class="bibtex reference internal" href="#arfken2012" id="id1">[AWH12]</a>.</p>
-<p><em><strong>Theorem.</strong> Let <span class="math notranslate nohighlight">\(x\)</span> be any point in the interval <span class="math notranslate nohighlight">\([a\ b]\)</span> and <span class="math notranslate nohighlight">\(\Delta x\)</span> a small positive real number. Schematically we have</em>:</p>
+<p><em><strong>Theorem.</strong> Let <span class="math notranslate nohighlight">\(x\)</span> be any point in the interval <span class="math notranslate nohighlight">\([a, b]\)</span> and <span class="math notranslate nohighlight">\(\Delta x\)</span> a small positive real number. Schematically we have</em>:</p>
 <img alt="../../../_images/taylor.png" src="../../../_images/taylor.png" />
-<p><em>Let <span class="math notranslate nohighlight">\(f(x)\)</span> be some <span class="math notranslate nohighlight">\(k+1\)</span> times differentiable function defined in <span class="math notranslate nohighlight">\([a\ b]\)</span>, then for each <span class="math notranslate nohighlight">\(\Delta x&gt;0\)</span> there exists a <span class="math notranslate nohighlight">\(\xi\)</span>, so that</em></p>
+<p><em>Let <span class="math notranslate nohighlight">\(f(x)\)</span> be some <span class="math notranslate nohighlight">\(k+1\)</span> times differentiable function defined in <span class="math notranslate nohighlight">\([a, b]\)</span>, then for each <span class="math notranslate nohighlight">\(\Delta x&gt;0\)</span> there exists a <span class="math notranslate nohighlight">\(\xi\)</span>, so that</em></p>
 <div class="math notranslate nohighlight" id="equation-eq-taylorexpansion">
 <span class="eqno">(1)<a class="headerlink" href="#equation-eq-taylorexpansion" title="Permalink to this equation">¶</a></span>\[f(x+\Delta x)=f(x)+f'(x)\Delta x+\frac{f''(x)}{2!}\Delta x^2+\dots + \frac{f^{(k)}(x)}{k!}\Delta x^k + R_{k+1}\]</div>
 <p><em>where <span class="math notranslate nohighlight">\(R_{k+1}\)</span> is a <strong>remainder term</strong>:</em></p>
@@ -539,7 +558,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.91 µs ± 94.1 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.96 µs ± 16.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -565,7 +584,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.76 µs ± 32.4 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.76 µs ± 76.2 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -585,7 +604,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.45 µs ± 17.7 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.29 µs ± 59.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>

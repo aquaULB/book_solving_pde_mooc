@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Iteration methods &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2. The conjugate gradient method" href="05_02_Conjugate_Gradient.html" />
+    <link rel="prev" title="4. One dimensional heat equation: implicit methods" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_02_Conjugate_Gradient.html">
+   2. The conjugate gradient method
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#higher-dimensional-discretizations">
+   1.2. Higher-dimensional discretizations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discretization">
+     1.2.1. Discretization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#direct-inversion">
+     1.2.2. Direct inversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jacobi-method">
+   1.3. Jacobi method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gauss-seidel-method">
+   1.4. Gauss-Seidel method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-of-jacobi-and-gauss-seidel-methods">
+   1.5. Convergence of Jacobi and Gauss-Seidel methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   1.6. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   1.7. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="iteration-methods">
+<h1><span class="section-number">1. </span>Iteration methods<a class="headerlink" href="#iteration-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, we start by importing some modules needed below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">diags</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../modules&#39;</span><span class="p">)</span>
+<span class="c1"># Function to compute an error in L2 norm</span>
+<span class="kn">from</span> <span class="nn">norms</span> <span class="kn">import</span> <span class="n">l2_diff</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous chapter we have discussed how to discretize two examples of partial differential equations: the one dimensional first order wave equation and the heat equation.</p>
+<p>For the heat equation, the stability criteria requires a strong restriction on the time step and implicit methods offer a significant reduction in computational cost compared to explicit methods. Their implementation is a bit more complicated in the sense that they require the inversion of a matrix. When the size of the matrix is not too large, one can rely on efficient direct solvers. However, for very large systems, these become less useful in terms of computational time and they also have very large memory requirements. This is especially true when solving multi-dimensional problems. Consider for example the Poisson equation in three dimensions:</p>
+<div class="math notranslate nohighlight">
+\[    \nabla^2 p(x,y,z)= \frac{\partial^2 p(x,y,z)}{\partial x^2} + \frac{\partial^2 p(x,y,z)}{\partial y^2} + \frac{\partial^2 p(x,y,z)}{\partial z^2} = b(x,y,z)\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the unknown function and <span class="math notranslate nohighlight">\(b\)</span> is the right-hand side. To solve this equation using finite differences we need to introduce a three-dimensional grid. If the right-hand side term has sharp gradients, the number of grid points in each direction must be high in order to obtain an accurate solution. Say we need 1000 points in each direction. That translates into a grid containing <span class="math notranslate nohighlight">\(1000\times 1000\times 1000\)</span> grid points. We thus have <span class="math notranslate nohighlight">\(10^9\)</span> (one billion) unknowns <span class="math notranslate nohighlight">\(p(x_i, y_k, z_l)\)</span> in our problem. If we work in double precision, storing the solution requires approximatively 8 Gb of memory. On current desktop or laptop computers, this represents a significant amount of memory but it’s not extravagant. If we now turn our  attention to the discretized matrix, this is a different story. As we have <span class="math notranslate nohighlight">\(10^9\)</span> unknowns, the discretized Laplace operator in matrix form contains <span class="math notranslate nohighlight">\(10^9\)</span> lines and <span class="math notranslate nohighlight">\(10^9\)</span> columns for a total of <span class="math notranslate nohighlight">\(10^{18}\)</span> entries ! Allocating the memory to hold such a matrix is therefore out of sight for even for the largest supercomputer available today (for a current list of the largest computers in the world see <a class="reference external" href="https://www.top500.org/lists/top500/">Top500.org</a>). Fortunately, the matrix for the Laplace operator is <em>sparse</em> (see notebook 03_02_HigherOrderDerivative_and_Functions). If we store only the non-zero elements of the matrix, the memory needed is drastically reduced. Even though direct solvers may take advantage of this, they are still pushed to their limits.</p>
+<p>In the next section, we explain in more detail how to discretize partial differential equations in more than one dimension and introduce some of the simplest iterative solvers - the Jacobi iteration method and Gauss-Seidel methods - to obtain the solution of the Poisson equation.</p>
+</div>
+<div class="section" id="higher-dimensional-discretizations">
+<h2><span class="section-number">1.2. </span>Higher-dimensional discretizations<a class="headerlink" href="#higher-dimensional-discretizations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discretization">
+<h3><span class="section-number">1.2.1. </span>Discretization<a class="headerlink" href="#discretization" title="Permalink to this headline">¶</a></h3>
+<p>To make the discussion concrete, we focus on the Poisson equation in two dimensions:</p>
+<div class="math notranslate nohighlight" id="equation-eq-poisson2d">
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-poisson2d" title="Permalink to this equation">¶</a></span>\[    \nabla^2 p(x,y)= \frac{\partial^2 p(x,y)}{\partial x^2} + \frac{\partial^2 p(x,y)}{\partial y^2} = b(x,y)\]</div>
+<p>We solve this equation in a rectangular domain defined by:</p>
+<div class="math notranslate nohighlight">
+\[x_0 \leq x \leq x_0+l_x\;\;\;\; y_0 \leq y \leq y_0+l_y\]</div>
+<p>To close the problem, some boundary conditions are needed on the sides of the rectangles. They can be of three different types: Dirichlet, Neumann or Robin.</p>
+<p>To solve the equation numerically, we first need to introduce a 2D grid to hold our unknowns. It is a set of grid points at which we evaluate all physical quantities. For simplicity we work with a uniform gird and the coordinates of our grid points are therefore:</p>
+<div class="math notranslate nohighlight">
+\[ (x_i, y_j) = (x_0, y_0) + (i \Delta x, j \Delta y), \; \; 0\leq i \leq nx - 1,\; 0\leq  j \leq ny - 1\]</div>
+<p>with,</p>
+<div class="math notranslate nohighlight">
+\[    \Delta x=\frac{l_x}{nx-1}, \;\;\;\; \Delta y=\frac{l_y}{ny-1}.\]</div>
+<p>Note that we don’t necessarilly take <span class="math notranslate nohighlight">\(nx=ny\)</span> nor <span class="math notranslate nohighlight">\(\Delta x =\Delta y\)</span> to allow for rectangular domains with anisotropic grid spacing.</p>
+<p>We thus have <span class="math notranslate nohighlight">\(nx\times ny\)</span> variables <span class="math notranslate nohighlight">\(p_{i,j} = p(x_i, y_j)\)</span> distributed on the grid like this:</p>
+<a class="reference internal image-reference" href="../../../_images/2Dgrid.png"><img alt="../../../_images/2Dgrid.png" src="../../../_images/2Dgrid.png" style="width: 500px;" /></a>
+<p>The discretization of <a class="reference internal" href="#equation-eq-poisson2d">(50)</a> using finite differences is straightforward if we discretize the two second-order derivatives along their respective directions. We then get:</p>
+<div class="math notranslate nohighlight" id="equation-eq-discpoisson2d">
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-discpoisson2d" title="Permalink to this equation">¶</a></span>\[\begin{split}    \frac{p_{i-1,j}-2p_{i,j} + p_{i+1,j}}{\Delta x^2} &amp;+ \frac{p_{i,j-1}-2p_{i,j} + p_{i,j+1}}{\Delta y^2}= b_{i,j} \\
+    &amp;\Leftrightarrow \nonumber \\
+    a p_{i-1,j} + cp_{i,j} + a &amp;p_{i+1,j} + gp_{i,j-1}+ gp_{i,j+1} = b_{i,j} \nonumber\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(a=\displaystyle \frac{1}{\Delta x^2}\)</span>, <span class="math notranslate nohighlight">\(g=\displaystyle \frac{1}{\Delta y^2}\)</span>, <span class="math notranslate nohighlight">\(c=\displaystyle -\frac{2}{\Delta x^2}-\frac{2}{\Delta y^2}\)</span>.</p>
+<p>This equation is valid for any couple <span class="math notranslate nohighlight">\((i,j)\)</span> located away from the boundaries. At boundary nodes, the expression needs to be modified to take into account boundary conditions. To continue the discussion, we adopt <em>Dirichlet boundary conditions</em>:</p>
+<div class="math notranslate nohighlight">
+\[p_{0, j} = p_{nx-1, j} = 0\;\; \forall j,\;\;p_{i,0} = p_{i,ny-1}=0\;\; \forall i.\]</div>
+<p>This implies that we have to solve a system containing a total of <span class="math notranslate nohighlight">\((nx-2)\times (ny-2)\)</span> unknowns.
+If we want to represent this equation in matrix form, things get a bit more intricate. We need to store all the unknowns consecutively in a vector. Here we choose to order all grid points in <em>row major order</em>. The first components of our vector are then <span class="math notranslate nohighlight">\(p_{1,1}, p_{1,1},\ldots, p_{1,ny-2}\)</span>. The list then goes on with <span class="math notranslate nohighlight">\(p_{2,1}, p_{2,2},\ldots, p_{2,ny-2}\)</span> and so on until we reach the last components <span class="math notranslate nohighlight">\(p_{nx-2,1}, p_{nx-2,2},\ldots, p_{nx-2,ny-2}\)</span>. The index of any unknown <span class="math notranslate nohighlight">\(p_{i,j}\)</span> in this vector is therefore <span class="math notranslate nohighlight">\(i+j\times (ny-2)\)</span>.</p>
+<p>Let’s take for example <span class="math notranslate nohighlight">\(nx=ny=6\)</span>. The system of equations <a class="reference internal" href="#equation-eq-discpoisson2d">(51)</a> may then be written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \left(
+      \begin{array}{*{16}c}
+        c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   \\
+        a &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   \\
+          &amp; a &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   \\
+          &amp;   &amp; a &amp; c &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   \\
+          b &amp; &amp;   &amp;   &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   \\
+          &amp; g &amp;   &amp;   &amp; a &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   \\
+          &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   &amp;   \\
+          &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp;   \\
+          &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   \\
+          &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   &amp;   \\
+          &amp;   &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp; a &amp;   &amp;   &amp; g &amp;   \\
+          &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp;   &amp;   &amp;   &amp; g \\
+          &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp;   &amp; c &amp; a &amp;   &amp;   \\
+          &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp; a &amp;   \\
+          &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c &amp; a \\
+          &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp;   &amp; g &amp;   &amp;   &amp; a &amp; c
+      \end{array}
+    \right)
+    \left(
+      \begin{array}{*{1}c}
+        p_{1,1} \\ p_{1,2} \\  p_{1,3} \\ p_{1,4} \\ p_{2,1} \\ p_{2,2}  \\  p_{2,3} \\  p_{2,4} \\  p_{3,1} \\  p_{3,2} \\ p_{3,3}  \\  p_{3,4} \\  p_{4,1} \\  p_{4,2} \\ p_{4,3}  \\  p_{4,4} 
+      \end{array}
+    \right)
+    =
+    \left(
+      \begin{array}{*{1}c}
+        b_{1,1} \\ b_{1,2} \\  b_{1,3} \\ b_{1,4} \\ b_{2,1} \\ b_{2,2}  \\  b_{2,3} \\  b_{2,4} \\  b_{3,1} \\  b_{3,2} \\ b_{3,3}  \\  b_{3,4} \\  b_{4,1} \\  b_{4,2} \\ b_{4,3}  \\  b_{4,4} 
+      \end{array}
+    \right)\end{split}\]</div>
+<p>All the blank areas are filled fill zeros and the matrix is sparse. Pay attention to the extra zeros on the diagonals that occur because of the boundary conditions.</p>
+<p>As we did in the one dimensional case, we can graphically represent the stencil we are using. Assuming that <span class="math notranslate nohighlight">\(\Delta x=\Delta y\)</span>, the stencil we just introduced looks like:</p>
+<a class="reference internal image-reference" href="../../../_images/2Dstencil5pt.png"><img alt="../../../_images/2Dstencil5pt.png" src="../../../_images/2Dstencil5pt.png" style="width: 300px;" /></a>
+<p>The factor <span class="math notranslate nohighlight">\(\frac{1}{\Delta x^2}\)</span> in the drawing is there to remind you that all the values in the stencil need to be divided by this factor to get the correct finite difference formula.</p>
+<p>Note that several other stencils are possible. If we had adopted fourth-order accurate centered finite differences, the stencil would be:</p>
+<a class="reference internal image-reference" href="../../../_images/2Dstencil4th.png"><img alt="../../../_images/2Dstencil4th.png" src="../../../_images/2Dstencil4th.png" style="width: 350px;" /></a>
+<p>But there are also some more complex possibilities in which one uses more neighbours around the central grid point:</p>
+<a class="reference internal image-reference" href="../../../_images/2Dstencil9pt.png"><img alt="../../../_images/2Dstencil9pt.png" src="../../../_images/2Dstencil9pt.png" style="width: 300px;" /></a>
+<p>With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation <a class="bibtex reference internal" href="#iserles2008" id="id1">[Ise08]</a>.</p>
+</div>
+<div class="section" id="direct-inversion">
+<h3><span class="section-number">1.2.2. </span>Direct inversion<a class="headerlink" href="#direct-inversion" title="Permalink to this headline">¶</a></h3>
+<p>As an example, let us solve the Poisson equation in the domain <span class="math notranslate nohighlight">\(\displaystyle [0, 1]\times [-\frac12, \frac12]\)</span> using one of <code class="docutils literal notranslate"><span class="pre">scipy</span></code> built-in routines with the following right-hand side term:</p>
+<div class="math notranslate nohighlight">
+\[b = \sin(\pi x) \cos(\pi y) + \sin(5\pi x) \cos(5\pi y)\]</div>
+<p>The exact solution of the equation is:</p>
+<div class="math notranslate nohighlight">
+\[p_e = -\frac{1}{2\pi^2}\sin(\pi x) \cos(\pi y) -\frac{1}{50\pi^2}\sin(5\pi x) \cos(5\pi y)\]</div>
+<p>Let’s define some grid parameters for the numerical discretization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid parameters.</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">101</span>                  <span class="c1"># number of points in the x direction</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">101</span>                  <span class="c1"># number of points in the y direction</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span>     <span class="c1"># limits in the x direction</span>
+<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span>    <span class="c1"># limits in the y direction</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span>          <span class="c1"># domain length in the x direction</span>
+<span class="n">ly</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span>          <span class="c1"># domain length in the y direction</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># grid spacing in the x direction</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">ly</span> <span class="o">/</span> <span class="p">(</span><span class="n">ny</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># grid spacing in the y direction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now create the grid, the right-hand side of the equation and allocate an array to store the solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the gridline locations and the mesh grid;</span>
+<span class="c1"># see notebook 02_02_Runge_Kutta for more details</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Compute the rhs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">ly</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">ly</span><span class="p">))</span>
+
+<span class="c1"># b is currently a 2D array. We need to convert it to a row-major</span>
+<span class="c1"># ordered 1D array. This is done with the flatten numpy function.</span>
+<span class="c1"># We use the parameter &#39;F&#39; to specify that we want want row-major</span>
+<span class="c1"># ordering. The letter &#39;F&#39; is used because this is the natural</span>
+<span class="c1"># ordering of the popular Fortran language. For column-major</span>
+<span class="c1"># ordering you can pass &#39;C&#39; as paremeter (column-major ordering)</span>
+<span class="c1"># is the natural ordering for the C language.</span>
+<span class="c1"># More info</span>
+<span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flatten.html</span>
+
+<span class="c1"># Flatten the rhs</span>
+<span class="n">bflat</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+<span class="c1"># Allocate array for the (full) solution, including boundary values</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the following two cells, we define a routine to construct the differential matrix (using again the <code class="docutils literal notranslate"><span class="pre">diags</span></code>routine from the <code class="docutils literal notranslate"><span class="pre">scipy.sparse</span></code> module) and a routine to compute the exact solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">d2_mat_dirichlet_2d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the matrix for the centered second-order accurate second-order derivative </span>
+<span class="sd">    for Dirichlet boundary conditions in 2D</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nx : integer</span>
+<span class="sd">        number of grid points in the x direction</span>
+<span class="sd">    ny : integer</span>
+<span class="sd">        number of grid points in the y direction</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        grid spacing in the x direction</span>
+<span class="sd">    dy : float</span>
+<span class="sd">        grid spacing in the y direction</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    d2mat : numpy.ndarray</span>
+<span class="sd">        matrix to compute the centered second-order accurate first-order deri-</span>
+<span class="sd">        vative with Dirichlet boundary conditions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">a</span> <span class="o">-</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">g</span>
+    
+    <span class="n">diag_a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ny</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">diag_a</span><span class="p">[</span><span class="n">nx</span><span class="o">-</span><span class="mi">3</span><span class="p">::</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">diag_g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ny</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">diag_c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ny</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    
+    <span class="c1"># We construct a sequence of main diagonal elements,</span>
+    <span class="n">diagonals</span> <span class="o">=</span> <span class="p">[</span><span class="n">diag_g</span><span class="p">,</span> <span class="n">diag_a</span><span class="p">,</span> <span class="n">diag_c</span><span class="p">,</span> <span class="n">diag_a</span><span class="p">,</span> <span class="n">diag_g</span><span class="p">]</span>
+    <span class="c1"># and a sequence of positions of the diagonal entries relative to the main</span>
+    <span class="c1"># diagonal.</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">ny</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Call to the diags routine; note that diags return a representation of the</span>
+    <span class="c1"># array; to explicitly obtain its ndarray realisation, the call to .toarray()</span>
+    <span class="c1"># is needed. Note how the matrix has dimensions (nx-2)*(nx-2).</span>
+    <span class="n">d2mat</span> <span class="o">=</span> <span class="n">diags</span><span class="p">(</span><span class="n">diagonals</span><span class="p">,</span> <span class="n">offsets</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+    <span class="c1"># Return the final array</span>
+    <span class="k">return</span> <span class="n">d2mat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p_exact_2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the exact solution of the Poisson equation in the domain </span>
+<span class="sd">    [0, 1]x[-0.5, 0.5] with rhs:</span>
+<span class="sd">    b = (np.sin(np.pi * X) * np.cos(np.pi * Y) +</span>
+<span class="sd">     np.sin(5.0 * np.pi * X) * np.cos(5.0 * np.pi * Y))</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : numpy.ndarray</span>
+<span class="sd">        array of x coordinates for all grid points</span>
+<span class="sd">    Y : numpy.ndarray</span>
+<span class="sd">        array of y coordinates for all grid points</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sol : numpy.ndarray</span>
+<span class="sd">        exact solution of the Poisson equation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">sol</span> <span class="o">=</span> <span class="p">(</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span><span class="p">)</span> <span class="o">+</span> 
+     <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">50.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span><span class="p">)</span> <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now build the matrix, invert it, and compute the solution. We also store the exact solution in the variable <code class="docutils literal notranslate"><span class="pre">p_e</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">d2_mat_dirichlet_2d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+<span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># The numerical solution is obtained by performing</span>
+<span class="c1"># the multiplication A^{-1}*b. This returns a vector</span>
+<span class="c1"># in row major ordering. To convert it back to a 2D array</span>
+<span class="c1"># that is of the form p(x,y) we pass it immediately to </span>
+<span class="c1"># the reshape function.</span>
+<span class="c1"># For more info:</span>
+<span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.reshape.html</span>
+<span class="c1">#</span>
+<span class="c1"># Note that we have specified the array dimensions nx-2,</span>
+<span class="c1"># ny-2 and passed &#39;F&#39; as the value for the &#39;order&#39; argument.</span>
+<span class="c1"># This indicates that we are working with a vector in row major order</span>
+<span class="c1"># as standard in the {F}ortran programming language.</span>
+<span class="n">pvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ainv</span><span class="p">,</span> <span class="n">bflat</span><span class="p">),</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+<span class="c1"># Construct the full solution and apply boundary conditions</span>
+<span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">pvec</span>
+<span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Compute the exact solution</span>
+<span class="n">p_e</span> <span class="o">=</span> <span class="n">p_exact_2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At the beginning of the notebook, we have imported the <code class="docutils literal notranslate"><span class="pre">l2_diff</span></code> function from our module file <code class="docutils literal notranslate"><span class="pre">module.py</span></code>. Let’s use it to assess the precision of our solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p_e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The l2 difference between the computed solution and the exact solution is:</span><span class="se">\n</span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The l2 difference between the computed solution and the exact solution is:
+2.8900800560536574e-08
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can represent graphically the exact solution and the computed solution in contour plots and compare them along one line in the computational domain:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_1</span><span class="p">,</span> <span class="n">ax_2</span><span class="p">,</span> <span class="n">ax_3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># We shall now use the</span>
+<span class="c1"># matplotlib.pyplot.contourf function.</span>
+<span class="c1"># As X and Y, we pass the mesh data.</span>
+<span class="c1">#</span>
+<span class="c1"># For more info</span>
+<span class="c1"># https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.contourf.html</span>
+<span class="c1">#</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">p_e</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># plot along the line y=0:</span>
+<span class="n">jc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ly</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p_e</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$p_e$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+
+<span class="c1"># add some labels and titles</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Exact solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x,0)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_01_Iteration_and_2D_16_0.png" src="../../../_images/05_01_Iteration_and_2D_16_0.png" />
+</div>
+</div>
+<p>We have collected some conclusive evidence that our procedure worked very nicely !</p>
+<p>There is however a significant drawback. If you want to increase the precision, you need to refine the grid. But beware, on a fairly recent Macbook Pro with 16Gb of memory, the computation literally stalled when the number of grid points in both direction was multiplied by 2. We therefore need another way of handling this type of problems.</p>
+</div>
+</div>
+<div class="section" id="jacobi-method">
+<h2><span class="section-number">1.3. </span>Jacobi method<a class="headerlink" href="#jacobi-method" title="Permalink to this headline">¶</a></h2>
+<p>In the previous section we have solved the Poisson equation by inverting the discretized Laplace operator. This requires the explicit construction of the corresponding matrix and incurs a high storage cost associated with the computation of the inverse matrix. In this section we follow a radically different strategy and introduce a simple iterative method: the Jacobi method.</p>
+<p>Let’s go back to our discretised Poisson equation. To simplify the notation, we assume here that <span class="math notranslate nohighlight">\(\Delta x=\Delta y = \Delta\)</span>; the extension to the more general case is quite simple.</p>
+<p>If we isolate <span class="math notranslate nohighlight">\(p_{i,j}\)</span> in equation <a class="reference internal" href="#equation-eq-discpoisson2d">(51)</a> we get:</p>
+<div class="math notranslate nohighlight" id="equation-eq-itersolpoisson">
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq-itersolpoisson" title="Permalink to this equation">¶</a></span>\[p_{i,j}=\frac14(p_{i-1,j}+p_{i+1,j}+p_{i,j-1}+p_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<p>In other words, the value of the solution of the discretized Poisson equation at any grid point must be equal to its average computed at all other grid points in the stencil, plus a contribution from the source term.</p>
+<p>Imagine we pick any initial guess <span class="math notranslate nohighlight">\(p^0_{i,j}\)</span> for the solution we are seeking. Except if we are extremely lucky it will not satisfy <a class="reference internal" href="#equation-eq-itersolpoisson">(52)</a>. However we can compute an <em>updated</em> value,</p>
+<div class="math notranslate nohighlight">
+\[    p^1_{i,j}=\frac14(p^0_{i-1,j}+p^0_{i+1,j}+p^0_{i,j-1}+p^0_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<p>Again, unless we are extremely lucky, the updated value <span class="math notranslate nohighlight">\(p^1_{i,j}\)</span> will not satisfy <a class="reference internal" href="#equation-eq-itersolpoisson">(52)</a> but maybe it got closer. The idea behind iterative methods is to continue this process hoping that the updated values converge to the desired solution.</p>
+<p>The simple iterative procedure we outlined above is called the Jacobi method. Below we will prove mathematically that for the Poisson equation it does indeed converge to the exact solution. Here we will implement it and empirically observe that this is the case for our toy problem.</p>
+<p>In the Jacobi method, the iterated value is computed as follows:</p>
+<div class="math notranslate nohighlight" id="equation-eq-iterksolpoisson">
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq-iterksolpoisson" title="Permalink to this equation">¶</a></span>\[p^{k+1}_{i,j}=\frac14(p^k_{i-1,j}+p^k_{i+1,j}+p^k_{i,j-1}+p^k_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<p>There is of course no exact way to determine if we have performed enough iterations. However, if the iterative method is able to solve the equation, the difference between too successive iterated values should become increasingly small as we converge to the exact solution. We will therefore adopt the same strategy as the one we used for the grid convergence study. We will measure the difference in L2-norm between <span class="math notranslate nohighlight">\(p^{k+1}\)</span> and <span class="math notranslate nohighlight">\(p^k\)</span> and stop iterating once it falls below a given values.</p>
+<p>Let’s now implement and describe the algorithm. We first copy/paste our grid parameters so that we can easily change them here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid parameters.</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">101</span>                  <span class="c1"># number of points in the x direction</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">101</span>                  <span class="c1"># number of points in the y direction</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span>     <span class="c1"># limits in the x direction</span>
+<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span>    <span class="c1"># limits in the y direction</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span>          <span class="c1"># domain length in the x direction</span>
+<span class="n">ly</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span>          <span class="c1"># domain length in the y direction</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># grid spacing in the x direction</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">ly</span> <span class="o">/</span> <span class="p">(</span><span class="n">ny</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># grid spacing in the y direction</span>
+
+<span class="c1"># Create the gridline locations and the mesh grid;</span>
+<span class="c1"># see notebook 02_02_Runge_Kutta for more details</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Compute the rhs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">ly</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">/</span> <span class="n">lx</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">ly</span><span class="p">))</span>
+
+<span class="c1"># Compute the exact solution</span>
+<span class="n">p_e</span> <span class="o">=</span> <span class="n">p_exact_2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the initial guess of the Jacobi iteration we simply choose <span class="math notranslate nohighlight">\(p^0 = 0\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">))</span>
+<span class="n">pnew</span> <span class="o">=</span> <span class="n">p0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then iterate using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop and stop the loop once the L2-norm gets smaller than the desired tolerance. We also add a break statement in case the number of iterations gets too large.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">100000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When your programs might take an extended time to execute, it might be useful to add a progress bar while it executes. A nice Python package that provides this functionality without adding a significant overhead to the execution time is <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> (you may want to check out its <a class="reference external" href="https://www.top500.org/lists/top500/">documentation</a>). To use it, you first have to install it in your Python environment (if it’s not already done). To do so, open a terminal and type the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">course</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+<p>The use <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> inside <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> notebooks, you also need a dependency called <code class="docutils literal notranslate"><span class="pre">pywidgets</span></code>. Depending on your installation, it might already be present in your environment. But to be sure, type also:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ipywidgets</span>
+</pre></div>
+</div>
+<p>You should then close this notebook and relaunch it to make the package available. After that, you can import the submodule of <code class="docutils literal notranslate"><span class="pre">tqdm</span></code>that we are goind to use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In your notebook, a progress bar can then be created by calling the <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code>function. We pass the <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> argument as the <code class="docutils literal notranslate"><span class="pre">total</span></code> number of iterations so that <code class="docutils literal notranslate"><span class="pre">tqdm</span></code>knows how to size the progress bar. We also change the default prefix legend for the progress bar to be more informative. Then we can iterate towards the solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">max_iter</span><span class="p">)</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;iter / max_iter&quot;</span><span class="p">);</span>
+
+<span class="c1"># Let&#39;s iterate...</span>
+
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># iteration counter</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">tol_hist_jac</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="nb">iter</span> <span class="o">&gt;</span> <span class="n">max_iter</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Solution did not converged within the maximum&#39;</span>
+              <span class="s1">&#39; number of iterations&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Last l2_diff was: </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s1">.5e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+    
+    <span class="n">p</span> <span class="o">=</span> <span class="n">pnew</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># We only modify interior nodes. The boundary nodes remain equal to</span>
+    <span class="c1"># zero and the Dirichlet boundary conditions are therefore automatically</span>
+    <span class="c1"># enforced.</span>
+    <span class="n">pnew</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+                             <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="p">))</span>
+    
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">tol_hist_jac</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+    
+    <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># We update our progress bar</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The solution converged after </span><span class="si">{</span><span class="nb">iter</span><span class="si">}</span><span class="s1"> iterations&#39;</span><span class="p">)</span>
+
+<span class="c1"># When the progress bar will not be used</span>
+<span class="c1"># further, it has to be closed</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "67a3d1feb17d4f46b5d49f6ead5523b0", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 14409 iterations
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can measure the accuracy of our solution with the same diagnostics as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p_e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The l2 difference between the computed solution and the exact solution is:</span><span class="se">\n</span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The l2 difference between the computed solution and the exact solution is:
+1.8323219516842732e-07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_1</span><span class="p">,</span> <span class="n">ax_2</span><span class="p">,</span> <span class="n">ax_3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># We shall now use the</span>
+<span class="c1"># matplotlib.pyplot.contourf function.</span>
+<span class="c1"># As X and Y, we pass the mesh data.</span>
+<span class="c1">#</span>
+<span class="c1"># For more info</span>
+<span class="c1"># https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.contourf.html</span>
+<span class="c1">#</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">pnew</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">p_e</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># plot along the line y=0:</span>
+<span class="n">jc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ly</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p_e</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$p_e$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pnew</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$pnew$&#39;</span><span class="p">)</span>
+
+<span class="c1"># add some labels and titles</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Exact solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">ax_3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x,0)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax_3</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_01_Iteration_and_2D_31_0.png" src="../../../_images/05_01_Iteration_and_2D_31_0.png" />
+</div>
+</div>
+<p>Note that to achieve this L2 precision we used a tolerance of <span class="math notranslate nohighlight">\(10^{-10}\)</span>. Be careful not to confuse the accuracy of the solution and the tolerance. One measures the quality of the solution and the other is just a stop criteria for the iteration method. To achieve the accuracy of the direct solver, one can reduce the tolerance to even smaller values.</p>
+<p>A last diagnostic we report here is the sequence of the <code class="docutils literal notranslate"><span class="pre">l2_diff</span></code> during the iterative procedure. It shows how <code class="docutils literal notranslate"><span class="pre">l2_diff</span></code> progressively decays below the desired tolerance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">tol_hist_jac</span><span class="p">)</span>
+
+<span class="c1"># We set labels of x axis and y axis.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$iteration$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;l2_diff&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;l2_diff decay&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_01_Iteration_and_2D_33_0.png" src="../../../_images/05_01_Iteration_and_2D_33_0.png" />
+</div>
+</div>
+<p>For the problem considered, we observe that the tolerance decreases smoothly (in semi-log scale) during the iterative procedure. But this is not systematic for all iterative methods, the decay may more erratic in some cases.</p>
+<p>Now the good news. You may safely repeat the above iteration method with larger values of <code class="docutils literal notranslate"><span class="pre">nx</span></code> or <code class="docutils literal notranslate"><span class="pre">ny</span></code>. Multiplying those values by 2 or 3 will likely not exhaust your computer.</p>
+</div>
+<div class="section" id="gauss-seidel-method">
+<h2><span class="section-number">1.4. </span>Gauss-Seidel method<a class="headerlink" href="#gauss-seidel-method" title="Permalink to this headline">¶</a></h2>
+<p>For the Jacobi method we made use of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> slicing and array operations to avoid Python loops. If we had performed the looping explicitly, we could have done it like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                             <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="p">))</span>
+</pre></div>
+</div>
+<p>Note how we are looping in row major order. For each value of <code class="docutils literal notranslate"><span class="pre">i</span></code>, the inner loops updates each value of <code class="docutils literal notranslate"><span class="pre">j</span></code> in sequence before preceeding to the next value of <code class="docutils literal notranslate"><span class="pre">i</span></code>. Graphically, the loops scan the domain in this order:</p>
+<a class="reference internal image-reference" href="../../../_images/GSgrid_e.png"><img alt="../../../_images/GSgrid_e.png" src="../../../_images/GSgrid_e.png" style="width: 450px;" /></a>
+<p>In the Gauss-Seidel method, one takes advantage of this looping order to use updated values as soon as they become available. The iteration procedure then reads:</p>
+<div class="math notranslate nohighlight" id="equation-eq-iterksolgs">
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-iterksolgs" title="Permalink to this equation">¶</a></span>\[p^{k+1}_{i,j}=\frac14(p^{k+1}_{i-1,j}+p^k_{i+1,j}+p^{k+1}_{i,j-1}+p^k_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<p>This strategy allows to cut the number of iterations by a factor of <span class="math notranslate nohighlight">\(2\)</span>! Unfortunately, the algorithm requires to explicitly perform the loops and we know that if we do this using Python loops, our code will slow down considerably. For example, solving the same problem as earlier using the Gauss-Seidel algorithm takes about 2.5 minutes on a fairly recent MacBook Pro whereas the Jacobi method took a few seconds.</p>
+<p>So you might think that the Gauss-Seidel method is completely useless. But that’s not the case: if somehow we can speedup the Python loops maybe we can benefit from the fewer iterations. In the third notebook of this chapter we will show you a simple way to do this and make the Gauss-Seidel method achieve full potential.</p>
+<p>Let’s solve our problem with the Gauss-Seidel method, <strong>but beware</strong>, it will take some time…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">))</span>
+<span class="n">pnew</span> <span class="o">=</span> <span class="n">p0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">max_iter</span><span class="p">)</span>
+<span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;iter / max_iter&quot;</span><span class="p">)</span>
+
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># iteration counter</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">tol_hist_gs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="nb">iter</span> <span class="o">&gt;</span> <span class="n">max_iter</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Solution did not converged within the maximum&#39;</span>
+              <span class="s1">&#39; number of iterations&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Last l2_diff was: </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s1">.5e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+    
+    <span class="n">p</span> <span class="o">=</span> <span class="n">pnew</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># We only modify interior nodes. The boundary nodes remain equal to</span>
+    <span class="c1"># zero and the Dirichlet boundary conditions are therefore automatically</span>
+    <span class="c1"># enforced.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                             <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="p">))</span>
+    
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">tol_hist_gs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+
+    <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The solution converged after </span><span class="si">{</span><span class="nb">iter</span><span class="si">}</span><span class="s1"> iterations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "7036465722f8400d9a716ecaabe63987", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 7908 iterations
+</pre></div>
+</div>
+</div>
+</div>
+<p>The number of iterations was indeed cut by approximately a factor of <span class="math notranslate nohighlight">\(2\)</span>. We can even compare how <code class="docutils literal notranslate"><span class="pre">l2_diff</span></code> decreases during the iteration procedure and compare the output with the Jacobi method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">tol_hist_jac</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Jacobi&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">tol_hist_gs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gauss-Seidel&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># We set labels of x axis and y axis.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$iteration$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;l2_diff&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;l2_diff decay&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_01_Iteration_and_2D_41_0.png" src="../../../_images/05_01_Iteration_and_2D_41_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="convergence-of-jacobi-and-gauss-seidel-methods">
+<h2><span class="section-number">1.5. </span>Convergence of Jacobi and Gauss-Seidel methods<a class="headerlink" href="#convergence-of-jacobi-and-gauss-seidel-methods" title="Permalink to this headline">¶</a></h2>
+<p>We have observed empirically that the Jacobi and Gauss-Seidel methods converge to the solution of the discretized Poisson equation. In this section we explore this convergence process in more detail.</p>
+<p>The definition of the Jacobi method is given by <a class="reference internal" href="#equation-eq-iterksolpoisson">(53)</a> (we keep the assumption that <span class="math notranslate nohighlight">\(\Delta x=\Delta y = \Delta\)</span>).
+If we collect all the unknowns in a vector <span class="math notranslate nohighlight">\(\boldsymbol p = [p_{i,j}]\)</span> (using again row major ordering), we can write this formula as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    A^J_1\boldsymbol p^{k+1} = A^J_2 \boldsymbol p^k - \frac14\boldsymbol b \Delta^2.
+\end{equation*}\]</div>
+<p><span class="math notranslate nohighlight">\(A^J_1=-4\times I\)</span> and <span class="math notranslate nohighlight">\(A^J_2=L+U\)</span> where, for <span class="math notranslate nohighlight">\(nx=6, ny=4\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  L=
+  \left(
+    \begin{array}{*{16}c}
+       . &amp;  &amp;   &amp;   &amp;  &amp;   &amp;   &amp;   \\
+      1 &amp; .  &amp;  &amp;   &amp;   &amp;  &amp;   &amp;   \\
+        &amp; 1 &amp; . &amp;  &amp;   &amp;   &amp;  &amp;   \\
+        &amp;   &amp; 1 &amp; . &amp;   &amp;   &amp;   &amp;  \\
+      1 &amp;   &amp;   &amp;   &amp; . &amp;  &amp;   &amp;     \\
+        &amp; 1 &amp;   &amp;   &amp; 1 &amp; . &amp;  &amp;      \\
+        &amp;   &amp; 1 &amp;   &amp;   &amp; 1 &amp; . &amp;    \\
+        &amp;   &amp;   &amp; 1 &amp;   &amp;   &amp; 1 &amp; .   \\
+    \end{array}
+  \right),
+\end{align*}\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  U=
+  \left(
+    \begin{array}{*{16}c}
+      . &amp; 1 &amp;   &amp;   &amp; 1 &amp;   &amp;   &amp;   \\
+       &amp; . &amp; 1 &amp;   &amp;   &amp; 1 &amp;   &amp;   \\
+        &amp;  &amp; . &amp; 1 &amp;   &amp;   &amp; 1 &amp;   \\
+        &amp;   &amp;  &amp; . &amp;   &amp;   &amp;   &amp; 1 \\
+       &amp;   &amp;   &amp;   &amp; . &amp; 1 &amp;   &amp;     \\
+        &amp;  &amp;   &amp;   &amp;  &amp; . &amp; 1 &amp;      \\
+        &amp;   &amp;  &amp;   &amp;   &amp;  &amp; . &amp; 1   \\
+        &amp;   &amp;   &amp;  &amp;   &amp;   &amp;  &amp; .   \\
+    \end{array}
+  \right),
+\end{align*}\]</div>
+<p>Similarly, the Gauss-Seidel algorithm may be written as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  A^{GS}_1\boldsymbol p^{k+1} = A^{GS}_2 \boldsymbol p^k - \frac14\boldsymbol b \Delta^2.
+\end{equation*}\]</div>
+<p>with <span class="math notranslate nohighlight">\(A_1^{GS}=4\times I - L\)</span> and <span class="math notranslate nohighlight">\(A_2^{GS}=U\)</span>.</p>
+<p>The arguments developped here can be genelarized to any iterative method of the form,</p>
+<div class="math notranslate nohighlight" id="equation-eq-itersplit">
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-itersplit" title="Permalink to this equation">¶</a></span>\[  A_1\boldsymbol p^{k+1} = A_2 \boldsymbol p^k + \boldsymbol c
+  \;\; \Leftrightarrow \;\; \boldsymbol p^{k+1} = A_1^{-1} A_2 \boldsymbol p^k +A_1^{-1} \boldsymbol c\]</div>
+<p>where <span class="math notranslate nohighlight">\(A=A_1 - A_2\)</span> and <span class="math notranslate nohighlight">\(A\boldsymbol p = c\)</span> is the original matrix problem.</p>
+<p>The make the algorithm  work, <span class="math notranslate nohighlight">\(A_1\)</span> needs to be easily invertible otherwise we would not save any effort. For the Jacobi method this is obvious because <span class="math notranslate nohighlight">\(A_1\)</span> is proportional to the identity. For the Gauss-Seidel method things are sligthly more complicated but <span class="math notranslate nohighlight">\(\boldsymbol p^{k+1}\)</span> can still be computed easily by looping in the order described in the previous section.</p>
+<p>Let us denote by <span class="math notranslate nohighlight">\(\boldsymbol \epsilon^k\)</span> the error at iteration <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \boldsymbol \epsilon^k = \boldsymbol p^{exact} - \boldsymbol p^k
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol p^{exact}\)</span> is the exact solution of the discretized equation. If we substitute this definition in <a class="reference internal" href="#equation-eq-itersplit">(55)</a> we get</p>
+<div class="math notranslate nohighlight" id="equation-eq-itererror">
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-itererror" title="Permalink to this equation">¶</a></span>\[  \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_k\right)^{k+1}\boldsymbol \epsilon^0.\]</div>
+<p>Obviously we need to have <span class="math notranslate nohighlight">\(\boldsymbol \epsilon^k \rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(\rightarrow \infty\)</span> for the iterative method to converge. In order for this to happen, all the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> of <span class="math notranslate nohighlight">\(A^{-1}_1 A_2\)</span> must be such that <a class="bibtex reference internal" href="05_02_Conjugate_Gradient.html#watkins2010" id="id2">[Wat10]</a>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  \vert \lambda_i \vert &lt; 1.
+\end{align*}\]</div>
+<p>If the matrix <span class="math notranslate nohighlight">\(A^{-1}_1 A_2\)</span> is diagonalizable, this result can be proven rather easily by expressing the error in the basis of eigenvectors.</p>
+<p>The quantity <span class="math notranslate nohighlight">\(\rho= \hbox{max} \vert \lambda_i\vert\)</span> is called the spectral radius of the matrix. The criteria for convergence is thus also equivalent to:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  \rho(A^{-1}_1 A_2) &lt; 1.
+\end{align*}\]</div>
+<p>When the algorithm converges, we can use eq. <a class="reference internal" href="#equation-eq-itererror">(56)</a> to evaluate its rate of convergence. For that purpose, let us introduce the <span class="math notranslate nohighlight">\(L2\)</span> matrix norm defined as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \| G \|_2 = \max_{\boldsymbol x}\frac{\| G\boldsymbol x \|}{\| \boldsymbol x \|}.
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(G\)</span> is any matrix. One says that the matrix norm is induced by the <span class="math notranslate nohighlight">\(L2\)</span>-norm <span class="math notranslate nohighlight">\(\|\cdot\|\)</span> defined for vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Like all matrix norms, it satisfies the submultiplicativity rule <a class="bibtex reference internal" href="05_02_Conjugate_Gradient.html#watkins2010" id="id3">[Wat10]</a>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \| AB \|_2 \leq \| A \|_2 \| B \|_2.
+\end{equation*}\]</div>
+<p>for any matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Using the definition of the <span class="math notranslate nohighlight">\(L2\)</span> norm and the submultiplicativity rule we then have:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \boldsymbol \| \epsilon^{k+1} \| = \| \left(A^{-1}_1 A_k\right)^{k+1}\boldsymbol \epsilon^0 \| \leq \| \left(A^{-1}_1 A_k\right)\|_2^{k+1}\boldsymbol \| \epsilon^0 \|
+\end{equation*}\]</div>
+<p>An important result of linear algebra is that the <span class="math notranslate nohighlight">\(L2\)</span> norm of a matrix is equal to its largest singular value <span class="math notranslate nohighlight">\(\sigma_1\)</span> <a class="bibtex reference internal" href="#horn2013" id="id4">[HJ13]</a>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \| A \|_2 = \sigma_1(A).
+\end{equation*}\]</div>
+<p>We won’t use the concept of singular values in this course so we will not describe it further. We just note that for symmetric matrices we have:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \sigma_1(A) = \rho(A)\;\;\;\; \hbox{if $A$ is symmetric}.
+\end{equation*}\]</div>
+<p>We then have:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \frac{\boldsymbol \| \epsilon^{k+1} \|}{\| \epsilon^0 \|}\leq \rho^{k+1}(A^{-1}_1 A_2).
+\end{equation*}\]</div>
+<p>Reducing the <span class="math notranslate nohighlight">\(L2\)</span>-norm of the error by a factor <span class="math notranslate nohighlight">\(10^{-m}\)</span> after <span class="math notranslate nohighlight">\(k\)</span> iterations therefore requires,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  k \geq -\frac{m}{\log_{10}\rho (A^{-1}_1 A_2) } = -\frac{m}{\log_{10}(\hbox{max} \vert \lambda_i\vert )}
+\end{equation*}\]</div>
+<p>Let’s now use the above theoretical concepts for the analysis of the Jacobi and Gauss-Seidel methods in the case of the 2D Poisson equation.</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the Jacobi method, we have <span class="math notranslate nohighlight">\( \displaystyle A^{-1}_1 A_2 = -\frac14(L+U)\)</span>. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products <a class="bibtex reference internal" href="05_02_Conjugate_Gradient.html#watkins2010" id="id5">[Wat10]</a>. The resulting eigenvalues are:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \lambda_{kl} = \frac12\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
+\end{equation*}\]</div>
+<p>The spectral radius is thus,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \rho_{JC} = \frac12\left[\cos \frac{\pi}{nx-1} + \cos \frac{\pi}{ny-1}\right ]
+\end{equation*}\]</div>
+<p>and the method converges since <span class="math notranslate nohighlight">\(\rho_{JC} &lt; 1\)</span>. If <span class="math notranslate nohighlight">\(nx=ny\)</span> are both large, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \rho_{JC} \simeq 1 - \frac12 \frac{\pi^2}{(nx-1)^2}
+\end{equation*}\]</div>
+<p>For <span class="math notranslate nohighlight">\(nx=ny=101\)</span>, a reduction of the error by a factor of <span class="math notranslate nohighlight">\(10^{-10}\)</span> requires <span class="math notranslate nohighlight">\(46652\)</span> iterations.</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the Gauss-Seidel method, we have <span class="math notranslate nohighlight">\( \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U\)</span> and the eigenvalues are the squares of the eigenvalues of the Jacobi method <a class="bibtex reference internal" href="05_02_Conjugate_Gradient.html#watkins2010" id="id6">[Wat10]</a>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \lambda_{kl} = \frac14\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ]^2,\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
+\end{equation*}\]</div>
+<p>The spectral radius is thus,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \rho_{GS} = \rho_{JC}^2 = \frac14\left[\cos \frac{\pi}{nx-1} + \cos \frac{\pi}{ny-1}\right ]^2
+\end{equation*}\]</div>
+<p>and the method converges since <span class="math notranslate nohighlight">\(\rho_{GS} &lt; 1\)</span>. The above relation also implies that the rate of convergence of the Gauss-Seidel is about twice that of the Jacobi method when <span class="math notranslate nohighlight">\(nx=ny\)</span>. If both are large, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \rho_{GS} \simeq 1 - \frac{\pi^2}{(nx-1)^2}
+\end{equation*}\]</div>
+<p>For <span class="math notranslate nohighlight">\(nx=ny=101\)</span>, a reduction of the error by a factor of <span class="math notranslate nohighlight">\(10^{-10}\)</span> requires <span class="math notranslate nohighlight">\(23326\)</span> iterations.</p>
+<p>These results confirm our observations when solving the sample problem described earlier in this notebook.</p>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">1.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we have shown how to define a cartesian grid for solving two-dimensional partial differential equations using the finite difference discretization. The strategy can easily be extended to three-dimensional problems. When they require matrix inversions, higher-dimensional problems rapidly make direct inversion methods very inefficient if not impracticable. For such cases, we have shown how iterative methods can come to the rescue. We have described in detail the Jacobi and Gauss-Seidel methods and rapidly presented the classical theory used to analyze their stability. The implementation of some iterative methods like the Jacobi method can be done directly with <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and therefore benefit from the speedup of precompiled code. Others, like the Gauss-Seidel method, require an explicit looping on the grid nodes in a given order and this can lead to very slow algorithm if the loops are performed with Python loops. To circumvent this difficulty we provide in the third notebook of this chapter several strategies to boost your Python programs. But before that, we introduce another type of iterative method in the next notebook.</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">1.7. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D-0"><dl class="citation">
+<dt class="bibtex label" id="horn2013"><span class="brackets"><a class="fn-backref" href="#id4">HJ13</a></span></dt>
+<dd><p>RA Horn and CR Johnson. Matrix analysis. 2013.</p>
+</dd>
+<dt class="bibtex label" id="iserles2008"><span class="brackets"><a class="fn-backref" href="#id1">Ise08</a></span></dt>
+<dd><p>A Iserles. A first course in the numerical analysis of differential equations - second edition. 2008.</p>
+</dd>
+<dt class="bibtex label" id="watkins2010"><span class="brackets">Wat10</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id5">3</a>,<a href="#id6">4</a>)</span></dt>
+<dd><p>DS Watkins. Fondamentals of matrix computations - third edition. 2010.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"0279483e332f42c088d17ff26b515297": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0a33a41c49114c41b4fa3df0d24d0d2e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0d407dcf4e5d40dcafacca9dd080b64d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "116a220e9c8d42e7b44300466e3a61d2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "11db5dc2020542eb962fef717b02b265": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "4d65990ce9664eabab98de04c725d9e7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_b0bc65ac8f644b198d494c03f09f9952", "placeholder": "\u200b", "style": "IPY_MODEL_116a220e9c8d42e7b44300466e3a61d2", "value": "iter / max_iter:  79%"}}, "56de7d2a1a904cf3874f7c70db2695fc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "66387786120640b3b0bd7b90df1beb81": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_0279483e332f42c088d17ff26b515297", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_e6b403e5ddc842848183b20f9d9427ff", "value": 7906.0}}, "67a3d1feb17d4f46b5d49f6ead5523b0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_bd20267916684689b94d73e58818a080", "IPY_MODEL_f5090b5d01e44bf3afffffbc9d9ee684", "IPY_MODEL_6c8a12e098e741ee84dba884f66c2bfc"], "layout": "IPY_MODEL_0a33a41c49114c41b4fa3df0d24d0d2e"}}, "6c8a12e098e741ee84dba884f66c2bfc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_f0740f6043e54b6386a81ccecb129cd9", "placeholder": "\u200b", "style": "IPY_MODEL_11db5dc2020542eb962fef717b02b265", "value": " 14409/100000 [00:01&lt;00:08, 9806.48it/s]"}}, "7036465722f8400d9a716ecaabe63987": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_4d65990ce9664eabab98de04c725d9e7", "IPY_MODEL_66387786120640b3b0bd7b90df1beb81", "IPY_MODEL_dbc7722dad4c4aad9778b7c5ac743400"], "layout": "IPY_MODEL_a229bdda0108437db8f8a126bd564afb"}}, "73b555684afa41e488fcd45c3a5a7427": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a229bdda0108437db8f8a126bd564afb": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a7f4fd483c564acb8e44301f9a2b35c7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b0bc65ac8f644b198d494c03f09f9952": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bd20267916684689b94d73e58818a080": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_56de7d2a1a904cf3874f7c70db2695fc", "placeholder": "\u200b", "style": "IPY_MODEL_a7f4fd483c564acb8e44301f9a2b35c7", "value": "iter / max_iter:  14%"}}, "dbc7722dad4c4aad9778b7c5ac743400": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_f1b61d4221dc43079ee2909f272e5627", "placeholder": "\u200b", "style": "IPY_MODEL_0d407dcf4e5d40dcafacca9dd080b64d", "value": " 7906/10000 [02:30&lt;00:38, 55.01it/s]"}}, "e6b403e5ddc842848183b20f9d9427ff": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "f0740f6043e54b6386a81ccecb129cd9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f1b61d4221dc43079ee2909f272e5627": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f5090b5d01e44bf3afffffbc9d9ee684": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_73b555684afa41e488fcd45c3a5a7427", "max": 100000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_fb090f1d01b04a899649c16c9f05494a", "value": 14409.0}}, "fb090f1d01b04a899649c16c9f05494a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solving_pde_mooc/notebooks/05_IterativeMethods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html" title="previous page"><span class="section-number">4. </span>One dimensional heat equation: implicit methods</a>
+    <a class='right-next' id="next-link" href="05_02_Conjugate_Gradient.html" title="next page"><span class="section-number">2. </span>The conjugate gradient method</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
