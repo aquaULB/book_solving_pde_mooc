@@ -31,4 +31,4 @@
   chapters: 
     - file: solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D
     - file: solving_pde_mooc/notebooks/05_IterativeMethods/05_02_Conjugate_Gradient
-
+    - file: solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python
