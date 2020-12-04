@@ -1,0 +1,1019 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Boosting Python &#8212; Solving Partial Differential Equations - MOOC</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="2. The conjugate gradient method" href="05_02_Conjugate_Gradient.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+   Numerical methods for partial differential equations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
+   1. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
+   2. Runge-Kutta methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   1. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   2. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   3. Boundary value problems
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
+   1. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
+   2. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
+   3. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
+   4. One dimensional heat equation: implicit methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_01_Iteration_and_2D.html">
+   1. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_02_Conjugate_Gradient.html">
+   2. The conjugate gradient method
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Boosting Python
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   3.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpreters-vs-compilers">
+   3.2. Interpreters VS compilers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cython-and-numba-what-when-and-how">
+   3.3. Cython and Numba: what, when and how?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-decorators">
+     3.3.1. Python decorators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementing-gauss-seidel-solver">
+     3.3.2. Implementing Gauss-Seidel solver
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#efficiency">
+       3.3.2.1. Efficiency
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#syntax-for-numba-integration">
+       3.3.2.2. Syntax for Numba integration
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#minimum-on-exception-handling">
+       3.3.2.3. Minimum on Exception Handling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cython-syntax">
+       3.3.2.4. Cython syntax
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   3.4. Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="boosting-python">
+<h1><span class="section-number">3. </span>Boosting Python<a class="headerlink" href="#boosting-python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Python has plenty of appeal to the programming community: it’s simple, interactive and free. But Fortran, C, C++ dominate high-performance programming. Why? Python is <em>slow</em>. There are two major reasons for that: <strong>Python is a dynamically typed language</strong> and <strong>Python is an interpreted language</strong>.</p>
+<p>It doesn’t make Python <em>a bad</em> programming language. On the contrary, Python is a great tool for various tasks that do not require running expensive simulations (web-development, scripting). Python also dominates the data-science due to availability of packages such as NumPy, SciPy and versatile machine learning tools (e.g. scikit-learn or TensorFlow).</p>
+<p>As we discussed earlier, NumPy and SciPy integrate optimized and precompiled C code into Python and, therefore, might provide a significant speed up. But we have already encountered situations when it was not possible to avoid running Python loops that easily end up being painfully slow.</p>
+<p>In this notebook we are going to discuss tools designed to provide C-like performance to Python code: <em>Cython</em> and <em>Numba</em>. What are they, what are they good for and why people still use C/C++ with much more complicated syntax?</p>
+</div>
+<div class="section" id="interpreters-vs-compilers">
+<h2><span class="section-number">3.2. </span>Interpreters VS compilers<a class="headerlink" href="#interpreters-vs-compilers" title="Permalink to this headline">¶</a></h2>
+<p>Before we can precisely understand what are Cython and Numba, let’s discuss the basics of compilers and interpreters.</p>
+<p>A common mistake when understanding compilers is to think that the output of the compiler is necessarily <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_code"><em>machine code</em></a> - code written in a low-level programming language that is used to directly manipulate the central processing unit (CPU). In fact, a <em>compiler</em> is a program that <em>translates</em> a source code written in a certain programming language into any other programming language (normally lower-lever). An <em>interpreter</em> is also a computer program. It executes the source code without translating it into the machine code. <em>But this doesn’t make compilation and interpretation mutually exclusive:</em></p>
+<blockquote>
+<div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Interpreter_(computing)">…most interpreting systems also perform some translation work, just like compilers</a>.</p>
+</div></blockquote>
+<p>Let’s take the example of CPython. CPython is the default implementation of Python and is a <a class="reference external" href="https://en.wikipedia.org/wiki/Interpreter_(computing)#Bytecode_interpreters">bytecode interpreter</a>. At the intermediate stage it compiles the source code into the lower-level language called bytecode, or p-code (portable code). Bytecode is universal to all platforms, or platform-independent. There is no further compilation of the bytecode into the machine code. Bytecode is executed <em>at runtime</em> by the so-called Python Virtual Machine (PVM) and CPython provides a C implementation of this virtual machine. When virtual machines, or p-code machines, are explained, it is often said that p-code can be viewed as machine code for a <em>hypothetical</em> CPU. Virtual machines, unlike real CPUs, are implemented as part of an interpreter program and not in the hardware of the platform.</p>
+<p>Whenever you hear that “interpreters are slower than compilers”, you must have in mind that it is not just a generic translator program that is meant by compiler in that context. CPython performs the compilation itself, as we know. The compilers meant in this context are the programs that translate the source code into machine code. Why are interpreters slower? The fact that p-code is <em>interpreted</em> and <em>executed</em> by the interpreter <em>at runtime</em> is partially the answer, but we still have to understand what compiler systems do.</p>
+<p>There are two types of compilers: <em>ahead-of-time</em> (AOT) compilers and <em>just-in-time</em> (JIT) compilers.</p>
+<blockquote>
+<div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ahead-of-time_compilation">AOT compilation</a> is the act of compiling a higher-level programming language into a native (system-dependent) machine code so that the resulting binary file can be executed natively.</p>
+</div></blockquote>
+<p>In this way, the code executed at runtime produces the behaviour that has been predefined at compile time. On the other hand, the interpreter must both define and produce the desired behaviour at runtime by performing a statement-by-statement analysis. But note that:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Interpreter_(computing)">It generally takes longer</a> to run a program under an interpreter than to run the compiled code but it can take less time to interpret it than the total time required to compile and run it.</p>
+</div></blockquote>
+<p>What about the JIT compilers then? First of all,</p>
+<blockquote>
+<div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Just-in-time_compilation">JIT compilation</a> … is a way of executing computer code that involves compilation during execution of a program – at runtime – rather than before execution.</p>
+</div></blockquote>
+<p>Following the logic used to explain speed gain for AOT compilers versus interpreters, you might wonder: how can a JIT compiler be faster if it also defines the desired behaviour at runtime? There is good example that could explain the difference in performance between typical interpreter and JIT compiler. Suppose the source code contains a loop that has to be executed <span class="math notranslate nohighlight">\(n\)</span> times. An interpreter will have to analyze the bytecode statement-by-statement at each iteration. A well-implemented JIT compiler will produce the translation into the machine code, which is the most computationally expensive operation, only once.</p>
+<p>How JIT compilers compare to AOT compilers is a somewhat more sophisticated discussion that we won’t enter but you are free to investigate this question on your own.</p>
+</div>
+<div class="section" id="cython-and-numba-what-when-and-how">
+<h2><span class="section-number">3.3. </span>Cython and Numba: what, when and how?<a class="headerlink" href="#cython-and-numba-what-when-and-how" title="Permalink to this headline">¶</a></h2>
+<p>We are now well-equipped to discuss Cython and Numba. What are they?</p>
+<p><em>Cython</em> is a <em>compiled programming language</em> itself. It aims to run at C-like speed using Python-like syntax. If well designed, Cython code speeds up the program by several order(s) of magnitude in comparison to its Python analogue.</p>
+<p><em>Numba</em> is a <em>JIT compiler</em>. It translates Python source code into the machine code using the open source <a class="reference external" href="https://en.wikipedia.org/wiki/LLVM">LLVM compiler</a> written in C++.</p>
+<p>Cython and Numba generally show similar performance for the same kinds of problems but each of them might fit better in certain situations.</p>
+<p>Cython has the advantage of being very flexible meaning that normally any Python code can be rewritten in Cython without global rethinking of the original logic.</p>
+<p>The major “disadvantage” of Cython is that it obviously requires some programming effort to “translate” the Python code into Cython. It is said, though, that for the Python programmer it must take relatively insignificant effort to learn Cython. Being a compiled language, Cython also requires compilation instructions to be provided - so-called Makefiles. Python’s Makefiles are usually named <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>. As they are simply Python modules, they do not require a lot of extra knowledge for Python programmers.</p>
+<p>Even though it has been said that Cython does not require enormous effort from the Python programmer, Numba is an absolute winner when it comes to simplicity of implementation. It very often does not require anything but a simple Python decorator applied on a Python function. <em>A Python decorator is a tool provided in standard python distribution and will be explained further in this notebook.</em></p>
+<p>The disadvantage of Numba is interconnected with what we have called its advantage. While being very simple to use, it comes with <a class="reference external" href="https://christinakouridi.blog/2019/12/29/intro-numba/">certain limitations, such as</a>:</p>
+<ul class="simple">
+<li><p>Not compiling the whole program but only the Python function;</p></li>
+<li><p>Not integrating well with some Python packages (such as Pandas);</p></li>
+<li><p>Providing limited support to some types of data (such as strings);</p></li>
+<li><p>Not integrating as efficiently as Cython with C and C++.</p></li>
+</ul>
+<p>In some cases it might be quite a challenge to use Numba in your program, as it will require radical changes to the source code.</p>
+<p>Cython and Numba are powerful tools. They have their “downsides”, which does not mean that one is to be <em>always</em> chosen over the other. The programmer must always have his mind open and decisions balanced. Whenever you have troubles explaining your designing decisions, it usually means that they must be questioned.</p>
+<p>For the problems considered in this course, Numba suffices. Nevertheless, we further demonstrate how to use both Cython and Numba. Let us first define the model problem. In the previous notebook you were introduced to the Gauss-Seidel method. We have implemented the numerical solver using Python loops and saw considerable slow down in comparison with the Jacobi solver. We will further show how this code can be sped up using both Cython and Numba.</p>
+<p>But before we introduce the Python tool that Numba strongly relies on - <em>Python decorators</em>.</p>
+<div class="section" id="python-decorators">
+<h3><span class="section-number">3.3.1. </span>Python decorators<a class="headerlink" href="#python-decorators" title="Permalink to this headline">¶</a></h3>
+<p>So called wrapper functions are widely used in various programming languages. They take a function or a method as a parameter and extend its behaviour. Wrapper functions usually intend to <em>abstract</em> the code. They, therefore, might shorten and simplify it <em>by a lot</em>. Python decorators are unique to Python - they are basically shortcuts (syntactic sugars) for calling a wrapper function. Consider the implementation of a sample decorator function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Preprocessing...&#39;</span><span class="p">)</span>
+        
+        <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Postprocessing...&#39;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Note</em> that the choice of names <code class="docutils literal notranslate"><span class="pre">decorator</span></code> and <code class="docutils literal notranslate"><span class="pre">wrapper</span></code> is not restricted in any way in Python. Whatever is allowed for regular Python functions is also allowed for the names of decorating and wrapping functions.</p>
+<p>This decorator does nothing but simply prints something before and after the internal function is called. We propose you to view it as an abstraction for some computations. Note that a decorator function returns <em>a function</em>. When decorating functions, you will ultimately want to normally return what the internal function returns <em>but</em> also perform certain computations before and after it executes.</p>
+<p>If we proceed without using Python decorators, two more extra steps are required. First, we must implement the function we want to decorate. Let’s go for something trivial:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second, we have to perform the actual decoration:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_identity_and_more</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">print_identity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">print_identity_and_more</span></code> is a function that accepts the same parameters as <code class="docutils literal notranslate"><span class="pre">print_identity</span></code> and prints certain strings before and after it executes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_identity_and_more</span><span class="p">(</span><span class="s1">&#39;Marichka&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preprocessing...
+Your name is Marichka. You are 42 year(s) old.
+Postprocessing...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python decorator decorates the function in a single step using the &#64; symbol:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@decorator</span>
+<span class="k">def</span> <span class="nf">print_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can simply call <code class="docutils literal notranslate"><span class="pre">print_identity</span></code> now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_identity</span><span class="p">(</span><span class="s1">&#39;Mao&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preprocessing...
+Your name is Mao. You are 33 year(s) old.
+Postprocessing...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s consider slightly less trivial but a very useful example. Until now, whenever we needed to time the execution of some code, we were using <code class="docutils literal notranslate"><span class="pre">time</span></code> or <code class="docutils literal notranslate"><span class="pre">timeit</span></code> magics. Magic commands are nice tools but they are unique to IPython and the usage of IPython is quite limited. The programmer is paying the price of lowered performance for the graphical interface. So, after all IPython is great for debugging, testing and visualization but in optimized code you will have it disabled. Let’s then implement a <em>decorator</em> that will be a timer for an arbitrary function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span>
+
+<span class="k">def</span> <span class="nf">timing</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">t_init</span> <span class="o">=</span> <span class="n">default_timer</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">t_fin</span> <span class="o">=</span> <span class="n">default_timer</span><span class="p">()</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time elapsed: </span><span class="si">{</span><span class="n">t_fin</span><span class="o">-</span><span class="n">t_init</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@timing</span>
+<span class="k">def</span> <span class="nf">print_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_identity</span><span class="p">(</span><span class="s1">&#39;Mark&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is Mark. You are 24 year(s) old.
+Time elapsed: 2.3305999999889693e-05 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is possible to wrap the function in multiple decorators if necessary. Note that the outer decorator must go before the inner one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@timing</span>
+<span class="nd">@decorator</span>
+<span class="k">def</span> <span class="nf">print_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_identity</span><span class="p">(</span><span class="s1">&#39;Jacques&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preprocessing...
+Your name is Jacques. You are 9 year(s) old.
+Postprocessing...
+Time elapsed: 5.0354999999946415e-05 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the end of the day Python decorators are simply functions, so it is possible to pass parameters to the decorator. The syntax for that, though, is a bit different and requires an additional layer of decoration called the <em>decorator factory</em>. A decorator factory is a decorator function that accepts certain parameters and returns the actual decorator. Consider an example where the timing is made optional using the decorator factory:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">timing</span><span class="p">(</span><span class="n">timing_on</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner_timing</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">timing_on</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="n">t_init</span> <span class="o">=</span> <span class="n">default_timer</span><span class="p">()</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">t_fin</span> <span class="o">=</span> <span class="n">default_timer</span><span class="p">()</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time elapsed: </span><span class="si">{</span><span class="n">t_fin</span><span class="o">-</span><span class="n">t_init</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">res</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">inner_timing</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now have timing enabled or disabled with the same decorator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@timing</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">time_printing_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+
+<span class="nd">@timing</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">print_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+
+<span class="n">time_printing_identity</span><span class="p">(</span><span class="s1">&#39;Donald&#39;</span><span class="p">,</span> <span class="mi">74</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">print_identity</span><span class="p">(</span><span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="mi">78</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is Donald. You are 74 year(s) old.
+Time elapsed: 0.00010620800000005204 s
+
+
+Your name is Joe. You are 78 year(s) old.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Implementation of the timing function is accessible in <code class="docutils literal notranslate"><span class="pre">modules/timers.py</span></code> by the name <code class="docutils literal notranslate"><span class="pre">dummy_timer</span></code>. You are free to use it as an alternative to the <code class="docutils literal notranslate"><span class="pre">time</span></code> magic. Note that it does not implement the decorator factory, as in the above example, and does not provide the functionality of the <code class="docutils literal notranslate"><span class="pre">timeit</span></code> magic that estimates the time averaged among <span class="math notranslate nohighlight">\(n\)</span> runs. Consider this example using <code class="docutils literal notranslate"><span class="pre">dummy_timer</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../modules&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">timers</span>
+
+<span class="nd">@timers</span><span class="o">.</span><span class="n">dummy_timer</span>
+<span class="k">def</span> <span class="nf">print_identity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">. You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> year(s) old.&#39;</span><span class="p">)</span>
+
+<span class="n">print_identity</span><span class="p">(</span><span class="s1">&#39;Jacob&#39;</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is Jacob. You are 65 year(s) old.
+print_identity executed in 9.80170000000058e-05 s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="implementing-gauss-seidel-solver">
+<h3><span class="section-number">3.3.2. </span>Implementing Gauss-Seidel solver<a class="headerlink" href="#implementing-gauss-seidel-solver" title="Permalink to this headline">¶</a></h3>
+<p>We remind you the setup of the problem. We solve the Poisson equation in 2D domain <span class="math notranslate nohighlight">\(\displaystyle [0, 1]\times [-\frac12, \frac12]\)</span> with the following right-hand side term:</p>
+<div class="math notranslate nohighlight">
+\[b = \sin(\pi x) \cos(\pi y) + \sin(5\pi x) \cos(5\pi y)\]</div>
+<p>The exact solution of the equation is:</p>
+<div class="math notranslate nohighlight">
+\[p_e = -\frac{1}{2\pi^2}\sin(\pi x) \cos(\pi y) -\frac{1}{50\pi^2}\sin(5\pi x) \cos(5\pi y)\]</div>
+<p>Sample solvers written in Python and Cython are provided along with the course in the directory <code class="docutils literal notranslate"><span class="pre">solving_pde_mooc/notebooks/demos/BoostingPython</span></code>. The Python solver can be used with or without Numba.</p>
+<p>The Cython solver is hosted in <code class="docutils literal notranslate"><span class="pre">BoostingPython/cy</span></code>. <code class="docutils literal notranslate"><span class="pre">BoostingPython/cy/csolver.pyx</span></code> contains the source Cython code. The library compiled from the source code is located in <code class="docutils literal notranslate"><span class="pre">BoostingPython/cy/lib</span></code>. You therefore don’t have to recompile the source code but you can simply import the library by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cy.lib.csolver</span> <span class="k">as</span> <span class="nn">csolver</span>
+</pre></div>
+</div>
+<p>If you’re willing to recompile it, we refer you to <code class="docutils literal notranslate"><span class="pre">BoostingPython/README.md</span></code> for the instructions and to the generic tutorial from Cython’s <a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html">official documentation</a>.</p>
+<p>The Python and Cython codes we provide are thoroughly documented but we will still provide some extra information here.</p>
+<div class="section" id="efficiency">
+<h4><span class="section-number">3.3.2.1. </span>Efficiency<a class="headerlink" href="#efficiency" title="Permalink to this headline">¶</a></h4>
+<p>But first run the cells below and see by yourself how the performance compare.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../demos/BoostingPython&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">py.solvers</span> <span class="k">as</span> <span class="nn">solvers</span>
+<span class="kn">import</span> <span class="nn">cy.lib.csolver</span> <span class="k">as</span> <span class="nn">csolver</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid parameters</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">61</span>                   <span class="c1"># number of points in the x direction</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">61</span>                   <span class="c1"># number of points in the y direction</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span>     <span class="c1"># limits in the x direction</span>
+<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span>    <span class="c1"># limits in the y direction</span>
+<span class="n">lx</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span>          <span class="c1"># domain length in the x direction</span>
+<span class="n">ly</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span>          <span class="c1"># domain length in the y direction</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lx</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># grid spacing in the x direction</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">ly</span> <span class="o">/</span> <span class="p">(</span><span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># grid spacing in the y direction</span>
+
+<span class="c1"># Iteration parameters</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-10</span>               <span class="c1"># convergence precision</span>
+<span class="n">max_it</span> <span class="o">=</span> <span class="mi">10000</span>            <span class="c1"># maximal amount of iterations allowed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the gridline locations and the mesh grid</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Compute the rhs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">5.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">5.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span> <span class="c1"># container for solution with Numba disabled</span>
+<span class="n">nb_p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>        <span class="c1"># container for solution with Numba enabled</span>
+<span class="n">c_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="c1"># container for solution obtained with Cython</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">gauss_seidel</span></code> function is implemented in Python. It has an optional parameter <code class="docutils literal notranslate"><span class="pre">use_numba</span></code>. Its default value is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Note usage of underscore <code class="docutils literal notranslate"><span class="pre">_</span></code>. It has special meaning in Python. <code class="docutils literal notranslate"><span class="pre">_</span></code> stores the value of the last statement executed by interpreter. It is normally <em>not</em> used to <em>access</em> the value but rather to <em>ignore</em> it. Here the function returns three values but we are only interesting in storing one, so we assign others to the underscore variable. That is not the only meaning underscore can have in Python but this topic won’t be covered further in this course. We invite you to <a class="reference external" href="https://www.datacamp.com/community/tutorials/role-underscore-python">read about the underscore in Python</a> on your own if you’re interested.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> _, p, _ = solvers.gauss_seidel(p, b, dx, tol, max_it)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ec78e7da41024c22a441a9524db0ecd7", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution converged after 3401 iterations
+
+CPU times: user 19.6 s, sys: 231 ms, total: 19.9 s
+Wall time: 19.8 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> _, nb_p, _ = solvers.gauss_seidel(nb_p, b, dx, tol, max_it, use_numba=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "4d93a1850a9f44879ee551a1ffa6106b", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution converged after 3401 iterations
+
+CPU times: user 1.03 s, sys: 96.7 ms, total: 1.12 s
+Wall time: 1.26 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> _, c_p, _ = csolver.c_gauss_seidel(c_p, b, dx, tol, max_it)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "525b4110e02043a58ea43bf3082f7ffb", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution converged after 3401 iterations
+
+CPU times: user 151 ms, sys: 5.05 ms, total: 156 ms
+Wall time: 156 ms
+</pre></div>
+</div>
+</div>
+</div>
+<p>We check that the solutions provided by Python and Cython agree:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We want to plot aling y=0</span>
+<span class="n">jc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ly</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">nb_p</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">c_p</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nb_p</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nb_p</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Python+Numba&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c_p</span><span class="p">[:,</span><span class="n">jc</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cython&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$p(x,0)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Solution with Python+Numba&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Solution with Cython&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/05_03_Boosting_Python_45_0.png" src="../../../_images/05_03_Boosting_Python_45_0.png" />
+</div>
+</div>
+<p>First of all, both Numba and Cython provide quite a significant speedup. However, the execution time for the Python code with Numba and for Cython differs by almost a factor of <span class="math notranslate nohighlight">\(10\)</span>? It is in fact caused by <em>how</em> Numba is integrated into the Python code in this particular example. If you look into the source code, you’ll see that the only piece of code that depends on whether Numba is used or not, is this one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">use_numba</span><span class="p">:</span>
+    <span class="n">pnew</span> <span class="o">=</span> <span class="n">gauss_seidel_step</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">pnew</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">norms</span><span class="o">.</span><span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">pnew</span> <span class="o">=</span> <span class="n">py_gauss_seidel_step</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">pnew</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">norms</span><span class="o">.</span><span class="n">py_l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the only piece of code that will be compiled by Numba. The rest of the code will still be treated by the Python interpreter causing the <em>interpreter overhead</em>.</p>
+<p>Could this function be implemented otherwise? Yes, it could. The choice has been made deliberately. The thing is that <em>Numba cannot be used with <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> package</em>. And even if we have reverted to the standard <code class="docutils literal notranslate"><span class="pre">print</span></code> function, it would have been tricky, as Numba would not allow us to use raw or formatted strings, as well as it doesn’t support some of the optional arguments of <code class="docutils literal notranslate"><span class="pre">print</span></code>. We therefore sacrificed some performance for having a fancy logging output. Even though the factor of (almost) <span class="math notranslate nohighlight">\(10\)</span> is a significant difference, the time taken by the Python code -partially - compiled with Numba in this particular case is still very little to the human perception.</p>
+<p>It is fair to say though that Numba is a very fast evolving package, so we would easily expect the support for <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> to come in some of the future releases.</p>
+</div>
+<div class="section" id="syntax-for-numba-integration">
+<h4><span class="section-number">3.3.2.2. </span>Syntax for Numba integration<a class="headerlink" href="#syntax-for-numba-integration" title="Permalink to this headline">¶</a></h4>
+<p>Let us now look at how exactly Numba is integrated into the <code class="docutils literal notranslate"><span class="pre">gauss_seidel_step</span></code> function (example of <code class="docutils literal notranslate"><span class="pre">l2_diff</span></code> function is absolutely equivalent):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
+
+<span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">gauss_seidel_step</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">pnew</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Performs one Gauss-Seidel iteration&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                       <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pnew</span>
+</pre></div>
+</div>
+<p>Yes, it is as easy, as it looks. For the majority of problems it would only take decorating your function with a <code class="docutils literal notranslate"><span class="pre">jit</span></code> decorator. The parameter <code class="docutils literal notranslate"><span class="pre">nopython</span></code>, when evaluated to <code class="docutils literal notranslate"><span class="pre">True</span></code>, enables the so-called <em>nopython</em> mode. When <code class="docutils literal notranslate"><span class="pre">nopython</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the <em>object</em> mode is enabled. Nopython mode produces higher performance, as it does not use the Python interpreter. Nevertheless it might fail depending on your implementation; compilation will fall back to the object mode only if <code class="docutils literal notranslate"><span class="pre">nopython</span></code> is set to false.</p>
+<p>Sometimes you’ll also see the notation <code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code>. It is the shortcut to <code class="docutils literal notranslate"><span class="pre">&#64;jit(nopython=True)</span></code>.</p>
+</div>
+<div class="section" id="minimum-on-exception-handling">
+<h4><span class="section-number">3.3.2.3. </span>Minimum on Exception Handling<a class="headerlink" href="#minimum-on-exception-handling" title="Permalink to this headline">¶</a></h4>
+<p>There is another fragment of the source Python code that must be explained:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This is an example of exceptions handling in Python. Exceptions are mostly errors that occur during the execution. But some of them are warnings or events.</p>
+<p>The minimal exception handling block consists of the <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> clauses. Inside the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause you specify the code that is not exception-safe. <code class="docutils literal notranslate"><span class="pre">try</span></code> clause is not stand-alone and <em>must</em> be “accompanied” by the <code class="docutils literal notranslate"><span class="pre">except</span></code> clause. Inside the <code class="docutils literal notranslate"><span class="pre">except</span></code> clause you must specify code that is do be executed if that from the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause fails. If no exceptions occur inside the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause, the <code class="docutils literal notranslate"><span class="pre">except</span></code> clause is skipped. The <code class="docutils literal notranslate"><span class="pre">pass</span></code> statement is used when you want do nothing.</p>
+<p>The main purpose of exception handling is making them not fatal.</p>
+<p>The example made above perfectly fits this purpose. tqdm, unlike Numba or NumPy, <em>is not required</em> for the Gauss-Seidel solver to execute. It is rather a “luxury”, not a necessity. We therefore try to import it inside the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause and if the exception of type <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> is raised (tqdm is not found in system), the code doesn’t terminate but just proceeds to the further statements.</p>
+<p>You can also raise exceptions yourself to prevent and undesired behavior and to provide more informative logging of the code. Inside the <code class="docutils literal notranslate"><span class="pre">gauss_seidel</span></code> function you can see the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;p and b must have the same shape&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As we haven’t provided try/except block when calling the function, the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> exception will be raised and the execution will be terminated if you supply <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> of different shapes. If you supply <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> that are not of type <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, the execution will crash at the stage when trying to execute the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with the <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> being raised.</p>
+<p>In a well-designed program, exception handling must provide a certain level of <a class="reference external" href="https://en.wikipedia.org/wiki/Exception_safety">exception safety</a>.</p>
+<p>We will not further concentrate on exception handling and will proceed to understanding the Cython implementation of the Gauss-Seidel solver. If you are willing to learn more about exception handling in Python on your own, the good place to start is from the <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">tutorial provided in the official documentation</a>.</p>
+</div>
+<div class="section" id="cython-syntax">
+<h4><span class="section-number">3.3.2.4. </span>Cython syntax<a class="headerlink" href="#cython-syntax" title="Permalink to this headline">¶</a></h4>
+<p>If you look into the <code class="docutils literal notranslate"><span class="pre">csolver.pyx</span></code> file, you’ll see that there is a bit of unfamiliar syntax. It is not <em>drastically</em> different though. Cython syntax builds upon the Python syntax and adds some extra. “Extra” that appeared to be enough to implement the Gauss-Seidel solver consists of …</p>
+<ul>
+<li><p>… type declaration …</p>
+<p>As it has been mentioned, dynamic typing is the major source for interpreter overhead in Python. In Cython we can use <code class="docutils literal notranslate"><span class="pre">cdef</span></code> statement to declare C variables. In this way Cython won’t have to do the type conversion from Python types to C types.</p>
+<p>You can declare and initialize variable at once:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdef</span> <span class="nb">int</span> <span class="n">it</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Or you can declare variable without initialization:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdef</span> <span class="n">Py_ssize_t</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">Py_ssize_t</span></code> is a C type for the indexing.</p>
+<p>As you can see, we also declare types of the objects that we pass to the function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c_gauss_seidel</span><span class="p">(</span><span class="o">&lt;...&gt;</span><span class="p">,</span> <span class="n">DTYPE_t</span> <span class="n">dx</span><span class="p">,</span> <span class="n">DTYPE_t</span> <span class="n">tol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">max_it</span><span class="p">):</span>
+    <span class="o">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">DTYPE_t</span></code> here is just a shortcut we have created for the C type <code class="docutils literal notranslate"><span class="pre">np.float64_t</span></code> that corresponds to the Python type <code class="docutils literal notranslate"><span class="pre">np.float64</span></code> (double precision float):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ctypedef</span> <span class="n">np</span><span class="o">.</span><span class="n">float64_t</span> <span class="n">DTYPE_t</span>
+</pre></div>
+</div>
+<p>When specifying types of function arguments like this, Python objects are immediately converted into C objects, and <code class="docutils literal notranslate"><span class="pre">dx</span></code>, <code class="docutils literal notranslate"><span class="pre">tol</span></code> and <code class="docutils literal notranslate"><span class="pre">max_it</span></code> are then local C variables.</p>
+</li>
+<li><p>… and Cython memoryviews.</p>
+<p>Cython supports NumPy arrays just as well as Python does. If we looped over NumPy arrays though, it would barely provide any speedup. The reason for that is that <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> is a Python type and cannot be combined in the same expression with C types. Each time we access elements of <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, C integers must be converted to Python integers.</p>
+<blockquote>
+<div><p><a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/numpy_tutorial.html#efficient-indexing-with-memoryviews">In short, memoryviews</a> are C structures that can hold a pointer to the data of a NumPy array and all the necessary buffer metadata to provide efficient and safe access: dimensions, strides, item size, item type information, etc…</p>
+</div></blockquote>
+<p>Syntax to create memoryview from the NumPy array is very simple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdef</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">DTYPE_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="n">tol_hist_gs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_it</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span><span class="p">)</span>
+<span class="n">cdef</span> <span class="n">DTYPE_t</span><span class="p">[:]</span> <span class="n">tol_hist_gs_view</span> <span class="o">=</span> <span class="n">tol_hist_gs</span>
+</pre></div>
+</div>
+<p>Now note how <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are passed to the function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c_gauss_seidel</span><span class="p">(</span><span class="n">DTYPE_t</span><span class="p">[:,</span> <span class="p">:]</span> <span class="n">p</span><span class="p">,</span> <span class="n">DTYPE_t</span><span class="p">[:,</span> <span class="p">:]</span> <span class="n">b</span><span class="p">,</span>
+               <span class="n">DTYPE_t</span> <span class="n">dx</span><span class="p">,</span> <span class="n">DTYPE_t</span> <span class="n">tol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">max_it</span><span class="p">):</span>
+    <span class="o">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p>This way, when we originally pass the object of type <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, their memoryviews are created right away and can be accessed through the variables <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>NumPy array that is pointed to by the memoryview can be accessed through the <code class="docutils literal notranslate"><span class="pre">base</span></code> attribute of the memoryview:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="o">&lt;...&gt;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="o">&lt;...&gt;</span>
+</pre></div>
+</div>
+<p>It is due to the reason that we use memoryvies in the main loop of the program, that we gain such a speedup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">p_new_view</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">p_new_view</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">p_new_view</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that as well as for the most of the rest of code, syntax for the loops in Cython is exactly that of Python.</p>
+<p>The downside we get when using memoryviews is that they are not as flexible as Numpy arrays. Many NumPy functions though still support memoryviews. Memoryviews even support some of the “same” methods and attributes that Numpy arrays do but the return values are always of the C type.</p>
+</li>
+</ul>
+<p>Generally almost <em>any</em> Python code is valid in Cython. This is no surprise, as aside from when working with C types directly, Cython makes calls to the Python interpreter. We have introduced typing and memoryvies as an extra of Cython to gain the speedup but the pure Python code should also compile.</p>
+<p>As it has been said, learning to program efficiently in Cython should not be a complicated task for the Python programmer. Nevertheless, aside from writing the source code, it is also necessary to provide proper compile instructions (makefile). The makefile used in this demo is trivial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">Cython.Build</span> <span class="kn">import</span> <span class="n">cythonize</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">ext_modules</span><span class="o">=</span><span class="n">cythonize</span><span class="p">(</span><span class="s1">&#39;csolver.pyx&#39;</span><span class="p">,</span>
+                        <span class="n">build_dir</span><span class="o">=</span><span class="s1">&#39;build&#39;</span><span class="p">,</span>
+                        <span class="n">annotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">language_level</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span><span class="p">),</span>
+    <span class="n">include_dirs</span><span class="o">=</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">get_include</span><span class="p">()],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Cython.Build.cythonize</span></code> function is responsible for that the source Cython file (<code class="docutils literal notranslate"><span class="pre">csolver.pyx</span></code> in this case) is compiled into C code that is further compiled into machine code, and the shared library is created. The latter is directly importable into Python code, as we have showed above. <code class="docutils literal notranslate"><span class="pre">build_dir</span></code> parameter specifies the location where the files created at compile time are stored. <code class="docutils literal notranslate"><span class="pre">language_level</span></code> specifies the standard of Python that is used.</p>
+<p>The line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include_dirs</span><span class="o">=</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">get_include</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>is important to our code because we have imported the <em>definition</em> numpy file using <code class="docutils literal notranslate"><span class="pre">cimport</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cimport</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</pre></div>
+</div>
+<p>Definition file is the Cython analogy to the C header file. We needed numpy definition file for the C type <code class="docutils literal notranslate"><span class="pre">np.float64_t</span></code>.</p>
+<p>To run the Cython makefile, the following command must be executed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build_ext</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">lib</span> <span class="o">&lt;</span><span class="n">target_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where the <code class="docutils literal notranslate"><span class="pre">&lt;target_dir&gt;</span></code> specifies the location for the shared library.</p>
+<p>Overall, as you see, there is much more information to absorb when understanding Cython than when understanding Numba. Numba should certainly be your first choice when it is easily integratable. Cython though communicates much more naturally with C (and C++) code.</p>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">3.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook we have dug deeper into the basic programming concepts, such as compilers and interpreters. We have investigated alternative tools to get C-like performance with Python - Numba and Cython. The sample implementation of Gauss-Seidel solver has been sped up by the factor of about <span class="math notranslate nohighlight">\(20\)</span> with Numba and <span class="math notranslate nohighlight">\(100\)</span> with Cython. It is important to note though that generally Numba and Cython show similar performance for the same kind of problems. We chose to implement partial compilation with Numba in order to use the logging tools of tqdm package. Python decorators and exception handling were introduced as a part of the tutorial.
+We therefore conclude the chapter on iterative methods with numerical tools for efficient implementation of iterative solvers.</p>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"0357d5258e7a49fc823b0026de9966cd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_8bae7cc4934b45629fd73ac96c8eca26", "placeholder": "\u200b", "style": "IPY_MODEL_7fdde7fbfc6d4549acbf9099a52cd809", "value": " 3401/10000 [00:00&lt;00:00, 13976.97it/s]"}}, "0cad6597af8f4ea5bdf38c18334adccc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_635e4ca940c045629f310eaf6aa47dc4", "placeholder": "\u200b", "style": "IPY_MODEL_759af1aca45042e5a607ac2eb57f78be", "value": "it / max_it:  34%"}}, "19d9e1ce981b4afcb22187bf140a67d6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1f3d136f540246cdafd814af0ec04548": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2184432626894b439171f310937600e8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "25e4bf170e394145a27eb7fb40e6cc78": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "2da92aa35c994ed9a320b55da6dc7e21": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4d93a1850a9f44879ee551a1ffa6106b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_0cad6597af8f4ea5bdf38c18334adccc", "IPY_MODEL_97d49900d6c444aa9d4127c487507840", "IPY_MODEL_c07dd96323da40258a4a59f23c583277"], "layout": "IPY_MODEL_591ade64405e483da62d18995c6c75e6"}}, "5098d51fb77b4eee981799f6d4e4a268": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eeef5742172449f2b69bfd2059518a42", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_89ca06196a664ee1b662769e589df6eb", "value": 3401.0}}, "525b4110e02043a58ea43bf3082f7ffb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_75981ceab7d44228a9d224657b6310d3", "IPY_MODEL_5098d51fb77b4eee981799f6d4e4a268", "IPY_MODEL_0357d5258e7a49fc823b0026de9966cd"], "layout": "IPY_MODEL_2da92aa35c994ed9a320b55da6dc7e21"}}, "54fec26f38824d7bb940461c9ada2cb2": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "591ade64405e483da62d18995c6c75e6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5a06231c4a814d8493475b2b6ff00052": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5c7dca9c7e254fdb9697a2384e3f4ee7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_7de9ba3083064f8b9aaa56888301ecb1", "placeholder": "\u200b", "style": "IPY_MODEL_2184432626894b439171f310937600e8", "value": "it / max_it:  34%"}}, "611957dfe693417cab596b4a1e0d2ccb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "635e4ca940c045629f310eaf6aa47dc4": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "75981ceab7d44228a9d224657b6310d3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_54fec26f38824d7bb940461c9ada2cb2", "placeholder": "\u200b", "style": "IPY_MODEL_611957dfe693417cab596b4a1e0d2ccb", "value": "it / max_it:  34%"}}, "759af1aca45042e5a607ac2eb57f78be": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "7de9ba3083064f8b9aaa56888301ecb1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7fdde7fbfc6d4549acbf9099a52cd809": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "89ca06196a664ee1b662769e589df6eb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "8bae7cc4934b45629fd73ac96c8eca26": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "97d49900d6c444aa9d4127c487507840": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_e7f595e15d124cd4a4ee104c3241faac", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_fd8a424b718e4b8780a6e975d9d67142", "value": 3401.0}}, "acb37f159a284c608ac71137c3a1bf36": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c07dd96323da40258a4a59f23c583277": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_c7f6026de2da4e80b04332febf3f6d8b", "placeholder": "\u200b", "style": "IPY_MODEL_25e4bf170e394145a27eb7fb40e6cc78", "value": " 3401/10000 [00:01&lt;00:02, 2257.08it/s]"}}, "c7f6026de2da4e80b04332febf3f6d8b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "cc39b57656d04673aaf2da0b3a6c6f8e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "d16ae217ee2549ee8bc5a05241ce63b0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_1f3d136f540246cdafd814af0ec04548", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_cc39b57656d04673aaf2da0b3a6c6f8e", "value": 3401.0}}, "e795a877df3048948e46f303418d8100": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_acb37f159a284c608ac71137c3a1bf36", "placeholder": "\u200b", "style": "IPY_MODEL_19d9e1ce981b4afcb22187bf140a67d6", "value": " 3401/10000 [00:19&lt;00:38, 170.46it/s]"}}, "e7f595e15d124cd4a4ee104c3241faac": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ec78e7da41024c22a441a9524db0ecd7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_5c7dca9c7e254fdb9697a2384e3f4ee7", "IPY_MODEL_d16ae217ee2549ee8bc5a05241ce63b0", "IPY_MODEL_e795a877df3048948e46f303418d8100"], "layout": "IPY_MODEL_5a06231c4a814d8493475b2b6ff00052"}}, "eeef5742172449f2b69bfd2059518a42": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fd8a424b718e4b8780a6e975d9d67142": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solving_pde_mooc/notebooks/05_IterativeMethods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_02_Conjugate_Gradient.html" title="previous page"><span class="section-number">2. </span>The conjugate gradient method</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By B. Knaepen & Y. Velizhanina<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
