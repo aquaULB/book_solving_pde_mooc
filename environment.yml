@@ -1,0 +1,19 @@
+name: book
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy
+  - scipy 
+  - matplotlib 
+  - jupyter
+  - numba
+  - jupytext 
+  - jupyter_contrib_nbextensions 
+  - tqdm
+  - pip
+  - pip:
+    - jupyter-book
+    - ghp-import
+  
