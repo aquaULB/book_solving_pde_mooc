@@ -1,6 +1,6 @@
 import re
 import os
-
+import hashlib
 
 class SpdeContent():
     """Class representing the book.
@@ -63,6 +63,9 @@ class SpdeFile():
         self.path = path
         self.lines = None
         self.name = os.path.basename(self.path)
+        self.hash = hashlib.sha256(
+                str(self.path).encode('utf-8')
+            ).hexdigest()[-6:]
 
     def read(self):
         """ Open and store file content as a list
