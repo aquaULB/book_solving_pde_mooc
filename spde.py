@@ -233,7 +233,7 @@ class SpdeFile():
                         myst_role = '{eq}`' + key.group(1) + '`'
                     elif command_type.group(1) in cite_types:
                         # Citations
-                        myst_role = '{cite}`' + key.group(1) + '`'
+                        myst_role = '{cite}`' + self.hash + '-' + key.group(1) + '`'
                         found = True
                     self.lines[i] = self.lines[i].replace(command, myst_role)
 
@@ -246,8 +246,13 @@ class SpdeFile():
         of the file.
         """
 
-        directive = ['```{bibliography} biblio.bib\n',
-                ':filter: docname in docnames\n', '```']
+        directive = [
+                        '```{bibliography} biblio.bib\n',
+                        ':filter: docname in docnames\n',                        
+                        ':labelprefix: ' + self.hash + '\n',
+                        ':keyprefix: ' + self.hash + '-\n',
+                        '```',
+                    ]
 
         for i, line in enumerate(self.lines):
             if line.strip("\n") == "## References":

@@ -20,7 +20,27 @@ execute:
   timeout: 300
 
 parse:
-  myst_extended_syntax: true
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - colon_fence
+    - amsmath
+    - dollarmath
+    # - html_admonition
+    # - html_image
+    - linkify
+    # - replacements
+    # - smartquotes
+    - substitution
+
+bibtex_bibfiles:
+    - references.bib
+    - solving_pde_mooc/notebooks/01_Introduction/biblio.bib
+    - solving_pde_mooc/notebooks/02_TimeIntegration/biblio.bib
+    - solving_pde_mooc/notebooks/04_PartialDifferentialEquations/biblio.bib
+    - solving_pde_mooc/notebooks/05_IterativeMethods/biblio.bib
+
+sphinx:
+  config:
+    bibtex_reference_style: unsrt
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -45,7 +65,6 @@ html:
 
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url             : false # The URL of the BinderHub (e.g., https://mybinder.org)
   jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
   thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
   colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
