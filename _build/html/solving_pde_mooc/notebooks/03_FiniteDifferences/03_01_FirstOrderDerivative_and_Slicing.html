@@ -396,7 +396,7 @@
 <span class="eqno">(26)<a class="headerlink" href="#equation-eq-forwardnodal" title="Permalink to this equation">¶</a></span>\[f^{' \rm f}_i = \frac{f_{i+1} - f_i}{\Delta x},\;\; \hbox{forward finite difference}.\]</div>
 <p>The stencil for this expression is given by the sequence <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>, where <code class="docutils literal notranslate"><span class="pre">0</span></code> stands for the point at which the derivative is evaluated, and the corresponding finite-difference coefficients are <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> (see <a class="reference internal" href="#equation-eq-diffgeneric">(23)</a>).</p>
 <p>In the following figure we illustrate the stencil and mark in red the points involved in the computation:</p>
-<img width="600px" src="../figures/forwardDiff1.png">
+<a class="reference internal image-reference" href="../../../_images/forwardDiff1.png"><img alt="../../../_images/forwardDiff1.png" src="../../../_images/forwardDiff1.png" style="width: 600px;" /></a>
 <p>Above the stencil, we display the quantity computed, and below the stencil we display the quantities involved in its computations.</p>
 <p>It is important to highlight that the <em>enumeration of a stencil has nothing to do with the enumeration of the grid points</em>. The enumeration of grid points usually starts at one of the grid boundaries (<span class="math notranslate nohighlight">\(x_0\)</span> in our cases) and ends at another boundary. The enumeration of a stencil is characteristic of each particular approximation. The stencil point labeled <span class="math notranslate nohighlight">\(0\)</span> corresponds to the grid point at which the derivative is being approximated. The stencil indices then decrease to the left of this point and increase to its right. This is why in the above example the stencil is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.</p>
 <p>In the above stencil, we use two grid points - <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_{i+1}\)</span> - to obtain a first-order accurate expression for the first-order derivative at <span class="math notranslate nohighlight">\(x_i\)</span>. It is obvious that the forward finite difference formula <a class="reference internal" href="#equation-eq-forwardnodal">(26)</a> cannot be used at the right boundary node <span class="math notranslate nohighlight">\(x_n\)</span>. In section <a class="reference external" href="#One-sided-finite-differences">One-sided finite differences</a>, we discuss how the boundary nodes can be handled when the derivatives are being evaluated using finite differences.</p>
@@ -407,7 +407,7 @@
 <div class="math notranslate nohighlight" id="equation-eq-backwardnodal">
 <span class="eqno">(27)<a class="headerlink" href="#equation-eq-backwardnodal" title="Permalink to this equation">¶</a></span>\[f^{'\rm b}_i = \frac{f_i - f_{i-1}}{\Delta x}, \;\; \hbox{backward finite difference}. \]</div>
 <p>It is based on the right derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>. Highlighting in red the stencil points used to build expression <a class="reference internal" href="#equation-eq-backwardnodal">(27)</a>, we have:</p>
-<img width="600px" src="../figures/backwardDiff1.png">
+<a class="reference internal image-reference" href="../../../_images/backwardDiff1.png"><img alt="../../../_images/backwardDiff1.png" src="../../../_images/backwardDiff1.png" style="width: 600px;" /></a>
 <p>As the forward finite-difference approximation cannot be used at the right boundary node <span class="math notranslate nohighlight">\(x_n\)</span>, the backward finite-difference approximation cannot be used at the left boundary node <span class="math notranslate nohighlight">\(x_0\)</span>. We also note that <span class="math notranslate nohighlight">\(f^{'\rm b}_{i+1} = f^{'\rm f}_i\)</span>.</p>
 <p>Let us now derive a higher-order accurate approximation for <span class="math notranslate nohighlight">\(f'(x)\)</span>. Resorting again to Taylor’s theorem we write:</p>
 <div class="math notranslate nohighlight">
@@ -420,7 +420,7 @@
 <div class="math notranslate nohighlight" id="equation-eq-centereddiff">
 <span class="eqno">(29)<a class="headerlink" href="#equation-eq-centereddiff" title="Permalink to this equation">¶</a></span>\[f^{' \rm c}_i = \frac{f_{i+1} - f_{i-1}}{2\Delta x},\;\; \hbox{centered finite difference}.\]</div>
 <p>This expression is called the centered finite difference first-order derivative and its stencil looks like this:</p>
-<img width="600px" src="../figures/centeredDiff1.png">
+<a class="reference internal image-reference" href="../../../_images/centeredDiff1.png"><img alt="../../../_images/centeredDiff1.png" src="../../../_images/centeredDiff1.png" style="width: 600px;" /></a>
 <p>Using just two grid points, it’s not possible to achieve an accuracy of higher order than <span class="math notranslate nohighlight">\(2\)</span>. The centered finite-difference scheme cannot be used both at the left or right boundary nodes of the grid.</p>
 <p>Let us check that our formulas are correct. We first create a fine grid to accurately represent the function <a class="reference internal" href="#equation-eq-testfunc">(22)</a> and its derivative in the interval <span class="math notranslate nohighlight">\(x\in [0, \pi]\)</span>.</p>
 <div class="cell docutils container">
@@ -573,7 +573,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.03 ms ± 231 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.14 ms ± 121 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -586,7 +586,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>214 µs ± 4.18 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>210 µs ± 5.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -599,7 +599,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>255 µs ± 21.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>209 µs ± 6.88 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -922,12 +922,12 @@ f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Del
 <div class="math notranslate nohighlight">
 \[f'_0 = \frac{-\frac32 f_0 + 2f_1 - \frac12 f_2}{\Delta x}\]</div>
 <p>The stencil for this expression is represented as:</p>
-<img width="600px" src="../figures/onesideDiff1.png">
+<a class="reference internal image-reference" href="../../../_images/onesideDiff1.png"><img alt="../../../_images/onesideDiff1.png" src="../../../_images/onesideDiff1.png" style="width: 600px;" /></a>
 <p>Similarly, the following expression constitutes a second-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_n\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[f'(x_n) = \frac{\frac32 f_n - 2f_{n-1} + \frac12 f_{n-2}}{\Delta x}\]</div>
 <p>and its stencil is:</p>
-<img width="600px" src="../figures/onesideDiff1_2.png">
+<a class="reference internal image-reference" href="../../../_images/onesideDiff1_2.png"><img alt="../../../_images/onesideDiff1_2.png" src="../../../_images/onesideDiff1_2.png" style="width: 600px;" /></a>
 <p>We can now construct a second-order discretized operator throughout the domain by using the above two expressions at the boundary nodes. Our complete computation of the second-order accurate first-order derivative then looks like (for the sake of completeness, we repeat the whole code here):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
