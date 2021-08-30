@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Euler methods &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>3. Euler methods &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,23 +32,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -60,16 +56,16 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="2. Runge-Kutta methods" href="02_02_RungeKutta.html" />
+    <link rel="next" title="4. Runge-Kutta methods" href="02_02_RungeKutta.html" />
     <link rel="prev" title="2. Approximations and Taylor expansion" href="../01_Introduction/01_02_TaylorExpansion.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -78,32 +74,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
    Numerical methods for partial differential equations
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
    1. Toolkit Setup
@@ -115,95 +111,96 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Time integration
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. Euler methods
+   3. Euler methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_02_RungeKutta.html">
-   2. Runge-Kutta methods
+   4. Runge-Kutta methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Finite differences
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   1. First-order derivative and slicing
+   5. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   2. Higher order derivatives, functions and matrix formulation
+   6. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   3. Boundary value problems
+   7. Boundary value problems
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Partial differential equations
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   1. The first-order wave equation
+   8. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   2. Matrix and modified wavenumber stability analysis
+   9. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   3. One dimensional heat equation
+   10. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   4. One dimensional heat equation: implicit methods
+   11. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Iterative methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   1. Iteration methods
+   12. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   2. The conjugate gradient method
+   13. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   3. Boosting Python
+   14. Boosting Python
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -219,21 +216,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -254,7 +251,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -269,76 +266,93 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/02_TimeIntegration/02_01_EulerMethod.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   1.1. Introduction
+   3.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-forward-euler-method">
-   1.2. The forward Euler method
+   3.2. The forward Euler method
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-accuracy-of-the-forward-euler-method">
-     1.2.1. Numerical accuracy of the forward Euler method
+     3.2.1. Numerical accuracy of the forward Euler method
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-stability-of-the-forward-euler-method">
-     1.2.2. Numerical stability of the forward Euler method
+     3.2.2. Numerical stability of the forward Euler method
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#higher-order-example">
-     1.2.3. Higher-order example
+     3.2.3. Higher-order example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-stability-of-the-forward-euler-method-revisited">
-     1.2.4. Numerical stability of the forward Euler method revisited
+     3.2.4. Numerical stability of the forward Euler method revisited
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-backward-euler-method">
-   1.3. The backward Euler method
+   3.3. The backward Euler method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.4. Summary
+   3.4. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   1.5. Exercises
+   3.5. Exercises
   </a>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -347,9 +361,9 @@
               <div>
                 
   <div class="section" id="euler-methods">
-<h1><span class="section-number">1. </span>Euler methods<a class="headerlink" href="#euler-methods" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3. </span>Euler methods<a class="headerlink" href="#euler-methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this part of the course we discuss how to solve ordinary differential equations (ODEs). Although their numerical resolution is not the main subject of this course, their study nevertheless allows to introduce very important concepts that are essential in the numerical resolution of partial differential equations (PDEs).</p>
 <p>The ODEs we consider can be written in the form:</p>
 <div class="math notranslate nohighlight" id="equation-eq-ode">
@@ -368,7 +382,7 @@
 <p>However, our objective here is to obtain the above time evolution using a numerical scheme.</p>
 </div>
 <div class="section" id="the-forward-euler-method">
-<h2><span class="section-number">1.2. </span>The forward Euler method<a class="headerlink" href="#the-forward-euler-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>The forward Euler method<a class="headerlink" href="#the-forward-euler-method" title="Permalink to this headline">¶</a></h2>
 <p>The most elementary time integration scheme - we also call these ‘time advancement schemes’ - is known as the forward (explicit) Euler method - it is actually member of the Euler family of numerical methods for ordinary differential equations. We use it to introduce several fundamental concepts that will pop up frequently in the rest of the course. This scheme is based on computing an approximation of the unknown function at time <span class="math notranslate nohighlight">\(t+dt\)</span> from its known value at time <span class="math notranslate nohighlight">\(t\)</span> using the Taylor expansion limited to the first two terms. For radioactive decay, we then have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-forwardeuler">
 <span class="eqno">(7)<a class="headerlink" href="#equation-eq-forwardeuler" title="Permalink to this equation">¶</a></span>\[N(t+dt) \equiv N(t) + N'(t)dt \;\;\;\; \textrm{Forward Euler method} \]</div>
@@ -439,7 +453,7 @@
 </div>
 <p>Done! The last entry in the array N now contains an estimate for <span class="math notranslate nohighlight">\(N(t_f)\)</span>.</p>
 <div class="section" id="numerical-accuracy-of-the-forward-euler-method">
-<h3><span class="section-number">1.2.1. </span>Numerical accuracy of the forward Euler method<a class="headerlink" href="#numerical-accuracy-of-the-forward-euler-method" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.1. </span>Numerical accuracy of the forward Euler method<a class="headerlink" href="#numerical-accuracy-of-the-forward-euler-method" title="Permalink to this headline">¶</a></h3>
 <p>Let us compare graphically our numerical values with the exact solution <a class="reference internal" href="#equation-eq-expdecay">(6)</a>. For that purpose we use again the matplotlib package:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,7 +667,7 @@
 <p>Do you notice something ‘surprising’ in this plot? Earlier we mentioned an accuracy of second order for the forward Euler method but here we observe an accuracy of first order. In fact, there is a straightforward explanation for this. We said “…that the forward Euler method is of second order for going from <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t+dt\)</span>”. Here we are comparing values after <span class="math notranslate nohighlight">\(N\)</span> time steps with <span class="math notranslate nohighlight">\(\displaystyle N=\frac{t_f-t_i}{dt}\)</span>. The total error is proportional to the product of the error made at each time step multiplied by the number of steps. As the latter scales as <span class="math notranslate nohighlight">\(dt^{-1}\)</span>, the total error scales like <span class="math notranslate nohighlight">\(dt^2 / dt = dt\)</span>. One says that <strong>the error made during one time step accumulates during the computation</strong>.</p>
 </div>
 <div class="section" id="numerical-stability-of-the-forward-euler-method">
-<h3><span class="section-number">1.2.2. </span>Numerical stability of the forward Euler method<a class="headerlink" href="#numerical-stability-of-the-forward-euler-method" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2. </span>Numerical stability of the forward Euler method<a class="headerlink" href="#numerical-stability-of-the-forward-euler-method" title="Permalink to this headline">¶</a></h3>
 <p>For the radioactive decay equation, the forward Euler method does a decent job: when reducing the time step, the solution converges to the exact solution, albeit only with first-order accuracy. Let us now focus on another crucial property of numerical schemes called <em>numerical stability</em>.</p>
 <p>For the problem of radioactive decay, we first observe that according to equation <a class="reference internal" href="#equation-eq-forwardeuler2">(8)</a> we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-demo-stability">
@@ -811,7 +825,7 @@
 <p>If <span class="math notranslate nohighlight">\(dt\)</span> is chosen sufficiently small, so that both <span class="math notranslate nohighlight">\(\alpha_rdt\)</span> and <span class="math notranslate nohighlight">\(\alpha_i dt\)</span> are inside a circle, then the forward Euler scheme will be stable. We see in particular that the forward Euler scheme cannot be made stable if <span class="math notranslate nohighlight">\(\alpha\)</span> is purely imaginary, however small we choose the time step (we will consider a consequence of this below).</p>
 </div>
 <div class="section" id="higher-order-example">
-<h3><span class="section-number">1.2.3. </span>Higher-order example<a class="headerlink" href="#higher-order-example" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.3. </span>Higher-order example<a class="headerlink" href="#higher-order-example" title="Permalink to this headline">¶</a></h3>
 <p>So far we have only considered a simple one-dimensional example. In practice, many problems are modelled with coupled variables, making the corresponding equation multi-dimensional. Multi-dimensional equations also arise when the starting equations contain higher-order derivatives. They can then be converted to a system of first-order differential equations. Consider the scalar third-order differential equation for <span class="math notranslate nohighlight">\(y=y(x)\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-high-order-eq">
 <span class="eqno">(11)<a class="headerlink" href="#equation-eq-high-order-eq" title="Permalink to this equation">¶</a></span>\[    \frac{d^3 y(x)}{dx^3} = f(y, x).\]</div>
@@ -1036,7 +1050,7 @@ y^{n+1} &amp;= y^n + Ly^n dt + bdt\end{split}\]</div>
 <p>In the above plots we have explicitly changed our usual plotting style: we used a thin black line. We do so to show you how to set those two parameters but for nearly all our plots we rely on our matplotlib style file. We advise you to do the same to keep the appearance of your plots consistent. But feel free to edit any style file according to your taste !</p>
 </div>
 <div class="section" id="numerical-stability-of-the-forward-euler-method-revisited">
-<h3><span class="section-number">1.2.4. </span>Numerical stability of the forward Euler method revisited<a class="headerlink" href="#numerical-stability-of-the-forward-euler-method-revisited" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.4. </span>Numerical stability of the forward Euler method revisited<a class="headerlink" href="#numerical-stability-of-the-forward-euler-method-revisited" title="Permalink to this headline">¶</a></h3>
 <p>Let’s consider another two dimensional example and analyze the motion of an object attached to a spring. The equation of motion reads:</p>
 <div class="math notranslate nohighlight" id="equation-eq-spring">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eq-spring" title="Permalink to this equation">¶</a></span>\[    m\frac{d^2 x}{d t^2}=-kx,\]</div>
@@ -1192,7 +1206,7 @@ Q=
 </div>
 </div>
 <div class="section" id="the-backward-euler-method">
-<h2><span class="section-number">1.3. </span>The backward Euler method<a class="headerlink" href="#the-backward-euler-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>The backward Euler method<a class="headerlink" href="#the-backward-euler-method" title="Permalink to this headline">¶</a></h2>
 <p>The explicit Euler method gives a decent approximation in certain cases (<a class="reference internal" href="#equation-eq-decay">(5)</a>), but it is absolutely inapplicable in others since it blows up for <em>any</em> time step (<a class="reference internal" href="#equation-eq-spring">(12)</a>). It urges us to search for different ways to approximate evolution equations. One of them is the <em>implicit</em> Euler method.</p>
 <p>Similarly to the explicit Euler method which is also referred to as the forward Euler method, the implicit Euler method is sometimes called the backward Euler method. Generally speaking, the difference between explicit and implicit numerical schemes is that in the first case the solution at latter point of the dependant variable (at a later time, for example) is built from the solution computed at the previous points; in the second case, the algorithm involves <em>both</em> the solution previous points and later points. Schematically we have:</p>
 <div class="math notranslate nohighlight">
@@ -1435,13 +1449,13 @@ dt.\end{split}\]</div>
 <p>In the literature you will often encounter the statement that <em>the implicit Euler scheme is unconditionally stable</em> for linear autonomous homogeneous problems. You might think that this contradicts <a class="reference internal" href="#equation-eq-back-stab">(16)</a>, but in fact, when stating so, people usually imply that <span class="math notranslate nohighlight">\(\lambda_r \le 0\)</span>, so that the equation <a class="reference internal" href="#equation-eq-generic">(14)</a> only admits decaying solutions.</p>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">1.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook we have described the forward and the backward Euler schemes, and how we can discretize an ordinary differential equation (or a system of ODEs) to compute the time evolution of the physical quantities under consideration.</p>
 <p>We computed the accuracy of the Euler method, and introduced the concept of stability of a numerical scheme. The former results directly from the number of terms retained in the Taylor expansion of the variables, while the latter originates from the structure of the time advancement scheme and the eigenvalues of the rhs linear operator appearing in the discretized equations.</p>
 <p>In the next notebook, we introduce some more efficient time advancement schemes which have both better accuracy and larger domains of stability. They are know as Runge-Kutta schemes and we will use them extensively when analyzing partial differential equations later on in the course.</p>
 </div>
 <div class="section" id="exercises">
-<h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p><strong>Exercise 1.</strong> Write a Python code and perform the corresponding visualization showing that for one time step, the forward Euler method is indeed of second-order accuracy.</p>
 <p><strong>Exercise 2.</strong> For the case of the body in free fall prove graphically that both explicit and implicit Euler methods are first-order accurate for a finite time interval.</p>
 <p><a name="exc3"><strong>Exercise 3.</strong> </a> For the problem of radioactive decay, given that <span class="math notranslate nohighlight">\(\displaystyle \alpha dt \le \frac{3}{5}\)</span>, explain why the error for the first timestep attributed to the forward Euler scheme is larger than that attributed to the backward Euler scheme.</p>
@@ -1470,15 +1484,35 @@ dt.\end{split}\]</div>
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../01_Introduction/01_02_TaylorExpansion.html" title="previous page"><span class="section-number">2. </span>Approximations and Taylor expansion</a>
-    <a class='right-next' id="next-link" href="02_02_RungeKutta.html" title="next page"><span class="section-number">2. </span>Runge-Kutta methods</a>
+            
 
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../01_Introduction/01_02_TaylorExpansion.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>Approximations and Taylor expansion</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="02_02_RungeKutta.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">4. </span>Runge-Kutta methods</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -1486,7 +1520,7 @@ dt.\end{split}\]</div>
         
           By B. Knaepen & Y. Velizhanina<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -1495,11 +1529,9 @@ dt.\end{split}\]</div>
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

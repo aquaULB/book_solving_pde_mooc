@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1. Toolkit Setup &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,23 +32,20 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -62,14 +56,14 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="2. Approximations and Taylor expansion" href="01_02_TaylorExpansion.html" />
     <link rel="prev" title="Numerical methods for partial differential equations" href="01_00_Preface.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -78,32 +72,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_00_Preface.html">
    Numerical methods for partial differential equations
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    1. Toolkit Setup
@@ -115,95 +109,96 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Time integration
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   1. Euler methods
+   3. Euler methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   2. Runge-Kutta methods
+   4. Runge-Kutta methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Finite differences
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   1. First-order derivative and slicing
+   5. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   2. Higher order derivatives, functions and matrix formulation
+   6. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   3. Boundary value problems
+   7. Boundary value problems
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Partial differential equations
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   1. The first-order wave equation
+   8. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   2. Matrix and modified wavenumber stability analysis
+   9. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   3. One dimensional heat equation
+   10. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   4. One dimensional heat equation: implicit methods
+   11. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Iterative methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   1. Iteration methods
+   12. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   2. The conjugate gradient method
+   13. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   3. Boosting Python
+   14. Boosting Python
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -219,21 +214,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -254,7 +249,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -269,25 +264,42 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/01_Introduction/01_01_ToolkitSetup.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-and-why-python">
    1.1. Python and why Python
@@ -363,8 +375,8 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -454,14 +466,14 @@
 </div>
 <p>Here <code class="docutils literal notranslate"><span class="pre">-c</span></code> refers to channel.</p>
 <blockquote>
-<div><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html">Conda channels</a> are the locations where packages are stored. They serve as the base for hosting and managing packages. Conda packages are downloaded from remote channels, which are URLs to directories containing conda packages. The conda command searches a default set of channels, and packages are automatically downloaded and updated from https://repo.anaconda.com/pkgs/.</p>
+<div><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html">Conda channels</a> are the locations where packages are stored. They serve as the base for hosting and managing packages. Conda packages are downloaded from remote channels, which are URLs to directories containing conda packages. The conda command searches a default set of channels, and packages are automatically downloaded and updated from <a class="reference external" href="https://repo.anaconda.com/pkgs/">https://repo.anaconda.com/pkgs/</a>.</p>
 </div></blockquote>
 <p>conda-forge provides a remote conda channel distributing conda packages, which you sometimes cannot find in conda the <code class="docutils literal notranslate"><span class="pre">default</span></code> channel.</p>
 <p>We install the <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> package, as it provides a possibility to save Jupyter notebooks as a simple Markdown file, and we also install <code class="docutils literal notranslate"><span class="pre">jupyter_contrib_nbextensions</span></code>, which contains a collection of extensions for Jupyter Notebook, in particular, support of LaTeX environments.</p>
 </li>
 <li><p>Open Jupyter Notebook and activate the necessary extensions (from the Edit menu).</p></li>
 </ul>
-<img alt="../../../_images/jupextensions.png" src="../../../_images/jupextensions.png" />
+<img src="../figures/jupextensions.png">
 <p>Now we are ready to go - we have a virtual environment, which includes all necessary Python packages, and we even activated extended support for LaTeX.</p>
 <p>In case you’re wondering what LaTeX is,</p>
 <blockquote>
@@ -554,7 +566,7 @@ cd test_git
 <p>Commiting your modification is a way to create a snapshot of the current, newly modified state of your project. Once you’ve commited your changes, the modified files are now saved in the history of your project.</p>
 </li>
 </ul>
-<p>Let’s add a README.md file to our repo. If you’re on MacOS/Linux:</p>
+<p>Let’s add a <a class="reference external" href="http://README.md">README.md</a> file to our repo. If you’re on MacOS/Linux:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vi README.md
 </pre></div>
 </div>
@@ -562,12 +574,12 @@ cd test_git
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>notepad README.md
 </pre></div>
 </div>
-<p>Add some content to the README.md file (whathever you want) and save your modifications.</p>
+<p>Add some content to the <a class="reference external" href="http://README.md">README.md</a> file (whathever you want) and save your modifications.</p>
 <p>Now let’s learn how to create commits. First, you tell what files to commit:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add README.md
 </pre></div>
 </div>
-<p>The changes to README.md are not contained in the staging area.</p>
+<p>The changes to <a class="reference external" href="http://README.md">README.md</a> are not contained in the staging area.</p>
 <p>If you run</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add *
 </pre></div>
@@ -577,7 +589,7 @@ cd test_git
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git commit -m &quot;First commit&quot;
 </pre></div>
 </div>
-<p>You have now recorded in your git history the initial modifications of the README.md file. All the information sits locally on your computer. But we also want to be able to share our work and collaborate on projects (here we also mean being able to send your homeworks to the teaching team !).</p>
+<p>You have now recorded in your git history the initial modifications of the <a class="reference external" href="http://README.md">README.md</a> file. All the information sits locally on your computer. But we also want to be able to share our work and collaborate on projects (here we also mean being able to send your homeworks to the teaching team !).</p>
 </div>
 <div class="section" id="creating-remote-git-repository">
 <h5><span class="section-number">1.3.2.1.2. </span>Creating remote Git repository<a class="headerlink" href="#creating-remote-git-repository" title="Permalink to this headline">¶</a></h5>
@@ -585,12 +597,12 @@ cd test_git
 <div><p>To be able to collaborate on any Git project, you need to know how to manage your remote repositories. <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Remote repositories</a> are versions of your project that are hosted on the Internet or network somewhere.</p>
 </div></blockquote>
 <p>Another reason to keep your data in a remote repo is for the sake of safety. If your computer gets broken, stolen or you accidentally remove the project’s folder, then you’ll loose all the local data. But if you keep it in a remote repo and update it regularly, then you can recover your whole progress from any other machine.</p>
-<p>There are different services which allow to create and manage remote Git repositories. Throughout the course we will use GitHub.com. It is easy to use and free. Generally speaking, GitHub is a Git repository hosting service. Let’s create our first remote repo on GitHub.</p>
-<p>If you don’t have GitHub account, you will have to go to GitHub.com and create one. GitHub has a graphical interface allowing you to download files to the repository, create branches, see changes in the latest commit etc. For some purposes, the GitHub interface might be quite convenient, but we advise you against uploading files directly via GitHub. It would make the whole idea of Git meaningless, and ultimately lead you to storing multiple versions of your project at the same time. We suggest that you learn how to update your project over time and keep control over the evolutionary tree of all the changes you make.</p>
+<p>There are different services which allow to create and manage remote Git repositories. Throughout the course we will use <a class="reference external" href="http://GitHub.com">GitHub.com</a>. It is easy to use and free. Generally speaking, GitHub is a Git repository hosting service. Let’s create our first remote repo on GitHub.</p>
+<p>If you don’t have GitHub account, you will have to go to <a class="reference external" href="http://GitHub.com">GitHub.com</a> and create one. GitHub has a graphical interface allowing you to download files to the repository, create branches, see changes in the latest commit etc. For some purposes, the GitHub interface might be quite convenient, but we advise you against uploading files directly via GitHub. It would make the whole idea of Git meaningless, and ultimately lead you to storing multiple versions of your project at the same time. We suggest that you learn how to update your project over time and keep control over the evolutionary tree of all the changes you make.</p>
 <p>In order to create new GitHub repository, click on <em>New</em>:</p>
-<img alt="../../../_images/CreateRepo.png" src="../../../_images/CreateRepo.png" />
+<img src="../figures/CreateRepo.png">
 <p>Choose a name for your repository and set some description. You can make it either public - so that anyone will be able to see it - or private - only the ones you invite as collaborators will be able to see it. Click on <em>Create repository</em>.</p>
-<img alt="../../../_images/CreateRepoSet.png" src="../../../_images/CreateRepoSet.png" />
+<img src="../figures/CreateRepoSet.png">
 <p>Let’s go through a small tutorial describing how you can connect your newly created remote repo to the local one.</p>
 <p>To see, what are the current remote repositories tracked from your local repository, run the following terminal command in your local repository</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git remote
@@ -598,7 +610,7 @@ cd test_git
 </div>
 <p>Of course, this command will output nothing, as we have not yet added any remotes.</p>
 <p>Copy the url of your remote repo. Make sure you’ve chosen HTTPS format, especially if you have never used SSH.</p>
-<img alt="../../../_images/CopyURL.png" src="../../../_images/CopyURL.png" />
+<img src="../figures/CopyURL.png">
 <p>Now go back to the terminal window and type (<em>replace <code class="docutils literal notranslate"><span class="pre">yourUserName</span></code> with your actual Github username</em>):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git remote add origin https://github.com/yourUserName/test_git.git
 </pre></div>
@@ -647,7 +659,7 @@ Branch &#39;master&#39; set up to track remote branch &#39;master&#39; from &#39
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Switched to a new branch &#39;other_branch&#39;
 </pre></div>
 </div>
-<p>Let us now create our first python script - a file “hello.py” with the following content:</p>
+<p>Let us now create our first python script - a file “<a class="reference external" href="http://hello.py">hello.py</a>” with the following content:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&#39;Hello world!&#39;)
 </pre></div>
 </div>
@@ -688,7 +700,7 @@ To push the current branch and set the remote as upstream, use
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git merge other_branch
 </pre></div>
 </div>
-<p>Check the list of files on <em>master</em> now - you’ll see ‘hello.py’ among them. We are free to delete <em>other_branch</em>:</p>
+<p>Check the list of files on <em>master</em> now - you’ll see ‘<a class="reference external" href="http://hello.py">hello.py</a>’ among them. We are free to delete <em>other_branch</em>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git branch -d other_branch
 </pre></div>
 </div>
@@ -696,7 +708,7 @@ To push the current branch and set the remote as upstream, use
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Deleted branch other_branch (was be3cca2).
 </pre></div>
 </div>
-<p>We have learnt the very basics of Git, now let’s clean up, as we don’t need to store remote <em>test_git anymore</em>. In the menu for your repo on GitHub.com click on <em>Settings</em>, scroll to the very bottom, and click on <em>Delete this repository</em>.</p>
+<p>We have learnt the very basics of Git, now let’s clean up, as we don’t need to store remote <em>test_git anymore</em>. In the menu for your repo on <a class="reference external" href="http://GitHub.com">GitHub.com</a> click on <em>Settings</em>, scroll to the very bottom, and click on <em>Delete this repository</em>.</p>
 <div class="notice">*<a name="notice">We advice, you always set the same names for the remote branch and the local branch, that is tracking this remote, until you're an experienced Git user, as the same name is required for pushing, but not necessary for pulling.</a></div>
 </div>
 </div>
@@ -752,15 +764,35 @@ To push the current branch and set the remote as upstream, use
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_00_Preface.html" title="previous page">Numerical methods for partial differential equations</a>
-    <a class='right-next' id="next-link" href="01_02_TaylorExpansion.html" title="next page"><span class="section-number">2. </span>Approximations and Taylor expansion</a>
+            
 
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="01_00_Preface.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Numerical methods for partial differential equations</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="01_02_TaylorExpansion.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>Approximations and Taylor expansion</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -768,7 +800,7 @@ To push the current branch and set the remote as upstream, use
         
           By B. Knaepen & Y. Velizhanina<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -777,11 +809,9 @@ To push the current branch and set the remote as upstream, use
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

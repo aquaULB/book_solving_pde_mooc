@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. The conjugate gradient method &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>13. The conjugate gradient method &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,23 +32,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -60,16 +56,16 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3. Boosting Python" href="05_03_Boosting_Python.html" />
-    <link rel="prev" title="1. Iteration methods" href="05_01_Iteration_and_2D.html" />
-
+    <link rel="next" title="14. Boosting Python" href="05_03_Boosting_Python.html" />
+    <link rel="prev" title="12. Iteration methods" href="05_01_Iteration_and_2D.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -78,32 +74,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
    Numerical methods for partial differential equations
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
    1. Toolkit Setup
@@ -115,95 +111,96 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Time integration
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   1. Euler methods
+   3. Euler methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   2. Runge-Kutta methods
+   4. Runge-Kutta methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Finite differences
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   1. First-order derivative and slicing
+   5. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   2. Higher order derivatives, functions and matrix formulation
+   6. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   3. Boundary value problems
+   7. Boundary value problems
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Partial differential equations
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   1. The first-order wave equation
+   8. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   2. Matrix and modified wavenumber stability analysis
+   9. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   3. One dimensional heat equation
+   10. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   4. One dimensional heat equation: implicit methods
+   11. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Iterative methods
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="05_01_Iteration_and_2D.html">
-   1. Iteration methods
+   12. Iteration methods
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. The conjugate gradient method
+   13. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_03_Boosting_Python.html">
-   3. Boosting Python
+   14. Boosting Python
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -219,21 +216,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -254,7 +251,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -269,59 +266,76 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/05_IterativeMethods/05_02_Conjugate_Gradient.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   2.1. Introduction
+   13.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#projection-methods">
-   2.2. Projection methods
+   13.2. Projection methods
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steepest-descend-method">
-   2.3. Steepest descend method
+   13.3. Steepest descend method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conjugate-gradient-method">
-   2.4. Conjugate gradient method
+   13.4. Conjugate gradient method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   2.5. Summary
+   13.5. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   2.6. References
+   13.6. References
   </a>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -330,9 +344,9 @@
               <div>
                 
   <div class="section" id="the-conjugate-gradient-method">
-<h1><span class="section-number">2. </span>The conjugate gradient method<a class="headerlink" href="#the-conjugate-gradient-method" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">13. </span>The conjugate gradient method<a class="headerlink" href="#the-conjugate-gradient-method" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>For convenience, we start by importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -355,28 +369,22 @@
 </div>
 <p>In the previous notebooks we have already considered several ways to iteratively solve matrix problems like <span class="math notranslate nohighlight">\(A\boldsymbol p =\boldsymbol b\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(A\)</span> has some particular characteristics it’s possible to devise even faster methods. Here we will assume that <span class="math notranslate nohighlight">\(A\)</span> is symmetric and positive-definite:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \boldsymbol p\not = 0. 
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \boldsymbol p\not = 0. \]</div>
 <p>The resolution of the linear system may then be viewed as a minimization problem and one of the most popular method to use in that case is the conjugate gradient method.</p>
 <p>In this notebook we will describe the conjugate gradient method algorithm but let us first introduce some key concepts and a more primitive algorithm called the method of steepest descent.</p>
 </div>
 <div class="section" id="projection-methods">
-<h2><span class="section-number">2.2. </span>Projection methods<a class="headerlink" href="#projection-methods" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.2. </span>Projection methods<a class="headerlink" href="#projection-methods" title="Permalink to this headline">¶</a></h2>
 <p>Let’s consider the following quadratic functional of the vector <span class="math notranslate nohighlight">\(\boldsymbol p\)</span>,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  J (\boldsymbol p) = \frac12\boldsymbol{p}^{T}A\boldsymbol{p} - \boldsymbol{p}^{T}\boldsymbol{b},
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[  J (\boldsymbol p) = \frac12\boldsymbol{p}^{T}A\boldsymbol{p} - \boldsymbol{p}^{T}\boldsymbol{b},\]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> is a symmetric positive-definite matrix and <span class="math notranslate nohighlight">\(\boldsymbol b\)</span> is any vector. Then there is exactly one vector that minimizes <span class="math notranslate nohighlight">\(\boldsymbol J (\boldsymbol p)\)</span> and this vector is the solution of the linear equation,</p>
 <div class="math notranslate nohighlight" id="equation-eq-linearsystem">
 <span class="eqno">(57)<a class="headerlink" href="#equation-eq-linearsystem" title="Permalink to this equation">¶</a></span>\[  A\boldsymbol{p} = \boldsymbol{b}.\]</div>
 <p>The proof of this statement is straightforward. Let us compute the gradient of <span class="math notranslate nohighlight">\(J\)</span>:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  \boldsymbol{\nabla} J = A\boldsymbol{p}-\boldsymbol{b}
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[  \boldsymbol{\nabla} J = A\boldsymbol{p}-\boldsymbol{b}\]</div>
 <p>To get the above expression we have used <span class="math notranslate nohighlight">\(A=A^T\)</span>. The gradient of <span class="math notranslate nohighlight">\(J\)</span> is therefore equal to zero if <span class="math notranslate nohighlight">\(A\boldsymbol{p} = \boldsymbol{b}\)</span>. Furthermore, because <span class="math notranslate nohighlight">\(A\)</span> is positive-definite, <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> defines a minimum of <span class="math notranslate nohighlight">\(J\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(\boldsymbol q\)</span> is not a solution of the linear system <a class="reference internal" href="#equation-eq-linearsystem">(57)</a>, we have:</p>
 <div class="math notranslate nohighlight">
@@ -389,7 +397,7 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 <p>Some projection methods are suitable for non-symmetric matrices <span class="math notranslate nohighlight">\(A\)</span> but we don’t consider them here.</p>
 </div>
 <div class="section" id="steepest-descend-method">
-<h2><span class="section-number">2.3. </span>Steepest descend method<a class="headerlink" href="#steepest-descend-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.3. </span>Steepest descend method<a class="headerlink" href="#steepest-descend-method" title="Permalink to this headline">¶</a></h2>
 <p>The first method we consider is the <em>steepest descent method</em>.</p>
 <p>We showed in the previous section that the solution of the linear system minimizes the quadratic functional <span class="math notranslate nohighlight">\(J\)</span> and that the residual is aligned with the gradient of <span class="math notranslate nohighlight">\(J\)</span>. To rapidly lower the value of <span class="math notranslate nohighlight">\(J\)</span>, one can therefore head in that direction to go from <span class="math notranslate nohighlight">\({\boldsymbol p}^{k}\)</span> to <span class="math notranslate nohighlight">\({\boldsymbol p}^{k+1}\)</span>. This is exactly what the steepest descent method does and it also chooses <span class="math notranslate nohighlight">\(\alpha_k\)</span> so that <span class="math notranslate nohighlight">\(J({\boldsymbol p}^{k+1})\)</span> is as small as possible. We therefore have,</p>
 <div class="math notranslate nohighlight">
@@ -401,11 +409,9 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 <p>Let’s see how this algorithm applies to the Poisson equation (with Dirichlet boundary conditions). We recall that our discretized equation reads:</p>
 <div class="math notranslate nohighlight">
 \[    \frac{p_{i-1,j}-2p_{i,j} + p_{i+1,j}}{\Delta x^2} + \frac{p_{i,j-1}-2p_{i,j} + p_{i,j+1}}{\Delta y^2}= b_{i,j} \]</div>
-<p>For the theoretical considerations developed above, the unknowns <span class="math notranslate nohighlight">\(p_{i,j}\)</span> are grouped into a <span class="math notranslate nohighlight">\(nx-2\times ny-2\)</span> vector <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> (for example using row major ordering). However, as we only have to know the action of the matrix on vectors, we never have to construct these 1D arrays explicitly and we can use the <span class="math notranslate nohighlight">\((i,j)\)</span> labeling directly (this will become clear when examining the algorithm below). There is however two conditions we need check. First, is the discretized Laplacian symmetric? If you look back at notebook <code class="docutils literal notranslate"><span class="pre">05_01_Iteration_and_2D</span></code> you will see that it is indeed the case. Second, is the corresponding matrix positive-definite? In fact, the discretized Laplacian is negative-definite because it is diagonalizable and all its eigenvalues are negative. They are given by <a class="bibtex reference internal" href="#watkins2010" id="id1">[Wat10]</a>:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  \lambda_{kl} = -4\left[\sin^2 \frac{k\pi}{2(nx-1)} + \sin^2 \frac{l\pi}{2(ny-1)}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
-\end{equation*}\]</div>
+<p>For the theoretical considerations developed above, the unknowns <span class="math notranslate nohighlight">\(p_{i,j}\)</span> are grouped into a <span class="math notranslate nohighlight">\(nx-2\times ny-2\)</span> vector <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> (for example using row major ordering). However, as we only have to know the action of the matrix on vectors, we never have to construct these 1D arrays explicitly and we can use the <span class="math notranslate nohighlight">\((i,j)\)</span> labeling directly (this will become clear when examining the algorithm below). There is however two conditions we need check. First, is the discretized Laplacian symmetric? If you look back at notebook <code class="docutils literal notranslate"><span class="pre">05_01_Iteration_and_2D</span></code> you will see that it is indeed the case. Second, is the corresponding matrix positive-definite? In fact, the discretized Laplacian is negative-definite because it is diagonalizable and all its eigenvalues are negative. They are given by <span id="id1">[<a class="reference internal" href="#id4">d47220Wat10</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[  \lambda_{kl} = -4\left[\sin^2 \frac{k\pi}{2(nx-1)} + \sin^2 \frac{l\pi}{2(ny-1)}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.\]</div>
 <p>Because the the discretized Laplacian is negative-defined, we will solve the equivalent <span class="math notranslate nohighlight">\(-\nabla^2 p=-b\)</span> instead to stay connected with the conventions adopted above. But we could also think of the steepest iterative method in terms of a maximizing problem and rephrase all the statements accordingly.</p>
 <p>We will solve the Poisson equation with the same grid and parameters as in notebook <code class="docutils literal notranslate"><span class="pre">05_01_Iteration_and_2D</span></code>. We also choose the same right-hand side:</p>
 <div class="math notranslate nohighlight">
@@ -552,7 +558,7 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d512ae6a74264887881c42c556ff1f28", "version_major": 2, "version_minor": 0}
+{"model_id": "2198ccc016614ec39876c8ec967ddc78", "version_major": 2, "version_minor": 0}
 </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 12154 iterations
 </pre></div>
 </div>
@@ -610,23 +616,19 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="../../../_images/05_02_Conjugate_Gradient_22_1.png" src="../../../_images/05_02_Conjugate_Gradient_22_1.png" />
+<img alt="../../../_images/05_02_Conjugate_Gradient_22_0.png" src="../../../_images/05_02_Conjugate_Gradient_22_0.png" />
 </div>
 </div>
 <p>This looks good: we have converged close to the exact solution. The bad news is that if you time the solution you will see that it more than two times slower than the Jacobi method. This is not a big surprise as the algorithm needs two evaluations of <span class="math notranslate nohighlight">\(A(v)\)</span> per iteration. But the good news is that by changing the algorithm a bit, we can drastically cut the number of iterations. To that end, let us discuss the conjugate gradient algorithm.</p>
 </div>
 <div class="section" id="conjugate-gradient-method">
-<h2><span class="section-number">2.4. </span>Conjugate gradient method<a class="headerlink" href="#conjugate-gradient-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.4. </span>Conjugate gradient method<a class="headerlink" href="#conjugate-gradient-method" title="Permalink to this headline">¶</a></h2>
 <p>With steepest descent, we use the residual as the search direction. If you compute <span class="math notranslate nohighlight">\({\boldsymbol r}^{k+1}\cdot {\boldsymbol r}^k\)</span> you will see that two successive residuals are orthogonal and so are the search directions. But there is nothing to prevent the algorithm from making several jumps in the same (or a similar) direction.  Imagine you wanted to go from the intersection of the 5th avenue and 23rd street to the intersection of the 9th avenue and 30th street. Knowing that each segment costs the same number of computations (one iteration), would you follow the red path or green path?</p>
-<a class="reference internal image-reference" href="../../../_images/jumps.png"><img alt="../../../_images/jumps.png" src="../../../_images/jumps.png" style="width: 350px;" /></a>
-<p>The conjugate gradient method is built upon the idea of reducing the number of jumps and make sure the algorithm never selects the same direction twice. To achieve this, one needs the following choices for the size of the jumps and search directions:</p>
+<img src="../figures/jumps.png" width=350><p>The conjugate gradient method is built upon the idea of reducing the number of jumps and make sure the algorithm never selects the same direction twice. To achieve this, one needs the following choices for the size of the jumps and search directions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\alpha^n &amp;= \frac{{\boldsymbol r}^n \cdot {\boldsymbol r}^n}{A{\boldsymbol d}^n \cdot {\boldsymbol d}^n} \\
 {\boldsymbol d}^{n+1}&amp;={\boldsymbol r}^{n+1}+\beta^{n+1}{\boldsymbol d}^{n}, \hbox{ with } \beta^{n+1} = \frac{{\boldsymbol r}^{n+1} \cdot {\boldsymbol r}^{n+1}}{{\boldsymbol r}^n \cdot {\boldsymbol r}^n}\\ \hbox{ and } {\boldsymbol d}^{0} &amp;= {\boldsymbol r}^{0}.\end{split}\]</div>
-<p>Obviously, the search directions are no longer equal to the residuals but they are a linear combination of the residual and the previous search direction. What is remarkable about this algorithm is that the residual at iteration <span class="math notranslate nohighlight">\(k+1\)</span> is orthogonal not only to the previous residual but to all of them. As a vector space of dimension <span class="math notranslate nohighlight">\(n\)</span> can only contain <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors, we immediately conclude that the conjugate gradient method necessarily converges (remember the restriction we put on <span class="math notranslate nohighlight">\(A\)</span> though)! The derivation of the properties of the conjugate gradient method can cause some severe headaches. However, they are beautifully explained in this elegant paper: <a class="bibtex reference internal" href="#shewchuk1994" id="id2">[She94]</a>. Here we only apply the algorithm to our sample problem and refer the interested reader to this paper.</p>
+<p>Obviously, the search directions are no longer equal to the residuals but they are a linear combination of the residual and the previous search direction. What is remarkable about this algorithm is that the residual at iteration <span class="math notranslate nohighlight">\(k+1\)</span> is orthogonal not only to the previous residual but to all of them. As a vector space of dimension <span class="math notranslate nohighlight">\(n\)</span> can only contain <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors, we immediately conclude that the conjugate gradient method necessarily converges (remember the restriction we put on <span class="math notranslate nohighlight">\(A\)</span> though)! The derivation of the properties of the conjugate gradient method can cause some severe headaches. However, they are beautifully explained in this elegant paper: <span id="id2">[<a class="reference internal" href="#id6">d47220She94</a>]</span>. Here we only apply the algorithm to our sample problem and refer the interested reader to this paper.</p>
 <p>A possible implementation of the method is as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -701,7 +703,7 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "453613d7492c444a911990d1baec1b94", "version_major": 2, "version_minor": 0}
+{"model_id": "7d8cc68432f248c9b8353c1cd98c79f3", "version_major": 2, "version_minor": 0}
 </script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 3 iterations
 </pre></div>
 </div>
@@ -760,26 +762,23 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="../../../_images/05_02_Conjugate_Gradient_32_1.png" src="../../../_images/05_02_Conjugate_Gradient_32_1.png" />
+<img alt="../../../_images/05_02_Conjugate_Gradient_32_0.png" src="../../../_images/05_02_Conjugate_Gradient_32_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">2.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook we provided an illustration of methods known as projection methods. They are called in this way because the jump from one iteration to the next one is along specific search directions.</p>
 <p>The method of steepest descent and the conjugate gradient methods are basic methods belonging to this class. The literature on this topic is vast and there exists a large collection of sophisticated methods tailored to many specific cases. Here we have only scratched the surface.</p>
 <p>The last notebook of this chapter will be devoted to a programming topic. As promised, we will show you how to speed up your Python code when you cannot rely directly on some precompiled function available in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">scipy</span></code>.</p>
 </div>
 <div class="section" id="references">
-<h2><span class="section-number">2.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-solving_pde_mooc/notebooks/05_IterativeMethods/05_02_Conjugate_Gradient-0"><dl class="citation">
-<dt class="bibtex label" id="shewchuk1994"><span class="brackets"><a class="fn-backref" href="#id2">She94</a></span></dt>
+<h2><span class="section-number">13.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">d47220She94</a></span></dt>
 <dd><p>J Shewchuk. An Introduction to the Conjugate Gradient Method Without the Agonizing Pain. 1994.</p>
 </dd>
-<dt class="bibtex label" id="watkins2010"><span class="brackets"><a class="fn-backref" href="#id1">Wat10</a></span></dt>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">d47220Wat10</a></span></dt>
 <dd><p>DS Watkins. Fondamentals of matrix computations - third edition. 2010.</p>
 </dd>
 </dl>
@@ -789,7 +788,7 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"0fec607919644ca09eff19c78de1a733": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "102d1a318a1340ea9fa9f2f21f4449a5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "14604034e33a4a0f8c1f1ce6ea446d17": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_b2cc61768b2f42118b10955e858b0b28", "max": 20000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_30978135868d4bc5bca4f29c81befdbf", "value": 12154.0}}, "2937b1dd46a243d2b2ebdd625c77d32d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_7a194dd64ec646b0937fb913c329ac0c", "placeholder": "\u200b", "style": "IPY_MODEL_928d3f6a833d471a86edb44f2df0ec3b", "value": "iter / max_it:  61%"}}, "30978135868d4bc5bca4f29c81befdbf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "3badcbfddb864f2282d94d4f3b5c6bba": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_f0efa160ecfe47c4928eb7c4ca0a5bd9", "placeholder": "\u200b", "style": "IPY_MODEL_3fb01683926d41fbbe44292c736aedb2", "value": " 3/100 [00:00&lt;00:02, 37.20it/s]"}}, "3fb01683926d41fbbe44292c736aedb2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "453613d7492c444a911990d1baec1b94": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_b71cf5c669194fd796571ed854e967a4", "IPY_MODEL_f39997df60c94705a55d5aa72990a945", "IPY_MODEL_3badcbfddb864f2282d94d4f3b5c6bba"], "layout": "IPY_MODEL_b193f3e0e9b7455ea45c66a345903b13"}}, "55c7319081b4481a8b21462ded0e7cec": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "75d1c2fc106c4cee98337e7c64f2a600": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7a194dd64ec646b0937fb913c329ac0c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "928d3f6a833d471a86edb44f2df0ec3b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a1190dd5720e4d47bab743c620d03c61": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a9a19e91a12a400bb031f66dd0e9da2f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b0d12284c0dd4d409a65320bfbbc3527": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b193f3e0e9b7455ea45c66a345903b13": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b2cc61768b2f42118b10955e858b0b28": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b71cf5c669194fd796571ed854e967a4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a9a19e91a12a400bb031f66dd0e9da2f", "placeholder": "\u200b", "style": "IPY_MODEL_b0d12284c0dd4d409a65320bfbbc3527", "value": "iter / max_it:   3%"}}, "d512ae6a74264887881c42c556ff1f28": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_2937b1dd46a243d2b2ebdd625c77d32d", "IPY_MODEL_14604034e33a4a0f8c1f1ce6ea446d17", "IPY_MODEL_f2f1b3eaf79d456a8dae2445410c42bc"], "layout": "IPY_MODEL_75d1c2fc106c4cee98337e7c64f2a600"}}, "f0efa160ecfe47c4928eb7c4ca0a5bd9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f2f1b3eaf79d456a8dae2445410c42bc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_55c7319081b4481a8b21462ded0e7cec", "placeholder": "\u200b", "style": "IPY_MODEL_a1190dd5720e4d47bab743c620d03c61", "value": " 12154/20000 [00:04&lt;00:02, 2824.75it/s]"}}, "f39997df60c94705a55d5aa72990a945": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_0fec607919644ca09eff19c78de1a733", "max": 100.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_102d1a318a1340ea9fa9f2f21f4449a5", "value": 3.0}}}, "version_major": 2, "version_minor": 0}
+{"state": {"123ace4a6f224e88b7f1fa2d6d77a2a0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "139155e9a64847b09406d1c96c1d746a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9083543a717344a2829c8de11b092e58", "max": 100.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_7ac4816f670445d0b394ca58cc92ef39", "value": 0.0}}, "2198ccc016614ec39876c8ec967ddc78": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_308f0caae6b44226adb7a1e48b28e3fb", "IPY_MODEL_ca9244ad2b4d4a829a7ba5fadebe2eed", "IPY_MODEL_547ebb38e22e4433bcd54c7c60f83c2f"], "layout": "IPY_MODEL_e4e3986aaffe4a75854169982e0b490c"}}, "308f0caae6b44226adb7a1e48b28e3fb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_74272f0872f44c219362401e3d23c94b", "placeholder": "\u200b", "style": "IPY_MODEL_e3073beee22b4b85bbdd236193eaf315", "value": "iter / max_it:  59%"}}, "482f52f9816645c09762285176cf0971": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "547ebb38e22e4433bcd54c7c60f83c2f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_b480c34a40e449bc825a2468f3f7ba89", "placeholder": "\u200b", "style": "IPY_MODEL_9ad652d0a08a4940bb4092cb1ab80371", "value": " 11879/20000 [00:03&lt;00:01, 4218.79it/s]"}}, "6a018565979e4d72b025bc3f923acb1f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "74272f0872f44c219362401e3d23c94b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7ac4816f670445d0b394ca58cc92ef39": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "7d8cc68432f248c9b8353c1cd98c79f3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_f2becd16498d4758a1bd9aee9c5951b8", "IPY_MODEL_139155e9a64847b09406d1c96c1d746a", "IPY_MODEL_a8b75b41829b41acadebebc9b8156860"], "layout": "IPY_MODEL_c14d2a2bef1f4dcaa635c0967051d36d"}}, "7e9317383f30479f91cd978a701f4749": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "9083543a717344a2829c8de11b092e58": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9a2849c4d28f4f2bbeacbe96e9d31462": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "9ad652d0a08a4940bb4092cb1ab80371": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a8b75b41829b41acadebebc9b8156860": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_482f52f9816645c09762285176cf0971", "placeholder": "\u200b", "style": "IPY_MODEL_9a2849c4d28f4f2bbeacbe96e9d31462", "value": " 0/100 [00:00&lt;?, ?it/s]"}}, "b480c34a40e449bc825a2468f3f7ba89": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c14d2a2bef1f4dcaa635c0967051d36d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ca9244ad2b4d4a829a7ba5fadebe2eed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_123ace4a6f224e88b7f1fa2d6d77a2a0", "max": 20000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_6a018565979e4d72b025bc3f923acb1f", "value": 11879.0}}, "e3073beee22b4b85bbdd236193eaf315": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e4e3986aaffe4a75854169982e0b490c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e5310a5b68ce4ad7b9f62c4b66a6ed55": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f2becd16498d4758a1bd9aee9c5951b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_e5310a5b68ce4ad7b9f62c4b66a6ed55", "placeholder": "\u200b", "style": "IPY_MODEL_7e9317383f30479f91cd978a701f4749", "value": "iter / max_it:   0%"}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
@@ -815,15 +814,35 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="05_01_Iteration_and_2D.html" title="previous page"><span class="section-number">1. </span>Iteration methods</a>
-    <a class='right-next' id="next-link" href="05_03_Boosting_Python.html" title="next page"><span class="section-number">3. </span>Boosting Python</a>
+            
 
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="05_01_Iteration_and_2D.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">12. </span>Iteration methods</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="05_03_Boosting_Python.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">14. </span>Boosting Python</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -831,7 +850,7 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
         
           By B. Knaepen & Y. Velizhanina<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -840,11 +859,9 @@ A=A^{T} \hbox{ and } \boldsymbol{p}^{T}A\boldsymbol p &gt; 0 \hbox{ for any } \b
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

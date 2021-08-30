@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Higher order derivatives, functions and matrix formulation &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>6. Higher order derivatives, functions and matrix formulation &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,23 +32,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -60,16 +56,16 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3. Boundary value problems" href="03_03_BoundaryValueProblems.html" />
-    <link rel="prev" title="1. First-order derivative and slicing" href="03_01_FirstOrderDerivative_and_Slicing.html" />
-
+    <link rel="next" title="7. Boundary value problems" href="03_03_BoundaryValueProblems.html" />
+    <link rel="prev" title="5. First-order derivative and slicing" href="03_01_FirstOrderDerivative_and_Slicing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -78,32 +74,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
    Numerical methods for partial differential equations
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
    1. Toolkit Setup
@@ -115,95 +111,96 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Time integration
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   1. Euler methods
+   3. Euler methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   2. Runge-Kutta methods
+   4. Runge-Kutta methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Finite differences
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="03_01_FirstOrderDerivative_and_Slicing.html">
-   1. First-order derivative and slicing
+   5. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. Higher order derivatives, functions and matrix formulation
+   6. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_03_BoundaryValueProblems.html">
-   3. Boundary value problems
+   7. Boundary value problems
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Partial differential equations
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   1. The first-order wave equation
+   8. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   2. Matrix and modified wavenumber stability analysis
+   9. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   3. One dimensional heat equation
+   10. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   4. One dimensional heat equation: implicit methods
+   11. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Iterative methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   1. Iteration methods
+   12. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   2. The conjugate gradient method
+   13. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   3. Boosting Python
+   14. Boosting Python
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -219,21 +216,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -254,7 +251,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -269,88 +266,105 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   2.1. Introduction
+   6.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#higher-order-derivatives">
-   2.2. Higher order derivatives
+   6.2. Higher order derivatives
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#second-order-derivative">
-     2.2.1. Second-order derivative
+     6.2.1. Second-order derivative
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#higher-order-derivatives-and-one-sided-stencils">
-     2.2.2. Higher-order derivatives and one-sided stencils
+     6.2.2. Higher-order derivatives and one-sided stencils
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#functions">
-   2.3. Functions
+   6.3. Functions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#parameters">
-     2.3.1. Parameters
+     6.3.1. Parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#return-statement">
-     2.3.2. Return statement
+     6.3.2. Return statement
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variable-scope">
-     2.3.3. Variable scope
+     6.3.3. Variable scope
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#beware-passing-by-object-reference-in-python">
-     2.3.4. Beware passing by object reference in Python!
+     6.3.4. Beware passing by object reference in Python!
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrix-formulation">
-   2.4. Matrix formulation
+   6.4. Matrix formulation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   2.5. Summary
+   6.5. Summary
   </a>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -359,9 +373,9 @@
               <div>
                 
   <div class="section" id="higher-order-derivatives-functions-and-matrix-formulation">
-<h1><span class="section-number">2. </span>Higher order derivatives, functions and matrix formulation<a class="headerlink" href="#higher-order-derivatives-functions-and-matrix-formulation" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Higher order derivatives, functions and matrix formulation<a class="headerlink" href="#higher-order-derivatives-functions-and-matrix-formulation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -378,10 +392,10 @@
 <p>In this notebook we extend the concept of finite differences to higher-order derivatives. We also discuss the use of Python <code class="docutils literal notranslate"><span class="pre">functions</span></code> and finally we describe how to construct matrices corresponding to the finite-difference operators. This is very useful when solving boundary value problems or eigenvalue problems.</p>
 </div>
 <div class="section" id="higher-order-derivatives">
-<h2><span class="section-number">2.2. </span>Higher order derivatives<a class="headerlink" href="#higher-order-derivatives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Higher order derivatives<a class="headerlink" href="#higher-order-derivatives" title="Permalink to this headline">¶</a></h2>
 <p>Using finite differences, we can construct derivatives up to any order. Before we discuss this, we first explicitly describe in detail the second-order derivative that is later used extensively in the course.</p>
 <div class="section" id="second-order-derivative">
-<h3><span class="section-number">2.2.1. </span>Second-order derivative<a class="headerlink" href="#second-order-derivative" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.1. </span>Second-order derivative<a class="headerlink" href="#second-order-derivative" title="Permalink to this headline">¶</a></h3>
 <p>Using Taylor’s theorem we can write:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}&amp; f(x+\Delta x) = f(x)+f'(x)\Delta x+\frac12 f''(x)\Delta x^2+\frac16 f'''(x)\Delta x^3+O(\Delta x^4) \\
@@ -390,7 +404,7 @@
 <div class="math notranslate nohighlight" id="equation-eq-centereddiff2">
 <span class="eqno">(30)<a class="headerlink" href="#equation-eq-centereddiff2" title="Permalink to this equation">¶</a></span>\[f''_i=\frac{f_{i-1}-2f_i+f_{i+1}}{\Delta x^2}.\]</div>
 <p>The stencil for this expression is the sequence <span class="math notranslate nohighlight">\([-1,0,1]\)</span> and we represent it as:</p>
-<a class="reference internal image-reference" href="../../../_images/centeredDiff2.png"><img alt="../../../_images/centeredDiff2.png" src="../../../_images/centeredDiff2.png" style="width: 600px;" /></a>
+<img width="600px" src="../figures/centeredDiff2.png">
 <p>The centered second-order derivative cannot be used at the boundary nodes. Some one-sided formulas are needed at those locations.</p>
 <p>Let us write a Python code to check that expression <a class="reference internal" href="#equation-eq-centereddiff2">(30)</a> works as expected. We use the same test function as in the previous notebook - <span class="math notranslate nohighlight">\(f(x)=e^x \sin(3\pi x)\)</span> - and we first represent it on a fine grid in the interval <span class="math notranslate nohighlight">\(x\in [O, \pi]\)</span>.</p>
 <div class="cell docutils container">
@@ -449,7 +463,7 @@
 <p>As the centered formula for <span class="math notranslate nohighlight">\(f''\)</span> is not defined at the boundary nodes, they have been excluded in the computation. But in the next section, we will provide information on how to cope with this issue.</p>
 </div>
 <div class="section" id="higher-order-derivatives-and-one-sided-stencils">
-<h3><span class="section-number">2.2.2. </span>Higher-order derivatives and one-sided stencils<a class="headerlink" href="#higher-order-derivatives-and-one-sided-stencils" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.2. </span>Higher-order derivatives and one-sided stencils<a class="headerlink" href="#higher-order-derivatives-and-one-sided-stencils" title="Permalink to this headline">¶</a></h3>
 <p>It should now be clear that the construction of finite difference formulas to compute differential operators can be done using Taylor’s theorem. In general, as we increase the order of the derivative, we have to increase the number of points in the corresponding stencil. The construction of these stencils is not complicated and is well documented in several places, so we will not repeat it here. Instead we refer to the very detailed <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a> page that contains finite difference formulas for all the cases we use in this course, and many more.</p>
 <p>To make this notebook self contained, we list here some of the formulas we will/might need later on.</p>
 <p>We begin we some <strong>centered finite difference</strong> expressions:</p>
@@ -557,7 +571,7 @@
 <div class="math notranslate nohighlight">
 \[f''''_i = \frac{f_{i-2}-4f_{i-1}+6f_{i}-4f_{i+1}+f_{i+2}}{\Delta x^4}.\]</div>
 <p>Graphically we have:</p>
-<a class="reference internal image-reference" href="../../../_images/centeredDiff4.png"><img alt="../../../_images/centeredDiff4.png" src="../../../_images/centeredDiff4.png" style="width: 800px;" /></a>
+<img width="800px" src="../figures/centeredDiff4.png">
 <p>We have seen that centered stencils are not applicable at boundary nodes. Thankfully, alternate finite difference formulas can be constructed for these nodes and the <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a>
 page also lists a large collections of such <strong>one-sided formulas</strong>. Here we limit our attention to first- and second-order accurate expressions.</p>
 <p><strong>Forward one-sided finite difference formulas:</strong></p>
@@ -745,7 +759,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 </div>
 <div class="section" id="functions">
-<h2><span class="section-number">2.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <p>Up to now, we have explicitly written new Python code whenever we implemented a particular concept. In the long term, this is not convenient as we often need to re-use the same pieces of code over and over again. Fortunately, most programming languages - including Python - make this task easy to achieve through the use of <em>functions</em>. Don’t confuse the concept of functions in programming languages and mathematical functions. This section is devoted to Python functions. Further in the course we will try to be explicit about what is meant but you can normally figure it out from the context. Before digging into more detail, let’s consider an example. Say we want to create a (Python) function that computes the centered second-order derivative of some (mathematical) function. We may implement this function as follows (details about how to do this are given below):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,7 +800,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <p><code class="docutils literal notranslate"><span class="pre">something</span></code> is what the programmer wants to provide as output from the function after execution of all the statements (e.g. the result of some arithmetic operations). The <code class="docutils literal notranslate"><span class="pre">return</span></code> statement is optional.</p>
 <p>To make things less abstract, let’s discuss some examples.</p>
 <div class="section" id="parameters">
-<h3><span class="section-number">2.3.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_data</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
@@ -844,7 +858,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">e35381385fe3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="mi">560</span><span class="n">s7g9x1594_l0zqhpr2gkw0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_1977</span><span class="o">/</span><span class="mf">1495475918.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: print_name_and_data() missing 3 required positional arguments: &#39;age&#39;, &#39;height&#39;, and &#39;weight&#39;
@@ -902,7 +916,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 </div>
 <div class="section" id="return-statement">
-<h3><span class="section-number">2.3.2. </span>Return statement<a class="headerlink" href="#return-statement" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2. </span>Return statement<a class="headerlink" href="#return-statement" title="Permalink to this headline">¶</a></h3>
 <p>The last statement of a function can be a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, with which the programmer can send some information or data produced within the function back to the main program or calling routine. As an example, let’s define a function that returns the body mass index of an individual:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,7 +974,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 </div>
 </div>
 <div class="section" id="variable-scope">
-<h3><span class="section-number">2.3.3. </span>Variable scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.3. </span>Variable scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h3>
 <p>A very important concept when discussing functions is the so-called <em>scope</em> of a variable. There are generally speaking two types of variables: <strong>global</strong> variables or <strong>local</strong> variables. Global variables can be accessed anywhere in a program. Local variables can only be accessed within the function, in which they are defined. But you may always return their values outside of the function by using a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement.</p>
 <p>Let first consider an example involving a global variable:</p>
 <div class="cell docutils container">
@@ -1016,7 +1030,7 @@ Here prod is equal to 3.
 <p>NB: there is a way to freely use global variables within the scope of a function; it requires the usage of the <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword associated with a variable. But we won’t document this feature as we discourage you to use it in the context of this course.</p>
 </div>
 <div class="section" id="beware-passing-by-object-reference-in-python">
-<h3><span class="section-number">2.3.4. </span>Beware passing by object reference in Python!<a class="headerlink" href="#beware-passing-by-object-reference-in-python" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.4. </span>Beware passing by object reference in Python!<a class="headerlink" href="#beware-passing-by-object-reference-in-python" title="Permalink to this headline">¶</a></h3>
 <p>There is another common source of errors when manipulating sequences (or numpy arrays) as arguments of functions. Remember what we discussed in the section “Referenced or copied?” of the previous notebook. We observed a fundamental difference when assigning a new name to a variable depending on whether it was a number or a list. We recall here two examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1136,7 +1150,7 @@ Outside of the function, the sequence is [1, 1, 1, 1].
 </div>
 </div>
 <div class="section" id="matrix-formulation">
-<h2><span class="section-number">2.4. </span>Matrix formulation<a class="headerlink" href="#matrix-formulation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4. </span>Matrix formulation<a class="headerlink" href="#matrix-formulation" title="Permalink to this headline">¶</a></h2>
 <p>At this stage we know how to build Python functions that return the derivatives of functions based on finite difference formulas. Conceptually, we have defined the <em>action</em> of differential operators on functions: we pass a function to a Python function and it returns the derivative. This means that we have not explicitly constructed the differential operator. For some problems, this is needed and in this section we show how this is done.</p>
 <p>Mathematically, we denote the action of any linear operator <span class="math notranslate nohighlight">\(\cal{A}\)</span> acting on a function <span class="math notranslate nohighlight">\(f\)</span> as:</p>
 <div class="math notranslate nohighlight">
@@ -1324,7 +1338,7 @@ Outside of the function, the sequence is [1, 1, 1, 1].
 <p>Again we obtain the desired result.</p>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">2.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook we have explained how to obtain a second-order accurate finite difference formula for the second-order derivative of a function and we have provided recipes to construct many other differential operators - many more can be found on this <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a> page. We also discussed the concept of Python functions to produce re-usable pieces of source code. Finally, we have shown how to explicitly construct discrete versions of differential operators in matrix form. These will be used in the following notebook to solve what are known as boundary value problems.</p>
 </div>
 </div>
@@ -1351,15 +1365,35 @@ Outside of the function, the sequence is [1, 1, 1, 1].
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_01_FirstOrderDerivative_and_Slicing.html" title="previous page"><span class="section-number">1. </span>First-order derivative and slicing</a>
-    <a class='right-next' id="next-link" href="03_03_BoundaryValueProblems.html" title="next page"><span class="section-number">3. </span>Boundary value problems</a>
+            
 
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="03_01_FirstOrderDerivative_and_Slicing.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">5. </span>First-order derivative and slicing</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="03_03_BoundaryValueProblems.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">7. </span>Boundary value problems</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -1367,7 +1401,7 @@ Outside of the function, the sequence is [1, 1, 1, 1].
         
           By B. Knaepen & Y. Velizhanina<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -1376,11 +1410,9 @@ Outside of the function, the sequence is [1, 1, 1, 1].
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

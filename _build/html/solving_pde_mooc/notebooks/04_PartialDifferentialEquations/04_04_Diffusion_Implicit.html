@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. One dimensional heat equation: implicit methods &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>11. One dimensional heat equation: implicit methods &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,23 +32,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -60,16 +56,16 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1. Iteration methods" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" />
-    <link rel="prev" title="3. One dimensional heat equation" href="04_03_Diffusion_Explicit.html" />
-
+    <link rel="next" title="12. Iteration methods" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" />
+    <link rel="prev" title="10. One dimensional heat equation" href="04_03_Diffusion_Explicit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -78,32 +74,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
    Numerical methods for partial differential equations
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
    1. Toolkit Setup
@@ -115,95 +111,96 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Time integration
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   1. Euler methods
+   3. Euler methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   2. Runge-Kutta methods
+   4. Runge-Kutta methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Finite differences
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   1. First-order derivative and slicing
+   5. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   2. Higher order derivatives, functions and matrix formulation
+   6. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   3. Boundary value problems
+   7. Boundary value problems
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Partial differential equations
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="04_01_Advection.html">
-   1. The first-order wave equation
+   8. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_02_StabilityAnalysis.html">
-   2. Matrix and modified wavenumber stability analysis
+   9. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_03_Diffusion_Explicit.html">
-   3. One dimensional heat equation
+   10. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   4. One dimensional heat equation: implicit methods
+   11. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Iterative methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   1. Iteration methods
+   12. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   2. The conjugate gradient method
+   13. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   3. Boosting Python
+   14. Boosting Python
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -219,21 +216,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -254,7 +251,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -269,54 +266,71 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_04_Diffusion_Implicit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   4.1. Introduction
+   11.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#backward-euler-method">
-   4.2. Backward Euler method
+   11.2. Backward Euler method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#crank-nicolson-method">
-   4.3. Crank-Nicolson method
+   11.3. Crank-Nicolson method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numerical-solution">
-   4.4. Numerical solution
+   11.4. Numerical solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   4.5. Summary
+   11.5. Summary
   </a>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -325,9 +339,9 @@
               <div>
                 
   <div class="section" id="one-dimensional-heat-equation-implicit-methods">
-<h1><span class="section-number">4. </span>One dimensional heat equation: implicit methods<a class="headerlink" href="#one-dimensional-heat-equation-implicit-methods" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">11. </span>One dimensional heat equation: implicit methods<a class="headerlink" href="#one-dimensional-heat-equation-implicit-methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2><span class="section-number">4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>For convenience, we start by importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -348,89 +362,65 @@
 <p>In all cases considered, we have observed that stability of the algorithm requires a restriction on the time step proportional to <span class="math notranslate nohighlight">\(\Delta x^2\)</span>. As this is rather restrictive, we focus here on some implicit methods and see how they compare.</p>
 </div>
 <div class="section" id="backward-euler-method">
-<h2><span class="section-number">4.2. </span>Backward Euler method<a class="headerlink" href="#backward-euler-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Backward Euler method<a class="headerlink" href="#backward-euler-method" title="Permalink to this headline">¶</a></h2>
 <p>We begin by considering the backward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span> and we do not include the source term for the stability analysis.</p>
 <p>We recall that for a generic ordinary differential equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span>, the backward Euler method is,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-y^{n+1} = y^{n} + \Delta t f(y^{n+1},t).
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[y^{n+1} = y^{n} + \Delta t f(y^{n+1},t).\]</div>
 <p>In our case, the discretization is therefore,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}
-\end{align*}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}\]</div>
 <p>In matrix notation this is equivalent to:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-    (I-A)\boldsymbol{T}^{n+1} = \boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; (I-A)^{n+1}\boldsymbol{T}^{n+1} = \boldsymbol{T}^{0},
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[    (I-A)\boldsymbol{T}^{n+1} = \boldsymbol{T}^{n}\; \; \Leftrightarrow \; \; (I-A)^{n+1}\boldsymbol{T}^{n+1} = \boldsymbol{T}^{0},\]</div>
 <p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix. If we adopt Dirichlet boundary conditions, the matrix <span class="math notranslate nohighlight">\(A\)</span> is identical to its counterpart for the forward Euler scheme (see previous notebook). For reference, the eigenvalues <span class="math notranslate nohighlight">\(m_k\)</span> of <span class="math notranslate nohighlight">\(A\)</span> are real and negative:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-m_k = 2\frac{\alpha dt}{dx^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[m_k = 2\frac{\alpha dt}{dx^2}\left(\cos\left(\frac{\pi k}{nx-1}\right)-1\right),\; k=1,\ldots, nx-2.\]</div>
 <p>If we diagonalize <span class="math notranslate nohighlight">\(A\)</span> and denote by <span class="math notranslate nohighlight">\(\boldsymbol z=(z_1,\ldots,z_{nx-2})\)</span> the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol T\)</span> in the basis of eigenvectors, we have:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-(I-\Lambda)^{n+1} \boldsymbol z^{n+1} = \boldsymbol z^0 
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[(I-\Lambda)^{n+1} \boldsymbol z^{n+1} = \boldsymbol z^0 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix containing the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. Each of the <span class="math notranslate nohighlight">\(nx-2\)</span> decoupled equations may therefore be written as:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-z_k^{n+1} = \left(\frac{1}{1-m_k}\right)^{n+1} z_k^0 
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[z_k^{n+1} = \left(\frac{1}{1-m_k}\right)^{n+1} z_k^0 \]</div>
 <p>Since <span class="math notranslate nohighlight">\(m_k &lt; 0\; \forall k\)</span>, all the coordinates <span class="math notranslate nohighlight">\(z_k\)</span> remain bounded and the algorithm is unconditionally stable.</p>
 <p>We can also examine the stability of the algorithm for the case of periodic boundary conditions using the modified wavenumber analysis. We adopt the same notations as in the previous notebook and get the same expression for the evolution of the Fourier modes,</p>
 <div class="math notranslate nohighlight" id="equation-eq-matheatbackwardeulerfourier">
 <span class="eqno">(48)<a class="headerlink" href="#equation-eq-matheatbackwardeulerfourier" title="Permalink to this equation">¶</a></span>\[\begin{split}    \frac{d\hat T(k_m,t)}{dt}&amp;=\alpha\left(\frac{e^{-ik_m \Delta x} - 2 + e^{ik_m \Delta x}}{\Delta x^2}\right) \hat{T}(k_m,t) \\
     &amp;= -\alpha k_m'^2 \hat T(k_m,t) \nonumber\end{split}\]</div>
 <p>with the modified wavenumbers being real and defined by,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[k_m'^2 = \frac{2}{\Delta x^2}(1 - \cos(k_m \Delta x)).\]</div>
 <p>Because all the coefficients <span class="math notranslate nohighlight">\(-\alpha k_m'^2\)</span> are real and negative, the Fourier components remain bounded if we discretize eq. <a class="reference internal" href="#equation-eq-matheatbackwardeulerfourier">(48)</a> using the backward time integration method. The algorithm is therefore also unconditionally stable in the case of periodic boundary conditions.</p>
 </div>
 <div class="section" id="crank-nicolson-method">
-<h2><span class="section-number">4.3. </span>Crank-Nicolson method<a class="headerlink" href="#crank-nicolson-method" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.3. </span>Crank-Nicolson method<a class="headerlink" href="#crank-nicolson-method" title="Permalink to this headline">¶</a></h2>
 <p>A popular method for discretizing the diffusion term in the heat equation is the Crank-Nicolson scheme. It is a second-order accurate implicit method that is defined for a generic equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).
-\end{align*}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).\]</div>
 <p>You should check that this method is indeed second-order accurate in time by expanding <span class="math notranslate nohighlight">\(f(y^{n+1}, t^{n+1})\)</span> in Taylor series.</p>
 <p>For the heat equation, the Crank-Nicolson method yields the following expression:</p>
 <div class="math notranslate nohighlight" id="equation-eq-heatcn">
 <span class="eqno">(49)<a class="headerlink" href="#equation-eq-heatcn" title="Permalink to this equation">¶</a></span>\[\frac{T^{n+1}_i - T^n_i}{\Delta t}=\frac{\alpha}{2} \left(\frac{T^{n+1}_{i-1}-2T^{n+1}_i+T^{n+1}_{i+1}}{\Delta x^2}  + 
 \frac{T^{n}_{i-1}-2T^{n}_i+T^{n}_{i+1}}{\Delta x^2}\right)\]</div>
 <p>In matrix form (assuming Dirichlet boundary conditions), this is equivalent to:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-    (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[    (I-A_{cn})\boldsymbol{T}^{n+1} = (I+A_{cn})\boldsymbol{T}^{n}.\]</div>
 <p>with <span class="math notranslate nohighlight">\(A_{cn}\)</span> being the same matrix as in the previous section except for the prefactor that is now <span class="math notranslate nohighlight">\(\displaystyle\frac{\alpha \Delta t}{2\Delta x^2}\)</span>.</p>
 <p>Both sides of the equation can be diagonalized using the same eigenvectors. Therefore, the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol{T}\)</span> in the basis of eigenvectors evolve according to:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-    (I-\frac{\Lambda}{2}) \boldsymbol z^{n+1} = (I+\frac{\Lambda}{2})\boldsymbol z^n \Rightarrow \boldsymbol z^{n}_k = \left(\frac{1+m_k/2}{1-m_k/2}\right)^n z^0_k.
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[    (I-\frac{\Lambda}{2}) \boldsymbol z^{n+1} = (I+\frac{\Lambda}{2})\boldsymbol z^n \Rightarrow \boldsymbol z^{n}_k = \left(\frac{1+m_k/2}{1-m_k/2}\right)^n z^0_k.\]</div>
 <p>Since <span class="math notranslate nohighlight">\(m_k &lt; 0\; \forall k\)</span>, all the coordinates <span class="math notranslate nohighlight">\(z_k\)</span> remain again bounded and the algorithm is unconditionally stable.</p>
 <p>In the case of periodic boundary conditions, we may again study the stability of the method by decomposing the temperature field in Fourier modes. According to eq. <a class="reference internal" href="#equation-eq-heatcn">(49)</a> we get:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \frac{\hat T^{n+1}(k_m)-\hat T^{n}(k_m)}{\Delta t}= \frac{\alpha}{2\Delta x^2}((&amp;2\cos(k_m\Delta x)-2)\hat T^{n+1}(k_m) \\ &amp;+(2\cos(k_m\Delta x)-2)\hat T^{n}(k_m))
-\end{align*}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \frac{\hat T^{n+1}(k_m)-\hat T^{n}(k_m)}{\Delta t}= \frac{\alpha}{2\Delta x^2}((&amp;2\cos(k_m\Delta x)-2)\hat T^{n+1}(k_m) \\ &amp;+(2\cos(k_m\Delta x)-2)\hat T^{n}(k_m))\end{split}\]</div>
 <p>or equivalently</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-    \hat T^{n+1}(k_m) = \frac{1-\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}{1+\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}\hat T^{n}(k_m).
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[    \hat T^{n+1}(k_m) = \frac{1-\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}{1+\frac{\alpha \Delta t}{\Delta x^2}(1-\cos(k_m\Delta x))}\hat T^{n}(k_m).\]</div>
 <p>As the denominator is always larger than the numerator, all the Fourier modes remain bounded and we conclude again the algorithm is unconditionally stable.</p>
 <p>Let’s use these implicit methods and compare them with the forward Euler method that we used in the previous notebook.</p>
 </div>
 <div class="section" id="numerical-solution">
-<h2><span class="section-number">4.4. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.4. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">¶</a></h2>
 <p>To test the above numerical methods we use the same example as in the previous notebook.
 The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2">(47)</a> is <span class="math notranslate nohighlight">\(\sigma = 2\sin(\pi x)\)</span> and the initial condition is <span class="math notranslate nohighlight">\(T_0(x) = \sin(2\pi x)\)</span>. To make the algorithms work a bit more, we increase the diffusivity parameter to <span class="math notranslate nohighlight">\(\alpha=0.1\)</span>. The exact solution of the equation is,</p>
 <div class="math notranslate nohighlight">
@@ -509,7 +499,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.67 s ± 36.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.49 s ± 88.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -568,7 +558,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.59 s ± 243 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.69 s ± 726 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -582,7 +572,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316334246805294e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.031633425988164e-07
 Time integration required 267493 steps
 </pre></div>
 </div>
@@ -628,7 +618,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>273 ms ± 14.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185 ms ± 5.96 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -642,7 +632,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.667734500119743e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.6677344754043943e-07
 Time integration required 13107 steps
 </pre></div>
 </div>
@@ -693,7 +683,7 @@ Time integration required 13107 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>112 ms ± 10.8 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81.5 ms ± 3.19 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -707,7 +697,7 @@ Time integration required 13107 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082185666676879e-08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191177848767e-08
 Time integration required 2383 steps
 </pre></div>
 </div>
@@ -716,7 +706,7 @@ Time integration required 2383 steps
 <p>The number of time steps has been further reduced by a factor of 5 and the execution time is approximately 30 times faster than that with the forward Euler method!</p>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook we have discussed implicit discretization techniques for the the one-dimensional heat equation. These are particularly useful as explicit scheme requires a time step scaling with <span class="math notranslate nohighlight">\(dx^2\)</span>. We have shown that the backward Euler and Crank-Nicolson methods are unconditionally stable for this problem. Although they require more complex arithmetical operations than explicit schemes, they result in very significant reduction in computational cost. These reductions are problem dependent because achieving enough accuracy depends on several factors. However, the discussion indicates that it is always important to explore the various algorithms when trying to solve a numerical problem and there is vast literature available to do this.</p>
 </div>
 </div>
@@ -743,15 +733,35 @@ Time integration required 2383 steps
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="04_03_Diffusion_Explicit.html" title="previous page"><span class="section-number">3. </span>One dimensional heat equation</a>
-    <a class='right-next' id="next-link" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" title="next page"><span class="section-number">1. </span>Iteration methods</a>
+            
 
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="04_03_Diffusion_Explicit.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">10. </span>One dimensional heat equation</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">12. </span>Iteration methods</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -759,7 +769,7 @@ Time integration required 2383 steps
         
           By B. Knaepen & Y. Velizhanina<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -768,11 +778,9 @@ Time integration required 2383 steps
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>
