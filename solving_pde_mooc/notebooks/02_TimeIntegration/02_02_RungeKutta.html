@@ -385,10 +385,10 @@
 <span class="eqno">(17)<a class="headerlink" href="#equation-eq-forwardeuler3" title="Permalink to this equation">¶</a></span>\[y^{n+1} \equiv y^n + f(t^n,y^n) dt \;\;\;\; (\textrm{Forward Euler method}),\]</div>
 <p>with all the intermediate times denoted <span class="math notranslate nohighlight">\(t^n = t_0+ndt\)</span>, and the corresponding values of <span class="math notranslate nohighlight">\(y(t)\)</span> as <span class="math notranslate nohighlight">\(y^n = y(t^n)\)</span>.</p>
 <p>Graphically, we see that <span class="math notranslate nohighlight">\(y^{n+1}\)</span> is evaluated using the value <span class="math notranslate nohighlight">\(y^n\)</span> and the slope (derivative) of <span class="math notranslate nohighlight">\(y\)</span> at time <span class="math notranslate nohighlight">\(t^n\)</span>:</p>
-<img src="../figures/Euler.png" align="center" width="500">
+<a class="reference internal image-reference" href="../../../_images/Euler.png"><img alt="../../../_images/Euler.png" class="align-center" src="../../../_images/Euler.png" style="width: 500px;" /></a>
 <p>Runge-Kutta schemes increase the accuracy of the estimated value <span class="math notranslate nohighlight">\(y^{n+1}\)</span> by introducing intermediate times between <span class="math notranslate nohighlight">\(t^n\)</span> and <span class="math notranslate nohighlight">\(t^{n+1}\)</span>, at which the derivative of <span class="math notranslate nohighlight">\(y\)</span> is evaluated and by making use of this information.</p>
 <p>The following two-stage Runge-Kutta method is the simplest of such schemes. Graphically, this scheme is defined as follows:</p>
-<img src="../figures/RK2.png" align="center" width="500">
+<a class="reference internal image-reference" href="../../../_images/RK2.png"><img alt="../../../_images/RK2.png" class="align-center" src="../../../_images/RK2.png" style="width: 500px;" /></a>
 <p>so that,</p>
 <div class="math notranslate nohighlight" id="equation-rk2ynp1">
 <span class="eqno">(18)<a class="headerlink" href="#equation-rk2ynp1" title="Permalink to this equation">¶</a></span>\[\begin{split}    y^* = y^n +\frac{dt}{2}f(t^n, y^n) \\

@@ -404,7 +404,7 @@
 <div class="math notranslate nohighlight" id="equation-eq-centereddiff2">
 <span class="eqno">(30)<a class="headerlink" href="#equation-eq-centereddiff2" title="Permalink to this equation">¶</a></span>\[f''_i=\frac{f_{i-1}-2f_i+f_{i+1}}{\Delta x^2}.\]</div>
 <p>The stencil for this expression is the sequence <span class="math notranslate nohighlight">\([-1,0,1]\)</span> and we represent it as:</p>
-<img width="600px" src="../figures/centeredDiff2.png">
+<a class="reference internal image-reference" href="../../../_images/centeredDiff2.png"><img alt="../../../_images/centeredDiff2.png" src="../../../_images/centeredDiff2.png" style="width: 600px;" /></a>
 <p>The centered second-order derivative cannot be used at the boundary nodes. Some one-sided formulas are needed at those locations.</p>
 <p>Let us write a Python code to check that expression <a class="reference internal" href="#equation-eq-centereddiff2">(30)</a> works as expected. We use the same test function as in the previous notebook - <span class="math notranslate nohighlight">\(f(x)=e^x \sin(3\pi x)\)</span> - and we first represent it on a fine grid in the interval <span class="math notranslate nohighlight">\(x\in [O, \pi]\)</span>.</p>
 <div class="cell docutils container">
@@ -571,7 +571,7 @@
 <div class="math notranslate nohighlight">
 \[f''''_i = \frac{f_{i-2}-4f_{i-1}+6f_{i}-4f_{i+1}+f_{i+2}}{\Delta x^4}.\]</div>
 <p>Graphically we have:</p>
-<img width="800px" src="../figures/centeredDiff4.png">
+<a class="reference internal image-reference" href="../../../_images/centeredDiff4.png"><img alt="../../../_images/centeredDiff4.png" src="../../../_images/centeredDiff4.png" style="width: 800px;" /></a>
 <p>We have seen that centered stencils are not applicable at boundary nodes. Thankfully, alternate finite difference formulas can be constructed for these nodes and the <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">Wikipedia</a>
 page also lists a large collections of such <strong>one-sided formulas</strong>. Here we limit our attention to first- and second-order accurate expressions.</p>
 <p><strong>Forward one-sided finite difference formulas:</strong></p>
@@ -858,7 +858,7 @@ page also lists a large collections of such <strong>one-sided formulas</strong>.
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="mi">560</span><span class="n">s7g9x1594_l0zqhpr2gkw0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_1977</span><span class="o">/</span><span class="mf">1495475918.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="mi">560</span><span class="n">s7g9x1594_l0zqhpr2gkw0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_6479</span><span class="o">/</span><span class="mf">1495475918.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">print_name_and_data</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: print_name_and_data() missing 3 required positional arguments: &#39;age&#39;, &#39;height&#39;, and &#39;weight&#39;

@@ -473,7 +473,7 @@
 </li>
 <li><p>Open Jupyter Notebook and activate the necessary extensions (from the Edit menu).</p></li>
 </ul>
-<img src="../figures/jupextensions.png">
+<img alt="../../../_images/jupextensions.png" src="../../../_images/jupextensions.png" />
 <p>Now we are ready to go - we have a virtual environment, which includes all necessary Python packages, and we even activated extended support for LaTeX.</p>
 <p>In case you’re wondering what LaTeX is,</p>
 <blockquote>
@@ -600,9 +600,9 @@ cd test_git
 <p>There are different services which allow to create and manage remote Git repositories. Throughout the course we will use <a class="reference external" href="http://GitHub.com">GitHub.com</a>. It is easy to use and free. Generally speaking, GitHub is a Git repository hosting service. Let’s create our first remote repo on GitHub.</p>
 <p>If you don’t have GitHub account, you will have to go to <a class="reference external" href="http://GitHub.com">GitHub.com</a> and create one. GitHub has a graphical interface allowing you to download files to the repository, create branches, see changes in the latest commit etc. For some purposes, the GitHub interface might be quite convenient, but we advise you against uploading files directly via GitHub. It would make the whole idea of Git meaningless, and ultimately lead you to storing multiple versions of your project at the same time. We suggest that you learn how to update your project over time and keep control over the evolutionary tree of all the changes you make.</p>
 <p>In order to create new GitHub repository, click on <em>New</em>:</p>
-<img src="../figures/CreateRepo.png">
+<img alt="../../../_images/CreateRepo.png" src="../../../_images/CreateRepo.png" />
 <p>Choose a name for your repository and set some description. You can make it either public - so that anyone will be able to see it - or private - only the ones you invite as collaborators will be able to see it. Click on <em>Create repository</em>.</p>
-<img src="../figures/CreateRepoSet.png">
+<img alt="../../../_images/CreateRepoSet.png" src="../../../_images/CreateRepoSet.png" />
 <p>Let’s go through a small tutorial describing how you can connect your newly created remote repo to the local one.</p>
 <p>To see, what are the current remote repositories tracked from your local repository, run the following terminal command in your local repository</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git remote
@@ -610,7 +610,7 @@ cd test_git
 </div>
 <p>Of course, this command will output nothing, as we have not yet added any remotes.</p>
 <p>Copy the url of your remote repo. Make sure you’ve chosen HTTPS format, especially if you have never used SSH.</p>
-<img src="../figures/CopyURL.png">
+<img alt="../../../_images/CopyURL.png" src="../../../_images/CopyURL.png" />
 <p>Now go back to the terminal window and type (<em>replace <code class="docutils literal notranslate"><span class="pre">yourUserName</span></code> with your actual Github username</em>):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git remote add origin https://github.com/yourUserName/test_git.git
 </pre></div>
