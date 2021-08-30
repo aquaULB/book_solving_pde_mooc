@@ -5,8 +5,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.6.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
   display_name: Python 3
   language: python
@@ -173,7 +173,7 @@ But there are also some more complex possibilities in which one uses more neighb
 
 <img width="300px" src="../figures/2Dstencil9pt.png">
 
-With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation {cite}`iserles2008`.
+With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation {cite}`ce25c9-iserles2008`.
 
 +++
 
@@ -472,7 +472,7 @@ tolerance = 1e-10
 max_it = 100000
 ```
 
-When your programs might take an extended time to execute, it is useful to add a progress bar while it executes. A nice Python package that provides this functionality without adding a significant overhead to the execution time is `tqdm` (you may want to check out its [documentation][51]). To use it, you first have to install it in your Python environment (if it's not already done). To do so, open a terminal and type the following commands:
+When your programs might take an extended time to execute, it is useful to add a progress bar while it executes. A nice Python package that provides this functionality without adding a significant overhead to the execution time is `tqdm` (you may want to check out its [documentation][52]). To use it, you first have to install it in your Python environment (if it's not already done). To do so, open a terminal and type the following commands:
 
 ```
 conda activate course
@@ -491,7 +491,7 @@ conda install -c conda-forge ipywidgets
 
 You should then close this notebook and relaunch it to make the package available. After that, you can import the submodule of `tqdm`that we are goind to use:
 
-[51]: <https://tqdm.github.io> "TQDM documentation"
+[52]: <https://tqdm.github.io> "TQDM documentation"
 
 ```{code-cell} ipython3
 from tqdm.notebook import tqdm
@@ -699,13 +699,13 @@ We have observed empirically that the Jacobi and Gauss-Seidel methods converge t
 The definition of the Jacobi method is given by {eq}`eq:iterkSolPoisson` (we keep the assumption that $\Delta x=\Delta y = \Delta$).
 If we represent all the unknowns as a vector $\boldsymbol p = [p_{i,j}]$ (using again column-major ordering), we can write this formula as:
 
-\begin{equation*}
+```{math}
     A^J_1\boldsymbol p^{k+1} = A^J_2 \boldsymbol p^k - \boldsymbol b \Delta^2.
-\end{equation*}
+```
 
 $A^J_1=-4\times I$ and $A^J_2=L+U$ where, for $nx=6, ny=4$:
 
-\begin{align*}
+```{math}
   L=
   \left(
     \begin{array}{*{16}c}
@@ -719,9 +719,9 @@ $A^J_1=-4\times I$ and $A^J_2=L+U$ where, for $nx=6, ny=4$:
         &   &   & 1 &   &   & 1 & .   \\
     \end{array}
   \right),
-\end{align*}
+```
 and
-\begin{align*}
+```{math}
   U=
   \left(
     \begin{array}{*{16}c}
@@ -735,12 +735,12 @@ and
         &   &   &  &   &   &  & .   \\
     \end{array}
   \right),
-\end{align*}
+```
 Similarly, the Gauss-Seidel algorithm may be written as:
 
-\begin{equation*}
+```{math}
   A^{GS}_1\boldsymbol p^{k+1} = A^{GS}_2 \boldsymbol p^k - \boldsymbol b \Delta^2.
-\end{equation*}
+```
 
 with $A_1^{GS}=4\times I - L$ and $A_2^{GS}=U$.
 
@@ -758,9 +758,9 @@ The make the algorithm  work, $A_1$ needs to be easily invertible, otherwise we 
 
 Let us denote by $\boldsymbol \epsilon^k$ the error at iteration $k$:
 
-\begin{equation*}
+```{math}
   \boldsymbol \epsilon^k = \boldsymbol p^{exact} - \boldsymbol p^k
-\end{equation*}
+```
 
 where $\boldsymbol p^{exact}$ is the exact solution of the discretized equation. If we substitute this definition in {eq}`eq:iterSplit` we get
 
@@ -769,26 +769,26 @@ where $\boldsymbol p^{exact}$ is the exact solution of the discretized equation.
   \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_k\right)^{k+1}\boldsymbol \epsilon^0.
 ```
 
-Obviously we need to have $\boldsymbol \epsilon^k \rightarrow 0$ for $\rightarrow \infty$ for the iterative method to converge. In order for this to happen, all the eigenvalues $\lambda_i$ of $A^{-1}_1 A_2$ must be such that {cite}`watkins2010`,
+Obviously we need to have $\boldsymbol \epsilon^k \rightarrow 0$ for $\rightarrow \infty$ for the iterative method to converge. In order for this to happen, all the eigenvalues $\lambda_i$ of $A^{-1}_1 A_2$ must be such that {cite}`ce25c9-watkins2010`,
 
-\begin{align*}
+```{math}
   \vert \lambda_i \vert < 1.
-\end{align*}
+```
 
 If the matrix $A^{-1}_1 A_2$ is diagonalizable, this result can be proven rather easily by expressing the error in the basis of eigenvectors.
 
 The quantity $\rho= \hbox{max} \vert \lambda_i\vert$ is called the spectral radius of the matrix. The criteria for convergence is thus also equivalent to:
 
-\begin{align*}
+```{math}
   \rho(A^{-1}_1 A_2) < 1.
-\end{align*}
+```
 
 When the algorithm converges, we can use eq. {eq}`eq:iterError` to evaluate its rate of convergence. For that purpose, let us introduce the $L2$ matrix norm defined as:
 
-\begin{equation*}
+```{math}
   \| G \|_2 = \max_{\boldsymbol x}\frac{\| G\boldsymbol x \|}{\| \boldsymbol x \|}.
-\end{equation*}
- where $G$ is any matrix. One says that the matrix norm is induced by the $L2$-norm $\|\cdot\|$ defined for vectors $\boldsymbol x$. Like all matrix norms, it satisfies the submultiplicativity rule {cite}`watkins2010`:
+```
+ where $G$ is any matrix. One says that the matrix norm is induced by the $L2$-norm $\|\cdot\|$ defined for vectors $\boldsymbol x$. Like all matrix norms, it satisfies the submultiplicativity rule {cite}`ce25c9-watkins2010`:
 
  \begin{equation*}
   \| AB \|_2 \leq \| A \|_2 \| B \|_2.
@@ -798,73 +798,73 @@ for any matrices $A$ and $B$.
 
 Using the definition of the $L2$ norm and the submultiplicativity rule we then have:
 
-\begin{equation*}
+```{math}
   \boldsymbol \| \epsilon^{k+1} \| = \| \left(A^{-1}_1 A_k\right)^{k+1}\boldsymbol \epsilon^0 \| \leq \| \left(A^{-1}_1 A_k\right)\|_2^{k+1}\boldsymbol \| \epsilon^0 \|
-\end{equation*}
+```
 
-An important result of linear algebra is that the $L2$ norm of a matrix is equal to its largest singular value $\sigma_1$ {cite}`horn2013`:
+An important result of linear algebra is that the $L2$ norm of a matrix is equal to its largest singular value $\sigma_1$ {cite}`ce25c9-horn2013`:
 
-\begin{equation*}
+```{math}
   \| A \|_2 = \sigma_1(A).
-\end{equation*}
+```
 
 We won't use the concept of singular values in this course so we will not describe it further. We just note that for symmetric matrices we have:
 
-\begin{equation*}
+```{math}
   \sigma_1(A) = \rho(A)\;\;\;\; \hbox{if $A$ is symmetric}.
-\end{equation*}
+```
 
 We then have:
 
-\begin{equation*}
+```{math}
   \frac{\boldsymbol \| \epsilon^{k+1} \|}{\| \epsilon^0 \|}\leq \rho^{k+1}(A^{-1}_1 A_2).
-\end{equation*}
+```
 
 Reducing the $L2$-norm of the error by a factor $10^{-m}$ after $k$ iterations therefore requires,
 
-\begin{equation*}
+```{math}
   k \geq -\frac{m}{\log_{10}\rho (A^{-1}_1 A_2) } = -\frac{m}{\log_{10}(\hbox{max} \vert \lambda_i\vert )}
-\end{equation*}
+```
 
 Let's now use the above theoretical concepts for the analysis of the Jacobi and Gauss-Seidel methods in the case of the 2D Poisson equation.
 
-$\bullet$ For the Jacobi method, we have $ \displaystyle A^{-1}_1 A_2 = -\frac14(L+U)$. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products {cite}`watkins2010`. The resulting eigenvalues are:
+$\bullet$ For the Jacobi method, we have $ \displaystyle A^{-1}_1 A_2 = -\frac14(L+U)$. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products {cite}`ce25c9-watkins2010`. The resulting eigenvalues are:
 
-\begin{equation*}
+```{math}
   \lambda_{kl} = \frac12\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
-\end{equation*}
+```
 
 The spectral radius is thus,
 
-\begin{equation*}
+```{math}
   \rho_{JC} = \frac12\left[\cos \frac{\pi}{nx-1} + \cos \frac{\pi}{ny-1}\right ]
-\end{equation*}
+```
 
 and the method converges since $\rho_{JC} < 1$. If $nx=ny$ are both large, we have
 
-\begin{equation*}
+```{math}
   \rho_{JC} \simeq 1 - \frac12 \frac{\pi^2}{(nx-1)^2}
-\end{equation*}
+```
 
 For $nx=ny=101$, a reduction of the error by a factor of $10^{-10}$ requires $46652$ iterations.
 
-$\bullet$ For the Gauss-Seidel method, we have $ \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U$ and the eigenvalues are the squares of the eigenvalues of the Jacobi method {cite}`watkins2010`:
+$\bullet$ For the Gauss-Seidel method, we have $ \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U$ and the eigenvalues are the squares of the eigenvalues of the Jacobi method {cite}`ce25c9-watkins2010`:
 
-\begin{equation*}
+```{math}
   \lambda_{kl} = \frac14\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ]^2,\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
-\end{equation*}
+```
 
 The spectral radius is thus,
 
-\begin{equation*}
+```{math}
   \rho_{GS} = \rho_{JC}^2 = \frac14\left[\cos \frac{\pi}{nx-1} + \cos \frac{\pi}{ny-1}\right ]^2
-\end{equation*}
+```
 
 and the method converges since $\rho_{GS} < 1$. The above relation also implies that the rate of convergence of the Gauss-Seidel is about twice that of the Jacobi method when $nx=ny$. If both are large, we have
 
-\begin{equation*}
+```{math}
   \rho_{GS} \simeq 1 - \frac{\pi^2}{(nx-1)^2}
-\end{equation*}
+```
 
 For $nx=ny=101$, a reduction of the error by a factor of $10^{-10}$ requires $23326$ iterations.
 
@@ -881,4 +881,6 @@ In this notebook we have shown how to define a cartesian grid for solving two-di
 ## References
 ```{bibliography} biblio.bib
 :filter: docname in docnames
+:labelprefix: ce25c9
+:keyprefix: ce25c9-
 ```

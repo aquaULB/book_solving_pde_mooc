@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Numerical methods for partial differential equations &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,23 +32,20 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -61,14 +55,14 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="1. Toolkit Setup" href="01_01_ToolkitSetup.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -77,32 +71,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1 current active">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
   <a class="reference internal" href="#">
    Numerical methods for partial differential equations
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_01_ToolkitSetup.html">
    1. Toolkit Setup
@@ -114,95 +108,96 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Time integration
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   1. Euler methods
+   3. Euler methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   2. Runge-Kutta methods
+   4. Runge-Kutta methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Finite differences
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   1. First-order derivative and slicing
+   5. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   2. Higher order derivatives, functions and matrix formulation
+   6. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   3. Boundary value problems
+   7. Boundary value problems
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Partial differential equations
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   1. The first-order wave equation
+   8. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   2. Matrix and modified wavenumber stability analysis
+   9. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   3. One dimensional heat equation
+   10. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   4. One dimensional heat equation: implicit methods
+   11. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Iterative methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   1. Iteration methods
+   12. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   2. The conjugate gradient method
+   13. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   3. Boosting Python
+   14. Boosting Python
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -218,21 +213,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -253,7 +248,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -268,25 +263,42 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/01_Introduction/01_00_Preface.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#philosophy-of-the-course">
    Philosophy of the course
@@ -296,13 +308,11 @@
   <a class="reference internal nav-link" href="#outline">
    Outline
   </a>
-  <ul class="nav section-nav flex-column">
-  </ul>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -310,10 +320,14 @@
         
               <div>
                 
-  <div class="section" id="numerical-methods-for-partial-differential-equations">
+  <div class="copyright" property="vk:rights">&copy;
+  <span property="vk:dateCopyrighted">2020</span>
+  <span property="vk:publisher">B. Knaepen & Y. Velizhanina</span>
+</div>
+<div class="section" id="numerical-methods-for-partial-differential-equations">
 <h1>Numerical methods for partial differential equations<a class="headerlink" href="#numerical-methods-for-partial-differential-equations" title="Permalink to this headline">¶</a></h1>
-<h1 style="font-size:18pt;  ">by Bernard Knaepen & Yelyzaveta Velizhanina<span class="tocSkip"></span></h1>
-<div class="section" id="philosophy-of-the-course">
+<h1 style="font-size:18pt;  ">by Bernard Knaepen & Yelyzaveta Velizhanina<span class="tocSkip"></span></h1><h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Philosophy-of-the-course" data-toc-modified-id="Philosophy-of-the-course-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Philosophy of the course</a></span></li><li><span><a href="#Outline" data-toc-modified-id="Outline-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Outline</a></span></li><li><span><a href="#Tools" data-toc-modified-id="Tools-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Tools</a></span></li></ul></div><div class="section" id="philosophy-of-the-course">
 <h2>Philosophy of the course<a class="headerlink" href="#philosophy-of-the-course" title="Permalink to this headline">¶</a></h2>
 <p>Numerous scientific problems can only be addressed through modeling and computer analysis. This stems from the fact that a lot of these problems are complex and we cannot solve the corresponding models using only pen-and-paper.</p>
 <p>Many models appearing in engineering or physical applications are mathematically described by partial differential equations (PDEs) and the aim of this course is to provide a practical introduction to the relevant tools to solve them using computer algortihms. By practical we mean that we will not develop the theory behind PDEs and also avoid complex mathematical derivations of the numerical methods we describe below. Although these are beautiful subjects, they are often characterized by a steep learning curve and our objective is to get our hands on solving real problems as quickly as possible. In some places we nevertheless provide some mathematical background about the techniques we describe because they cannot be properly understood otherwise. In each case, we try to keep things simple and written in such a way that the corresponding section may be skipped at first reading.</p>
@@ -321,9 +335,9 @@
 <div class="section" id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
 <p>By the end of the course, the student should have acquired the necessary skills to solve numerically equations such as the heat equation or Schrödinger’s equation:</p>
-<img alt="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Balign*%7D%0A%5Cfrac%7B%5Cpartial%20T(%5Cboldsymbol%20r%2Ct)%7D%7B%5Cpartial%20t%7D%20%20%26%20%3D%20%5Calpha%20%5CDelta%20T(%5Cboldsymbol%20r%2Ct)%2C%20%26%5Chbox%7BHeat%20equation%7D%5C%5C%0Ai%5Chbar%20%5Cfrac%7B%5Cpartial%20%5CPsi(%5Cboldsymbol%20r%2Ct)%7D%7B%5Cpartial%20t%7D%20%26%20%3D%20%5Cleft%5B%20%5Cfrac%7B-%5Chbar%5E2%7D%7B2m%7D%5CDelta%20%2B%20V(%5Cboldsymbol%20r%2Ct)%20%5Cright%5D%5CPsi(%5Cboldsymbol%20r%2Ct)%2C%20%26%5Chbox%7BSchr%C3%B6dinger%20equation%7D%0A%5Cend%7Balign*%7D" src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Balign*%7D%0A%5Cfrac%7B%5Cpartial%20T(%5Cboldsymbol%20r%2Ct)%7D%7B%5Cpartial%20t%7D%20%20%26%20%3D%20%5Calpha%20%5CDelta%20T(%5Cboldsymbol%20r%2Ct)%2C%20%26%5Chbox%7BHeat%20equation%7D%5C%5C%0Ai%5Chbar%20%5Cfrac%7B%5Cpartial%20%5CPsi(%5Cboldsymbol%20r%2Ct)%7D%7B%5Cpartial%20t%7D%20%26%20%3D%20%5Cleft%5B%20%5Cfrac%7B-%5Chbar%5E2%7D%7B2m%7D%5CDelta%20%2B%20V(%5Cboldsymbol%20r%2Ct)%20%5Cright%5D%5CPsi(%5Cboldsymbol%20r%2Ct)%2C%20%26%5Chbox%7BSchr%C3%B6dinger%20equation%7D%0A%5Cend%7Balign*%7D" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Balign*%7D%0A%5Cfrac%7B%5Cpartial%20T(%5Cboldsymbol%20r%2Ct)%7D%7B%5Cpartial%20t%7D%20%20%26%20%3D%20%5Calpha%20%5CDelta%20T(%5Cboldsymbol%20r%2Ct)%2C%20%26%5Chbox%7BHeat%20equation%7D%5C%5C%0Ai%5Chbar%20%5Cfrac%7B%5Cpartial%20%5CPsi(%5Cboldsymbol%20r%2Ct)%7D%7B%5Cpartial%20t%7D%20%26%20%3D%20%5Cleft%5B%20%5Cfrac%7B-%5Chbar%5E2%7D%7B2m%7D%5CDelta%20%2B%20V(%5Cboldsymbol%20r%2Ct)%20%5Cright%5D%5CPsi(%5Cboldsymbol%20r%2Ct)%2C%20%26%5Chbox%7BSchr%C3%B6dinger%20equation%7D%0A%5Cend%7Balign*%7D">
 <p>We don’t further describing those equations here (it’s not a problem if you have never heard about them), but we just emphasises that they both contain the laplacian operator</p>
-<img alt="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation*%7D%0A%20%5CDelta%20%3D%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20x%5E2%7D%2B%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20y%5E2%7D%2B%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20z%5E2%7D%0A%5Cend%7Bequation*%7D%0A" src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation*%7D%0A%20%5CDelta%20%3D%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20x%5E2%7D%2B%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20y%5E2%7D%2B%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20z%5E2%7D%0A%5Cend%7Bequation*%7D%0A" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation*%7D%0A%20%5CDelta%20%3D%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20x%5E2%7D%2B%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20y%5E2%7D%2B%20%5Cfrac%7B%5Cpartial%5E2%7D%7B%5Cpartial%20z%5E2%7D%0A%5Cend%7Bequation*%7D%0A">
 <p>that makes them partial differential equations. Our main objective is then to formulate such operators numerically and to solve the resulting problems with computer algorithms. This also requires to complement the equations with suitable boundary conditions and to implement them consistently with the differential operators.</p>
 <p>This course covers the following topics:</p>
 <ul>
@@ -347,7 +361,198 @@
 </li>
 </ul>
 <h2 id="Tools">Tools</h2><p>The numerical resolution of PDEs obviously requires the use of a programming language and optionally some previously developped software packages. For this course we have decided to use the Python programming language and some of the SciPy (Scientific computing tools for Python) packages. In the next notebook - 00_01_ToolkitSetup - we say a few more words about this and also provide a complete set of instructions to install all the necessary tools required to get started with the course.</p>
-<div class="toctree-wrapper compound">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">css_file</span> <span class="o">=</span> <span class="s1">&#39;../styles/notebookstyle.css&#39;</span>
+<span class="n">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">css_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+}
+
+div.cell { /* set cell width */
+    width: 950px;
+}
+
+div #notebook { /* centre the content */
+    background: #fff; /* white background for content */
+    width: 1200px;
+    margin: auto;
+    padding-left: 0em;
+}
+
+#notebook li { /* More space between bullet points */
+    margin-top:0.8em;
+}
+
+/* draw border around running cells */
+div.cell.border-box-sizing.code_cell.running {
+    border: 1px solid #111;
+}
+
+/* Put a solid color box around each cell and its output, visually linking them*/
+div.cell.code_cell {
+    background-color: rgb(256,256,256);
+    border-radius: 0px;
+    padding: 0.5em;
+    margin-left:1em;
+    margin-top: 1em;
+}
+
+/**
+basic cell formatting
+*/
+div.text_cell_render{
+    line-height: 150%;
+    font-size: 120%;
+    font-weight: 400;
+    width:800px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/**
+formatting for header cells
+*/
+.text_cell_render h1 {
+    font-family: 'Raleway', sans-serif;
+    font-style:regular;
+    font-weight: 400;
+    font-size: 36pt;
+    text-align: center;
+    line-height: 100%;
+    color: rgb(0,51,102);
+    margin-bottom: 1.0em;
+    margin-top: 1.0em;
+    display: block;
+}
+
+#Table-of-Contents {
+    font-size: 24pt;
+    text-align: left;
+}
+
+.text_cell_render h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 24pt;
+    line-height: 100%;
+    margin-bottom: 0.6em;
+    margin-top: 0.8em;
+    color: rgb(0,51,102);
+    display: block;
+}
+
+.text_cell_render h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 20pt;
+    line-height: 100%;
+    margin-bottom: 0.4em;
+    margin-top: 0.7em;
+    color: rgb(0,51,102);
+}
+
+.text_cell_render h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 18pt;
+    line-height: 100%;
+    margin-bottom: 0.4em;
+    margin-top: 0.7em;
+    color: rgb(0,51,102);
+}
+
+.text_cell_render h5 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 16pt;
+    line-height: 100%;
+    margin-bottom: 0.4em;
+    margin-top: 0.7em;
+    color: rgb(0,51,102);
+    font-style: normal;
+}
+
+.text_cell_render p, ol, ul {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 120%;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.copyright {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    line-height: 100%;
+    color: grey;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.notice {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 8pt;
+    line-height: 100%;
+    color: rgb(0, 0, 0);
+    margin-bottom: 14px;
+    margin-top: 14px;
+}
+
+/**
+configure code font
+*/
+code {
+    font-family: 'Courier Prime', monospace;
+    font-size: 90%;
+}
+
+.cm-s-ipython.language-python {
+    font-size: 90%;
+}
+
+.alert-box {
+    padding:10px 10px 10px 36px;
+    margin:5px;
+}
+
+.success {
+    color:#666600;
+    background:rgb(240,242,229);
+}
+
+.wikitable {
+    /* background-color: #f8f9fa; */
+    color: #202122;
+    margin: 1em 0;
+    border: 1px solid #a2a9b1;
+    border-collapse:collapse
+}
+
+.wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+    border: 1px solid #a2a9b1;
+    padding:0.2em 0.4em;
+    font-size: 120%;
+}
+
+</style>
+</div></div>
+</div>
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -357,6 +562,7 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -382,14 +588,26 @@
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="01_01_ToolkitSetup.html" title="next page"><span class="section-number">1. </span>Toolkit Setup</a>
+            
 
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="01_01_ToolkitSetup.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">1. </span>Toolkit Setup</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -397,7 +615,7 @@
         
           By B. Knaepen & Y. Velizhanina<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -406,11 +624,9 @@
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

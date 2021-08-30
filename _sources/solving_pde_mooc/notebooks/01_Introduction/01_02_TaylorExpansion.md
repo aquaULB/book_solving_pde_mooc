@@ -5,8 +5,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.6.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
   display_name: Python 3
   language: python
@@ -49,7 +49,7 @@ In the context of the numerical solution of ordinary or partial diffential equat
 
 ## Taylor's theorem
 
-Taylor's theorem provides a valuable tool to estimate the accuracy of discretized differential operators or time integration schemes {cite}`arfken2012`.
+Taylor's theorem provides a valuable tool to estimate the accuracy of discretized differential operators or time integration schemes {cite}`2e1eee-arfken2012`.
 
 ***Theorem.** Let $x$ be any point in the interval $[a, b]$ and $\Delta x$ a small positive real number. Schematically we have*:
 
@@ -537,4 +537,6 @@ Source: Find expansion of the example function on [*Wikipedia*][9].
 ## References
 ```{bibliography} biblio.bib
 :filter: docname in docnames
+:labelprefix: 2e1eee
+:keyprefix: 2e1eee-
 ```

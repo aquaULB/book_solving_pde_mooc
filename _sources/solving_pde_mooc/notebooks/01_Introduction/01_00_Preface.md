@@ -5,8 +5,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.6.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
   display_name: Python 3
   language: python
@@ -25,11 +25,21 @@ toc:
   toc_window_display: false
 ---
 
+<div class="copyright" property="vk:rights">&copy;
+  <span property="vk:dateCopyrighted">2020</span>
+  <span property="vk:publisher">B. Knaepen & Y. Velizhanina</span>
+</div>
 
 # Numerical methods for partial differential equations
 
 <h1 style="font-size:18pt;  ">by Bernard Knaepen & Yelyzaveta Velizhanina<span class="tocSkip"></span></h1>
 
++++ {"toc": true}
+
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Philosophy-of-the-course" data-toc-modified-id="Philosophy-of-the-course-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Philosophy of the course</a></span></li><li><span><a href="#Outline" data-toc-modified-id="Outline-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Outline</a></span></li><li><span><a href="#Tools" data-toc-modified-id="Tools-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Tools</a></span></li></ul></div>
+
++++
 
 ## Philosophy of the course
 
@@ -87,3 +97,9 @@ This course covers the following topics:
 +++
 
 The numerical resolution of PDEs obviously requires the use of a programming language and optionally some previously developped software packages. For this course we have decided to use the Python programming language and some of the SciPy (Scientific computing tools for Python) packages. In the next notebook - 00_01_ToolkitSetup - we say a few more words about this and also provide a complete set of instructions to install all the necessary tools required to get started with the course.
+
+```{code-cell} ipython3
+from IPython.core.display import HTML
+css_file = '../styles/notebookstyle.css'
+HTML(open(css_file, 'r').read())
+```

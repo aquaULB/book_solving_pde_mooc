@@ -5,8 +5,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.6.0
+    format_version: 0.13
+    jupytext_version: 1.10.3
 kernelspec:
   display_name: Python 3
   language: python
@@ -121,7 +121,7 @@ A useful result for us is that the powers of a Jordan block may be evaluated wit
 \end{pmatrix}
 ```
 
-where the binomial coefficients are defined as $\tbinom{n}{k}=\prod_{i=1}^k \tfrac{n+1-i}{i}$. One can show that the matrix entries remain bounded if and only if $\vert \lambda \vert <1$ - the fact that the entries blow up for $\vert \lambda \vert \geq 1$ is evident. A detailed proof of this property may be found in {cite}`horn2013`. In terms of $A$ we have:
+where the binomial coefficients are defined as $\tbinom{n}{k}=\prod_{i=1}^k \tfrac{n+1-i}{i}$. One can show that the matrix entries remain bounded if and only if $\vert \lambda \vert <1$ - the fact that the entries blow up for $\vert \lambda \vert \geq 1$ is evident. A detailed proof of this property may be found in {cite}`4c34e0-horn2013`. In terms of $A$ we have:
 
 ```{math}
 A^n 
@@ -250,7 +250,7 @@ c & a & b & 0 & 0 & \dots & 0 & 0 & 0 & 0 \\
 \end{pmatrix}
 ```
 
-where $m\times m$ are the matrix dimensions. Contrary to the matrices $A$ and $\tilde A$ described earlier, $T_m$ is diagonalizable when $bc \not = 0$. The eigenvalues are then distinct and given by {cite}`horn2013`:
+where $m\times m$ are the matrix dimensions. Contrary to the matrices $A$ and $\tilde A$ described earlier, $T_m$ is diagonalizable when $bc \not = 0$. The eigenvalues are then distinct and given by {cite}`4c34e0-horn2013`:
 
 ```{math}
 :label: eq:eigenvals1
@@ -429,4 +429,6 @@ In this notebook, we have introduced two methods to analyse the stability of the
 ## References
 ```{bibliography} biblio.bib
 :filter: docname in docnames
+:labelprefix: 4c34e0
+:keyprefix: 4c34e0-
 ```
