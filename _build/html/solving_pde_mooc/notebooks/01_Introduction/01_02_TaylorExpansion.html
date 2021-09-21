@@ -325,13 +325,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   2.4. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   2.5. References
+   2.4. References
   </a>
  </li>
 </ul>
@@ -572,7 +567,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.09 µs ± 42.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.14 µs ± 71.6 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -586,7 +581,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 
-<span class="c1"># As you can see we managed to shorten our code - </span>
+<span class="c1"># As you can see we managed to shorten our code -</span>
 <span class="c1"># what has been previously accomplished in 3 lines,</span>
 <span class="c1"># is now done in 1 line.</span>
 <span class="c1"># For more info:</span>
@@ -598,7 +593,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.89 µs ± 8.74 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.91 µs ± 42.6 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -618,7 +613,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.03 µs ± 40.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.08 µs ± 51.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -628,7 +623,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here you can clearly see the advantage of</span>
-<span class="c1"># NumPy over built-in tools of Python. </span>
+<span class="c1"># NumPy over built-in tools of Python.</span>
 <span class="c1">#</span>
 <span class="c1"># NumPy functions, such as exp, sin, cos, log etc.,</span>
 <span class="c1"># can be applied on the WHOLE array and</span>
@@ -670,7 +665,7 @@
 <span class="c1"># when set to True, tries to optimize organi-</span>
 <span class="c1"># zation of your plot - how the subplots, labels,</span>
 <span class="c1"># legends are placed in a figure. In most cases</span>
-<span class="c1"># it is a useful feature, but sometimes you </span>
+<span class="c1"># it is a useful feature, but sometimes you</span>
 <span class="c1"># will face a problem, that it won&#39;t know</span>
 <span class="c1"># how to optimize your figure just because of</span>
 <span class="c1"># how you have organized it manually. We disable</span>
@@ -750,10 +745,10 @@
 <span class="c1"># that you can configure the color of dots and</span>
 <span class="c1"># lines you plot with the color argument.</span>
 <span class="c1">#</span>
-<span class="c1"># This is one way to set a color of a curve - </span>
+<span class="c1"># This is one way to set a color of a curve -</span>
 <span class="c1"># by simply passing the name of a color to</span>
 <span class="c1"># the function. But this way is limited to only</span>
-<span class="c1"># 8 colors. If you need bigger variety, </span>
+<span class="c1"># 8 colors. If you need bigger variety,</span>
 <span class="c1"># Matplotlib supports RGBA format. You can either</span>
 <span class="c1"># pass a tuple of float values in range [0, 1]</span>
 <span class="c1"># as (red, green, blue, alpha), or you can</span>
@@ -817,27 +812,8 @@ world
 <p>In this notebook we have introduced the concepts of numerical precision and numerical error. We also discussed different approaches to build numerical sequences in Python and learned about NumPy arrays - fundamental objects for scientific programming in Python. Using the Matplotlib package, we gave a trivial overview on 2D visualization and illustrated that the error term in Taylor series is of order <span class="math notranslate nohighlight">\(\mathcal{O}(\Delta x^{n+1})\)</span> when the last expansion term considered is of order <span class="math notranslate nohighlight">\(\mathcal{O}(\Delta x^{n})\)</span>.</p>
 <p>In the next notebook we will introduce Euler time-advancement schemes - numerical procedures for solving ordinary differential equations -, define numerical stability of the time-advancement scheme and the concepts of explicit and implicit time integration methods.</p>
 </div>
-<div class="section" id="exercises">
-<h2><span class="section-number">2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>Some exercises’ prefixes are links, click on them to see what part of text they refer to.</p>
-<p><a class="reference external" href="#exc1"><strong>Exercise 1:</strong></a> If you were to make a valid estimate of which approach to generate the deltas is the fastest, how would you proceed? What result do you then get?</p>
-<p><a class="reference external" href="#exc2"><strong>Exercise 2:</strong></a> In order to see by yourself the advantages of <em>NumPy</em>, generate the <span class="math notranslate nohighlight">\(R_3\)</span> sequence using <em>Python’s</em> standard <code class="docutils literal notranslate"><span class="pre">math</span></code> module. For that purpose, only use the <code class="docutils literal notranslate"><span class="pre">delta_list</span></code> object instead of the <code class="docutils literal notranslate"><span class="pre">delta</span></code> numpy array. Time both the referenced cell and your code. <em>Note</em> that by design, cell magic commands <em>must</em> be at the very top of the cell. In order to import the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, run</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-</pre></div>
-</div>
-<p><strong>Exercise 3:</strong> Expand these functions into series using Taylor’s expansion:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle f(x)=2x\cos^2\frac{x}{2}-x\)</span> at <span class="math notranslate nohighlight">\(x=0\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle f(x)=\frac{1}{2x-x^2}\)</span> at <span class="math notranslate nohighlight">\(x=1\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(f(x)=3x\)</span> at <span class="math notranslate nohighlight">\(x=1\)</span>.</p></li>
-</ul>
-<p>Make a figure of 9 subplots (3 rows by 3 columns). Each line must correspond to one of three expansions for the functions above. For each subplot in a row, increase amount of expansion terms taken into account - in this way each row must demonstrate the growth in accuracy. Each subplot must also contain an <em>exact curve</em> for the function. This is a great way to check if your expansions are correct.</p>
-<p>For a better understanding of the task consider the following example:</p>
-<img alt="../../../_images/TaylorExampleExercise.png" src="../../../_images/TaylorExampleExercise.png" />
-<p>Source: Find expansion of the example function on <a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series"><em>Wikipedia</em></a>.</p>
-</div>
 <div class="section" id="references">
-<h2><span class="section-number">2.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id2"><dl class="citation">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">2e1eeeAWH12</a></span></dt>
 <dd><p>GB Arfken, HJ Weber, and FE Harris. Mathematical methods for physicists: a comprehensive guide. 2012.</p>
