@@ -8,7 +8,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.10.3
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 toc:
@@ -351,14 +351,18 @@ For the problem of radioactive decay, we first observe that according to equatio
 
 Equation {eq}`eq:demo_stability` implies that $N^n\to \infty$ if $\vert 1-\alpha dt \vert^n \to \infty$. In such a case the numerical scheme is called *unstable* - i.e when solution grows unbounded (blows up in the jargon). On the other hand, in the case $\vert 1-\alpha dt \vert \le 1$, the Euler scheme is said to be stable. This requirement limits the time step allowed when performing the numerical integration.
 
-In many problems, the coefficients of the equations are complex (e.g. Schrödinger equation). If we generalize our radioactive decay problem to allow for complex valued coefficients $\alpha=\alpha_r + i\alpha_i$, the criteria for stability of the forward Euler scheme becomes,
+In many problems, the coefficients of the equations are complex (e.g. Schrödinger equation). If we generalize our radioactive decay problem to allow for complex valued coefficients,
+```{math}
+ \frac{dy}{dt} = \lambda y
+```
+with $\lambda=\lambda_r + i\lambda_i$, the criteria for stability of the forward Euler scheme becomes,
 
 ```{math}
 :label: eq:complex_stability
-  \vert 1-\alpha dt \vert \le 1 \Leftrightarrow (1-\alpha_rdt)^2+(\alpha_idt)^2 \le 1.
+  \vert 1+\lambda dt \vert \le 1 \Leftrightarrow (1+\lambda_rdt)^2+(\lambda_idt)^2 \le 1.
 ```
 
-Given this, one can then draw a stability diagram indicating the region of the complex plane $(\alpha_rdt , \alpha_idt)$, where the forward Euler scheme is stable. As it is obvious from {eq}`eq:complex_stability`, the bounded region of stability *is a circle*.
+Given this, one can then draw a stability diagram indicating the region of the complex plane $(\lambda_rdt , \lambda_idt)$, where the forward Euler scheme is stable. From {eq}`eq:complex_stability`, we conclude that the bounded region of stability *is a circle* centered around $(-1,0)$.
 
 ```{code-cell} ipython3
 # Let's configure the size of the figure
@@ -1164,11 +1168,3 @@ In this notebook we have described the forward and the backward Euler schemes, a
 We computed the accuracy of the Euler method, and introduced the concept of stability of a numerical scheme. The former results directly from the number of terms retained in the Taylor expansion of the variables, while the latter originates from the structure of the time advancement scheme and the eigenvalues of the rhs linear operator appearing in the discretized equations.
 
 In the next notebook, we introduce some more efficient time advancement schemes which have both better accuracy and larger domains of stability. They are know as Runge-Kutta schemes and we will use them extensively when analyzing partial differential equations later on in the course.
-
-## Exercises
-
-**Exercise 1.** Write a Python code and perform the corresponding visualization showing that for one time step, the forward Euler method is indeed of second-order accuracy.
-
-**Exercise 2.** For the case of the body in free fall prove graphically that both explicit and implicit Euler methods are first-order accurate for a finite time interval.
-
-<a name="exc3">**Exercise 3.** </a> For the problem of radioactive decay, given that $\displaystyle \alpha dt \le \frac{3}{5}$, explain why the error for the first timestep attributed to the forward Euler scheme is larger than that attributed to the backward Euler scheme.

@@ -344,11 +344,6 @@
    3.4. Summary
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   3.5. Exercises
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -673,10 +668,13 @@
 <div class="math notranslate nohighlight" id="equation-eq-demo-stability">
 <span class="eqno">(9)<a class="headerlink" href="#equation-eq-demo-stability" title="Permalink to this equation">¶</a></span>\[    N^{n} = (1-\alpha dt)N^{n-1}  = (1-\alpha dt)^2 N^{n-2}= \dots = (1-\alpha dt)^{n}N_{0}\]</div>
 <p>Equation <a class="reference internal" href="#equation-eq-demo-stability">(9)</a> implies that <span class="math notranslate nohighlight">\(N^n\to \infty\)</span> if <span class="math notranslate nohighlight">\(\vert 1-\alpha dt \vert^n \to \infty\)</span>. In such a case the numerical scheme is called <em>unstable</em> - i.e when solution grows unbounded (blows up in the jargon). On the other hand, in the case <span class="math notranslate nohighlight">\(\vert 1-\alpha dt \vert \le 1\)</span>, the Euler scheme is said to be stable. This requirement limits the time step allowed when performing the numerical integration.</p>
-<p>In many problems, the coefficients of the equations are complex (e.g. Schrödinger equation). If we generalize our radioactive decay problem to allow for complex valued coefficients <span class="math notranslate nohighlight">\(\alpha=\alpha_r + i\alpha_i\)</span>, the criteria for stability of the forward Euler scheme becomes,</p>
+<p>In many problems, the coefficients of the equations are complex (e.g. Schrödinger equation). If we generalize our radioactive decay problem to allow for complex valued coefficients,</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dy}{dt} = \lambda y\]</div>
+<p>with <span class="math notranslate nohighlight">\(\lambda=\lambda_r + i\lambda_i\)</span>, the criteria for stability of the forward Euler scheme becomes,</p>
 <div class="math notranslate nohighlight" id="equation-eq-complex-stability">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-complex-stability" title="Permalink to this equation">¶</a></span>\[  \vert 1-\alpha dt \vert \le 1 \Leftrightarrow (1-\alpha_rdt)^2+(\alpha_idt)^2 \le 1.\]</div>
-<p>Given this, one can then draw a stability diagram indicating the region of the complex plane <span class="math notranslate nohighlight">\((\alpha_rdt , \alpha_idt)\)</span>, where the forward Euler scheme is stable. As it is obvious from <a class="reference internal" href="#equation-eq-complex-stability">(10)</a>, the bounded region of stability <em>is a circle</em>.</p>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-complex-stability" title="Permalink to this equation">¶</a></span>\[  \vert 1+\lambda dt \vert \le 1 \Leftrightarrow (1+\lambda_rdt)^2+(\lambda_idt)^2 \le 1.\]</div>
+<p>Given this, one can then draw a stability diagram indicating the region of the complex plane <span class="math notranslate nohighlight">\((\lambda_rdt , \lambda_idt)\)</span>, where the forward Euler scheme is stable. From <a class="reference internal" href="#equation-eq-complex-stability">(10)</a>, we conclude that the bounded region of stability <em>is a circle</em> centered around <span class="math notranslate nohighlight">\((-1,0)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s configure the size of the figure</span>
@@ -1453,12 +1451,6 @@ dt.\end{split}\]</div>
 <p>In this notebook we have described the forward and the backward Euler schemes, and how we can discretize an ordinary differential equation (or a system of ODEs) to compute the time evolution of the physical quantities under consideration.</p>
 <p>We computed the accuracy of the Euler method, and introduced the concept of stability of a numerical scheme. The former results directly from the number of terms retained in the Taylor expansion of the variables, while the latter originates from the structure of the time advancement scheme and the eigenvalues of the rhs linear operator appearing in the discretized equations.</p>
 <p>In the next notebook, we introduce some more efficient time advancement schemes which have both better accuracy and larger domains of stability. They are know as Runge-Kutta schemes and we will use them extensively when analyzing partial differential equations later on in the course.</p>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>Exercise 1.</strong> Write a Python code and perform the corresponding visualization showing that for one time step, the forward Euler method is indeed of second-order accuracy.</p>
-<p><strong>Exercise 2.</strong> For the case of the body in free fall prove graphically that both explicit and implicit Euler methods are first-order accurate for a finite time interval.</p>
-<p><a name="exc3"><strong>Exercise 3.</strong> </a> For the problem of radioactive decay, given that <span class="math notranslate nohighlight">\(\displaystyle \alpha dt \le \frac{3}{5}\)</span>, explain why the error for the first timestep attributed to the forward Euler scheme is larger than that attributed to the backward Euler scheme.</p>
 </div>
 </div>
 
