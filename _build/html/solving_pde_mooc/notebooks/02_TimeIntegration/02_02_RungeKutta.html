@@ -335,13 +335,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   4.6. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   4.7. References
+   4.6. References
   </a>
  </li>
 </ul>
@@ -398,7 +393,7 @@
 <span class="eqno">(19)<a class="headerlink" href="#equation-taylorrk2" title="Permalink to this equation">¶</a></span>\[\begin{split} y^{n+1} &amp; = y^n + dt f(t^n+\frac{dt}{2},y^n + \frac{dt}{2}f(t^n, y^n)) \nonumber \\
          &amp; = y^n + dt \left[ f(t^n, y^n) + \frac{dt}{2} \partial_t f(t^n, y^n) + \frac{dt}{2} f(t^n, y^n)\partial_y f(t^n,y^n) + O(dt^2) \right] \nonumber \\
          &amp; = y^n + dt y'^n + \frac{dt^2}{2}y''^n + O(dt^3),\end{split}\]</div>
-<p>where we have used the property: <span class="math notranslate nohighlight">\(y''=\partial_t f + f\partial_y f\)</span>. The last equation proves that the two-stage Runge-Kutta method is of third order for one time step and, as a consequence, it is expected to be second-order accurate for a complete time interval (we leave it as an exercise to show that this two-stage Runge-Kutta scheme does not match further the Taylor expansion of <span class="math notranslate nohighlight">\(y^{n+1}\)</span>, and is, therefore, not of higher-order accuracy).</p>
+<p>where we have used the property: <span class="math notranslate nohighlight">\(y''=\partial_t f + f\partial_y f\)</span>. The last equation proves that the two-stage Runge-Kutta method is of third order for one time step and, as a consequence, it is expected to be second-order accurate for a complete time interval.</p>
 <div class="section" id="numerical-stability-of-a-two-stage-runge-kutta-scheme">
 <h3><span class="section-number">4.2.1. </span>Numerical stability of a two-stage Runge-Kutta scheme<a class="headerlink" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme" title="Permalink to this headline">¶</a></h3>
 <p>Let us now discuss the stability of this two-stage Runge-Kutta method for a general autonomous linear system of differential equations. As usual, we may diagonalize the system defined through the matrix <span class="math notranslate nohighlight">\(f\)</span> and write:</p>
@@ -530,7 +525,6 @@
 <img alt="../../../_images/02_02_RungeKutta_7_0.png" src="../../../_images/02_02_RungeKutta_7_0.png" />
 </div>
 </div>
-<p>In exercise 2, we ask you to check the accuracy of your solution.</p>
 </div>
 </div>
 <div class="section" id="general-runge-kutta-schemes">
@@ -859,16 +853,8 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
 <p>In this notebook we have introduced a family of Runge-Kutta explicit and implicit methods. While we won’t consider Runge-Kutta schemes of order higher than 4 in the course, we discussed the complexities one would face trying to construct equations for the coefficients <span class="math notranslate nohighlight">\(k_i\)</span> for higher-order schemes. We also gave insight into implicit Runge-Kutta schemes and provided an implementation of Qin and Zhang’s second-order implicit method.</p>
 <p>With this we conclude the chapter dedicated to <strong>time integration</strong>. In the following chapter we will consider the finite differences method to approximate derivatives in partial differential equations and convert them into a system of linear equations.</p>
 </div>
-<div class="section" id="exercises">
-<h2><span class="section-number">4.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>Exercise 1.</strong> Prove analytically that the two stage (explicit) Runge-Kutta scheme is not fourth-order accurate for one time step.</p>
-<p><strong>Exercise 2.</strong> For the problem of a body in free fall, compare the solution obtained with the two-stage (explicit) Runge-Kutta scheme to the exact solution. Check that the method is second-order accurate for a finite time interval.</p>
-<p><strong>Exercise 3.</strong> Solve the problem of a body in free fall using the explicit RK4 method.</p>
-<p><strong>Exercise 4.</strong> Solve again the equation of the harmonic oscillator using the explicit RK4 method and show that the solution is not blowing up (choose an appropriate time step).</p>
-<p><strong>Exercise 5.</strong> Implement <em>Pareschi and Russo’s two-stage second-order Diagonally Implicit Runge-Kutta method</em>. The relevant coefficients can be found on <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Runge%E2%80%93Kutta_methods">Wikipedia</a>.</p>
-</div>
 <div class="section" id="references">
-<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id6"><dl class="citation">
 <dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">4e9768But96</a></span></dt>
 <dd><p>J.C. Butcher. A history of Runge-Kutta methods. <em>Applied Numerical Mathematics</em>, 20(3):247–260, 1996. <a class="reference external" href="https://doi.org/10.1016/0168-9274(95)00108-5">doi:10.1016/0168-9274(95)00108-5</a>.</p>
