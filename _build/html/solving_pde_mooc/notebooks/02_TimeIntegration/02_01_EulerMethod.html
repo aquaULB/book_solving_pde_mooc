@@ -758,8 +758,8 @@
 <span class="c1"># Let&#39;s set location for the axes labels, and</span>
 <span class="c1"># change the orientation of the label of the y-</span>
 <span class="c1"># axis - by default it is 90.</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\alpha_r dt$&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\alpha_i dt$&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_r dt$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_i dt$&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.475</span><span class="p">)</span>
@@ -1163,7 +1163,7 @@ dt\end{split}\]</div>
 \[\begin{split}L=
 \begin{pmatrix}
     0 &amp; 1 \\
-    \gamma^2 &amp; 0
+    -\gamma^2 &amp; 0
 \end{pmatrix},\end{split}\]</div>
 <p>and get:</p>
 <div class="math notranslate nohighlight">
@@ -1196,7 +1196,7 @@ Q=
 <div class="math notranslate nohighlight" id="equation-eq-eigencoor">
 <span class="eqno">(13)<a class="headerlink" href="#equation-eq-eigencoor" title="Permalink to this equation">¶</a></span>\[\begin{split}y^{n+1} = y^{n}+ Ly^{n}dt\;\; &amp; \Leftrightarrow \;\; Q^{-1}y^{n+1} = Q^{-1}y^{n} + Q^{-1}Ly^{n}dt \\
 &amp; \Leftrightarrow \;\; z^{n+1} = z^{n} + \Lambda z^{n}dt.\end{split}\]</div>
-<p>In <a class="reference internal" href="#equation-eq-eigencoor">(13)</a>, <span class="math notranslate nohighlight">\(z=(z_1\;\; z_2)\)</span> are the coordinates in the eigenvector basis <span class="math notranslate nohighlight">\(y=z_1(t) x + z_2(t) v\)</span>. In this basis, the system of equation is decoupled and reads:</p>
+<p>In the last equation, <span class="math notranslate nohighlight">\(z=(z_1\;\; z_2)\)</span> are the coordinates in the eigenvector basis <span class="math notranslate nohighlight">\(y=z_1(t) v_1 + z_2(t) v_2\)</span>. In this basis, the system of equation is decoupled and reads:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}    &amp; z_1^{n+1} = z_1^{n} + i\gamma z_1^{n} dt\\
     &amp; z_2^{n+1} = z_2^{n} - i\gamma z_2^{n} dt\end{split}\]</div>
@@ -1316,7 +1316,7 @@ Q=
 +&amp;
 \begin{pmatrix}
     0 &amp; 1 \\
-    \gamma^2 &amp; 0
+    -\gamma^2 &amp; 0
 \end{pmatrix}
 \begin{pmatrix}
     x^{n+1} \\
@@ -1327,7 +1327,7 @@ dt.\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{pmatrix}
 1 &amp; -dt\\
--\gamma^2 dt &amp; 1
+\gamma^2 dt &amp; 1
 \end{pmatrix}
 \begin{pmatrix}
     x^{n+1} \\
@@ -1345,7 +1345,7 @@ dt.\end{split}\]</div>
 \end{pmatrix}
 = \begin{pmatrix}
 1 &amp; -dt\\
--\gamma^2 dt &amp; 1
+\gamma^2 dt &amp; 1
 \end{pmatrix}^{-1}
 \begin{pmatrix}
     x^{n} \\
