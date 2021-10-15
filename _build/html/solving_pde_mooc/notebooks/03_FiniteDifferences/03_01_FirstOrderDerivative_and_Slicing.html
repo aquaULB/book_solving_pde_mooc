@@ -390,7 +390,7 @@
 <p>Expression <a class="reference internal" href="#equation-taylorser">(24)</a> is exact and allows us to get the following expression for the first-order derivative of <span class="math notranslate nohighlight">\(f\)</span> at point <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-forwardtaylordiff1">
 <span class="eqno">(25)<a class="headerlink" href="#equation-eq-forwardtaylordiff1" title="Permalink to this equation">¶</a></span>\[f'(x) = \frac{f(x+\Delta x) - f(x)}{\Delta x}+O(\Delta x)\]</div>
-<p>This expression is the usual left derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+<p>This expression is the usual right derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
 <p>To approximate <a class="reference internal" href="#equation-eq-forwardtaylordiff1">(25)</a> on the grid <span class="math notranslate nohighlight">\(x_0, x_1,\dots, x_i,\dots x_{n-1}, x_n\)</span>, we define the following first-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-forwardnodal">
 <span class="eqno">(26)<a class="headerlink" href="#equation-eq-forwardnodal" title="Permalink to this equation">¶</a></span>\[f^{' \rm f}_i = \frac{f_{i+1} - f_i}{\Delta x},\;\; \hbox{forward finite difference}.\]</div>
@@ -910,12 +910,12 @@ slice: [9999999, 2, 3, {&#39;hello&#39;: &#39;world&#39;, &#39;bye&#39;: &#39;wo
     &amp; \displaystyle f'(x_i) = \frac{f(x_{i+1}) - f(x_{i-1})}{2\Delta x},\; \; 1 \leq i \leq n-1 \\
 	&amp; \displaystyle f'(x_n) = \frac{f(x_{n}) - f(x_{n-1})}{\Delta x}.
     \end{cases}\end{split}\]</div>
-<p>The inconvenience of this formulation is that it is second-order accurate for interior grid points but only first-order accurate at boundary nodes. It might not seem a big issue, but for certain problems the overall accuracy of the solution will be first order throughout the domain and not second order as we might have wished. We will give an example of this behavior later on.</p>
+<p>The inconvenience of this formulation is that it is second-order accurate for interior grid points but only first-order accurate at boundary nodes. It might not seem a big issue, but for certain problems the overall accuracy of the solution will be first order throughout the domain and not second order as we might have wished.</p>
 <p>To improve our discretized operator, we have to find second-order accurate expressions for the boundary nodes and we can use Taylor’s theorem to achieve this goal. At the left boundary node we have:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}f(x_0 + \Delta x) = f(x_0) +f'(x_0)\Delta x+\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\\
 f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Delta x^3)\end{split}\]</div>
-<p>If we multiply the first equation by two and then substract the second one, we get:</p>
+<p>If we multiply the first equation by four and then substract the second one, we get:</p>
 <div class="math notranslate nohighlight">
 \[4 f(x_0 + \Delta x) - f(x_0 + 2\Delta x) = 3 f(x_0) + 2f'(x_0)\Delta x + O(\Delta x^3)\]</div>
 <p>We can then define the following second-order accurate approximation of <span class="math notranslate nohighlight">\(f'\)</span> at <span class="math notranslate nohighlight">\(x_0\)</span>:</p>
