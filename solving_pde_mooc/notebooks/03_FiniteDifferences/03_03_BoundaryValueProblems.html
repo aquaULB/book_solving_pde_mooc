@@ -538,7 +538,7 @@
 </div>
 </div>
 </div>
-<p>We now import the <code class="docutils literal notranslate"><span class="pre">scipy.linalg.inv</span></code> function to compute the inverse of <code class="docutils literal notranslate"><span class="pre">d2mat</span></code>and act with it on the right-hand side vector <span class="math notranslate nohighlight">\(b\)</span>. This operation is performed with the help of the <code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code> function that allows many sorts of vector and matrix multiplications. You should have a look at its <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html">documentation page</a>.</p>
+<p>We now import the <code class="docutils literal notranslate"><span class="pre">scipy.linalg.inv</span></code> function to compute the inverse of <code class="docutils literal notranslate"><span class="pre">d2mat</span></code> and act with it on the right-hand side vector <span class="math notranslate nohighlight">\(b\)</span>. This operation is performed with the help of the <code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code> function that allows many sorts of vector and matrix multiplications. You should have a look at its <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html">documentation page</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
@@ -560,7 +560,7 @@
 </div>
 </div>
 </div>
-<p>That’s it! If everything went how we expected, <span class="math notranslate nohighlight">\(T\)</span> now contains the approximate solution. We can compare it with the exact solution <span class="math notranslate nohighlight">\(T(x)=\displaystyle\frac{1}{2}x(1-x)\)</span>, which obviously satisfies the required boundary conditions.</p>
+<p>That’s it! If everything went according to plan, <span class="math notranslate nohighlight">\(T\)</span> now contains the approximate solution. We can compare it with the exact solution <span class="math notranslate nohighlight">\(T(x)=\displaystyle\frac{1}{2}x(1-x)\)</span>, which obviously satisfies the required boundary conditions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_exact</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="c1"># notice how we multiply numpy arrays pointwise.</span>
