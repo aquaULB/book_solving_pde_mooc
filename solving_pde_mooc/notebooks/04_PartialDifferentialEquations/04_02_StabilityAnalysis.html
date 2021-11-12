@@ -544,10 +544,10 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <span class="eqno">(38)<a class="headerlink" href="#equation-eq-eigenvals1" title="Permalink to this equation">¶</a></span>\[\lambda_k = (a+2\sqrt{bc}\cos(\frac{\pi k}{m+1})),\; k=1,\ldots, m.\]</div>
 <p>This property is very useful here as it allows us to make a direct connexion with the stability analysis discussed in the notebook <em>02_01_EulerMethod</em>. To that end, let us denote by <span class="math notranslate nohighlight">\(\boldsymbol{z}^{m}\)</span> the coordinates of <span class="math notranslate nohighlight">\(\boldsymbol{u}^m\)</span> in the basis of eigenvectors. Because <span class="math notranslate nohighlight">\(B\)</span> is diagonal in this basis we have:</p>
 <div class="math notranslate nohighlight">
-\[    \boldsymbol{z}^{n+1} = (I+\frac{cdt}{2\Delta x}\Lambda) \boldsymbol{z}^{n}
-    \; \; \Leftrightarrow \; \; \boldsymbol{z}^{n+1} = (I+\frac{cdt}{2\Delta x}\Lambda)^{n+1}\boldsymbol{z}^{0}\]</div>
+\[    \boldsymbol{z}^{n+1} = (1+\frac{cdt}{2\Delta x}\Lambda) \boldsymbol{z}^{n}
+    \; \; \Leftrightarrow \; \; \boldsymbol{z}^{n+1} = (1+\frac{cdt}{2\Delta x}\Lambda)^{n+1}\boldsymbol{z}^{0}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix built with the <span class="math notranslate nohighlight">\((nx-2)\)</span> eigenvalues of <span class="math notranslate nohighlight">\(B\)</span>. In these coordinates, our problem is reduced to a system of <span class="math notranslate nohighlight">\(nx-2\)</span> uncoupled equations.</p>
-<p>Our solution will remain finite as long as the condition <span class="math notranslate nohighlight">\(\vert 1  -\frac{cdt}{2\Delta x}\lambda_k\vert &lt;1, \forall k\)</span>. Unfortunately there is no way to satisfy these constraints as the eigenvalues <a class="reference internal" href="#equation-eq-eigenvals1">(38)</a> are purely imaginary with <span class="math notranslate nohighlight">\(b=-1\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>. The numerical scheme discussed here is therefore <em>unconditionnally unstable</em> for the first order wave equation.</p>
+<p>Our solution will remain finite as long as the condition <span class="math notranslate nohighlight">\(\vert 1  +\frac{cdt}{2\Delta x}\lambda_k\vert &lt;1, \forall k\)</span>. Unfortunately there is no way to satisfy these constraints as the eigenvalues <a class="reference internal" href="#equation-eq-eigenvals1">(38)</a> are purely imaginary with <span class="math notranslate nohighlight">\(b=-1\)</span> and <span class="math notranslate nohighlight">\(c=1\)</span>. The numerical scheme discussed here is therefore <em>unconditionnally unstable</em> for the first order wave equation.</p>
 </div>
 </div>
 <div class="section" id="stability-modified-wavenumber-analysis">
@@ -583,7 +583,7 @@ This equation is exact and shows that each Fourier mode oscillates with a pulsat
 <p>with</p>
 <div class="math notranslate nohighlight" id="equation-eq-modesbackward">
 <span class="eqno">(40)<a class="headerlink" href="#equation-eq-modesbackward" title="Permalink to this equation">¶</a></span>\[\lambda_{m} = \frac{c}{\Delta x}\left(1-e^{ik_m \Delta x}\right).\]</div>
-<p>The locus on which those values lie is, the complex plane <span class="math notranslate nohighlight">\(z=x+iy\)</span>, a circle of radius <span class="math notranslate nohighlight">\(\frac{c}{\Delta x}\)</span> centered around <span class="math notranslate nohighlight">\((1,0)\)</span>.</p>
+<p>The locus on which those values lie is, the complex plane <span class="math notranslate nohighlight">\(z=x+iy\)</span>, a circle of radius <span class="math notranslate nohighlight">\(\frac{c}{\Delta x}\)</span> centered around <span class="math notranslate nohighlight">\((\frac{c}{\Delta x},0)\)</span>.</p>
 <p>Using the Fourier decomposition, we have transformed the original equation into a set of coupled ordinary differential equations. Each has now the same form as <a class="reference internal" href="#equation-eq-basicform">(34)</a>.</p>
 <p>If use the forward Euler scheme for the time integration, the algorithm is therefore unconditionally unstable as the coefficents <span class="math notranslate nohighlight">\(\lambda_m\)</span> lie outside of its domain of stability.</p>
 </div>
@@ -613,7 +613,7 @@ This equation is exact and shows that each Fourier mode oscillates with a pulsat
 <p>Very importantly we now have:</p>
 <div class="math notranslate nohighlight">
 \[\lambda_{m} = -\frac{c}{\Delta x}\left(1 - e^{-ik_m \Delta x}\right).\]</div>
-<p>The locus on which those values lie is a circle of radius <span class="math notranslate nohighlight">\(\frac{c}{\Delta x}\)</span> centered around <span class="math notranslate nohighlight">\((-1,0)\)</span>.</p>
+<p>The locus on which those values lie is a circle of radius <span class="math notranslate nohighlight">\(\frac{c}{\Delta x}\)</span> centered around <span class="math notranslate nohighlight">\((-\frac{c}{\Delta x},0)\)</span>.</p>
 <p>By restricting the time step with the condition</p>
 <div class="math notranslate nohighlight">
 \[    dt &lt; \frac{dx}{c}\]</div>

@@ -355,7 +355,7 @@ nt = int((tf-ti)/dt)      # number of time steps
 A = np.eye(nx-2) - 0.5*alpha*dt*D2
 Ainv = np.linalg.inv(A)
 
-# I+0.5*A matric
+# I+0.5*A matrix
 B = np.eye(nx-2) + 0.5*alpha*dt*D2
 
 # (I+0.5A)^{-1} * (I-0.5*A)
@@ -369,9 +369,9 @@ T[0] = T0.copy()         # Set the initial condition
 
 ```{code-cell} ipython3
 %%timeit
-
+scn = np.dot(Ainv, source[1:-1]*dt)
 for i in range(nt):
-    T[i+1, 1:-1] = np.dot(C, T[i, 1:-1]) + np.dot(Ainv,source[1:-1]*dt)
+    T[i+1, 1:-1] = np.dot(C, T[i, 1:-1]) + scn
 
 # Set boundary values
 T[-1,0] = 0
