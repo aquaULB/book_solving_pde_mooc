@@ -703,7 +703,7 @@ If we represent all the unknowns as a vector $\boldsymbol p = [p_{i,j}]$ (using 
     A^J_1\boldsymbol p^{k+1} = A^J_2 \boldsymbol p^k - \boldsymbol b \Delta^2.
 ```
 
-$A^J_1=-4\times I$ and $A^J_2=L+U$ where, for $nx=6, ny=4$:
+$A^J_1=4\times I$ and $A^J_2=L+U$ where, for $nx=6, ny=4$:
 
 ```{math}
   L=
@@ -766,7 +766,7 @@ where $\boldsymbol p^{exact}$ is the exact solution of the discretized equation.
 
 ```{math}
 :label: eq:iterError
-  \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_k\right)^{k+1}\boldsymbol \epsilon^0.
+  \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0.
 ```
 
 Obviously we need to have $\boldsymbol \epsilon^k \rightarrow 0$ for $\rightarrow \infty$ for the iterative method to converge. In order for this to happen, all the eigenvalues $\lambda_i$ of $A^{-1}_1 A_2$ must be such that {cite}`ce25c9-watkins2010`,
@@ -799,7 +799,7 @@ for any matrices $A$ and $B$.
 Using the definition of the $L2$ norm and the submultiplicativity rule we then have:
 
 ```{math}
-  \boldsymbol \| \epsilon^{k+1} \| = \| \left(A^{-1}_1 A_k\right)^{k+1}\boldsymbol \epsilon^0 \| \leq \| \left(A^{-1}_1 A_k\right)\|_2^{k+1}\boldsymbol \| \epsilon^0 \|
+  \boldsymbol \| \epsilon^{k+1} \| = \| \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0 \| \leq \| \left(A^{-1}_1 A_2\right)\|_2^{k+1}\boldsymbol \| \epsilon^0 \|
 ```
 
 An important result of linear algebra is that the $L2$ norm of a matrix is equal to its largest singular value $\sigma_1$ {cite}`ce25c9-horn2013`:
@@ -828,7 +828,7 @@ Reducing the $L2$-norm of the error by a factor $10^{-m}$ after $k$ iterations t
 
 Let's now use the above theoretical concepts for the analysis of the Jacobi and Gauss-Seidel methods in the case of the 2D Poisson equation.
 
-$\bullet$ For the Jacobi method, we have $ \displaystyle A^{-1}_1 A_2 = -\frac14(L+U)$. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products {cite}`ce25c9-watkins2010`. The resulting eigenvalues are:
+$\bullet$ For the Jacobi method, we have $ \displaystyle A^{-1}_1 A_2 = \frac14(L+U)$. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products {cite}`ce25c9-watkins2010`. The resulting eigenvalues are:
 
 ```{math}
   \lambda_{kl} = \frac12\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
