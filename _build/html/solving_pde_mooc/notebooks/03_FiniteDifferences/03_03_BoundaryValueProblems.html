@@ -657,7 +657,7 @@
 <div class="math notranslate nohighlight">
 \[    \frac{(T_0 - 2T_1+T_2)}{\Delta x^2} = b_1 \;\; \rightarrow \;\;
     \frac{-\frac23 T_1 + \frac 23 T_2}{\Delta x^2} = b_1 + \frac{4}{3 \Delta x}.\]</div>
-<p>The effect of the Neumann boundary condition is two-fold: it modifies the left-hand side matrix coefficients and the right-hand side source term. Around the other grid nodes, there are no further modifications (except around grid node <span class="math notranslate nohighlight">\(nx-2\)</span> where we impose the non-homogeneous condition <span class="math notranslate nohighlight">\(T(0)=1\)</span>).</p>
+<p>The effect of the Neumann boundary condition is two-fold: it modifies the left-hand side matrix coefficients and the right-hand side source term. Around the other grid nodes, there are no further modifications (except around grid node <span class="math notranslate nohighlight">\(nx-2\)</span> where we impose the non-homogeneous condition <span class="math notranslate nohighlight">\(T(1)=1\)</span>).</p>
 <p>All the necessary bits of code are now scattered at different places in the notebook. We rewrite here some of them to make the algorithm easier to follow:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
