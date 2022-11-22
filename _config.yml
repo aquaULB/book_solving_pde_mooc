@@ -33,10 +33,6 @@ parse:
 
 bibtex_bibfiles:
     - references.bib
-    - solving_pde_mooc/notebooks/01_Introduction/biblio.bib
-    - solving_pde_mooc/notebooks/02_TimeIntegration/biblio.bib
-    - solving_pde_mooc/notebooks/04_PartialDifferentialEquations/biblio.bib
-    - solving_pde_mooc/notebooks/05_IterativeMethods/biblio.bib
 
 sphinx:
   config:

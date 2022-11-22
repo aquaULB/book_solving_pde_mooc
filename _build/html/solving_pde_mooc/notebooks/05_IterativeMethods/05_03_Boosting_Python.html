@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>14. Boosting Python &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,50 +20,66 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="prev" title="13. The conjugate gradient method" href="05_02_Conjugate_Gradient.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,9 +88,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -90,14 +109,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
-   Numerical methods for partial differential equations
-  </a>
- </li>
-</ul>
-<p class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+                    Numerical methods for partial differential equations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -114,7 +134,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Time integration
  </span>
@@ -131,7 +151,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Finite differences
  </span>
@@ -153,7 +173,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Partial differential equations
  </span>
@@ -180,7 +200,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Iterative methods
  </span>
@@ -204,107 +224,194 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aquaULB/solving_pde_mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_03_Boosting_Python.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    14.1. Introduction
@@ -361,26 +468,98 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Boosting Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   14.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpreters-vs-compilers">
+   14.2. Interpreters VS compilers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cython-and-numba-what-when-and-how">
+   14.3. Cython and Numba: what, when and how?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-decorators">
+     14.3.1. Python decorators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementing-gauss-seidel-solver">
+     14.3.2. Implementing Gauss-Seidel solver
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#efficiency">
+       14.3.2.1. Efficiency
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#syntax-for-numba-integration">
+       14.3.2.2. Syntax for Numba integration
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#minimum-on-exception-handling">
+       14.3.2.3. Minimum on Exception Handling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cython-syntax">
+       14.3.2.4. Cython syntax
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   14.4. Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="boosting-python">
-<h1><span class="section-number">14. </span>Boosting Python<a class="headerlink" href="#boosting-python" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2><span class="section-number">14.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="boosting-python">
+<h1><span class="section-number">14. </span>Boosting Python<a class="headerlink" href="#boosting-python" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">14.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Python has plenty of appeal to the programming community: it’s simple, interactive and free. But Fortran, C, C++ dominate high-performance programming. Why? Python is <em>slow</em>. There are two major reasons for that: <strong>Python is a dynamically typed language</strong> and <strong>Python is an interpreted language</strong>.</p>
 <p>It doesn’t make Python <em>a bad</em> programming language. On the contrary, Python is a great tool for various tasks that do not require running expensive simulations (web-development, scripting). Python also dominates the data-science due to availability of packages such as NumPy, SciPy and versatile machine learning tools (e.g. scikit-learn or TensorFlow).</p>
 <p>As we discussed earlier, NumPy and SciPy integrate optimized and precompiled C code into Python and, therefore, might provide a significant speed up. But we have already encountered situations when it was not possible to avoid running Python loops that easily end up being painfully slow.</p>
 <p>In this notebook we are going to discuss tools designed to provide C-like performance to Python code: <em>Cython</em> and <em>Numba</em>. What are they, what are they good for and why people still use C/C++ with much more complicated syntax?</p>
-</div>
-<div class="section" id="interpreters-vs-compilers">
-<h2><span class="section-number">14.2. </span>Interpreters VS compilers<a class="headerlink" href="#interpreters-vs-compilers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="interpreters-vs-compilers">
+<h2><span class="section-number">14.2. </span>Interpreters VS compilers<a class="headerlink" href="#interpreters-vs-compilers" title="Permalink to this headline">#</a></h2>
 <p>Before we can precisely understand what are Cython and Numba, let’s discuss the basics of compilers and interpreters.</p>
 <p>A common mistake when understanding compilers is to think that the output of the compiler is necessarily <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_code"><em>machine code</em></a> - code written in a low-level programming language that is used to directly manipulate the central processing unit (CPU). In fact, a <em>compiler</em> is a program that <em>translates</em> a source code written in a certain programming language into any other programming language (normally lower-lever). An <em>interpreter</em> is also a computer program. It executes the source code without translating it into the machine code. <em>But this doesn’t make compilation and interpretation mutually exclusive:</em></p>
 <blockquote>
@@ -402,9 +581,9 @@
 </div></blockquote>
 <p>Following the logic used to explain speed gain for AOT compilers versus interpreters, you might wonder: how can a JIT compiler be faster if it also defines the desired behaviour at runtime? There is good example that could explain the difference in performance between typical interpreter and JIT compiler. Suppose the source code contains a loop that has to be executed <span class="math notranslate nohighlight">\(n\)</span> times. An interpreter will have to analyze the bytecode statement-by-statement at each iteration. A well-implemented JIT compiler will produce the translation into the machine code, which is the most computationally expensive operation, only once.</p>
 <p>How JIT compilers compare to AOT compilers is a somewhat more sophisticated discussion that we won’t enter but you are free to investigate this question on your own.</p>
-</div>
-<div class="section" id="cython-and-numba-what-when-and-how">
-<h2><span class="section-number">14.3. </span>Cython and Numba: what, when and how?<a class="headerlink" href="#cython-and-numba-what-when-and-how" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cython-and-numba-what-when-and-how">
+<h2><span class="section-number">14.3. </span>Cython and Numba: what, when and how?<a class="headerlink" href="#cython-and-numba-what-when-and-how" title="Permalink to this headline">#</a></h2>
 <p>We are now well-equipped to discuss Cython and Numba. What are they?</p>
 <p><em>Cython</em> is a <em>compiled programming language</em> itself. It aims to run at C-like speed using Python-like syntax. If well designed, Cython code speeds up the program by several order(s) of magnitude in comparison to its Python analogue.</p>
 <p><em>Numba</em> is a <em>JIT compiler</em>. It translates Python source code into the machine code using the open source <a class="reference external" href="https://en.wikipedia.org/wiki/LLVM">LLVM compiler</a> written in C++.</p>
@@ -423,8 +602,8 @@
 <p>Cython and Numba are powerful tools. They have their “downsides”, which does not mean that one is to be <em>always</em> chosen over the other. The programmer must always have his mind open and decisions balanced. Whenever you have troubles explaining your designing decisions, it usually means that they must be questioned.</p>
 <p>For the problems considered in this course, Numba suffices. Nevertheless, we further demonstrate how to use both Cython and Numba. Let us first define the model problem. In the previous notebook you were introduced to the Gauss-Seidel method. We have implemented the numerical solver using Python loops and saw considerable slow down in comparison with the Jacobi solver. We will further show how this code can be sped up using both Cython and Numba.</p>
 <p>But before we introduce the Python tool that Numba strongly relies on - <em>Python decorators</em>.</p>
-<div class="section" id="python-decorators">
-<h3><span class="section-number">14.3.1. </span>Python decorators<a class="headerlink" href="#python-decorators" title="Permalink to this headline">¶</a></h3>
+<section id="python-decorators">
+<h3><span class="section-number">14.3.1. </span>Python decorators<a class="headerlink" href="#python-decorators" title="Permalink to this headline">#</a></h3>
 <p>So called wrapper functions are widely used in various programming languages. They take a function or a method as a parameter and extend its behaviour. Wrapper functions usually intend to <em>abstract</em> the code. They, therefore, might shorten and simplify it <em>by a lot</em>. Python decorators are unique to Python - they are basically shortcuts (syntactic sugars) for calling a wrapper function. Consider the implementation of a sample decorator function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -537,7 +716,7 @@ Postprocessing...
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is Mark. You are 24 year(s) old.
-Time elapsed: 3.0923000000182554e-05 s
+Time elapsed: 2.4852983187884092e-05 s
 </pre></div>
 </div>
 </div>
@@ -563,7 +742,7 @@ Time elapsed: 3.0923000000182554e-05 s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preprocessing...
 Your name is Jacques. You are 9 year(s) old.
 Postprocessing...
-Time elapsed: 5.048699999998796e-05 s
+Time elapsed: 3.3024000003933907e-05 s
 </pre></div>
 </div>
 </div>
@@ -612,7 +791,7 @@ Time elapsed: 5.048699999998796e-05 s
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is Donald. You are 74 year(s) old.
-Time elapsed: 0.0002455340000000472 s
+Time elapsed: 0.0003150929987896234 s
 
 
 Your name is Joe. You are 78 year(s) old.
@@ -640,14 +819,14 @@ Your name is Joe. You are 78 year(s) old.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is Jacob. You are 65 year(s) old.
-print_identity executed in 7.283099999999543e-05 s
+print_identity executed in 5.648800288327038e-05 s
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="implementing-gauss-seidel-solver">
-<h3><span class="section-number">14.3.2. </span>Implementing Gauss-Seidel solver<a class="headerlink" href="#implementing-gauss-seidel-solver" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="implementing-gauss-seidel-solver">
+<h3><span class="section-number">14.3.2. </span>Implementing Gauss-Seidel solver<a class="headerlink" href="#implementing-gauss-seidel-solver" title="Permalink to this headline">#</a></h3>
 <p>We remind you the setup of the problem. We solve the Poisson equation in 2D domain <span class="math notranslate nohighlight">\(\displaystyle [0, 1]\times [-\frac12, \frac12]\)</span> with the following right-hand side term:</p>
 <div class="math notranslate nohighlight">
 \[b = \sin(\pi x) \cos(\pi y) + \sin(5\pi x) \cos(5\pi y)\]</div>
@@ -661,8 +840,8 @@ print_identity executed in 7.283099999999543e-05 s
 </div>
 <p>If you’re willing to recompile it, we refer you to <code class="docutils literal notranslate"><span class="pre">BoostingPython/README.md</span></code> for the instructions and to the generic tutorial from Cython’s <a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html">official documentation</a>.</p>
 <p>The Python and Cython codes we provide are thoroughly documented but we will still provide some extra information here.</p>
-<div class="section" id="efficiency">
-<h4><span class="section-number">14.3.2.1. </span>Efficiency<a class="headerlink" href="#efficiency" title="Permalink to this headline">¶</a></h4>
+<section id="efficiency">
+<h4><span class="section-number">14.3.2.1. </span>Efficiency<a class="headerlink" href="#efficiency" title="Permalink to this headline">#</a></h4>
 <p>But first run the cells below and see by yourself how the performance compare.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,13 +859,36 @@ print_identity executed in 7.283099999999543e-05 s
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="mi">560</span><span class="n">s7g9x1594_l0zqhpr2gkw0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_6573</span><span class="o">/</span><span class="mf">2051493527.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">py.solvers</span> <span class="k">as</span> <span class="nn">solvers</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">cy.lib.csolver</span> <span class="k">as</span> <span class="nn">csolver</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../demos/BoostingPython&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">py.solvers</span> <span class="k">as</span> <span class="nn">solvers</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">cy.lib.csolver</span> <span class="k">as</span> <span class="nn">csolver</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;cy.lib.csolver&#39;
+<span class="n">File</span> <span class="o">~/</span><span class="n">Library</span><span class="o">/</span><span class="n">Mobile</span> <span class="n">Documents</span><span class="o">/</span><span class="n">com</span><span class="o">~</span><span class="n">apple</span><span class="o">~</span><span class="n">CloudDocs</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Workspace</span><span class="o">/</span><span class="n">courseMaterial</span><span class="o">/</span><span class="n">book_solving_pde_mooc</span><span class="o">/</span><span class="n">solving_pde_mooc</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="mi">05</span><span class="n">_IterativeMethods</span><span class="o">/../</span><span class="n">demos</span><span class="o">/</span><span class="n">BoostingPython</span><span class="o">/</span><span class="n">py</span><span class="o">/</span><span class="n">solvers</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">os.path</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># We try importing tqdm for progress bars. If it is not found, do nothing.</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">miniforge3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">course</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="n">_ensure_llvm</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">200</span> <span class="n">_ensure_critical_deps</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span> <span class="c1"># we know llvmlite is working as the above tests passed, import it now as SVML</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="c1"># needs to mutate runtime options (sets the `-vector-library`).</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="kn">import</span> <span class="nn">llvmlite</span>
+
+<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/numba/__init__.py:140,</span> in <span class="ni">_ensure_critical_deps</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Numba needs NumPy 1.18 or greater&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">elif</span> <span class="n">numpy_version</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">140</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Numba needs NumPy 1.21 or less&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="ne">ImportError</span>: Numba needs NumPy 1.21 or less
 </pre></div>
 </div>
 </div>
@@ -749,11 +951,11 @@ print_identity executed in 7.283099999999543e-05 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "6ca741d27f8742119383e202d3e53afd", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution converged after 3401 iterations
-CPU times: user 11.5 s, sys: 57.5 ms, total: 11.5 s
-Wall time: 11.5 s
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="ne">NameError</span>: name &#39;solvers&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -765,11 +967,11 @@ Wall time: 11.5 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c7894fca2f2a441cb986a60e9f370b19", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution converged after 3401 iterations
-CPU times: user 770 ms, sys: 75.2 ms, total: 845 ms
-Wall time: 910 ms
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="ne">NameError</span>: name &#39;solvers&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -783,7 +985,7 @@ Wall time: 910 ms
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
 <span class="ne">NameError</span>: name &#39;csolver&#39; is not defined
 </pre></div>
@@ -839,9 +1041,9 @@ Wall time: 910 ms
 <p>This is the only piece of code that will be compiled by Numba. The rest of the code will still be treated by the Python interpreter causing the <em>interpreter overhead</em>.</p>
 <p>Could this function be implemented otherwise? Yes, it could. The choice has been made deliberately. The thing is that <em>Numba cannot be used with <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> package</em>. And even if we have reverted to the standard <code class="docutils literal notranslate"><span class="pre">print</span></code> function, it would have been tricky, as Numba would not allow us to use raw or formatted strings, as well as it doesn’t support some of the optional arguments of <code class="docutils literal notranslate"><span class="pre">print</span></code>. We therefore sacrificed some performance for having a fancy logging output. Even though the factor of (almost) <span class="math notranslate nohighlight">\(10\)</span> is a significant difference, the time taken by the Python code -partially - compiled with Numba in this particular case is still very little to the human perception.</p>
 <p>It is fair to say though that Numba is a very fast evolving package, so we would easily expect the support for <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> to come in some of the future releases.</p>
-</div>
-<div class="section" id="syntax-for-numba-integration">
-<h4><span class="section-number">14.3.2.2. </span>Syntax for Numba integration<a class="headerlink" href="#syntax-for-numba-integration" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="syntax-for-numba-integration">
+<h4><span class="section-number">14.3.2.2. </span>Syntax for Numba integration<a class="headerlink" href="#syntax-for-numba-integration" title="Permalink to this headline">#</a></h4>
 <p>Let us now look at how exactly Numba is integrated into the <code class="docutils literal notranslate"><span class="pre">gauss_seidel_step</span></code> function (example of <code class="docutils literal notranslate"><span class="pre">l2_diff</span></code> function is absolutely equivalent):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
 
@@ -857,9 +1059,9 @@ Wall time: 910 ms
 </div>
 <p>Yes, it is as easy, as it looks. For the majority of problems it would only take decorating your function with a <code class="docutils literal notranslate"><span class="pre">jit</span></code> decorator. The parameter <code class="docutils literal notranslate"><span class="pre">nopython</span></code>, when evaluated to <code class="docutils literal notranslate"><span class="pre">True</span></code>, enables the so-called <em>nopython</em> mode. When <code class="docutils literal notranslate"><span class="pre">nopython</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the <em>object</em> mode is enabled. Nopython mode produces higher performance, as it does not use the Python interpreter. Nevertheless it might fail depending on your implementation; compilation will fall back to the object mode only if <code class="docutils literal notranslate"><span class="pre">nopython</span></code> is set to false.</p>
 <p>Sometimes you’ll also see the notation <code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code>. It is the shortcut to <code class="docutils literal notranslate"><span class="pre">&#64;jit(nopython=True)</span></code>.</p>
-</div>
-<div class="section" id="minimum-on-exception-handling">
-<h4><span class="section-number">14.3.2.3. </span>Minimum on Exception Handling<a class="headerlink" href="#minimum-on-exception-handling" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="minimum-on-exception-handling">
+<h4><span class="section-number">14.3.2.3. </span>Minimum on Exception Handling<a class="headerlink" href="#minimum-on-exception-handling" title="Permalink to this headline">#</a></h4>
 <p>There is another fragment of the source Python code that must be explained:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
@@ -879,9 +1081,9 @@ Wall time: 910 ms
 <p>As we haven’t provided try/except block when calling the function, the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> exception will be raised and the execution will be terminated if you supply <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> of different shapes. If you supply <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> that are not of type <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, the execution will crash at the stage when trying to execute the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with the <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> being raised.</p>
 <p>In a well-designed program, exception handling must provide a certain level of <a class="reference external" href="https://en.wikipedia.org/wiki/Exception_safety">exception safety</a>.</p>
 <p>We will not further concentrate on exception handling and will proceed to understanding the Cython implementation of the Gauss-Seidel solver. If you are willing to learn more about exception handling in Python on your own, the good place to start is from the <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">tutorial provided in the official documentation</a>.</p>
-</div>
-<div class="section" id="cython-syntax">
-<h4><span class="section-number">14.3.2.4. </span>Cython syntax<a class="headerlink" href="#cython-syntax" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="cython-syntax">
+<h4><span class="section-number">14.3.2.4. </span>Cython syntax<a class="headerlink" href="#cython-syntax" title="Permalink to this headline">#</a></h4>
 <p>If you look into the <code class="docutils literal notranslate"><span class="pre">csolver.pyx</span></code> file, you’ll see that there is a bit of unfamiliar syntax. It is not <em>drastically</em> different though. Cython syntax builds upon the Python syntax and adds some extra. “Extra” that appeared to be enough to implement the Gauss-Seidel solver consists of …</p>
 <ul>
 <li><p>… type declaration …</p>
@@ -969,21 +1171,15 @@ Wall time: 910 ms
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">&lt;target_dir&gt;</span></code> specifies the location for the shared library.</p>
 <p>Overall, as you see, there is much more information to absorb when understanding Cython than when understanding Numba. Numba should certainly be your first choice when it is easily integratable. Cython though communicates much more naturally with C (and C++) code.</p>
-</div>
-</div>
-</div>
-<div class="section" id="summary">
-<h2><span class="section-number">14.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2><span class="section-number">14.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook we have dug deeper into the basic programming concepts, such as compilers and interpreters. We have investigated alternative tools to get C-like performance with Python - Numba and Cython. The sample implementation of Gauss-Seidel solver has been sped up by the factor of about <span class="math notranslate nohighlight">\(20\)</span> with Numba and <span class="math notranslate nohighlight">\(100\)</span> with Cython. It is important to note though that generally Numba and Cython show similar performance for the same kind of problems. We chose to implement partial compilation with Numba in order to use the logging tools of tqdm package. Python decorators and exception handling were introduced as a part of the tutorial.
 We therefore conclude the chapter on iterative methods with numerical tools for efficient implementation of iterative solvers.</p>
-</div>
-</div>
-
-
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {"102c6c382b2447299562c1e48e9a6c6d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_c1c5ab73d74f47e7a371d73e7824f0f9", "placeholder": "\u200b", "style": "IPY_MODEL_d468101935a34dbbba008dbc81890cee", "value": "it / max_it:  34%"}}, "21a0ec407cf445d4b2cc31187bcb25aa": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_40708dc91ca64a3691a901867e2bef33", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_cbeb5157e7d44c5ca6b29ed5eb4e2a20", "value": 3401.0}}, "308873c5dfa64b4aaaf0d7be27ac8e19": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3eec412105214f169215571e13c8978b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eecacf54cb6f463bb737cf2d3aa4c448", "placeholder": "\u200b", "style": "IPY_MODEL_f5386664c2464c728c0c52ef69707abd", "value": " 3401/10000 [00:11&lt;00:22, 289.50it/s]"}}, "40708dc91ca64a3691a901867e2bef33": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "47c0491b159045c6864b97e57850a746": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_5f6d1124b7fa4a7980f3acff98b5f4fa", "placeholder": "\u200b", "style": "IPY_MODEL_308873c5dfa64b4aaaf0d7be27ac8e19", "value": "it / max_it:  34%"}}, "4c7163d6b45f4080bec27e1871db5fde": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "danger", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_8852e5552209496b82cdc18e745f392f", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_924d78d5f9704f518d8b2f6cda21b918", "value": 3401.0}}, "57a6ae1bf1f448a0851fd0a313b09dc2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_696aa66ce556489a80a7fda6ec5db80e", "placeholder": "\u200b", "style": "IPY_MODEL_ae5efab73eae4fbfae3bd364a51b6b31", "value": " 3401/10000 [00:00&lt;00:01, 4315.36it/s]"}}, "5f6d1124b7fa4a7980f3acff98b5f4fa": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "696aa66ce556489a80a7fda6ec5db80e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6c53d1d1ebac412c9bb5d9e8047576f3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6ca741d27f8742119383e202d3e53afd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_102c6c382b2447299562c1e48e9a6c6d", "IPY_MODEL_4c7163d6b45f4080bec27e1871db5fde", "IPY_MODEL_3eec412105214f169215571e13c8978b"], "layout": "IPY_MODEL_6c53d1d1ebac412c9bb5d9e8047576f3"}}, "8852e5552209496b82cdc18e745f392f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "924d78d5f9704f518d8b2f6cda21b918": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "ae5efab73eae4fbfae3bd364a51b6b31": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c1c5ab73d74f47e7a371d73e7824f0f9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c52a8173e3724a799ab65cb11276864d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c7894fca2f2a441cb986a60e9f370b19": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_47c0491b159045c6864b97e57850a746", "IPY_MODEL_21a0ec407cf445d4b2cc31187bcb25aa", "IPY_MODEL_57a6ae1bf1f448a0851fd0a313b09dc2"], "layout": "IPY_MODEL_c52a8173e3724a799ab65cb11276864d"}}, "cbeb5157e7d44c5ca6b29ed5eb4e2a20": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "d468101935a34dbbba008dbc81890cee": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "eecacf54cb6f463bb737cf2d3aa4c448": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f5386664c2464c728c0c52ef69707abd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}}, "version_major": 2, "version_minor": 0}
-</script>
-
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1007,45 +1203,41 @@ We therefore conclude the chapter on iterative methods with numerical tools for 
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="05_02_Conjugate_Gradient.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">13. </span>The conjugate gradient method</p>
-            </div>
-        </a>
-    </div>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="05_02_Conjugate_Gradient.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>The conjugate gradient method</p>
+        </div>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By B. Knaepen & Y. Velizhanina<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By B. Knaepen & Y. Velizhanina<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
