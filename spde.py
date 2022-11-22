@@ -1,6 +1,7 @@
 import re
 import os
 import hashlib
+import glob
 
 class SpdeContent():
     """Class representing the book.
@@ -51,6 +52,29 @@ class SpdeContent():
             file.save()
 
         print('Parsing finished')
+
+    def merge_bibtex_files(self):
+        """
+        Merge all bibtex files in a single file
+        and eliminate duplicate entries
+        """
+
+        bib_files = glob.glob('solving_pde_mooc/**/*.bib', recursive = True)
+        # print(bib_files)
+
+        lines_merged = []
+
+        for file in bib_files:
+            with open(file, "r") as f:
+                lines = f.readlines()
+            lines_merged.extend(lines)            
+            f.close()
+        
+        with open('./references.bib', "w") as f:
+            for line in lines_merged:
+                f.write(str(line))
+        f.close()
+        #print(lines_merged)
 
 
 class SpdeFile():
@@ -233,7 +257,7 @@ class SpdeFile():
                         myst_role = '{eq}`' + key.group(1) + '`'
                     elif command_type.group(1) in cite_types:
                         # Citations
-                        myst_role = '{cite}`' + self.hash + '-' + key.group(1) + '`'
+                        myst_role = '{footcite}`' + key.group(1) + '`'
                         found = True
                     self.lines[i] = self.lines[i].replace(command, myst_role)
 
@@ -247,10 +271,7 @@ class SpdeFile():
         """
 
         directive = [
-                        '```{bibliography} biblio.bib\n',
-                        ':filter: docname in docnames\n',                        
-                        ':labelprefix: ' + self.hash + '\n',
-                        ':keyprefix: ' + self.hash + '-\n',
+                        '```{footbibliography}\n',
                         '```',
                     ]
 
@@ -268,3 +289,6 @@ book.file_list()
 
 # Parse all files
 book.parse_files()
+
+# Merge bibtex files
+book.merge_bibtex_files()

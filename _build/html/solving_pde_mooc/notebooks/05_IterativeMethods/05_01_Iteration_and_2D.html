@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>12. Iteration methods &#8212; Solving Partial Differential Equations - MOOC</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,51 +20,67 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="13. The conjugate gradient method" href="05_02_Conjugate_Gradient.html" />
     <link rel="prev" title="11. One dimensional heat equation: implicit methods" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +89,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +110,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
-   Numerical methods for partial differential equations
-  </a>
- </li>
-</ul>
-<p class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../01_Introduction/01_00_Preface.html">
+                    Numerical methods for partial differential equations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -115,7 +135,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Time integration
  </span>
@@ -132,7 +152,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Finite differences
  </span>
@@ -154,7 +174,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Partial differential equations
  </span>
@@ -181,7 +201,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Iterative methods
  </span>
@@ -205,107 +225,194 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/aquaULB/solving_pde_mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aquaULB/solving_pde_mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../../_sources/solving_pde_mooc/notebooks/05_IterativeMethods/05_01_Iteration_and_2D.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    12.1. Introduction
@@ -355,19 +462,84 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Iteration methods</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   12.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#higher-dimensional-discretizations">
+   12.2. Higher-dimensional discretizations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discretization">
+     12.2.1. Discretization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#direct-inversion">
+     12.2.2. Direct inversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jacobi-method">
+   12.3. Jacobi method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gauss-seidel-method">
+   12.4. Gauss-Seidel method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-of-jacobi-and-gauss-seidel-methods">
+   12.5. Convergence of Jacobi and Gauss-Seidel methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   12.6. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   12.7. References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="iteration-methods">
-<h1><span class="section-number">12. </span>Iteration methods<a class="headerlink" href="#iteration-methods" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2><span class="section-number">12.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="iteration-methods">
+<h1><span class="section-number">12. </span>Iteration methods<a class="headerlink" href="#iteration-methods" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">12.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For convenience, we start by importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -386,6 +558,40 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../modules&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Function to compute an error in L2 norm</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">norms</span> <span class="kn">import</span> <span class="n">l2_diff</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../styles/mainstyle.use&#39;</span><span class="p">)</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Library</span><span class="o">/</span><span class="n">Mobile</span> <span class="n">Documents</span><span class="o">/</span><span class="n">com</span><span class="o">~</span><span class="n">apple</span><span class="o">~</span><span class="n">CloudDocs</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Workspace</span><span class="o">/</span><span class="n">courseMaterial</span><span class="o">/</span><span class="n">book_solving_pde_mooc</span><span class="o">/</span><span class="n">solving_pde_mooc</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="mi">05</span><span class="n">_IterativeMethods</span><span class="o">/../</span><span class="n">modules</span><span class="o">/</span><span class="n">norms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">py_l2_diff</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">miniforge3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">course</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="n">_ensure_llvm</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">200</span> <span class="n">_ensure_critical_deps</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span> <span class="c1"># we know llvmlite is working as the above tests passed, import it now as SVML</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="c1"># needs to mutate runtime options (sets the `-vector-library`).</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="kn">import</span> <span class="nn">llvmlite</span>
+
+<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/numba/__init__.py:140,</span> in <span class="ni">_ensure_critical_deps</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Numba needs NumPy 1.18 or greater&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">elif</span> <span class="n">numpy_version</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">140</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Numba needs NumPy 1.21 or less&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="ne">ImportError</span>: Numba needs NumPy 1.21 or less
+</pre></div>
+</div>
+</div>
 </div>
 <p>In the previous chapter we have discussed how to discretize two examples of partial differential equations: the one dimensional first order wave equation and the heat equation.</p>
 <p>For the heat equation, the stability criteria requires a strong restriction on the time step and implicit methods offer a significant reduction in computational cost compared to explicit methods. Their implementation is a bit more complicated in the sense that they require the inversion of a matrix. When the size of the matrix is not too large, one can rely on efficient direct solvers. However, for very large systems, matrix inversion becomes an expensive operation in terms of computational time and memory. This is especially true when solving multi-dimensional problems. Consider as an example the Poisson equation in three dimensions:</p>
@@ -393,14 +599,14 @@
 \[    \nabla^2 p(x,y,z)= \frac{\partial^2 p(x,y,z)}{\partial x^2} + \frac{\partial^2 p(x,y,z)}{\partial y^2} + \frac{\partial^2 p(x,y,z)}{\partial z^2} = b(x,y,z)\]</div>
 <p>where <span class="math notranslate nohighlight">\(p\)</span> is the unknown function and <span class="math notranslate nohighlight">\(b\)</span> is the right-hand side. To solve this equation using finite differences we need to introduce a three-dimensional grid. If the right-hand side term has sharp gradients, the number of grid points in each direction must be high in order to obtain an accurate solution. Say we need <span class="math notranslate nohighlight">\(1000\)</span> points in each direction. That translates into a grid containing <span class="math notranslate nohighlight">\(1000\times 1000\times 1000\)</span> grid points. We thus have <span class="math notranslate nohighlight">\(10^9\)</span> (one billion) unknowns <span class="math notranslate nohighlight">\(p(x_i, y_k, z_l)\)</span> in our problem. If we work in double precision, storing the solution requires approximatively <span class="math notranslate nohighlight">\(8\)</span> Gb of memory. On modern desktop or laptop computers, this represents a significant amount of memory but it’s not extravagant. If we now turn our  attention to the discretized matrix, this is a different story. As we have <span class="math notranslate nohighlight">\(10^9\)</span> unknowns, the discretized Laplace operator in matrix form contains <span class="math notranslate nohighlight">\(10^9\)</span> lines and <span class="math notranslate nohighlight">\(10^9\)</span> columns for a total of <span class="math notranslate nohighlight">\(10^{18}\)</span> entries! Allocating the memory to store such a matrix is therefore out of sight for even for the largest supercomputer available today (see the <a class="reference external" href="https://www.top500.org/lists/top500/">list of world’s largest supercomputers</a>). Fortunately, the matrix for the Laplace operator is <em>sparse</em> (see notebook <code class="docutils literal notranslate"><span class="pre">03_02_HigherOrderDerivative_and_Functions</span></code>). If we store only the non-zero elements of the matrix, the memory needed is drastically reduced. Even though direct solvers may take advantage of this, they are still pushed to their limits.</p>
 <p>We will further explain in more detail how to discretize partial differential equations in more than one dimension and introduce some of the simplest iterative solvers - the Jacobi and Gauss-Seidel iteration methods - to obtain the solution of the Poisson equation.</p>
-</div>
-<div class="section" id="higher-dimensional-discretizations">
-<h2><span class="section-number">12.2. </span>Higher-dimensional discretizations<a class="headerlink" href="#higher-dimensional-discretizations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="discretization">
-<h3><span class="section-number">12.2.1. </span>Discretization<a class="headerlink" href="#discretization" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="higher-dimensional-discretizations">
+<h2><span class="section-number">12.2. </span>Higher-dimensional discretizations<a class="headerlink" href="#higher-dimensional-discretizations" title="Permalink to this headline">#</a></h2>
+<section id="discretization">
+<h3><span class="section-number">12.2.1. </span>Discretization<a class="headerlink" href="#discretization" title="Permalink to this headline">#</a></h3>
 <p>To make the discussion concrete, we focus on the Poisson equation in two dimensions:</p>
 <div class="math notranslate nohighlight" id="equation-eq-poisson2d">
-<span class="eqno">(50)<a class="headerlink" href="#equation-eq-poisson2d" title="Permalink to this equation">¶</a></span>\[    \nabla^2 p(x,y)= \frac{\partial^2 p(x,y)}{\partial x^2} + \frac{\partial^2 p(x,y)}{\partial y^2} = b(x,y)\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-poisson2d" title="Permalink to this equation">#</a></span>\[    \nabla^2 p(x,y)= \frac{\partial^2 p(x,y)}{\partial x^2} + \frac{\partial^2 p(x,y)}{\partial y^2} = b(x,y)\]</div>
 <p>We solve this equation in a rectangular domain defined by:</p>
 <div class="math notranslate nohighlight">
 \[x_0 \leq x \leq x_0+l_x\;\;\;\; y_0 \leq y \leq y_0+l_y\]</div>
@@ -416,7 +622,7 @@
 <a class="reference internal image-reference" href="../../../_images/2Dgrid.png"><img alt="../../../_images/2Dgrid.png" src="../../../_images/2Dgrid.png" style="width: 500px;" /></a>
 <p>The discretization of <a class="reference internal" href="#equation-eq-poisson2d">(50)</a> using finite differences is straightforward if we discretize the two second-order derivatives along their respective directions. We then get:</p>
 <div class="math notranslate nohighlight" id="equation-eq-discpoisson2d">
-<span class="eqno">(51)<a class="headerlink" href="#equation-eq-discpoisson2d" title="Permalink to this equation">¶</a></span>\[\begin{split}    \frac{p_{i-1,j}-2p_{i,j} + p_{i+1,j}}{\Delta x^2} &amp;+ \frac{p_{i,j-1}-2p_{i,j} + p_{i,j+1}}{\Delta y^2}= b_{i,j} \\
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-discpoisson2d" title="Permalink to this equation">#</a></span>\[\begin{split}    \frac{p_{i-1,j}-2p_{i,j} + p_{i+1,j}}{\Delta x^2} &amp;+ \frac{p_{i,j-1}-2p_{i,j} + p_{i,j+1}}{\Delta y^2}= b_{i,j} \\
     &amp;\Leftrightarrow \nonumber \\
     a p_{i-1,j} + cp_{i,j} + a &amp;p_{i+1,j} + gp_{i,j-1}+ gp_{i,j+1} = b_{i,j} \nonumber\end{split}\]</div>
 <p>with <span class="math notranslate nohighlight">\(a=\displaystyle \frac{1}{\Delta x^2}\)</span>, <span class="math notranslate nohighlight">\(g=\displaystyle \frac{1}{\Delta y^2}\)</span>, <span class="math notranslate nohighlight">\(c=\displaystyle -\frac{2}{\Delta x^2}-\frac{2}{\Delta y^2}\)</span>.</p>
@@ -466,10 +672,10 @@ If we want to represent this equation in matrix form, things get a bit more intr
 <a class="reference internal image-reference" href="../../../_images/2Dstencil4th.png"><img alt="../../../_images/2Dstencil4th.png" src="../../../_images/2Dstencil4th.png" style="width: 350px;" /></a>
 <p>But there are also some more complex possibilities in which one uses more neighbouring grid points around the central grid point:</p>
 <a class="reference internal image-reference" href="../../../_images/2Dstencil9pt.png"><img alt="../../../_images/2Dstencil9pt.png" src="../../../_images/2Dstencil9pt.png" style="width: 300px;" /></a>
-<p>With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation <span id="id1">[<a class="reference internal" href="#id11">ce25c9Ise08</a>]</span>.</p>
-</div>
-<div class="section" id="direct-inversion">
-<h3><span class="section-number">12.2.2. </span>Direct inversion<a class="headerlink" href="#direct-inversion" title="Permalink to this headline">¶</a></h3>
+<p>With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation <a class="footnote-reference brackets" href="#footcite-iserles2008" id="id1">1</a>.</p>
+</section>
+<section id="direct-inversion">
+<h3><span class="section-number">12.2.2. </span>Direct inversion<a class="headerlink" href="#direct-inversion" title="Permalink to this headline">#</a></h3>
 <p>As an example, let us solve the Poisson equation in the domain <span class="math notranslate nohighlight">\(\displaystyle [0, 1]\times [-\frac12, \frac12]\)</span> using one of <code class="docutils literal notranslate"><span class="pre">scipy</span></code> built-in routines with the following right-hand side term:</p>
 <div class="math notranslate nohighlight">
 \[b = \sin(\pi x) \cos(\pi y) + \sin(5\pi x) \cos(5\pi y)\]</div>
@@ -650,8 +856,14 @@ If we want to represent this equation in matrix form, things get a bit more intr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The l2 difference between the computed solution and the exact solution is:
-2.890080056045183e-08
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p_e</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The l2 difference between the computed solution &#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>       <span class="sa">f</span><span class="s1">&#39;and the exact solution is:</span><span class="se">\n</span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -698,15 +910,15 @@ If we want to represent this equation in matrix form, things get a bit more intr
 </div>
 <p>We have collected some conclusive evidence that our procedure worked very nicely!</p>
 <p>There is however a significant drawback. If you want to increase the precision, you need to refine the grid. But beware, on a fairly recent Macbook Pro with <span class="math notranslate nohighlight">\(16\)</span> Gb of memory, the computation literally stalled when the number of grid points in both direction was multiplied by <span class="math notranslate nohighlight">\(2\)</span>. We therefore need another way of handling this type of problems.</p>
-</div>
-</div>
-<div class="section" id="jacobi-method">
-<h2><span class="section-number">12.3. </span>Jacobi method<a class="headerlink" href="#jacobi-method" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="jacobi-method">
+<h2><span class="section-number">12.3. </span>Jacobi method<a class="headerlink" href="#jacobi-method" title="Permalink to this headline">#</a></h2>
 <p>In the previous section we have solved the Poisson equation by inverting the discretized Laplace operator. This requires the explicit construction of the corresponding matrix and incurs a high storage cost associated with the computation of the inverse matrix. In this section we follow a radically different strategy and introduce a simple iterative method: the Jacobi method.</p>
 <p>Let’s go back to our discretised Poisson equation. To simplify the notation, we assume here that <span class="math notranslate nohighlight">\(\Delta x=\Delta y = \Delta\)</span>; the extension to the more general case is quite simple.</p>
 <p>If we isolate <span class="math notranslate nohighlight">\(p_{i,j}\)</span> in equation <a class="reference internal" href="#equation-eq-discpoisson2d">(51)</a> we get:</p>
 <div class="math notranslate nohighlight" id="equation-eq-itersolpoisson">
-<span class="eqno">(52)<a class="headerlink" href="#equation-eq-itersolpoisson" title="Permalink to this equation">¶</a></span>\[p_{i,j}=\frac14(p_{i-1,j}+p_{i+1,j}+p_{i,j-1}+p_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq-itersolpoisson" title="Permalink to this equation">#</a></span>\[p_{i,j}=\frac14(p_{i-1,j}+p_{i+1,j}+p_{i,j-1}+p_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
 <p>In other words, the value of the solution of the discretized Poisson equation at any grid point must be equal to its average computed at all other grid points in the stencil, plus a contribution from the source term.</p>
 <p>Imagine we pick any initial guess <span class="math notranslate nohighlight">\(p^0_{i,j}\)</span> for the solution we are seeking. Except if we are extremely lucky it will not satisfy <a class="reference internal" href="#equation-eq-itersolpoisson">(52)</a>. However we can compute an <em>updated</em> value,</p>
 <div class="math notranslate nohighlight">
@@ -715,7 +927,7 @@ If we want to represent this equation in matrix form, things get a bit more intr
 <p>The simple iterative procedure we outlined above is called the Jacobi method. Below we will prove mathematically that for the Poisson equation it does indeed converge to the exact solution. Here we will implement it and empirically observe that this is the case for our toy problem.</p>
 <p>In the Jacobi method, the iterated value is computed as follows:</p>
 <div class="math notranslate nohighlight" id="equation-eq-iterksolpoisson">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eq-iterksolpoisson" title="Permalink to this equation">¶</a></span>\[p^{k+1}_{i,j}=\frac14(p^k_{i-1,j}+p^k_{i+1,j}+p^k_{i,j-1}+p^k_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq-iterksolpoisson" title="Permalink to this equation">#</a></span>\[p^{k+1}_{i,j}=\frac14(p^k_{i-1,j}+p^k_{i+1,j}+p^k_{i,j-1}+p^k_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
 <p>There is of course no exact way to determine if we have performed enough iterations. However, if the iterative method is able to solve the equation, the difference between too successive iterated values should become increasingly small, as we converge to the exact solution. We will therefore adopt the same strategy as the one we used for the grid convergence study. We will measure the difference in <span class="math notranslate nohighlight">\(L2\)</span>-norm between <span class="math notranslate nohighlight">\(p^{k+1}\)</span> and <span class="math notranslate nohighlight">\(p^k\)</span> and stop iterating once it falls below a given values.</p>
 <p>Let’s now implement and describe the algorithm. We first copy/paste our grid parameters so that we can easily change them here:</p>
 <div class="cell docutils container">
@@ -829,8 +1041,20 @@ If we want to represent this equation in matrix form, things get a bit more intr
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0153d8e00d5548099ce0996746fb043a", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 14409 iterations
+{"model_id": "51736f6e43a349388a9ea38499aa33bf", "version_major": 2, "version_minor": 0}
+</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 10&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># We only modify interior nodes. The boundary nodes remain equal to</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="c1"># zero and the Dirichlet boundary conditions are therefore automatically</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="c1"># enforced.</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">pnew</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>                  <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">tol_hist_jac</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -845,8 +1069,14 @@ If we want to represent this equation in matrix form, things get a bit more intr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The l2 difference between the computed solution and the exact solution is:
-1.83232195168421e-07
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p_e</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The l2 difference between the computed solution and &#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>       <span class="sa">f</span><span class="s1">&#39;the exact solution is:</span><span class="se">\n</span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -910,9 +1140,9 @@ If we want to represent this equation in matrix form, things get a bit more intr
 </div>
 <p>For the problem considered, we observe that the tolerance decreases smoothly (in semi-log scale) during the iterative procedure. But this is not systematic for all iterative methods, the decay may more erratic in some cases.</p>
 <p>Now the good news. You may safely repeat the above iteration method with larger values of <code class="docutils literal notranslate"><span class="pre">nx</span></code> or <code class="docutils literal notranslate"><span class="pre">ny</span></code>. Multiplying those values by 2 or 3 will likely not exhaust your computer.</p>
-</div>
-<div class="section" id="gauss-seidel-method">
-<h2><span class="section-number">12.4. </span>Gauss-Seidel method<a class="headerlink" href="#gauss-seidel-method" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="gauss-seidel-method">
+<h2><span class="section-number">12.4. </span>Gauss-Seidel method<a class="headerlink" href="#gauss-seidel-method" title="Permalink to this headline">#</a></h2>
 <p>For the Jacobi method we made use of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> slicing and array operations to avoid Python loops. If we had performed the looping explicitly, we could have done it like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -924,7 +1154,7 @@ If we want to represent this equation in matrix form, things get a bit more intr
 <a class="reference internal image-reference" href="../../../_images/GSgrid_e.png"><img alt="../../../_images/GSgrid_e.png" src="../../../_images/GSgrid_e.png" style="width: 450px;" /></a>
 <p>In the Gauss-Seidel method, one takes advantage of this looping order to use updated values as soon as they become available. The iteration procedure then reads:</p>
 <div class="math notranslate nohighlight" id="equation-eq-iterksolgs">
-<span class="eqno">(54)<a class="headerlink" href="#equation-eq-iterksolgs" title="Permalink to this equation">¶</a></span>\[p^{k+1}_{i,j}=\frac14(p^{k+1}_{i-1,j}+p^k_{i+1,j}+p^{k+1}_{i,j-1}+p^k_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-iterksolgs" title="Permalink to this equation">#</a></span>\[p^{k+1}_{i,j}=\frac14(p^{k+1}_{i-1,j}+p^k_{i+1,j}+p^{k+1}_{i,j-1}+p^k_{i,j+1})-\frac14b_{i,j}\Delta^2\]</div>
 <p>This strategy allows to cut the number of iterations by a factor of <span class="math notranslate nohighlight">\(2\)</span>! Unfortunately, the algorithm requires to explicitly perform the loops and we know that if we do this using Python loops, our code will slow down considerably. For example, solving the same problem as earlier using the Gauss-Seidel algorithm takes about 2.5 minutes on a fairly recent MacBook Pro whereas the Jacobi method took a few seconds.</p>
 <p>So you might think that the Gauss-Seidel method is completely useless. But if we could speedup the Python loops somehow, we could benefit from the fewer iterations. In the third notebook of this chapter we will show you a simple way to do this and make the Gauss-Seidel method achieve full potential.</p>
 <p>Let’s solve our problem with the Gauss-Seidel method, <strong>but beware</strong>, it will take some time…</p>
@@ -979,8 +1209,18 @@ If we want to represent this equation in matrix form, things get a bit more intr
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "64989e0b015945469a36c0c421e2ed96", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution converged after 7908 iterations
+{"model_id": "c736184bfc8842d78af4683588c20022", "version_major": 2, "version_minor": 0}
+</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>         <span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">pnew</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>                    <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">pnew</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">tol_hist_gs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1005,9 +1245,9 @@ If we want to represent this equation in matrix form, things get a bit more intr
 <img alt="../../../_images/05_01_Iteration_and_2D_42_0.png" src="../../../_images/05_01_Iteration_and_2D_42_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="convergence-of-jacobi-and-gauss-seidel-methods">
-<h2><span class="section-number">12.5. </span>Convergence of Jacobi and Gauss-Seidel methods<a class="headerlink" href="#convergence-of-jacobi-and-gauss-seidel-methods" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="convergence-of-jacobi-and-gauss-seidel-methods">
+<h2><span class="section-number">12.5. </span>Convergence of Jacobi and Gauss-Seidel methods<a class="headerlink" href="#convergence-of-jacobi-and-gauss-seidel-methods" title="Permalink to this headline">#</a></h2>
 <p>We have observed empirically that the Jacobi and Gauss-Seidel methods converge to the solution of the discretized Poisson equation. In this section we explore this convergence process in more detail.</p>
 <p>The definition of the Jacobi method is given by <a class="reference internal" href="#equation-eq-iterksolpoisson">(53)</a> (we keep the assumption that <span class="math notranslate nohighlight">\(\Delta x=\Delta y = \Delta\)</span>).
 If we represent all the unknowns as a vector <span class="math notranslate nohighlight">\(\boldsymbol p = [p_{i,j}]\)</span> (using again column-major ordering), we can write this formula as:</p>
@@ -1049,7 +1289,7 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 <p>with <span class="math notranslate nohighlight">\(A_1^{GS}=4\times I - L\)</span> and <span class="math notranslate nohighlight">\(A_2^{GS}=U\)</span>.</p>
 <p>The arguments developped here can be genelarized to any iterative method of the form,</p>
 <div class="math notranslate nohighlight" id="equation-eq-itersplit">
-<span class="eqno">(55)<a class="headerlink" href="#equation-eq-itersplit" title="Permalink to this equation">¶</a></span>\[  A_1\boldsymbol p^{k+1} = A_2 \boldsymbol p^k + \boldsymbol c
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-itersplit" title="Permalink to this equation">#</a></span>\[  A_1\boldsymbol p^{k+1} = A_2 \boldsymbol p^k + \boldsymbol c
   \;\; \Leftrightarrow \;\; \boldsymbol p^{k+1} = A_1^{-1} A_2 \boldsymbol p^k +A_1^{-1} \boldsymbol c\]</div>
 <p>where <span class="math notranslate nohighlight">\(A=A_1 - A_2\)</span> and <span class="math notranslate nohighlight">\(A\boldsymbol p = c\)</span> is the original matrix problem.</p>
 <p>The make the algorithm  work, <span class="math notranslate nohighlight">\(A_1\)</span> needs to be easily invertible, otherwise we would not save any effort. For the Jacobi method this is obvious because <span class="math notranslate nohighlight">\(A_1\)</span> is proportional to the identity. For the Gauss-Seidel method things are sligthly more complicated but <span class="math notranslate nohighlight">\(\boldsymbol p^{k+1}\)</span> can still be computed easily by looping in the order described in the previous section.</p>
@@ -1058,8 +1298,8 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 \[  \boldsymbol \epsilon^k = \boldsymbol p^{exact} - \boldsymbol p^k\]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol p^{exact}\)</span> is the exact solution of the discretized equation. If we substitute this definition in <a class="reference internal" href="#equation-eq-itersplit">(55)</a> we get</p>
 <div class="math notranslate nohighlight" id="equation-eq-itererror">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eq-itererror" title="Permalink to this equation">¶</a></span>\[  \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0.\]</div>
-<p>Obviously we need to have <span class="math notranslate nohighlight">\(\boldsymbol \epsilon^k \rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(\rightarrow \infty\)</span> for the iterative method to converge. In order for this to happen, all the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> of <span class="math notranslate nohighlight">\(A^{-1}_1 A_2\)</span> must be such that <span id="id2">[<a class="reference internal" href="#id8">ce25c9Wat10</a>]</span>,</p>
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-itererror" title="Permalink to this equation">#</a></span>\[  \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0.\]</div>
+<p>Obviously we need to have <span class="math notranslate nohighlight">\(\boldsymbol \epsilon^k \rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(\rightarrow \infty\)</span> for the iterative method to converge. In order for this to happen, all the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> of <span class="math notranslate nohighlight">\(A^{-1}_1 A_2\)</span> must be such that <a class="footnote-reference brackets" href="#footcite-watkins2010" id="id2">2</a>,</p>
 <div class="math notranslate nohighlight">
 \[  \vert \lambda_i \vert &lt; 1.\]</div>
 <p>If the matrix <span class="math notranslate nohighlight">\(A^{-1}_1 A_2\)</span> is diagonalizable, this result can be proven rather easily by expressing the error in the basis of eigenvectors.</p>
@@ -1069,7 +1309,7 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 <p>When the algorithm converges, we can use eq. <a class="reference internal" href="#equation-eq-itererror">(56)</a> to evaluate its rate of convergence. For that purpose, let us introduce the <span class="math notranslate nohighlight">\(L2\)</span> matrix norm defined as:</p>
 <div class="math notranslate nohighlight">
 \[  \| G \|_2 = \max_{\boldsymbol x}\frac{\| G\boldsymbol x \|}{\| \boldsymbol x \|}.\]</div>
-<p>where <span class="math notranslate nohighlight">\(G\)</span> is any matrix. One says that the matrix norm is induced by the <span class="math notranslate nohighlight">\(L2\)</span>-norm <span class="math notranslate nohighlight">\(\|\cdot\|\)</span> defined for vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Like all matrix norms, it satisfies the submultiplicativity rule <span id="id3">[<a class="reference internal" href="#id8">ce25c9Wat10</a>]</span>:</p>
+<p>where <span class="math notranslate nohighlight">\(G\)</span> is any matrix. One says that the matrix norm is induced by the <span class="math notranslate nohighlight">\(L2\)</span>-norm <span class="math notranslate nohighlight">\(\|\cdot\|\)</span> defined for vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Like all matrix norms, it satisfies the submultiplicativity rule <a class="footnote-reference brackets" href="#footcite-watkins2010" id="id3">2</a>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
   \| AB \|_2 \leq \| A \|_2 \| B \|_2.
@@ -1078,7 +1318,7 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 <p>Using the definition of the <span class="math notranslate nohighlight">\(L2\)</span> norm and the submultiplicativity rule we then have:</p>
 <div class="math notranslate nohighlight">
 \[  \boldsymbol \| \epsilon^{k+1} \| = \| \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0 \| \leq \| \left(A^{-1}_1 A_2\right)\|_2^{k+1}\boldsymbol \| \epsilon^0 \|\]</div>
-<p>An important result of linear algebra is that the <span class="math notranslate nohighlight">\(L2\)</span> norm of a matrix is equal to its largest singular value <span class="math notranslate nohighlight">\(\sigma_1\)</span> <span id="id4">[<a class="reference internal" href="#id9">ce25c9HJ13</a>]</span>:</p>
+<p>An important result of linear algebra is that the <span class="math notranslate nohighlight">\(L2\)</span> norm of a matrix is equal to its largest singular value <span class="math notranslate nohighlight">\(\sigma_1\)</span> <a class="footnote-reference brackets" href="#footcite-horn2013" id="id4">3</a>:</p>
 <div class="math notranslate nohighlight">
 \[  \| A \|_2 = \sigma_1(A).\]</div>
 <p>We won’t use the concept of singular values in this course so we will not describe it further. We just note that for symmetric matrices we have:</p>
@@ -1091,7 +1331,7 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 <div class="math notranslate nohighlight">
 \[  k \geq -\frac{m}{\log_{10}\rho (A^{-1}_1 A_2) } = -\frac{m}{\log_{10}(\hbox{max} \vert \lambda_i\vert )}\]</div>
 <p>Let’s now use the above theoretical concepts for the analysis of the Jacobi and Gauss-Seidel methods in the case of the 2D Poisson equation.</p>
-<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the Jacobi method, we have <span class="math notranslate nohighlight">\( \displaystyle A^{-1}_1 A_2 = \frac14(L+U)\)</span>. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products <span id="id5">[<a class="reference internal" href="#id8">ce25c9Wat10</a>]</span>. The resulting eigenvalues are:</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the Jacobi method, we have <span class="math notranslate nohighlight">\( \displaystyle A^{-1}_1 A_2 = \frac14(L+U)\)</span>. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products <a class="footnote-reference brackets" href="#footcite-watkins2010" id="id5">2</a>. The resulting eigenvalues are:</p>
 <div class="math notranslate nohighlight">
 \[  \lambda_{kl} = \frac12\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.\]</div>
 <p>The spectral radius is thus,</p>
@@ -1101,7 +1341,7 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 <div class="math notranslate nohighlight">
 \[  \rho_{JC} \simeq 1 - \frac12 \frac{\pi^2}{(nx-1)^2}\]</div>
 <p>For <span class="math notranslate nohighlight">\(nx=ny=101\)</span>, a reduction of the error by a factor of <span class="math notranslate nohighlight">\(10^{-10}\)</span> requires <span class="math notranslate nohighlight">\(46652\)</span> iterations.</p>
-<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the Gauss-Seidel method, we have <span class="math notranslate nohighlight">\( \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U\)</span> and the eigenvalues are the squares of the eigenvalues of the Jacobi method <span id="id6">[<a class="reference internal" href="#id8">ce25c9Wat10</a>]</span>:</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> For the Gauss-Seidel method, we have <span class="math notranslate nohighlight">\( \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U\)</span> and the eigenvalues are the squares of the eigenvalues of the Jacobi method <a class="footnote-reference brackets" href="#footcite-watkins2010" id="id6">2</a>:</p>
 <div class="math notranslate nohighlight">
 \[  \lambda_{kl} = \frac14\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ]^2,\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.\]</div>
 <p>The spectral radius is thus,</p>
@@ -1112,31 +1352,33 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 \[  \rho_{GS} \simeq 1 - \frac{\pi^2}{(nx-1)^2}\]</div>
 <p>For <span class="math notranslate nohighlight">\(nx=ny=101\)</span>, a reduction of the error by a factor of <span class="math notranslate nohighlight">\(10^{-10}\)</span> requires <span class="math notranslate nohighlight">\(23326\)</span> iterations.</p>
 <p>These results confirm our observations when solving the sample problem described earlier in this notebook.</p>
-</div>
-<div class="section" id="summary">
-<h2><span class="section-number">12.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2><span class="section-number">12.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook we have shown how to define a cartesian grid for solving two-dimensional partial differential equations using the finite difference discretization. The strategy can easily be extended to three-dimensional problems. When they require matrix inversions, higher-dimensional problems rapidly make direct inversion methods very inefficient if not impracticable. For such cases, we have shown how iterative methods can come to the rescue. We have described in detail the Jacobi and Gauss-Seidel methods and rapidly presented the classical theory used to analyze their stability. The implementation of some iterative methods like the Jacobi method can be done directly with <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and therefore benefit from the speedup of precompiled code. Others, like the Gauss-Seidel method, require an explicit looping on the grid nodes in a given order and this can lead to very slow algorithm if the loops are performed with Python loops. To circumvent this difficulty we provide in the third notebook of this chapter several strategies to boost your Python programs. But before that, we introduce another type of iterative method in the next notebook.</p>
-</div>
-<div class="section" id="references">
-<h2><span class="section-number">12.7. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id7"><dl class="citation">
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id4">ce25c9HJ13</a></span></dt>
-<dd><p>RA Horn and CR Johnson. Matrix analysis. 2013.</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id1">ce25c9Ise08</a></span></dt>
+</section>
+<section id="references">
+<h2><span class="section-number">12.7. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id7">
+<dl class="footnote brackets">
+<dt class="label" id="footcite-iserles2008"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>A Iserles. A first course in the numerical analysis of differential equations - second edition. 2008.</p>
 </dd>
-<dt class="label" id="id8"><span class="brackets">ce25c9Wat10</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id5">3</a>,<a href="#id6">4</a>)</span></dt>
+<dt class="label" id="footcite-watkins2010"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id5">3</a>,<a href="#id6">4</a>)</span></dt>
 <dd><p>DS Watkins. Fondamentals of matrix computations - third edition. 2010.</p>
 </dd>
+<dt class="label" id="footcite-horn2013"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>RA Horn and CR Johnson. Matrix analysis. 2013.</p>
+</dd>
 </dl>
-</p>
 </div>
-</div>
+<hr class="footnotes docutils" />
+</section>
+</section>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"0153d8e00d5548099ce0996746fb043a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_8a0351ec14574701bf6874f1cbab2846", "IPY_MODEL_333ed52690584cfc8c226882b2006044", "IPY_MODEL_6bc51637e9724ada812bafd5f769830a"], "layout": "IPY_MODEL_05eae93722924b7ba92ec50d40be9af7"}}, "037c4d4b22fe4b0784270aa4cfc0d0f8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "05eae93722924b7ba92ec50d40be9af7": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "114a8024733c41bb8d140e5f8f3c30ff": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "282c08977f894d14951ec9dad9f94867": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_35e6996da66442e48d1b0075c9a82dfb", "placeholder": "\u200b", "style": "IPY_MODEL_f861e88fcffc4654b674c8f8944497a1", "value": " 7907/100000 [01:31&lt;19:06, 80.30it/s]"}}, "333ed52690584cfc8c226882b2006044": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_389e2c3dc5b8404080fe55e9fa92a14e", "max": 100000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_c133d615ae54424e959eaa2eb02c513f", "value": 14409.0}}, "35e6996da66442e48d1b0075c9a82dfb": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "36b20914957a425d8d3b7fc56931ec68": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "389e2c3dc5b8404080fe55e9fa92a14e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4c8c48a0197948fd99ae5db12eccabbe": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "553ddf9a3c874408acc8d887eb96e63f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "64989e0b015945469a36c0c421e2ed96": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_9cd955eee95249e8807e7f4cbaef2ea7", "IPY_MODEL_826df915ec354d52be37e0cfe4f77c4c", "IPY_MODEL_282c08977f894d14951ec9dad9f94867"], "layout": "IPY_MODEL_659a766de5f4441e874faa841a1b7d32"}}, "659a766de5f4441e874faa841a1b7d32": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6746b4b148a54f9db34a3879920c01fb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "6bc51637e9724ada812bafd5f769830a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_4c8c48a0197948fd99ae5db12eccabbe", "placeholder": "\u200b", "style": "IPY_MODEL_98fcc4f647b64561863a13b64160fda1", "value": " 14409/100000 [00:20&lt;00:06, 13642.78it/s]"}}, "826df915ec354d52be37e0cfe4f77c4c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_553ddf9a3c874408acc8d887eb96e63f", "max": 100000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_6746b4b148a54f9db34a3879920c01fb", "value": 7907.0}}, "8a0351ec14574701bf6874f1cbab2846": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_037c4d4b22fe4b0784270aa4cfc0d0f8", "placeholder": "\u200b", "style": "IPY_MODEL_bdedbe40ccdc4f52b6a443e6511009a1", "value": "it / max_it:  14%"}}, "98fcc4f647b64561863a13b64160fda1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "9cd955eee95249e8807e7f4cbaef2ea7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_36b20914957a425d8d3b7fc56931ec68", "placeholder": "\u200b", "style": "IPY_MODEL_114a8024733c41bb8d140e5f8f3c30ff", "value": "it / max_it:   8%"}}, "bdedbe40ccdc4f52b6a443e6511009a1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c133d615ae54424e959eaa2eb02c513f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "f861e88fcffc4654b674c8f8944497a1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+{"state": {"11203afe5cc944b6a379968ccddef56e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "176b1d450f464a8291ed8c5ac450ac85": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_18c5db85226f4230b0b00088d96bfd00", "placeholder": "\u200b", "style": "IPY_MODEL_cbd0dea3e12e4b38b3c87a9b25edead9", "value": "it / max_it:   0%"}}, "18c5db85226f4230b0b00088d96bfd00": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2258bf58a38d4be48c748ffd415bc4ad": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_f349b655217e4d2fa1fea75948c4ac2b", "placeholder": "\u200b", "style": "IPY_MODEL_26409ed48aa14e01ba9982b02c2f39e2", "value": " 0/100000 [00:00&lt;?, ?it/s]"}}, "26409ed48aa14e01ba9982b02c2f39e2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "2660866a532c4ab7884054495a7cabfd": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2a8c81b786d64d2fabbf29266d5b6c74": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3c43930dce1b4b32b0ee2acb34c45133": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eecdb2c4b34548b18f9ba2a108222d6c", "max": 100000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_11203afe5cc944b6a379968ccddef56e", "value": 0.0}}, "51736f6e43a349388a9ea38499aa33bf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_176b1d450f464a8291ed8c5ac450ac85", "IPY_MODEL_8fb61b4a0c0a4deab971512698fd538f", "IPY_MODEL_2258bf58a38d4be48c748ffd415bc4ad"], "layout": "IPY_MODEL_5d6349b0cf8142a1bf100e39cb3f3037"}}, "5d6349b0cf8142a1bf100e39cb3f3037": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "64b68fe8aa364309b2be051512ce5b12": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eb1f66b537d34c75ae6bdaf23b1a4543", "placeholder": "\u200b", "style": "IPY_MODEL_2a8c81b786d64d2fabbf29266d5b6c74", "value": " 0/100000 [00:00&lt;?, ?it/s]"}}, "8fb61b4a0c0a4deab971512698fd538f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9f5cedaa3d50445e9c64ea4c80b5f25c", "max": 100000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_a612a2f6330c4112af475f858c7ca75d", "value": 0.0}}, "9f5cedaa3d50445e9c64ea4c80b5f25c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a612a2f6330c4112af475f858c7ca75d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "b4f9de28b3c0472db126f23f6b9856e9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "bd3df337fe6244e39de33b4c8c0fbf14": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bddbd44759474495b60427fd22785d78": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_bd3df337fe6244e39de33b4c8c0fbf14", "placeholder": "\u200b", "style": "IPY_MODEL_b4f9de28b3c0472db126f23f6b9856e9", "value": "it / max_it:   0%"}}, "c736184bfc8842d78af4683588c20022": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_bddbd44759474495b60427fd22785d78", "IPY_MODEL_3c43930dce1b4b32b0ee2acb34c45133", "IPY_MODEL_64b68fe8aa364309b2be051512ce5b12"], "layout": "IPY_MODEL_2660866a532c4ab7884054495a7cabfd"}}, "cbd0dea3e12e4b38b3c87a9b25edead9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "eb1f66b537d34c75ae6bdaf23b1a4543": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "eecdb2c4b34548b18f9ba2a108222d6c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f349b655217e4d2fa1fea75948c4ac2b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
@@ -1162,54 +1404,48 @@ If we represent all the unknowns as a vector <span class="math notranslate nohig
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">11. </span>One dimensional heat equation: implicit methods</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>One dimensional heat equation: implicit methods</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="05_02_Conjugate_Gradient.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>The conjugate gradient method</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="05_02_Conjugate_Gradient.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">13. </span>The conjugate gradient method</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By B. Knaepen & Y. Velizhanina<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By B. Knaepen & Y. Velizhanina<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
