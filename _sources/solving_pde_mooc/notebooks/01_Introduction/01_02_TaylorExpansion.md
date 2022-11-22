@@ -49,7 +49,7 @@ In the context of the numerical solution of ordinary or partial diffential equat
 
 ## Taylor's theorem
 
-Taylor's theorem provides a valuable tool to estimate the accuracy of discretized differential operators or time integration schemes {cite}`2e1eee-arfken2012`.
+Taylor's theorem provides a valuable tool to estimate the accuracy of discretized differential operators or time integration schemes {footcite}`arfken2012`.
 
 ***Theorem.** Let $x$ be any point in the interval $[a, b]$ and $\Delta x$ a small positive real number. Schematically we have*:
 
@@ -504,8 +504,5 @@ In the next notebook we will introduce Euler time-advancement schemes - numerica
 
 
 ## References
-```{bibliography} biblio.bib
-:filter: docname in docnames
-:labelprefix: 2e1eee
-:keyprefix: 2e1eee-
+```{footbibliography}
 ```

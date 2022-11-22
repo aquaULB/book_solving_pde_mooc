@@ -121,7 +121,7 @@ A useful result for us is that the powers of a Jordan block may be evaluated wit
 \end{pmatrix}
 ```
 
-where the binomial coefficients are defined as $\tbinom{n}{k}=\prod_{i=1}^k \tfrac{n+1-i}{i}$. One can show that the matrix entries remain bounded if and only if $\vert \lambda \vert <1$ - the fact that the entries blow up for $\vert \lambda \vert \geq 1$ is evident. A detailed proof of this property may be found in {cite}`4c34e0-horn2013`. In terms of $A$ we have:
+where the binomial coefficients are defined as $\tbinom{n}{k}=\prod_{i=1}^k \tfrac{n+1-i}{i}$. One can show that the matrix entries remain bounded if and only if $\vert \lambda \vert <1$ - the fact that the entries blow up for $\vert \lambda \vert \geq 1$ is evident. A detailed proof of this property may be found in {footcite}`horn2013`. In terms of $A$ we have:
 
 ```{math}
 A^n 
@@ -180,7 +180,7 @@ with $\displaystyle{\tilde \lambda = \frac{dx}{cdt}-1}$ and $\displaystyle \tild
  dt < \frac{2dx}{c}
 ```
 
-we can avoid instability of the numerical scheme when using the forward Euler method with backward first-order finite differentiation. Even if the method does not blow up, it does not mean that you would get an accurate physical solution when using a large time step. Go back to the previous notebook and check that this criteria was indeed satisfied. Run again the simulation with $dt > \displaystyle\frac{2dx}{c}$ and check what happens.
+we can avoid exponential blow up of the solution for $t\rightarrow \infty$ when using the forward Euler method with backward first-order finite differentiation. However, even if the method does not blow up, it does not mean that we would get an accurate physical solution when fullfilling the above criteria. Errors can still experience very large transient growth at finite times and this necessary condition is not sufficient to ensure a proper solution to our problem. This ultimately boils down to the fact that the matrix $A$ is highly non-normal. For the present scheme, the proper criteria to adopt is $dt < \frac{dx}{c}$ {footcite}`leveque2007`. Go back to the previous notebook and check that this criteria was indeed satisfied. Run again the simulation with $dt > \displaystyle\frac{dx}{c}$ and check what happens.
 
 The non-dimensional number,
 
@@ -188,10 +188,10 @@ The non-dimensional number,
 C = \frac{cdt}{dx}
 ```
 
-is called the CFL number after the mathematicians Courant, Friedrich and Lewy. Here the condition for stability is:
+is called the CFL number after the mathematicians Courant, Friedrich and Lewy. Here the condition for stability at finite and long times is:
 
 ```{math}
-C<2.
+C<1.
 ```
 
 This condition limits the allowed time step for a given grid spacing and has a very important practical consequence. If you increase the numerical resolution by using a finer grid, you also need to reduce the time step. You pay the price twice. But at least the method is *conditionnally stable* for the first order wave equation (and $c>0$).
@@ -250,7 +250,7 @@ c & a & b & 0 & 0 & \dots & 0 & 0 & 0 & 0 \\
 \end{pmatrix}
 ```
 
-where $m\times m$ are the matrix dimensions. Contrary to the matrices $A$ and $\tilde A$ described earlier, $T_m$ is diagonalizable when $bc \not = 0$. The eigenvalues are then distinct and given by {cite}`4c34e0-horn2013`:
+where $m\times m$ are the matrix dimensions. Contrary to the matrices $A$ and $\tilde A$ described earlier, $T_m$ is diagonalizable when $bc \not = 0$. The eigenvalues are then distinct and given by {footcite}`horn2013`:
 
 ```{math}
 :label: eq:eigenvals1
@@ -427,8 +427,5 @@ In this notebook, we have introduced two methods to analyse the stability of the
 +++
 
 ## References
-```{bibliography} biblio.bib
-:filter: docname in docnames
-:labelprefix: 4c34e0
-:keyprefix: 4c34e0-
+```{footbibliography}
 ```

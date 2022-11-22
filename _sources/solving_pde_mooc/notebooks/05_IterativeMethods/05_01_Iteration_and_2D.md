@@ -173,7 +173,7 @@ But there are also some more complex possibilities in which one uses more neighb
 
 <img width="300px" src="../figures/2Dstencil9pt.png">
 
-With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation {cite}`ce25c9-iserles2008`.
+With more points in the stencil, we would expect to achieve higher-order accuracy. For the Poisson equation, the last stencil is in fact only second-order accurate. But it is fourth-order accurate for the Laplace equation {footcite}`iserles2008`.
 
 +++
 
@@ -769,7 +769,7 @@ where $\boldsymbol p^{exact}$ is the exact solution of the discretized equation.
   \boldsymbol \epsilon^{k+1} = A^{-1}_1 A_2 \boldsymbol \epsilon^k = \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0.
 ```
 
-Obviously we need to have $\boldsymbol \epsilon^k \rightarrow 0$ for $\rightarrow \infty$ for the iterative method to converge. In order for this to happen, all the eigenvalues $\lambda_i$ of $A^{-1}_1 A_2$ must be such that {cite}`ce25c9-watkins2010`,
+Obviously we need to have $\boldsymbol \epsilon^k \rightarrow 0$ for $\rightarrow \infty$ for the iterative method to converge. In order for this to happen, all the eigenvalues $\lambda_i$ of $A^{-1}_1 A_2$ must be such that {footcite}`watkins2010`,
 
 ```{math}
   \vert \lambda_i \vert < 1.
@@ -788,7 +788,7 @@ When the algorithm converges, we can use eq. {eq}`eq:iterError` to evaluate its 
 ```{math}
   \| G \|_2 = \max_{\boldsymbol x}\frac{\| G\boldsymbol x \|}{\| \boldsymbol x \|}.
 ```
- where $G$ is any matrix. One says that the matrix norm is induced by the $L2$-norm $\|\cdot\|$ defined for vectors $\boldsymbol x$. Like all matrix norms, it satisfies the submultiplicativity rule {cite}`ce25c9-watkins2010`:
+ where $G$ is any matrix. One says that the matrix norm is induced by the $L2$-norm $\|\cdot\|$ defined for vectors $\boldsymbol x$. Like all matrix norms, it satisfies the submultiplicativity rule {footcite}`watkins2010`:
 
  \begin{equation*}
   \| AB \|_2 \leq \| A \|_2 \| B \|_2.
@@ -802,7 +802,7 @@ Using the definition of the $L2$ norm and the submultiplicativity rule we then h
   \boldsymbol \| \epsilon^{k+1} \| = \| \left(A^{-1}_1 A_2\right)^{k+1}\boldsymbol \epsilon^0 \| \leq \| \left(A^{-1}_1 A_2\right)\|_2^{k+1}\boldsymbol \| \epsilon^0 \|
 ```
 
-An important result of linear algebra is that the $L2$ norm of a matrix is equal to its largest singular value $\sigma_1$ {cite}`ce25c9-horn2013`:
+An important result of linear algebra is that the $L2$ norm of a matrix is equal to its largest singular value $\sigma_1$ {footcite}`horn2013`:
 
 ```{math}
   \| A \|_2 = \sigma_1(A).
@@ -828,7 +828,7 @@ Reducing the $L2$-norm of the error by a factor $10^{-m}$ after $k$ iterations t
 
 Let's now use the above theoretical concepts for the analysis of the Jacobi and Gauss-Seidel methods in the case of the 2D Poisson equation.
 
-$\bullet$ For the Jacobi method, we have $ \displaystyle A^{-1}_1 A_2 = \frac14(L+U)$. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products {cite}`ce25c9-watkins2010`. The resulting eigenvalues are:
+$\bullet$ For the Jacobi method, we have $ \displaystyle A^{-1}_1 A_2 = \frac14(L+U)$. The matrix is a Teoplitz matrix and it is possible to compute all its eigenvalues by decomposing it using tensor products {footcite}`watkins2010`. The resulting eigenvalues are:
 
 ```{math}
   \lambda_{kl} = \frac12\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
@@ -848,7 +848,7 @@ and the method converges since $\rho_{JC} < 1$. If $nx=ny$ are both large, we ha
 
 For $nx=ny=101$, a reduction of the error by a factor of $10^{-10}$ requires $46652$ iterations.
 
-$\bullet$ For the Gauss-Seidel method, we have $ \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U$ and the eigenvalues are the squares of the eigenvalues of the Jacobi method {cite}`ce25c9-watkins2010`:
+$\bullet$ For the Gauss-Seidel method, we have $ \displaystyle A^{-1}_1 A_2 = (4\times I - L)^{-1} U$ and the eigenvalues are the squares of the eigenvalues of the Jacobi method {footcite}`watkins2010`:
 
 ```{math}
   \lambda_{kl} = \frac14\left[\cos \frac{k\pi}{nx-1} + \cos \frac{l\pi}{ny-1}\right ]^2,\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
@@ -879,8 +879,5 @@ In this notebook we have shown how to define a cartesian grid for solving two-di
 +++
 
 ## References
-```{bibliography} biblio.bib
-:filter: docname in docnames
-:labelprefix: ce25c9
-:keyprefix: ce25c9-
+```{footbibliography}
 ```

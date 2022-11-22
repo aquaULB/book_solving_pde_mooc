@@ -137,7 +137,7 @@ Let's see how this algorithm applies to the Poisson equation (with Dirichlet bou
     \frac{p_{i-1,j}-2p_{i,j} + p_{i+1,j}}{\Delta x^2} + \frac{p_{i,j-1}-2p_{i,j} + p_{i,j+1}}{\Delta y^2}= b_{i,j} 
 ```
 
-For the theoretical considerations developed above, the unknowns $p_{i,j}$ are grouped into a $nx-2\times ny-2$ vector $\boldsymbol p$ (for example using row major ordering). However, as we only have to know the action of the matrix on vectors, we never have to construct these 1D arrays explicitly and we can use the $(i,j)$ labeling directly (this will become clear when examining the algorithm below). There is however two conditions we need check. First, is the discretized Laplacian symmetric? If you look back at notebook `05_01_Iteration_and_2D` you will see that it is indeed the case. Second, is the corresponding matrix positive-definite? In fact, the discretized Laplacian is negative-definite because it is diagonalizable and all its eigenvalues are negative. They are given by {cite}`d47220-watkins2010`:
+For the theoretical considerations developed above, the unknowns $p_{i,j}$ are grouped into a $nx-2\times ny-2$ vector $\boldsymbol p$ (for example using row major ordering). However, as we only have to know the action of the matrix on vectors, we never have to construct these 1D arrays explicitly and we can use the $(i,j)$ labeling directly (this will become clear when examining the algorithm below). There is however two conditions we need check. First, is the discretized Laplacian symmetric? If you look back at notebook `05_01_Iteration_and_2D` you will see that it is indeed the case. Second, is the corresponding matrix positive-definite? In fact, the discretized Laplacian is negative-definite because it is diagonalizable and all its eigenvalues are negative. They are given by {footcite}`watkins2010`:
 
 ```{math}
   \lambda_{kl} = -4\left[\sin^2 \frac{k\pi}{2(nx-1)} + \sin^2 \frac{l\pi}{2(ny-1)}\right ],\; k=1,\ldots, nx-2,\; l=1,\ldots ny-2.
@@ -349,7 +349,7 @@ The conjugate gradient method is built upon the idea of reducing the number of j
 {\boldsymbol d}^{n+1}&={\boldsymbol r}^{n+1}+\beta^{n+1}{\boldsymbol d}^{n}, \hbox{ with } \beta^{n+1} = \frac{{\boldsymbol r}^{n+1} \cdot {\boldsymbol r}^{n+1}}{{\boldsymbol r}^n \cdot {\boldsymbol r}^n}\\ \hbox{ and } {\boldsymbol d}^{0} &= {\boldsymbol r}^{0}.
 ```
 
-Obviously, the search directions are no longer equal to the residuals but they are a linear combination of the residual and the previous search direction. What is remarkable about this algorithm is that the residual at iteration $k+1$ is orthogonal not only to the previous residual but to all of them. As a vector space of dimension $n$ can only contain $n$ orthogonal vectors, we immediately conclude that the conjugate gradient method necessarily converges (remember the restriction we put on $A$ though)! The derivation of the properties of the conjugate gradient method can cause some severe headaches. However, they are beautifully explained in this elegant paper: {cite}`d47220-Shewchuk1994`. Here we only apply the algorithm to our sample problem and refer the interested reader to this paper.
+Obviously, the search directions are no longer equal to the residuals but they are a linear combination of the residual and the previous search direction. What is remarkable about this algorithm is that the residual at iteration $k+1$ is orthogonal not only to the previous residual but to all of them. As a vector space of dimension $n$ can only contain $n$ orthogonal vectors, we immediately conclude that the conjugate gradient method necessarily converges (remember the restriction we put on $A$ though)! The derivation of the properties of the conjugate gradient method can cause some severe headaches. However, they are beautifully explained in this elegant paper: {footcite}`Shewchuk1994`. Here we only apply the algorithm to our sample problem and refer the interested reader to this paper.
 
 A possible implementation of the method is as follows:
 
@@ -473,8 +473,5 @@ The last notebook of this chapter will be devoted to a programming topic. As pro
 +++
 
 ## References
-```{bibliography} biblio.bib
-:filter: docname in docnames
-:labelprefix: d47220
-:keyprefix: d47220-
+```{footbibliography}
 ```

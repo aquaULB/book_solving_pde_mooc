@@ -234,7 +234,7 @@ for axis in ax:
 
 ## General Runge-Kutta schemes
 
-General Runge-Kutta schemes are defined as follows {cite}`4e9768-Hairer1987`:
+General Runge-Kutta schemes are defined as follows {footcite}`Hairer1987`:
 
 ```{math}
 :label: eq:rk_gen_exp
@@ -248,11 +248,11 @@ General Runge-Kutta schemes are defined as follows {cite}`4e9768-Hairer1987`:
 
 Some constraints are then put on all the coefficients to achieve a given order of accuracy $O(dt^p)$ for $y^{n+1}$. One says that the $s$-stage Runge-Kutta method is of order $p$.
 
-The construction of higher order Runge-Kutta schemes is in fact quite complicated, and has been the subject of a vast literature (some in-depth review of the Runge-Kutta methods may be found in {cite}`4e9768-Butcher2008` or {cite}`4e9768-Hairer1987`). There is no systematic way to obtain order $p$ methods with a minimum number of stages $s$. One can achieve order $p$ with $s=p$ up to $p=4$. For $p=5$ and $p=6$ one needs at least $s=p+1$ stages. For $p=7$ and $p=8$ the minimum number of stages are respectively $s=9$ and $s=11$.
+The construction of higher order Runge-Kutta schemes is in fact quite complicated, and has been the subject of a vast literature (some in-depth review of the Runge-Kutta methods may be found in {footcite}`Butcher2008` or {footcite}`Hairer1987`). There is no systematic way to obtain order $p$ methods with a minimum number of stages $s$. One can achieve order $p$ with $s=p$ up to $p=4$. For $p=5$ and $p=6$ one needs at least $s=p+1$ stages. For $p=7$ and $p=8$ the minimum number of stages are respectively $s=9$ and $s=11$.
 
-> Above this, very little is known {cite}`4e9768-Butcher1996`.
+> Above this, very little is known {footcite}`Butcher1996`.
 
-Therefore, we focus here our attention on a general purpose **fourth-order Runge-Kutta scheme**, that is accurate and stable enough for all the problems we consider in the rest of this course (from now on we call it **RK4**). It was introduced in 1901 by W. Kutta and reads {cite}`4e9768-Kutta1901`:
+Therefore, we focus here our attention on a general purpose **fourth-order Runge-Kutta scheme**, that is accurate and stable enough for all the problems we consider in the rest of this course (from now on we call it **RK4**). It was introduced in 1901 by W. Kutta and reads {footcite}`Kutta1901`:
 
 ```{math}
     y^{n+1} & = y^n + \frac16 k_1 + \frac13(k_2 + k_3) + \frac16 k_4 \nonumber \\
@@ -559,8 +559,5 @@ With this we conclude the chapter dedicated to **time integration**. In the foll
 +++
 
 ## References
-```{bibliography} biblio.bib
-:filter: docname in docnames
-:labelprefix: 4e9768
-:keyprefix: 4e9768-
+```{footbibliography}
 ```
