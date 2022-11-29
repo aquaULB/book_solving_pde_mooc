@@ -601,41 +601,6 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">steppers</span> <span class="kn">import</span> <span class="n">euler_step</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Function to compute an error in L2 norm</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">norms</span> <span class="kn">import</span> <span class="n">l2_diff</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Function to compute d^2 / dx^2 with second-order </span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># accurate centered scheme</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">matrices</span> <span class="kn">import</span> <span class="n">d2_mat_dirichlet</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Library</span><span class="o">/</span><span class="n">Mobile</span> <span class="n">Documents</span><span class="o">/</span><span class="n">com</span><span class="o">~</span><span class="n">apple</span><span class="o">~</span><span class="n">CloudDocs</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Workspace</span><span class="o">/</span><span class="n">courseMaterial</span><span class="o">/</span><span class="n">book_solving_pde_mooc</span><span class="o">/</span><span class="n">solving_pde_mooc</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="mi">04</span><span class="n">_PartialDifferentialEquations</span><span class="o">/../</span><span class="n">modules</span><span class="o">/</span><span class="n">norms</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">py_l2_diff</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">):</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">miniforge3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">course</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="k">return</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="n">_ensure_llvm</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">200</span> <span class="n">_ensure_critical_deps</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span> <span class="c1"># we know llvmlite is working as the above tests passed, import it now as SVML</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="c1"># needs to mutate runtime options (sets the `-vector-library`).</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="kn">import</span> <span class="nn">llvmlite</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/numba/__init__.py:140,</span> in <span class="ni">_ensure_critical_deps</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Numba needs NumPy 1.18 or greater&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">elif</span> <span class="n">numpy_version</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">140</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Numba needs NumPy 1.21 or less&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="kn">import</span> <span class="nn">scipy</span>
-
-<span class="ne">ImportError</span>: Numba needs NumPy 1.21 or less
-</pre></div>
-</div>
-</div>
 </div>
 <p>Physical and grid parameters to achieve a precision smaller than <span class="math notranslate nohighlight">\(10^{-6}\)</span> in L2-norm:</p>
 <div class="cell docutils container">
@@ -670,18 +635,6 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">T0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>              <span class="c1"># initial condition</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">source</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># heat source term</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">sol</span> <span class="o">=</span> <span class="n">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;exact_solution&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -700,34 +653,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="nn">----&gt; 1 get_ipython().run_cell_magic(&#39;timeit&#39;, &#39;&#39;, &#39;for i</span> in <span class="ni">range(nt):\n    T[i+1] = euler_step</span><span class="nt">(T[i], rhs_heat_centered, dt, dx, alpha, source)\n&#39;)</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2358,</span> in <span class="ni">InteractiveShell.run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2356</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2357</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2358</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2359</span> <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:1162,</span> in <span class="ni">ExecutionMagics.timeit</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1160</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>     <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
-<span class="ne">-&gt; </span><span class="mi">1162</span>     <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1163</span>     <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>         <span class="k">break</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:156,</span> in <span class="ni">Timer.timeit</span><span class="nt">(self, number)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="n">gc</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">156</span>     <span class="n">timing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">if</span> <span class="n">gcold</span><span class="p">:</span>
-
-<span class="nn">File &lt;magic-timeit&gt;:2,</span> in <span class="ni">inner</span><span class="nt">(_it, _timer)</span>
-
-<span class="ne">NameError</span>: name &#39;rhs_heat_centered&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.82 s ± 52.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -741,14 +667,8 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156903923e-07
+Time integration required 267493 steps
 </pre></div>
 </div>
 </div>
@@ -767,19 +687,6 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 
 <span class="c1"># I+A matrix</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># d^2 / dx^2 matrix with Dirichlet boundary conditions</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">D2</span> <span class="o">=</span> <span class="n">d2_mat_dirichlet</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>     
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># I+A matrix</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
-
-<span class="ne">NameError</span>: name &#39;d2_mat_dirichlet&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -805,34 +712,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="nn">----&gt; 1 get_ipython().run_cell_magic(&#39;timeit&#39;, &#39;&#39;, &#39;for i</span> in <span class="ni">range(nt):\n    T[i+1, 1:-1] = np.dot</span><span class="nt">(M, T[i, 1:-1]) + source[1:-1]*dt\n\n# Set the boundary values\nT[-1,0] = 0.\nT[-1,-1] = 0.\n&#39;)</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2358,</span> in <span class="ni">InteractiveShell.run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2356</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2357</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2358</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2359</span> <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:1162,</span> in <span class="ni">ExecutionMagics.timeit</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1160</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>     <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
-<span class="ne">-&gt; </span><span class="mi">1162</span>     <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1163</span>     <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>         <span class="k">break</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:156,</span> in <span class="ni">Timer.timeit</span><span class="nt">(self, number)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="n">gc</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">156</span>     <span class="n">timing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">if</span> <span class="n">gcold</span><span class="p">:</span>
-
-<span class="nn">File &lt;magic-timeit&gt;:2,</span> in <span class="ni">inner</span><span class="nt">(_it, _timer)</span>
-
-<span class="ne">NameError</span>: name &#39;M&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.29 s ± 118 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -846,14 +726,8 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.031633425988164e-07
+Time integration required 267493 steps
 </pre></div>
 </div>
 </div>
@@ -872,19 +746,6 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 <span class="c1"># I-A matrix</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
 <span class="n">Minv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>         <span class="c1"># number of time steps</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># I-A matrix</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">Minv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;D2&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -911,34 +772,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="nn">----&gt; 1 get_ipython().run_cell_magic(&#39;timeit&#39;, &#39;&#39;, &#39;for i</span> in <span class="ni">range(nt):\n    T[i+1, 1:-1] = np.dot</span><span class="nt">(Minv, T[i, 1:-1] + source[1:-1]*dt)\n\n# Set boundary values\nT[-1,0] = 0\nT[-1,-1] = 0\n&#39;)</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2358,</span> in <span class="ni">InteractiveShell.run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2356</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2357</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2358</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2359</span> <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:1162,</span> in <span class="ni">ExecutionMagics.timeit</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1160</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>     <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
-<span class="ne">-&gt; </span><span class="mi">1162</span>     <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1163</span>     <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>         <span class="k">break</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:156,</span> in <span class="ni">Timer.timeit</span><span class="nt">(self, number)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="n">gc</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">156</span>     <span class="n">timing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">if</span> <span class="n">gcold</span><span class="p">:</span>
-
-<span class="nn">File &lt;magic-timeit&gt;:2,</span> in <span class="ni">inner</span><span class="nt">(_it, _timer)</span>
-
-<span class="ne">NameError</span>: name &#39;Minv&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>224 ms ± 16.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -952,14 +786,8 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.6677344754043943e-07
+Time integration required 13107 steps
 </pre></div>
 </div>
 </div>
@@ -986,20 +814,6 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span>      <span class="c1"># number of time steps</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># I-0.5*A matrix + inverse</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">D2</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># I+0.5*A matrix</span>
-
-<span class="ne">NameError</span>: name &#39;D2&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1023,34 +837,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="nn">----&gt; 1 get_ipython().run_cell_magic(&#39;timeit&#39;, &#39;&#39;, &#39;scn = np.dot(Ainv, source[1:-1]*dt)\nfor i</span> in <span class="ni">range(nt):\n    T[i+1, 1:-1] = np.dot</span><span class="nt">(C, T[i, 1:-1]) + scn\n\n# Set boundary values\nT[-1,0] = 0\nT[-1,-1] = 0\n&#39;)</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2358,</span> in <span class="ni">InteractiveShell.run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2356</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2357</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2358</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2359</span> <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:1162,</span> in <span class="ni">ExecutionMagics.timeit</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1160</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>     <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">index</span>
-<span class="ne">-&gt; </span><span class="mi">1162</span>     <span class="n">time_number</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1163</span>     <span class="k">if</span> <span class="n">time_number</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>         <span class="k">break</span>
-
-<span class="nn">File ~/miniforge3/envs/course/lib/python3.10/site-packages/IPython/core/magics/execution.py:156,</span> in <span class="ni">Timer.timeit</span><span class="nt">(self, number)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="n">gc</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">156</span>     <span class="n">timing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">if</span> <span class="n">gcold</span><span class="p">:</span>
-
-<span class="nn">File &lt;magic-timeit&gt;:1,</span> in <span class="ni">inner</span><span class="nt">(_it, _timer)</span>
-
-<span class="ne">NameError</span>: name &#39;Ainv&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.6 ms ± 1.82 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -1064,14 +851,8 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">diff_exact</span> <span class="o">=</span> <span class="n">l2_diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The L2-error made in the computed solution is </span><span class="si">{</span><span class="n">diff_exact</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time integration required </span><span class="si">{</span><span class="n">nt</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;l2_diff&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191177848767e-08
+Time integration required 2383 steps
 </pre></div>
 </div>
 </div>
