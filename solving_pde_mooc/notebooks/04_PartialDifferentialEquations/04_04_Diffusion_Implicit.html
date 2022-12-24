@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>11. One dimensional heat equation: implicit methods &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>12. One dimensional heat equation: implicit methods &#8212; Solving Partial Differential Equations - MOOC</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,13 +52,13 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="12. Iteration methods" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" />
-    <link rel="prev" title="10. One dimensional heat equation" href="04_03_Diffusion_Explicit.html" />
+    <link rel="next" title="13. Iteration methods" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" />
+    <link rel="prev" title="11. One dimensional heat equation" href="04_03_Diffusion_Explicit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -160,17 +160,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   5. First-order derivative and slicing
+   6. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   6. Higher order derivatives, functions and matrix formulation
+   7. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   7. Boundary value problems
+   8. Boundary value problems
   </a>
  </li>
 </ul>
@@ -182,22 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="04_01_Advection.html">
-   8. The first-order wave equation
+   9. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_02_StabilityAnalysis.html">
-   9. Matrix and modified wavenumber stability analysis
+   10. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_03_Diffusion_Explicit.html">
-   10. One dimensional heat equation
+   11. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   11. One dimensional heat equation: implicit methods
+   12. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
@@ -209,17 +209,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   12. Iteration methods
+   13. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   13. The conjugate gradient method
+   14. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   14. Boosting Python
+   15. Boosting Python
   </a>
  </li>
 </ul>
@@ -415,27 +415,27 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   11.1. Introduction
+   12.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#backward-euler-method">
-   11.2. Backward Euler method
+   12.2. Backward Euler method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#crank-nicolson-method">
-   11.3. Crank-Nicolson method
+   12.3. Crank-Nicolson method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numerical-solution">
-   11.4. Numerical solution
+   12.4. Numerical solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   11.5. Summary
+   12.5. Summary
   </a>
  </li>
 </ul>
@@ -459,27 +459,27 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   11.1. Introduction
+   12.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#backward-euler-method">
-   11.2. Backward Euler method
+   12.2. Backward Euler method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#crank-nicolson-method">
-   11.3. Crank-Nicolson method
+   12.3. Crank-Nicolson method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numerical-solution">
-   11.4. Numerical solution
+   12.4. Numerical solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   11.5. Summary
+   12.5. Summary
   </a>
  </li>
 </ul>
@@ -493,9 +493,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="one-dimensional-heat-equation-implicit-methods">
-<h1><span class="section-number">11. </span>One dimensional heat equation: implicit methods<a class="headerlink" href="#one-dimensional-heat-equation-implicit-methods" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">12. </span>One dimensional heat equation: implicit methods<a class="headerlink" href="#one-dimensional-heat-equation-implicit-methods" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For convenience, we start by importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,7 +516,7 @@ title="Print to PDF"
 <p>In all cases considered, we have observed that stability of the algorithm requires a restriction on the time step proportional to <span class="math notranslate nohighlight">\(\Delta x^2\)</span>. As this is rather restrictive, we focus here on some implicit methods and see how they compare.</p>
 </section>
 <section id="backward-euler-method">
-<h2><span class="section-number">11.2. </span>Backward Euler method<a class="headerlink" href="#backward-euler-method" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.2. </span>Backward Euler method<a class="headerlink" href="#backward-euler-method" title="Permalink to this headline">#</a></h2>
 <p>We begin by considering the backward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span> and we do not include the source term for the stability analysis.</p>
 <p>We recall that for a generic ordinary differential equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span>, the backward Euler method is,</p>
 <div class="math notranslate nohighlight">
@@ -547,7 +547,7 @@ title="Print to PDF"
 <p>Because all the coefficients <span class="math notranslate nohighlight">\(-\alpha k_m'^2\)</span> are real and negative, the Fourier components remain bounded if we discretize eq. <a class="reference internal" href="#equation-eq-matheatbackwardeulerfourier">(48)</a> using the backward time integration method. The algorithm is therefore also unconditionally stable in the case of periodic boundary conditions.</p>
 </section>
 <section id="crank-nicolson-method">
-<h2><span class="section-number">11.3. </span>Crank-Nicolson method<a class="headerlink" href="#crank-nicolson-method" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.3. </span>Crank-Nicolson method<a class="headerlink" href="#crank-nicolson-method" title="Permalink to this headline">#</a></h2>
 <p>A popular method for discretizing the diffusion term in the heat equation is the Crank-Nicolson scheme. It is a second-order accurate implicit method that is defined for a generic equation <span class="math notranslate nohighlight">\(y'=f(y,t)\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[\frac{y^{n+1} - y^n}{\Delta t} = \frac12(f(y^{n+1}, t^{n+1}) + f(y^n, t^n)).\]</div>
@@ -574,7 +574,7 @@ title="Print to PDF"
 <p>Let’s use these implicit methods and compare them with the forward Euler method that we used in the previous notebook.</p>
 </section>
 <section id="numerical-solution">
-<h2><span class="section-number">11.4. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.4. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">#</a></h2>
 <p>To test the above numerical methods we use the same example as in the previous notebook.
 The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2">(47)</a> is <span class="math notranslate nohighlight">\(\sigma = 2\sin(\pi x)\)</span> and the initial condition is <span class="math notranslate nohighlight">\(T_0(x) = \sin(2\pi x)\)</span>. To make the algorithms work a bit more, we increase the diffusivity parameter to <span class="math notranslate nohighlight">\(\alpha=0.1\)</span>. The exact solution of the equation is,</p>
 <div class="math notranslate nohighlight">
@@ -653,7 +653,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.82 s ± 52.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.36 s ± 34.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@ The source term in eq. <a class="reference internal" href="#equation-eq-1dheat2"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156903923e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156881127e-07
 Time integration required 267493 steps
 </pre></div>
 </div>
@@ -712,7 +712,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.29 s ± 118 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.7 s ± 457 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -726,7 +726,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.031633425988164e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.031633424575551e-07
 Time integration required 267493 steps
 </pre></div>
 </div>
@@ -772,7 +772,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>224 ms ± 16.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.56 s ± 65.6 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -786,7 +786,7 @@ Time integration required 267493 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.6677344754043943e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.667734475706888e-07
 Time integration required 13107 steps
 </pre></div>
 </div>
@@ -837,7 +837,7 @@ Time integration required 13107 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.6 ms ± 1.82 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>285 ms ± 67.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -851,7 +851,7 @@ Time integration required 13107 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191177848767e-08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 7.082191098047494e-08
 Time integration required 2383 steps
 </pre></div>
 </div>
@@ -860,7 +860,7 @@ Time integration required 2383 steps
 <p>The number of time steps has been further reduced by a factor of 5 and the execution time is approximately 30 times faster than that with the forward Euler method!</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">11.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook we have discussed implicit discretization techniques for the the one-dimensional heat equation. These are particularly useful as explicit scheme requires a time step scaling with <span class="math notranslate nohighlight">\(dx^2\)</span>. We have shown that the backward Euler and Crank-Nicolson methods are unconditionally stable for this problem. Although they require more complex arithmetical operations than explicit schemes, they result in very significant reduction in computational cost. These reductions are problem dependent because achieving enough accuracy depends on several factors. However, the discussion indicates that it is always important to explore the various algorithms when trying to solve a numerical problem and there is vast literature available to do this.</p>
 </section>
 </section>
@@ -896,13 +896,13 @@ Time integration required 2383 steps
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>One dimensional heat equation</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>One dimensional heat equation</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../05_IterativeMethods/05_01_Iteration_and_2D.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Iteration methods</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Iteration methods</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

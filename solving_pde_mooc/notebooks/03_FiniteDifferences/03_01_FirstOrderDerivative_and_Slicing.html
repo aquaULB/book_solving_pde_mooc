@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5. First-order derivative and slicing &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>6. First-order derivative and slicing &#8212; Solving Partial Differential Equations - MOOC</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,12 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6. Higher order derivatives, functions and matrix formulation" href="03_02_HigherOrderDerivative_and_Functions.html" />
+    <link rel="next" title="7. Higher order derivatives, functions and matrix formulation" href="03_02_HigherOrderDerivative_and_Functions.html" />
     <link rel="prev" title="4. Runge-Kutta methods" href="../02_TimeIntegration/02_02_RungeKutta.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -160,17 +160,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. First-order derivative and slicing
+   6. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_02_HigherOrderDerivative_and_Functions.html">
-   6. Higher order derivatives, functions and matrix formulation
+   7. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_03_BoundaryValueProblems.html">
-   7. Boundary value problems
+   8. Boundary value problems
   </a>
  </li>
 </ul>
@@ -182,22 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   8. The first-order wave equation
+   9. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   9. Matrix and modified wavenumber stability analysis
+   10. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   10. One dimensional heat equation
+   11. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   11. One dimensional heat equation: implicit methods
+   12. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
@@ -209,17 +209,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   12. Iteration methods
+   13. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   13. The conjugate gradient method
+   14. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   14. Boosting Python
+   15. Boosting Python
   </a>
  </li>
 </ul>
@@ -415,39 +415,39 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   5.1. Introduction
+   6.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#first-order-derivative">
-   5.2. First-order derivative
+   6.2. First-order derivative
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-slicing">
-   5.3. Python slicing
+   6.3. Python slicing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#motivation-and-syntax">
-     5.3.1. Motivation and syntax
+     6.3.1. Motivation and syntax
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#referenced-or-copied">
-     5.3.2. Referenced or copied?
+     6.3.2. Referenced or copied?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-sided-finite-differences">
-   5.4. One-sided finite differences
+   6.4. One-sided finite differences
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   5.5. Summary
+   6.5. Summary
   </a>
  </li>
 </ul>
@@ -471,39 +471,39 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   5.1. Introduction
+   6.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#first-order-derivative">
-   5.2. First-order derivative
+   6.2. First-order derivative
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-slicing">
-   5.3. Python slicing
+   6.3. Python slicing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#motivation-and-syntax">
-     5.3.1. Motivation and syntax
+     6.3.1. Motivation and syntax
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#referenced-or-copied">
-     5.3.2. Referenced or copied?
+     6.3.2. Referenced or copied?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-sided-finite-differences">
-   5.4. One-sided finite differences
+   6.4. One-sided finite differences
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   5.5. Summary
+   6.5. Summary
   </a>
  </li>
 </ul>
@@ -517,9 +517,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="first-order-derivative-and-slicing">
-<h1><span class="section-number">5. </span>First-order derivative and slicing<a class="headerlink" href="#first-order-derivative-and-slicing" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>First-order derivative and slicing<a class="headerlink" href="#first-order-derivative-and-slicing" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">5.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,7 +549,7 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(k\)</span> represents the order of derivative, <span class="math notranslate nohighlight">\(\mathcal{J}\)</span> is called the <em>stencil</em> - the group of points used to build the finite-difference approximation - and <span class="math notranslate nohighlight">\(c_j\)</span> is the finite-difference coefficient defined at the stencil point of index <span class="math notranslate nohighlight">\(j\)</span>.</p>
 </section>
 <section id="first-order-derivative">
-<h2><span class="section-number">5.2. </span>First-order derivative<a class="headerlink" href="#first-order-derivative" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2. </span>First-order derivative<a class="headerlink" href="#first-order-derivative" title="Permalink to this headline">#</a></h2>
 <p>As an example of how the finite-difference approximation for a derivative of a given order can be derived, let us consider the first-order derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>. According to Taylor’s theorem, we can approximate <span class="math notranslate nohighlight">\(f(x+\Delta x)\)</span> as follows:</p>
 <div class="math notranslate nohighlight" id="equation-taylorser">
 <span class="eqno">(24)<a class="headerlink" href="#equation-taylorser" title="Permalink to this equation">#</a></span>\[f(x+\Delta x)= f(x)+f'(x)\Delta x+O(\Delta x^2).\]</div>
@@ -684,9 +684,9 @@ title="Print to PDF"
 <p>In the above cell, we have used the slicing of numpy arrays to extract the relevant entries from our arrays. For example, for the forward finite difference, the expression is not defined at the last grid point. Therefore, the relevant grid coordinates are not the complete <code class="docutils literal notranslate"><span class="pre">x_c</span></code> array but the <em>slice</em> <code class="docutils literal notranslate"><span class="pre">x_c[0:nx-1]</span></code>. For the centered finite differences we must exclude the first and last grid points. The appropriate coordinate array slice is then <code class="docutils literal notranslate"><span class="pre">x_c[1:nx-1]</span></code>. The notions of slicing of Python sequences are described in much more detail in the next section.</p>
 </section>
 <section id="python-slicing">
-<h2><span class="section-number">5.3. </span>Python slicing<a class="headerlink" href="#python-slicing" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.3. </span>Python slicing<a class="headerlink" href="#python-slicing" title="Permalink to this headline">#</a></h2>
 <section id="motivation-and-syntax">
-<h3><span class="section-number">5.3.1. </span>Motivation and syntax<a class="headerlink" href="#motivation-and-syntax" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>Motivation and syntax<a class="headerlink" href="#motivation-and-syntax" title="Permalink to this headline">#</a></h3>
 <p>We already mentioned a powerful tool of Python: negative indexing. When the programmer tries to access elements of the sequence by referring to a negative index, the enumeration of the elements starts from the tail of the sequence. Let’s say we have a Python list,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,7 +739,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.4 ms ± 115 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.49 ms ± 26.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -752,7 +752,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>238 µs ± 18.1 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>229 µs ± 1.89 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -765,7 +765,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>243 µs ± 6.57 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230 µs ± 4.72 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -911,7 +911,7 @@ index: -3, value: first.
 </div>
 </section>
 <section id="referenced-or-copied">
-<h3><span class="section-number">5.3.2. </span>Referenced or copied?<a class="headerlink" href="#referenced-or-copied" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.2. </span>Referenced or copied?<a class="headerlink" href="#referenced-or-copied" title="Permalink to this headline">#</a></h3>
 <p>The important question to ask when you create one object from another in Python, is <em>whether I am copying or referencing it?</em> In other words, <em>does my old object get modified when I modify the new one?</em></p>
 <p>This question is deeply rooted in the meaning of the <code class="docutils literal notranslate"><span class="pre">=</span></code> symbol in Python. In Python, the symbol <code class="docutils literal notranslate"><span class="pre">=</span></code> is used to <em>assign</em> the value on its right-hand side to the variable on the left-hand side.</p>
 <p>When you write this very simple statement,</p>
@@ -1068,7 +1068,7 @@ slice: [9999999, 2, 3, {&#39;hello&#39;: &#39;world&#39;, &#39;bye&#39;: &#39;wo
 </section>
 </section>
 <section id="one-sided-finite-differences">
-<h2><span class="section-number">5.4. </span>One-sided finite differences<a class="headerlink" href="#one-sided-finite-differences" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.4. </span>One-sided finite differences<a class="headerlink" href="#one-sided-finite-differences" title="Permalink to this headline">#</a></h2>
 <p>In section <a class="reference external" href="#First-order-derivative">First-order derivative</a> we mentioned that the finite difference expressions provided cannot be applied at all grid points. The centered finite difference formula is not valid at both endpoints of the domain as it requires at those locations extra points not included in the domain. At the left boundary - <span class="math notranslate nohighlight">\(x_0\)</span> - we could compute the first order derivative using the forward finite difference formula and at the right boundary - <span class="math notranslate nohighlight">\(x_n\)</span> - we could use the backward finite difference formula. Throughout the domain we would then have:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}    \begin{cases}
@@ -1144,7 +1144,7 @@ f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Del
 </div>
 </section>
 <section id="summary">
-<h2><span class="section-number">5.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook, we learned how to approximate derivatives using finite differences. We illustrated how finite-difference formulas can be derived and showed how to treat boundary nodes in the numerical grid.</p>
 <p>Besides that, we’ve explained the Python slicing and motivated its usage showing its advantage over Python looping. In the next notebook we extend our knowledge on finite differences by considering higher-order derivatives.</p>
 </section>
@@ -1187,7 +1187,7 @@ f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Del
     <a class='right-next' id="next-link" href="03_02_HigherOrderDerivative_and_Functions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Higher order derivatives, functions and matrix formulation</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Higher order derivatives, functions and matrix formulation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

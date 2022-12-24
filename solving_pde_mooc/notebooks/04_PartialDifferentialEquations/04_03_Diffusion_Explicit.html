@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>10. One dimensional heat equation &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>11. One dimensional heat equation &#8212; Solving Partial Differential Equations - MOOC</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,13 +52,13 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="11. One dimensional heat equation: implicit methods" href="04_04_Diffusion_Implicit.html" />
-    <link rel="prev" title="9. Matrix and modified wavenumber stability analysis" href="04_02_StabilityAnalysis.html" />
+    <link rel="next" title="12. One dimensional heat equation: implicit methods" href="04_04_Diffusion_Implicit.html" />
+    <link rel="prev" title="10. Matrix and modified wavenumber stability analysis" href="04_02_StabilityAnalysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -160,17 +160,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   5. First-order derivative and slicing
+   6. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   6. Higher order derivatives, functions and matrix formulation
+   7. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   7. Boundary value problems
+   8. Boundary value problems
   </a>
  </li>
 </ul>
@@ -182,22 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="04_01_Advection.html">
-   8. The first-order wave equation
+   9. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_02_StabilityAnalysis.html">
-   9. Matrix and modified wavenumber stability analysis
+   10. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   10. One dimensional heat equation
+   11. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_04_Diffusion_Implicit.html">
-   11. One dimensional heat equation: implicit methods
+   12. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
@@ -209,17 +209,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   12. Iteration methods
+   13. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   13. The conjugate gradient method
+   14. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   14. Boosting Python
+   15. Boosting Python
   </a>
  </li>
 </ul>
@@ -415,39 +415,39 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   10.1. Introduction
+   11.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">
-   10.2. Explicit resolution of the 1D heat equation
+   11.2. Explicit resolution of the 1D heat equation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matrix-stability-analysis">
-     10.2.1. Matrix stability analysis
+     11.2.1. Matrix stability analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modified-wavenumber-analysis">
-     10.2.2. Modified wavenumber analysis
+     11.2.2. Modified wavenumber analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-solution">
-     10.2.3. Numerical solution
+     11.2.3. Numerical solution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-loops">
-   10.3. Python loops
+   11.3. Python loops
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#for-and-while-loops">
-     10.3.1.
+     11.3.1.
      <em>
       for
      </em>
@@ -460,7 +460,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#break-and-continue-statements">
-     10.3.2.
+     11.3.2.
      <em>
       break
      </em>
@@ -473,7 +473,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#else-clause">
-     10.3.3.
+     11.3.3.
      <em>
       else
      </em>
@@ -484,12 +484,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">
-   10.4. Convergence of the numerical solution
+   11.4. Convergence of the numerical solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   10.5. Summary
+   11.5. Summary
   </a>
  </li>
 </ul>
@@ -513,39 +513,39 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   10.1. Introduction
+   11.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">
-   10.2. Explicit resolution of the 1D heat equation
+   11.2. Explicit resolution of the 1D heat equation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matrix-stability-analysis">
-     10.2.1. Matrix stability analysis
+     11.2.1. Matrix stability analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modified-wavenumber-analysis">
-     10.2.2. Modified wavenumber analysis
+     11.2.2. Modified wavenumber analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-solution">
-     10.2.3. Numerical solution
+     11.2.3. Numerical solution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-loops">
-   10.3. Python loops
+   11.3. Python loops
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#for-and-while-loops">
-     10.3.1.
+     11.3.1.
      <em>
       for
      </em>
@@ -558,7 +558,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#break-and-continue-statements">
-     10.3.2.
+     11.3.2.
      <em>
       break
      </em>
@@ -571,7 +571,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#else-clause">
-     10.3.3.
+     11.3.3.
      <em>
       else
      </em>
@@ -582,12 +582,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">
-   10.4. Convergence of the numerical solution
+   11.4. Convergence of the numerical solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   10.5. Summary
+   11.5. Summary
   </a>
  </li>
 </ul>
@@ -601,9 +601,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="one-dimensional-heat-equation">
-<h1><span class="section-number">10. </span>One dimensional heat equation<a class="headerlink" href="#one-dimensional-heat-equation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>One dimensional heat equation<a class="headerlink" href="#one-dimensional-heat-equation" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">10.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For convenience, we start by importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -625,9 +625,9 @@ title="Print to PDF"
 <p>Besides discussing the stability of the algorithms used, we will also dig deeper into the accuracy of our solutions. Up to now we have discussed accuracy from the theoretical point of view and checked that the numerical solutions computed were in qualitative agreement with exact solutions. But this is not enough, we have to quantitatively validate our solutions and check their quality. Several ways to do this are described below.</p>
 </section>
 <section id="explicit-resolution-of-the-1d-heat-equation">
-<h2><span class="section-number">10.2. </span>Explicit resolution of the 1D heat equation<a class="headerlink" href="#explicit-resolution-of-the-1d-heat-equation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>Explicit resolution of the 1D heat equation<a class="headerlink" href="#explicit-resolution-of-the-1d-heat-equation" title="Permalink to this headline">#</a></h2>
 <section id="matrix-stability-analysis">
-<h3><span class="section-number">10.2.1. </span>Matrix stability analysis<a class="headerlink" href="#matrix-stability-analysis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>Matrix stability analysis<a class="headerlink" href="#matrix-stability-analysis" title="Permalink to this headline">#</a></h3>
 <p>We begin by considering the forward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span>. Without the source term, the algorithm then reads:</p>
 <div class="math notranslate nohighlight" id="equation-heateulerforward">
 <span class="eqno">(42)<a class="headerlink" href="#equation-heateulerforward" title="Permalink to this equation">#</a></span>\[\begin{split}&amp; \frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^n_{i-1}-2T^n_i+T^{n}_{i+1}}{\Delta x^2} \\
@@ -667,7 +667,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <p>This is a little bit less restrictive than the criteria for the forward Euler method.</p>
 </section>
 <section id="modified-wavenumber-analysis">
-<h3><span class="section-number">10.2.2. </span>Modified wavenumber analysis<a class="headerlink" href="#modified-wavenumber-analysis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>Modified wavenumber analysis<a class="headerlink" href="#modified-wavenumber-analysis" title="Permalink to this headline">#</a></h3>
 <p>We can also consider the stability of the algorithms when using periodic boundary conditions. In that case we may use the modified wavenumber analysis that we discussed in the previous notebook.</p>
 <p>The temperature field is decomposed into Fourier modes:</p>
 <div class="math notranslate nohighlight">
@@ -699,7 +699,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <p>These conditions are identical to the ones we obtained using the matrix stability method. Keep in mind that the boundary conditions are different and in general there is no guarantee that the conditions for stability will match.</p>
 </section>
 <section id="numerical-solution">
-<h3><span class="section-number">10.2.3. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.3. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">#</a></h3>
 <p>Let’s implement the algorithm <a class="reference internal" href="#equation-heateulerforward">(42)</a> and empirically check the above stability criteria. To make the problem more interesting, we include a source term in the equation by setting: <span class="math notranslate nohighlight">\(\sigma = 2\sin(\pi x)\)</span>. As initial condition we choose <span class="math notranslate nohighlight">\(T_0(x) = \sin(2\pi x)\)</span>. In that case, the exact solution of the equation reads,</p>
 <div class="math notranslate nohighlight" id="equation-eq-solution1dheat">
 <span class="eqno">(46)<a class="headerlink" href="#equation-eq-solution1dheat" title="Permalink to this equation">#</a></span>\[T(x,t)=e^{-4\pi^2\alpha t}\sin(2\pi x) + \frac{2}{\pi^2\alpha}(1-e^{-\pi^2\alpha t})\sin(\pi x).\]</div>
@@ -883,7 +883,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 0.0006625553699606054
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 0.000662555369960611
 </pre></div>
 </div>
 </div>
@@ -897,9 +897,9 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </section>
 </section>
 <section id="python-loops">
-<h2><span class="section-number">10.3. </span>Python loops<a class="headerlink" href="#python-loops" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.3. </span>Python loops<a class="headerlink" href="#python-loops" title="Permalink to this headline">#</a></h2>
 <section id="for-and-while-loops">
-<h3><span class="section-number">10.3.1. </span><em>for</em> and <em>while</em> loops<a class="headerlink" href="#for-and-while-loops" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.1. </span><em>for</em> and <em>while</em> loops<a class="headerlink" href="#for-and-while-loops" title="Permalink to this headline">#</a></h3>
 <p>You are already well familiar with Python <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. They are also called <strong>definite loops</strong> meaning that the number of iterations is known before entering the loop. <code class="docutils literal notranslate"><span class="pre">for</span></code> loops are useful when you need to iterate over a certain sequence, or, sticking to Python terminology, over a <em>collection</em>. There are generally <a class="reference external" href="https://realpython.com/python-for-loop/#a-survey-of-definite-iteration-in-programming">three concepts for <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a> in programming. The one that Python implements is called <em>Collection-Based loop</em>. Schematically the Collection-Based <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in Python has the following syntax:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">&lt;</span><span class="n">element</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">collection</span><span class="o">&gt;</span><span class="p">:</span>
     <span class="o">&lt;</span><span class="n">do</span> <span class="n">something</span><span class="o">&gt;</span>
@@ -981,7 +981,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 9416
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1346
 </pre></div>
 </div>
 </div>
@@ -1022,7 +1022,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 9416
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1346
 </pre></div>
 </div>
 </div>
@@ -1036,7 +1036,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <p>You might wonder if there is another way to exit a loop before reaching the end of the sequence (in the case of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop), or to satisfy a certain condition? What if you are running your code on a supercomputer where you have requested just one hour of computation time, you are out of time and your code is still running? Or what if you perform series of computations at each iteration, end up with a singularity in the beginning of an iteration, and want to immediately proceed to the next iteration to avoid a division by zero? There are tools in Python to cover such cases, and they are the <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> statements.</p>
 </section>
 <section id="break-and-continue-statements">
-<h3><span class="section-number">10.3.2. </span><em>break</em> and <em>continue</em> statements<a class="headerlink" href="#break-and-continue-statements" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.2. </span><em>break</em> and <em>continue</em> statements<a class="headerlink" href="#break-and-continue-statements" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> provide the possibility to terminate iterations <em>before</em> the entire body of the loop is executed.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> immediately terminates execution of the loop.</p></li>
@@ -1110,7 +1110,7 @@ Using continue statement: 0 1 2 3 4 6 7 8 9
 <p>Note that this little demo does <em>not</em> implement optimal way of handling division by zero in Python. The more “Pythonic” approach is to use Exception handling. This is a more advanced topic of Python programming that is not covered in this course. You must know, though, that the above demo is perfectly valid for your understanding of the logic behind the use of the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement. <em><code class="docutils literal notranslate"><span class="pre">continue</span></code> would still be used in the same manner if the algorithm is implemented using Exception handling</em>.</p>
 </section>
 <section id="else-clause">
-<h3><span class="section-number">10.3.3. </span><em>else</em> clause<a class="headerlink" href="#else-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.3. </span><em>else</em> clause<a class="headerlink" href="#else-clause" title="Permalink to this headline">#</a></h3>
 <p>Let’s dig even deeper into the functionality of Python loops. Python implements something that is almost unique to this programming language: the <code class="docutils literal notranslate"><span class="pre">else</span></code> clause in loops. You could wonder how can there be <code class="docutils literal notranslate"><span class="pre">else</span></code> if there is no <code class="docutils literal notranslate"><span class="pre">if</span></code>? Indeed, <code class="docutils literal notranslate"><span class="pre">else</span></code> seems to make more sense along other conditional statements, such as <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code>. But <code class="docutils literal notranslate"><span class="pre">else</span></code> in loops is a convention that appears to be quite useful in some cases. Consider the following example using the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1185,7 +1185,7 @@ I use break statement to get out of the loop.
 </section>
 </section>
 <section id="convergence-of-the-numerical-solution">
-<h2><span class="section-number">10.4. </span>Convergence of the numerical solution<a class="headerlink" href="#convergence-of-the-numerical-solution" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.4. </span>Convergence of the numerical solution<a class="headerlink" href="#convergence-of-the-numerical-solution" title="Permalink to this headline">#</a></h2>
 <p>Now that we know how to control the flow of python loops, let’s use this skill to study the convergence of our algorithm in more detail.</p>
 <p>Ideally, we would like to specify a maximum error for our solution and change the simulation parameters to meet this threshold. To do so we have to increase the number of grid points and reduce the time step.</p>
 <p>In practice we don’t have access to the exact solution to measure the error - otherwise why would we bother solving the problem numerically? To overcome this difficulty, we have to perform what is known as <em>a convergence study</em>. The technique relies again on Taylor’s theorem. When we design numerical algorithms, we do so in such a way that they have a given convergence rate: as we make the grid spacing and time step smaller and smaller, the solution should get closer and and closer to the exact solution. Therefore, at some point in the refinement process, the obtained solution should barely change as we refine the parameters further. When the difference between two consecutive solutions falls below a given threshold that we choose, we say that we have converged the solution up to a given precision.</p>
@@ -1282,9 +1282,7 @@ L2 difference after 2 grid refinement(s) (nx=9): 0.02404238267924408
 L2 difference after 3 grid refinement(s) (nx=17): 0.004590336332579714
 L2 difference after 4 grid refinement(s) (nx=33): 0.000864442170843211
 L2 difference after 5 grid refinement(s) (nx=65): 0.00015093478982971829
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2 difference after 6 grid refinement(s) (nx=129): 2.7452359086616254e-05
+L2 difference after 6 grid refinement(s) (nx=129): 2.7452359086616254e-05
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2 difference after 7 grid refinement(s) (nx=257): 4.95663880945805e-06
@@ -1308,7 +1306,7 @@ Solution converged with required precision for 513 grid points
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156903923e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The L2-error made in the computed solution is 2.0316335156881132e-07
 </pre></div>
 </div>
 </div>
@@ -1316,7 +1314,7 @@ Solution converged with required precision for 513 grid points
 <p>The strategy of comparing the solutions while refining the grid worked very well. By doing so, we converged towards the exact solution and the L2 norm of the error is about <span class="math notranslate nohighlight">\(10^{-7}\)</span>.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">10.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook we have discretized the one dimensional heat equation and analyzed its stability. We have shown that the restriction on the time step is quite strong as it scales with <span class="math notranslate nohighlight">\(\Delta x^2\)</span>. We also provided a tutorial on how to control the flow of Python loop. We then explained how to monitor the accuracy of our numerical solution by using performing a <em>convergence study</em>. In this method, one checks the accuracy of the solution by refining the temporal and spatial discretization parameters until the solution remains unchanged up to a chosen accuracy. In the next notebook we will revisit the discretization of the heat equation using implicit time advancements schemes.</p>
 </section>
 </section>
@@ -1352,13 +1350,13 @@ Solution converged with required precision for 513 grid points
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>Matrix and modified wavenumber stability analysis</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Matrix and modified wavenumber stability analysis</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04_04_Diffusion_Implicit.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>One dimensional heat equation: implicit methods</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>One dimensional heat equation: implicit methods</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
