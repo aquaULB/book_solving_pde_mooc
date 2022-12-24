@@ -52,12 +52,12 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="5. First-order derivative and slicing" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html" />
+    <link rel="next" title="6. First-order derivative and slicing" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html" />
     <link rel="prev" title="3. Euler methods" href="02_01_EulerMethod.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -160,17 +160,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   5. First-order derivative and slicing
+   6. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   6. Higher order derivatives, functions and matrix formulation
+   7. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   7. Boundary value problems
+   8. Boundary value problems
   </a>
  </li>
 </ul>
@@ -182,22 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   8. The first-order wave equation
+   9. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   9. Matrix and modified wavenumber stability analysis
+   10. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   10. One dimensional heat equation
+   11. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   11. One dimensional heat equation: implicit methods
+   12. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
@@ -209,17 +209,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   12. Iteration methods
+   13. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   13. The conjugate gradient method
+   14. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   14. Boosting Python
+   15. Boosting Python
   </a>
  </li>
 </ul>
@@ -413,41 +413,48 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   4.1. Introduction
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   4. Runge-Kutta methods
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">
-   4.2. A two-stage Runge-Kutta scheme
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">
-     4.2.1. Numerical stability of a two-stage Runge-Kutta scheme
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     4.1. Introduction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">
+     4.2. A two-stage Runge-Kutta scheme
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">
+       4.2.1. Numerical stability of a two-stage Runge-Kutta scheme
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-runge-kutta-schemes">
+     4.3. General Runge-Kutta schemes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">
+     4.4. Implicit Runge-Kutta schemes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     4.5. Summary
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-runge-kutta-schemes">
-   4.3. General Runge-Kutta schemes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">
-   4.4. Implicit Runge-Kutta schemes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   4.5. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   4.6. References
+   5. References
   </a>
  </li>
 </ul>
@@ -469,41 +476,48 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   4.1. Introduction
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   4. Runge-Kutta methods
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">
-   4.2. A two-stage Runge-Kutta scheme
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">
-     4.2.1. Numerical stability of a two-stage Runge-Kutta scheme
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     4.1. Introduction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">
+     4.2. A two-stage Runge-Kutta scheme
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">
+       4.2.1. Numerical stability of a two-stage Runge-Kutta scheme
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-runge-kutta-schemes">
+     4.3. General Runge-Kutta schemes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">
+     4.4. Implicit Runge-Kutta schemes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     4.5. Summary
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-runge-kutta-schemes">
-   4.3. General Runge-Kutta schemes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">
-   4.4. Implicit Runge-Kutta schemes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   4.5. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   4.6. References
+   5. References
   </a>
  </li>
 </ul>
@@ -557,9 +571,10 @@ title="Print to PDF"
 <p>In notebook 1.1, we discussed the fact that the forward Euler method is second-order accurate for one time step and first-order accurate for a complete time interval. Here, we hope to improve the accuracy. Let’s check that this is true by evaluating the Taylor expansion of <span class="math notranslate nohighlight">\(y^{n+1}\)</span> in <a class="reference internal" href="#equation-rk2ynp1">(18)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-taylorrk2">
 <span class="eqno">(19)<a class="headerlink" href="#equation-taylorrk2" title="Permalink to this equation">#</a></span>\[\begin{split} y^{n+1} &amp; = y^n + dt f(t^n+\frac{dt}{2},y^n + \frac{dt}{2}f(t^n, y^n)) \nonumber \\
-         &amp; = y^n + dt \left[ f(t^n, y^n) + \frac{dt}{2} \partial_t f(t^n, y^n) + \frac{dt}{2} f(t^n, y^n)\partial_y f(t^n,y^n) + O(dt^2) \right] \nonumber \\
+         &amp; = y^n + dt \left[ f(t^n, y^n) + \frac{dt}{2} \partial_t f(t^n, y^n) + \frac{dt}{2} f(t^n, y^n)\partial_y f(t^n,y^n)\\
+         + \frac{dt^2}{8} \partial_{tt} f(t^n, y^n) + \frac{dt^2}{4} f(t^n, y^n) \partial_{yt} f(t^n, y^n) + \frac{dt^2}{8} f^2(t^n, y^n) \partial_{yy} f(t^n, y^n) + O(dt^3) \right] \nonumber \\
          &amp; = y^n + dt y'^n + \frac{dt^2}{2}y''^n + O(dt^3),\end{split}\]</div>
-<p>where we have used the property: <span class="math notranslate nohighlight">\(y''=\partial_t f + f\partial_y f\)</span>. The last equation proves that the two-stage Runge-Kutta method is of third order for one time step and, as a consequence, it is expected to be second-order accurate for a complete time interval.</p>
+<p>where we have used the property: <span class="math notranslate nohighlight">\(y''=\partial_t f + f\partial_y f\)</span>. Combined with the fact that <span class="math notranslate nohighlight">\(y''' = \partial_{tt} f + 2f\partial_{yt}f + f^2 \partial_{yy} f + \partial_t f \partial_y f + f (\partial_y f)^2\)</span>, the last equation proves that the two-stage Runge-Kutta method is of third order for one time step. As a consequence, it is also in general second-order accurate for a complete time interval.</p>
 <section id="numerical-stability-of-a-two-stage-runge-kutta-scheme">
 <h3><span class="section-number">4.2.1. </span>Numerical stability of a two-stage Runge-Kutta scheme<a class="headerlink" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme" title="Permalink to this headline">#</a></h3>
 <p>Let us now discuss the stability of this two-stage Runge-Kutta method for a general autonomous linear system of differential equations. As usual, we may diagonalize the system defined through the matrix <span class="math notranslate nohighlight">\(f\)</span> and write:</p>
@@ -1019,8 +1034,13 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
 <p>In this notebook we have introduced a family of Runge-Kutta explicit and implicit methods. While we won’t consider Runge-Kutta schemes of order higher than 4 in the course, we discussed the complexities one would face trying to construct equations for the coefficients <span class="math notranslate nohighlight">\(k_i\)</span> for higher-order schemes. We also gave insight into implicit Runge-Kutta schemes and provided an implementation of Qin and Zhang’s second-order implicit method.</p>
 <p>With this we conclude the chapter dedicated to <strong>time integration</strong>. In the following chapter we will consider the finite differences method to approximate derivatives in partial differential equations and convert them into a system of linear equations.</p>
 </section>
-<section id="references">
-<h2><span class="section-number">4.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1><span class="section-number">5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<p>(<a id="cit-Hairer1987" href="#call-Hairer1987">Hairer, Norsett <em>et al.</em>, 1987</a>) Ernst Hairer, Syvert Paul Norsett and Gerhard Wanner, ``<em>Solving Ordinary Differential Equations I: Nonstiff Problems: With 105 Figures</em>’’,  1987.</p>
+<p>(<a id="cit-Butcher2008" href="#call-Butcher2008">Butcher and Goodwin, 2008</a>) John Charles Butcher and Nicolette Goodwin, ``<em>Numerical methods for ordinary differential equations</em>’’,  2008.</p>
+<p>(<a id="cit-Butcher1996" href="#call-Butcher1996">Butcher, 1996</a>) Butcher J.C., ``<em>A history of Runge-Kutta methods</em>’’, Applied Numerical Mathematics, vol. 20, number 3, pp. 247–260,  1996.</p>
+<p>(<a id="cit-Kutta1901" href="#call-Kutta1901">Kutta, 1901</a>) Kutta Wilhelm, ``<em>Beitrag zur naherungsweisen Integration totaler Differentialgleichungen</em>’’, Z. Math. Phys., vol. 46, number , pp. 435–453,  1901.</p>
 <div class="docutils container" id="id6">
 <dl class="footnote brackets">
 <dt class="label" id="footcite-hairer1987"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
@@ -1038,7 +1058,6 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
 </dl>
 </div>
 <hr class="footnotes docutils" />
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1078,7 +1097,7 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
     <a class='right-next' id="next-link" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>First-order derivative and slicing</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>First-order derivative and slicing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

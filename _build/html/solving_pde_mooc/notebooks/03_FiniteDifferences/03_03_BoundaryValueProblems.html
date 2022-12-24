@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Boundary value problems &#8212; Solving Partial Differential Equations - MOOC</title>
+    <title>8. Boundary value problems &#8212; Solving Partial Differential Equations - MOOC</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,13 +52,13 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="8. The first-order wave equation" href="../04_PartialDifferentialEquations/04_01_Advection.html" />
-    <link rel="prev" title="6. Higher order derivatives, functions and matrix formulation" href="03_02_HigherOrderDerivative_and_Functions.html" />
+    <link rel="next" title="9. The first-order wave equation" href="../04_PartialDifferentialEquations/04_01_Advection.html" />
+    <link rel="prev" title="7. Higher order derivatives, functions and matrix formulation" href="03_02_HigherOrderDerivative_and_Functions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -160,17 +160,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="03_01_FirstOrderDerivative_and_Slicing.html">
-   5. First-order derivative and slicing
+   6. First-order derivative and slicing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_02_HigherOrderDerivative_and_Functions.html">
-   6. Higher order derivatives, functions and matrix formulation
+   7. Higher order derivatives, functions and matrix formulation
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. Boundary value problems
+   8. Boundary value problems
   </a>
  </li>
 </ul>
@@ -182,22 +182,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   8. The first-order wave equation
+   9. The first-order wave equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   9. Matrix and modified wavenumber stability analysis
+   10. Matrix and modified wavenumber stability analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   10. One dimensional heat equation
+   11. One dimensional heat equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   11. One dimensional heat equation: implicit methods
+   12. One dimensional heat equation: implicit methods
   </a>
  </li>
 </ul>
@@ -209,17 +209,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   12. Iteration methods
+   13. Iteration methods
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   13. The conjugate gradient method
+   14. The conjugate gradient method
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   14. Boosting Python
+   15. Boosting Python
   </a>
  </li>
 </ul>
@@ -415,34 +415,34 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   7.1. Introduction
+   8.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#heated-rod">
-   7.2. Heated rod
+   8.2. Heated rod
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#homogeneous-dirichlet-boundary-conditions">
-     7.2.1. Homogeneous Dirichlet boundary conditions
+     8.2.1. Homogeneous Dirichlet boundary conditions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#non-homogeneous-dirichlet-boundary-conditions">
-     7.2.2. Non-homogeneous Dirichlet boundary conditions
+     8.2.2. Non-homogeneous Dirichlet boundary conditions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neumann-boundary-conditions">
-     7.2.3. Neumann boundary conditions
+     8.2.3. Neumann boundary conditions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   7.3. Summary
+   8.3. Summary
   </a>
  </li>
 </ul>
@@ -466,34 +466,34 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   7.1. Introduction
+   8.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#heated-rod">
-   7.2. Heated rod
+   8.2. Heated rod
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#homogeneous-dirichlet-boundary-conditions">
-     7.2.1. Homogeneous Dirichlet boundary conditions
+     8.2.1. Homogeneous Dirichlet boundary conditions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#non-homogeneous-dirichlet-boundary-conditions">
-     7.2.2. Non-homogeneous Dirichlet boundary conditions
+     8.2.2. Non-homogeneous Dirichlet boundary conditions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neumann-boundary-conditions">
-     7.2.3. Neumann boundary conditions
+     8.2.3. Neumann boundary conditions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   7.3. Summary
+   8.3. Summary
   </a>
  </li>
 </ul>
@@ -507,9 +507,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems">
-<h1><span class="section-number">7. </span>Boundary value problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>Boundary value problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">7.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,7 +525,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="heated-rod">
-<h2><span class="section-number">7.2. </span>Heated rod<a class="headerlink" href="#heated-rod" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2. </span>Heated rod<a class="headerlink" href="#heated-rod" title="Permalink to this headline">#</a></h2>
 <p>Let’s consider a rod made of heat conducting material. Under some simplifications, the temperature <span class="math notranslate nohighlight">\(T(x,t)\)</span> along the rod can be determined by solving the following heat equation based on Fourier’s law,</p>
 <div class="math notranslate nohighlight">
 \[    \frac{\partial T}{\partial t}(x,t) = \alpha \frac{\partial^2 T} {\partial x^2}(x,t) + \sigma (x,t).\]</div>
@@ -539,7 +539,7 @@ title="Print to PDF"
 \[    A_{ij} T_j = b_i,\]</div>
 <p>where <span class="math notranslate nohighlight">\(A_{ij}\)</span> is the discretized differential operator <span class="math notranslate nohighlight">\(\frac{d^2}{dx^2}\)</span>.</p>
 <section id="homogeneous-dirichlet-boundary-conditions">
-<h3><span class="section-number">7.2.1. </span>Homogeneous Dirichlet boundary conditions<a class="headerlink" href="#homogeneous-dirichlet-boundary-conditions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.1. </span>Homogeneous Dirichlet boundary conditions<a class="headerlink" href="#homogeneous-dirichlet-boundary-conditions" title="Permalink to this headline">#</a></h3>
 <p>In this first example, we apply homogeneous Dirichlet boundary conditions at both ends of the domain (i.e. the values are set to <span class="math notranslate nohighlight">\(0\)</span>).</p>
 <div class="math notranslate nohighlight">
 \[ T(0)=0, \; T(1)=0 \; \; \Leftrightarrow \; \; T_0 =0, \; T_{nx-1} = 0.\]</div>
@@ -749,7 +749,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="non-homogeneous-dirichlet-boundary-conditions">
-<h3><span class="section-number">7.2.2. </span>Non-homogeneous Dirichlet boundary conditions<a class="headerlink" href="#non-homogeneous-dirichlet-boundary-conditions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2. </span>Non-homogeneous Dirichlet boundary conditions<a class="headerlink" href="#non-homogeneous-dirichlet-boundary-conditions" title="Permalink to this headline">#</a></h3>
 <p>In the above example, we imposed homogeneous Dirichlet boundary conditions at both ends of the domain. What if we specify a non-zero value for <span class="math notranslate nohighlight">\(T\)</span> at the left and/or right boundary node(s)? We will illustrate this for <span class="math notranslate nohighlight">\(T(0)=1\)</span>. Note that all other values or combinations of values for inhomogeneous Dirichlet boundary conditions are treated in the same way. If we look back at equation <a class="reference internal" href="#equation-eq-leftbnddc">(31)</a>, we have in full generality:</p>
 <div class="math notranslate nohighlight">
 \[    \frac{(T_0 - 2T_1+T_2)}{\Delta x^2} = b_1.\]</div>
@@ -798,7 +798,7 @@ title="Print to PDF"
 <p>The solution looks just as expected!</p>
 </section>
 <section id="neumann-boundary-conditions">
-<h3><span class="section-number">7.2.3. </span>Neumann boundary conditions<a class="headerlink" href="#neumann-boundary-conditions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.3. </span>Neumann boundary conditions<a class="headerlink" href="#neumann-boundary-conditions" title="Permalink to this headline">#</a></h3>
 <p>The last type of boundary conditions we consider is the so-called Neumann boundary condition for which the derivative of the unknown function is specified at one or both ends. Physically this corresponds to specifying the heat flux entering or exiting the rod at the boundaries. Here we are going to set this flux at the left boundary node and assign a specific temperature at the right boundary node:</p>
 <div class="math notranslate nohighlight">
 \[ T'(0)=2, \; T(1) = 1.\]</div>
@@ -887,7 +887,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="summary">
-<h2><span class="section-number">7.3. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.3. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook we have discussed how to use finite-difference formulas to solve boundary value problems. We have shown how to modify the original discretized differential system to take into account boundary conditions. Dirichlet boundary conditions result in the modification of the right-hand side of the equation, while Neumann boundary conditions result into the modification of both the left-hand side and the right-side of the equation. We also have briefly discussed the usage of two functions from <code class="docutils literal notranslate"><span class="pre">scipy</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> to respectively invert matrices and perform array multiplications. We advocate again the exploration of the documentation of these Python packages as they contain numerous useful tools to perform scientific computations.</p>
 </section>
 </section>
@@ -923,13 +923,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>Higher order derivatives, functions and matrix formulation</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Higher order derivatives, functions and matrix formulation</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../04_PartialDifferentialEquations/04_01_Advection.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>The first-order wave equation</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>The first-order wave equation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
