@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6. First-order derivative and slicing &#8212; Solving Partial Differential Equations - MOOC</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,65 +62,106 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solving_pde_mooc/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="7. Higher order derivatives, functions and matrix formulation" href="03_02_HigherOrderDerivative_and_Functions.html" />
     <link rel="prev" title="4. Runge-Kutta methods" href="../02_TimeIntegration/02_02_RungeKutta.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../01_Introduction/01_00_Preface.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Solving Partial Differential Equations - MOOC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Solving Partial Differential Equations - MOOC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,408 +170,222 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
-   1. Toolkit Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
-   2. Approximations and Taylor expansion
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">1. Toolkit Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">2. Approximations and Taylor expansion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Time integration
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time integration</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   3. Euler methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   4. Runge-Kutta methods
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">3. Euler methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">4. Runge-Kutta methods</a></li>
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Finite differences
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite differences</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   6. First-order derivative and slicing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_02_HigherOrderDerivative_and_Functions.html">
-   7. Higher order derivatives, functions and matrix formulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_03_BoundaryValueProblems.html">
-   8. Boundary value problems
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. First-order derivative and slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_02_HigherOrderDerivative_and_Functions.html">7. Higher order derivatives, functions and matrix formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_03_BoundaryValueProblems.html">8. Boundary value problems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Partial differential equations
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
-   9. The first-order wave equation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
-   10. Matrix and modified wavenumber stability analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
-   11. One dimensional heat equation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
-   12. One dimensional heat equation: implicit methods
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">9. The first-order wave equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">10. Matrix and modified wavenumber stability analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">11. One dimensional heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">12. One dimensional heat equation: implicit methods</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Iterative methods
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iterative methods</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   13. Iteration methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   14. The conjugate gradient method
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   15. Boosting Python
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">13. Iteration methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">14. The conjugate gradient method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">15. Boosting Python</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/aquaULB/solving_pde_mooc" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/aquaULB/solving_pde_mooc"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../_sources/solving_pde_mooc/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
+  <ul class="dropdown-menu">
       
-      <li>
-        <a href="../../../_sources/solving_pde_mooc/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+      
+      
+      <li><a href="../../../_sources/solving_pde_mooc/notebooks/03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   6.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-order-derivative">
-   6.2. First-order derivative
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-slicing">
-   6.3. Python slicing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#motivation-and-syntax">
-     6.3.1. Motivation and syntax
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#referenced-or-copied">
-     6.3.2. Referenced or copied?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#one-sided-finite-differences">
-   6.4. One-sided finite differences
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   6.5. Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>First-order derivative and slicing</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   6.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-order-derivative">
-   6.2. First-order derivative
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-slicing">
-   6.3. Python slicing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#motivation-and-syntax">
-     6.3.1. Motivation and syntax
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#referenced-or-copied">
-     6.3.2. Referenced or copied?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#one-sided-finite-differences">
-   6.4. One-sided finite differences
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   6.5. Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>First-order derivative and slicing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-derivative">6.2. First-order derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-slicing">6.3. Python slicing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-syntax">6.3.1. Motivation and syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referenced-or-copied">6.3.2. Referenced or copied?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sided-finite-differences">6.4. One-sided finite differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.5. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="first-order-derivative-and-slicing">
-<h1><span class="section-number">6. </span>First-order derivative and slicing<a class="headerlink" href="#first-order-derivative-and-slicing" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>First-order derivative and slicing<a class="headerlink" href="#first-order-derivative-and-slicing" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,7 +415,7 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(k\)</span> represents the order of derivative, <span class="math notranslate nohighlight">\(\mathcal{J}\)</span> is called the <em>stencil</em> - the group of points used to build the finite-difference approximation - and <span class="math notranslate nohighlight">\(c_j\)</span> is the finite-difference coefficient defined at the stencil point of index <span class="math notranslate nohighlight">\(j\)</span>.</p>
 </section>
 <section id="first-order-derivative">
-<h2><span class="section-number">6.2. </span>First-order derivative<a class="headerlink" href="#first-order-derivative" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2. </span>First-order derivative<a class="headerlink" href="#first-order-derivative" title="Permalink to this heading">#</a></h2>
 <p>As an example of how the finite-difference approximation for a derivative of a given order can be derived, let us consider the first-order derivative of <span class="math notranslate nohighlight">\(f(x)\)</span>. According to Taylor’s theorem, we can approximate <span class="math notranslate nohighlight">\(f(x+\Delta x)\)</span> as follows:</p>
 <div class="math notranslate nohighlight" id="equation-taylorser">
 <span class="eqno">(24)<a class="headerlink" href="#equation-taylorser" title="Permalink to this equation">#</a></span>\[f(x+\Delta x)= f(x)+f'(x)\Delta x+O(\Delta x^2).\]</div>
@@ -565,7 +431,7 @@ title="Print to PDF"
 <a class="reference internal image-reference" href="../../../_images/forwardDiff1.png"><img alt="../../../_images/forwardDiff1.png" src="../../../_images/forwardDiff1.png" style="width: 600px;" /></a>
 <p>Above the stencil, we display the quantity computed, and below the stencil we display the quantities involved in its computations.</p>
 <p>It is important to highlight that the <em>enumeration of a stencil has nothing to do with the enumeration of the grid points</em>. The enumeration of grid points usually starts at one of the grid boundaries (<span class="math notranslate nohighlight">\(x_0\)</span> in our cases) and ends at another boundary. The enumeration of a stencil is characteristic of each particular approximation. The stencil point labeled <span class="math notranslate nohighlight">\(0\)</span> corresponds to the grid point at which the derivative is being approximated. The stencil indices then decrease to the left of this point and increase to its right. This is why in the above example the stencil is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.</p>
-<p>In the above stencil, we use two grid points - <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_{i+1}\)</span> - to obtain a first-order accurate expression for the first-order derivative at <span class="math notranslate nohighlight">\(x_i\)</span>. It is obvious that the forward finite difference formula <a class="reference internal" href="#equation-eq-forwardnodal">(26)</a> cannot be used at the right boundary node <span class="math notranslate nohighlight">\(x_n\)</span>. In section <a class="reference external" href="#One-sided-finite-differences">One-sided finite differences</a>, we discuss how the boundary nodes can be handled when the derivatives are being evaluated using finite differences.</p>
+<p>In the above stencil, we use two grid points - <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_{i+1}\)</span> - to obtain a first-order accurate expression for the first-order derivative at <span class="math notranslate nohighlight">\(x_i\)</span>. It is obvious that the forward finite difference formula <a class="reference internal" href="#equation-eq-forwardnodal">(26)</a> cannot be used at the right boundary node <span class="math notranslate nohighlight">\(x_n\)</span>. In section <span class="xref myst">One-sided finite differences</span>, we discuss how the boundary nodes can be handled when the derivatives are being evaluated using finite differences.</p>
 <p>Let us now define the backward finite-differences scheme in an identical manner. As Taylor’s theorem is valid for <span class="math notranslate nohighlight">\(x\)</span> in the interval <span class="math notranslate nohighlight">\(a &lt; x-\Delta x \le x \le x+\Delta x &lt; b\)</span>, we can approximate <span class="math notranslate nohighlight">\(f(x-\Delta x)\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
 \[f(x-\Delta x) \approx f(x) - f'(x)\Delta x. \]</div>
@@ -677,16 +543,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/03_01_FirstOrderDerivative_and_Slicing_10_0.png" src="../../../_images/03_01_FirstOrderDerivative_and_Slicing_10_0.png" />
+<img alt="../../../_images/b291715730859221365377dd6ffd9b0413d35b516cb4d46f53a3eecb333cb5dc.png" src="../../../_images/b291715730859221365377dd6ffd9b0413d35b516cb4d46f53a3eecb333cb5dc.png" />
 </div>
 </div>
 <p>What do you think about the agreement? What happens when you increase the number of points in the coarse grid?</p>
 <p>In the above cell, we have used the slicing of numpy arrays to extract the relevant entries from our arrays. For example, for the forward finite difference, the expression is not defined at the last grid point. Therefore, the relevant grid coordinates are not the complete <code class="docutils literal notranslate"><span class="pre">x_c</span></code> array but the <em>slice</em> <code class="docutils literal notranslate"><span class="pre">x_c[0:nx-1]</span></code>. For the centered finite differences we must exclude the first and last grid points. The appropriate coordinate array slice is then <code class="docutils literal notranslate"><span class="pre">x_c[1:nx-1]</span></code>. The notions of slicing of Python sequences are described in much more detail in the next section.</p>
 </section>
 <section id="python-slicing">
-<h2><span class="section-number">6.3. </span>Python slicing<a class="headerlink" href="#python-slicing" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.3. </span>Python slicing<a class="headerlink" href="#python-slicing" title="Permalink to this heading">#</a></h2>
 <section id="motivation-and-syntax">
-<h3><span class="section-number">6.3.1. </span>Motivation and syntax<a class="headerlink" href="#motivation-and-syntax" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>Motivation and syntax<a class="headerlink" href="#motivation-and-syntax" title="Permalink to this heading">#</a></h3>
 <p>We already mentioned a powerful tool of Python: negative indexing. When the programmer tries to access elements of the sequence by referring to a negative index, the enumeration of the elements starts from the tail of the sequence. Let’s say we have a Python list,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,7 +605,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.49 ms ± 26.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9 ms ± 19.8 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -752,7 +618,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>229 µs ± 1.89 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>226 µs ± 1.52 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -765,7 +631,7 @@ index: -3, value: first.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230 µs ± 4.72 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227 µs ± 1.04 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -911,7 +777,7 @@ index: -3, value: first.
 </div>
 </section>
 <section id="referenced-or-copied">
-<h3><span class="section-number">6.3.2. </span>Referenced or copied?<a class="headerlink" href="#referenced-or-copied" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.3.2. </span>Referenced or copied?<a class="headerlink" href="#referenced-or-copied" title="Permalink to this heading">#</a></h3>
 <p>The important question to ask when you create one object from another in Python, is <em>whether I am copying or referencing it?</em> In other words, <em>does my old object get modified when I modify the new one?</em></p>
 <p>This question is deeply rooted in the meaning of the <code class="docutils literal notranslate"><span class="pre">=</span></code> symbol in Python. In Python, the symbol <code class="docutils literal notranslate"><span class="pre">=</span></code> is used to <em>assign</em> the value on its right-hand side to the variable on the left-hand side.</p>
 <p>When you write this very simple statement,</p>
@@ -1068,8 +934,8 @@ slice: [9999999, 2, 3, {&#39;hello&#39;: &#39;world&#39;, &#39;bye&#39;: &#39;wo
 </section>
 </section>
 <section id="one-sided-finite-differences">
-<h2><span class="section-number">6.4. </span>One-sided finite differences<a class="headerlink" href="#one-sided-finite-differences" title="Permalink to this headline">#</a></h2>
-<p>In section <a class="reference external" href="#First-order-derivative">First-order derivative</a> we mentioned that the finite difference expressions provided cannot be applied at all grid points. The centered finite difference formula is not valid at both endpoints of the domain as it requires at those locations extra points not included in the domain. At the left boundary - <span class="math notranslate nohighlight">\(x_0\)</span> - we could compute the first order derivative using the forward finite difference formula and at the right boundary - <span class="math notranslate nohighlight">\(x_n\)</span> - we could use the backward finite difference formula. Throughout the domain we would then have:</p>
+<h2><span class="section-number">6.4. </span>One-sided finite differences<a class="headerlink" href="#one-sided-finite-differences" title="Permalink to this heading">#</a></h2>
+<p>In section <span class="xref myst">First-order derivative</span> we mentioned that the finite difference expressions provided cannot be applied at all grid points. The centered finite difference formula is not valid at both endpoints of the domain as it requires at those locations extra points not included in the domain. At the left boundary - <span class="math notranslate nohighlight">\(x_0\)</span> - we could compute the first order derivative using the forward finite difference formula and at the right boundary - <span class="math notranslate nohighlight">\(x_n\)</span> - we could use the backward finite difference formula. Throughout the domain we would then have:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}    \begin{cases}
 	&amp; \displaystyle f'(x_0) = \frac{f(x_{1}) - f(x_0)}{\Delta x}, \\
@@ -1139,12 +1005,12 @@ f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Del
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/03_01_FirstOrderDerivative_and_Slicing_61_0.png" src="../../../_images/03_01_FirstOrderDerivative_and_Slicing_61_0.png" />
+<img alt="../../../_images/7285c28382a86ae44a4db9ae151384dcba214494e77a9c994b68690271c51588.png" src="../../../_images/7285c28382a86ae44a4db9ae151384dcba214494e77a9c994b68690271c51588.png" />
 </div>
 </div>
 </section>
 <section id="summary">
-<h2><span class="section-number">6.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In this notebook, we learned how to approximate derivatives using finite differences. We illustrated how finite-difference formulas can be derived and showed how to treat boundary nodes in the numerical grid.</p>
 <p>Besides that, we’ve explained the Python slicing and motivated its usage showing its advantage over Python looping. In the next notebook we extend our knowledge on finite differences by considering higher-order derivatives.</p>
 </section>
@@ -1162,7 +1028,7 @@ f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Del
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./solving_pde_mooc/notebooks/03_FiniteDifferences"
         },
         predefinedOutput: true
@@ -1170,50 +1036,110 @@ f(x_0 + 2\Delta x) = f(x_0) +2f'(x_0)\Delta x+4\frac12 f''(x_0)\Delta x^2+O(\Del
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../02_TimeIntegration/02_02_RungeKutta.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>Runge-Kutta methods</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../02_TimeIntegration/02_02_RungeKutta.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Runge-Kutta methods</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="03_02_HigherOrderDerivative_and_Functions.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="03_02_HigherOrderDerivative_and_Functions.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">7. </span>Higher order derivatives, functions and matrix formulation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-derivative">6.2. First-order derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-slicing">6.3. Python slicing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-syntax">6.3.1. Motivation and syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referenced-or-copied">6.3.2. Referenced or copied?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sided-finite-differences">6.4. One-sided finite differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.5. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By B. Knaepen & Y. Velizhanina<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By B. Knaepen & Y. Velizhanina
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

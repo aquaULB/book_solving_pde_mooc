@@ -6,9 +6,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.10.3
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 toc:
@@ -369,8 +369,11 @@ We have create 2 figures - *figure 0* and *figure 1*, - and use them to demonstr
 # it for the first figure, so that it doesn't
 # complain about that we INTENTIONALLY overlap
 # one subplot with another.
-fig_0 = plt.figure(tight_layout=False)
+fig_0 = plt.figure()
 fig_1 = plt.figure()
+
+fig_0.set_tight_layout(False)
+fig_1.set_tight_layout(False)
 
 # Position axes in figure 0 using add_axes.
 # We pass coordinates for our axes in a list
@@ -395,7 +398,7 @@ ax_3 = fig_1.add_subplot(222)
 ax_4 = fig_1.add_subplot(223)
 ax_5 = fig_1.add_subplot(224)
 
-fig_1.suptitle('Subplots', fontsize=18, y=1.05)
+fig_1.suptitle('Subplots', fontsize=18, y=1.05);
 ```
 
 It is mostly a matter of your taste which approach you use, but certainly, in cases where you want to create multiple subplots in one figure, the approach of using `add_subplots` is more convenient and, therefore, more reasonable.
