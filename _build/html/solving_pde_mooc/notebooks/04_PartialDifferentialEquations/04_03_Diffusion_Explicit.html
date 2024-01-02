@@ -1,49 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>11. One dimensional heat equation &#8212; Solving Partial Differential Equations - MOOC</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,65 +63,106 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="12. One dimensional heat equation: implicit methods" href="04_04_Diffusion_Implicit.html" />
     <link rel="prev" title="10. Matrix and modified wavenumber stability analysis" href="04_02_StabilityAnalysis.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../01_Introduction/01_00_Preface.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Solving Partial Differential Equations - MOOC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Solving Partial Differential Equations - MOOC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,492 +171,228 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
-   1. Toolkit Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
-   2. Approximations and Taylor expansion
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">1. Toolkit Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">2. Approximations and Taylor expansion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Time integration
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time integration</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   3. Euler methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   4. Runge-Kutta methods
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">3. Euler methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">4. Runge-Kutta methods</a></li>
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Finite differences
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite differences</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   6. First-order derivative and slicing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   7. Higher order derivatives, functions and matrix formulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   8. Boundary value problems
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">6. First-order derivative and slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">7. Higher order derivatives, functions and matrix formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">8. Boundary value problems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Partial differential equations
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="04_01_Advection.html">
-   9. The first-order wave equation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_02_StabilityAnalysis.html">
-   10. Matrix and modified wavenumber stability analysis
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   11. One dimensional heat equation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_04_Diffusion_Implicit.html">
-   12. One dimensional heat equation: implicit methods
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="04_01_Advection.html">9. The first-order wave equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_02_StabilityAnalysis.html">10. Matrix and modified wavenumber stability analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. One dimensional heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_04_Diffusion_Implicit.html">12. One dimensional heat equation: implicit methods</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Iterative methods
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iterative methods</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   13. Iteration methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   14. The conjugate gradient method
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   15. Boosting Python
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">13. Iteration methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">14. The conjugate gradient method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">15. Boosting Python</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/aquaULB/solving_pde_mooc" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/aquaULB/solving_pde_mooc"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
+  <ul class="dropdown-menu">
       
-      <li>
-        <a href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+      
+      
+      <li><a href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   11.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">
-   11.2. Explicit resolution of the 1D heat equation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-stability-analysis">
-     11.2.1. Matrix stability analysis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modified-wavenumber-analysis">
-     11.2.2. Modified wavenumber analysis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerical-solution">
-     11.2.3. Numerical solution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-loops">
-   11.3. Python loops
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for-and-while-loops">
-     11.3.1.
-     <em>
-      for
-     </em>
-     and
-     <em>
-      while
-     </em>
-     loops
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#break-and-continue-statements">
-     11.3.2.
-     <em>
-      break
-     </em>
-     and
-     <em>
-      continue
-     </em>
-     statements
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#else-clause">
-     11.3.3.
-     <em>
-      else
-     </em>
-     clause
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">
-   11.4. Convergence of the numerical solution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   11.5. Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>One dimensional heat equation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   11.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">
-   11.2. Explicit resolution of the 1D heat equation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-stability-analysis">
-     11.2.1. Matrix stability analysis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modified-wavenumber-analysis">
-     11.2.2. Modified wavenumber analysis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerical-solution">
-     11.2.3. Numerical solution
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-loops">
-   11.3. Python loops
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for-and-while-loops">
-     11.3.1.
-     <em>
-      for
-     </em>
-     and
-     <em>
-      while
-     </em>
-     loops
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#break-and-continue-statements">
-     11.3.2.
-     <em>
-      break
-     </em>
-     and
-     <em>
-      continue
-     </em>
-     statements
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#else-clause">
-     11.3.3.
-     <em>
-      else
-     </em>
-     clause
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">
-   11.4. Convergence of the numerical solution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   11.5. Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>One dimensional heat equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">11.2. Explicit resolution of the 1D heat equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-stability-analysis">11.2.1. Matrix stability analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-wavenumber-analysis">11.2.2. Modified wavenumber analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">11.2.3. Numerical solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-loops">11.3. Python loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-and-while-loops">11.3.1. <em>for</em> and <em>while</em> loops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break-and-continue-statements">11.3.2. <em>break</em> and <em>continue</em> statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#else-clause">11.3.3. <em>else</em> clause</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">11.4. Convergence of the numerical solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.5. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="one-dimensional-heat-equation">
-<h1><span class="section-number">11. </span>One dimensional heat equation<a class="headerlink" href="#one-dimensional-heat-equation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>One dimensional heat equation<a class="headerlink" href="#one-dimensional-heat-equation" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>For convenience, we start by importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -625,9 +414,9 @@ title="Print to PDF"
 <p>Besides discussing the stability of the algorithms used, we will also dig deeper into the accuracy of our solutions. Up to now we have discussed accuracy from the theoretical point of view and checked that the numerical solutions computed were in qualitative agreement with exact solutions. But this is not enough, we have to quantitatively validate our solutions and check their quality. Several ways to do this are described below.</p>
 </section>
 <section id="explicit-resolution-of-the-1d-heat-equation">
-<h2><span class="section-number">11.2. </span>Explicit resolution of the 1D heat equation<a class="headerlink" href="#explicit-resolution-of-the-1d-heat-equation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>Explicit resolution of the 1D heat equation<a class="headerlink" href="#explicit-resolution-of-the-1d-heat-equation" title="Permalink to this heading">#</a></h2>
 <section id="matrix-stability-analysis">
-<h3><span class="section-number">11.2.1. </span>Matrix stability analysis<a class="headerlink" href="#matrix-stability-analysis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>Matrix stability analysis<a class="headerlink" href="#matrix-stability-analysis" title="Permalink to this heading">#</a></h3>
 <p>We begin by considering the forward Euler time advancement scheme in combination with the second-order accurate centered finite difference formula for <span class="math notranslate nohighlight">\(d^2T/dx^2\)</span>. Without the source term, the algorithm then reads:</p>
 <div class="math notranslate nohighlight" id="equation-heateulerforward">
 <span class="eqno">(42)<a class="headerlink" href="#equation-heateulerforward" title="Permalink to this equation">#</a></span>\[\begin{split}&amp; \frac{T^{n+1}_i - T^n_i}{\Delta t}=\alpha \frac{T^n_{i-1}-2T^n_i+T^{n}_{i+1}}{\Delta x^2} \\
@@ -667,7 +456,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <p>This is a little bit less restrictive than the criteria for the forward Euler method.</p>
 </section>
 <section id="modified-wavenumber-analysis">
-<h3><span class="section-number">11.2.2. </span>Modified wavenumber analysis<a class="headerlink" href="#modified-wavenumber-analysis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>Modified wavenumber analysis<a class="headerlink" href="#modified-wavenumber-analysis" title="Permalink to this heading">#</a></h3>
 <p>We can also consider the stability of the algorithms when using periodic boundary conditions. In that case we may use the modified wavenumber analysis that we discussed in the previous notebook.</p>
 <p>The temperature field is decomposed into Fourier modes:</p>
 <div class="math notranslate nohighlight">
@@ -699,7 +488,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <p>These conditions are identical to the ones we obtained using the matrix stability method. Keep in mind that the boundary conditions are different and in general there is no guarantee that the conditions for stability will match.</p>
 </section>
 <section id="numerical-solution">
-<h3><span class="section-number">11.2.3. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.3. </span>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this heading">#</a></h3>
 <p>Let’s implement the algorithm <a class="reference internal" href="#equation-heateulerforward">(42)</a> and empirically check the above stability criteria. To make the problem more interesting, we include a source term in the equation by setting: <span class="math notranslate nohighlight">\(\sigma = 2\sin(\pi x)\)</span>. As initial condition we choose <span class="math notranslate nohighlight">\(T_0(x) = \sin(2\pi x)\)</span>. In that case, the exact solution of the equation reads,</p>
 <div class="math notranslate nohighlight" id="equation-eq-solution1dheat">
 <span class="eqno">(46)<a class="headerlink" href="#equation-eq-solution1dheat" title="Permalink to this equation">#</a></span>\[T(x,t)=e^{-4\pi^2\alpha t}\sin(2\pi x) + \frac{2}{\pi^2\alpha}(1-e^{-\pi^2\alpha t})\sin(\pi x).\]</div>
@@ -743,7 +532,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rhs_centered</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the right-hand side of the 1D heat</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the right-hand side of the 1D heat</span>
 <span class="sd">    equation based on centered finite differences</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -779,7 +568,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exact_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the exact solution of the 1D</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the exact solution of the 1D</span>
 <span class="sd">    heat equation with heat source term sin(np.pi*x)</span>
 <span class="sd">    and initial condition sin(2*np.pi*x)</span>
 <span class="sd">    </span>
@@ -842,7 +631,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/04_03_Diffusion_Explicit_15_0.png" src="../../../_images/04_03_Diffusion_Explicit_15_0.png" />
+<img alt="../../../_images/8f4558cd9764c9fb107bc50ef586f0f3201cf2a9fe8b349a1ddf3282618a7616.png" src="../../../_images/8f4558cd9764c9fb107bc50ef586f0f3201cf2a9fe8b349a1ddf3282618a7616.png" />
 </div>
 </div>
 <p>The solution looks qualitatively very good!</p>
@@ -851,7 +640,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">l2_diff</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the l2-norm of the difference</span>
 <span class="sd">    between a function f1 and a function f2</span>
 <span class="sd">    </span>
@@ -889,7 +678,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <p>This is already quite good: in terms of the <span class="math notranslate nohighlight">\(L_2\)</span> norm, the error is quite small. There are two ways to improve this:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Increase the number of grid points</p></li>
 <li><p>Decrease the time step</p></li>
 </ol>
@@ -897,9 +686,9 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </section>
 </section>
 <section id="python-loops">
-<h2><span class="section-number">11.3. </span>Python loops<a class="headerlink" href="#python-loops" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.3. </span>Python loops<a class="headerlink" href="#python-loops" title="Permalink to this heading">#</a></h2>
 <section id="for-and-while-loops">
-<h3><span class="section-number">11.3.1. </span><em>for</em> and <em>while</em> loops<a class="headerlink" href="#for-and-while-loops" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.1. </span><em>for</em> and <em>while</em> loops<a class="headerlink" href="#for-and-while-loops" title="Permalink to this heading">#</a></h3>
 <p>You are already well familiar with Python <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. They are also called <strong>definite loops</strong> meaning that the number of iterations is known before entering the loop. <code class="docutils literal notranslate"><span class="pre">for</span></code> loops are useful when you need to iterate over a certain sequence, or, sticking to Python terminology, over a <em>collection</em>. There are generally <a class="reference external" href="https://realpython.com/python-for-loop/#a-survey-of-definite-iteration-in-programming">three concepts for <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a> in programming. The one that Python implements is called <em>Collection-Based loop</em>. Schematically the Collection-Based <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in Python has the following syntax:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">&lt;</span><span class="n">element</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">collection</span><span class="o">&gt;</span><span class="p">:</span>
     <span class="o">&lt;</span><span class="n">do</span> <span class="n">something</span><span class="o">&gt;</span>
@@ -981,7 +770,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1346
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1554
 </pre></div>
 </div>
 </div>
@@ -1022,7 +811,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1346
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of 7 in the sequence: 1554
 </pre></div>
 </div>
 </div>
@@ -1036,7 +825,7 @@ c &amp; a &amp; b &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 <p>You might wonder if there is another way to exit a loop before reaching the end of the sequence (in the case of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop), or to satisfy a certain condition? What if you are running your code on a supercomputer where you have requested just one hour of computation time, you are out of time and your code is still running? Or what if you perform series of computations at each iteration, end up with a singularity in the beginning of an iteration, and want to immediately proceed to the next iteration to avoid a division by zero? There are tools in Python to cover such cases, and they are the <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> statements.</p>
 </section>
 <section id="break-and-continue-statements">
-<h3><span class="section-number">11.3.2. </span><em>break</em> and <em>continue</em> statements<a class="headerlink" href="#break-and-continue-statements" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.2. </span><em>break</em> and <em>continue</em> statements<a class="headerlink" href="#break-and-continue-statements" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> provide the possibility to terminate iterations <em>before</em> the entire body of the loop is executed.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> immediately terminates execution of the loop.</p></li>
@@ -1110,7 +899,7 @@ Using continue statement: 0 1 2 3 4 6 7 8 9
 <p>Note that this little demo does <em>not</em> implement optimal way of handling division by zero in Python. The more “Pythonic” approach is to use Exception handling. This is a more advanced topic of Python programming that is not covered in this course. You must know, though, that the above demo is perfectly valid for your understanding of the logic behind the use of the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement. <em><code class="docutils literal notranslate"><span class="pre">continue</span></code> would still be used in the same manner if the algorithm is implemented using Exception handling</em>.</p>
 </section>
 <section id="else-clause">
-<h3><span class="section-number">11.3.3. </span><em>else</em> clause<a class="headerlink" href="#else-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.3. </span><em>else</em> clause<a class="headerlink" href="#else-clause" title="Permalink to this heading">#</a></h3>
 <p>Let’s dig even deeper into the functionality of Python loops. Python implements something that is almost unique to this programming language: the <code class="docutils literal notranslate"><span class="pre">else</span></code> clause in loops. You could wonder how can there be <code class="docutils literal notranslate"><span class="pre">else</span></code> if there is no <code class="docutils literal notranslate"><span class="pre">if</span></code>? Indeed, <code class="docutils literal notranslate"><span class="pre">else</span></code> seems to make more sense along other conditional statements, such as <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code>. But <code class="docutils literal notranslate"><span class="pre">else</span></code> in loops is a convention that appears to be quite useful in some cases. Consider the following example using the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1185,7 +974,7 @@ I use break statement to get out of the loop.
 </section>
 </section>
 <section id="convergence-of-the-numerical-solution">
-<h2><span class="section-number">11.4. </span>Convergence of the numerical solution<a class="headerlink" href="#convergence-of-the-numerical-solution" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.4. </span>Convergence of the numerical solution<a class="headerlink" href="#convergence-of-the-numerical-solution" title="Permalink to this heading">#</a></h2>
 <p>Now that we know how to control the flow of python loops, let’s use this skill to study the convergence of our algorithm in more detail.</p>
 <p>Ideally, we would like to specify a maximum error for our solution and change the simulation parameters to meet this threshold. To do so we have to increase the number of grid points and reduce the time step.</p>
 <p>In practice we don’t have access to the exact solution to measure the error - otherwise why would we bother solving the problem numerically? To overcome this difficulty, we have to perform what is known as <em>a convergence study</em>. The technique relies again on Taylor’s theorem. When we design numerical algorithms, we do so in such a way that they have a given convergence rate: as we make the grid spacing and time step smaller and smaller, the solution should get closer and and closer to the exact solution. Therefore, at some point in the refinement process, the obtained solution should barely change as we refine the parameters further. When the difference between two consecutive solutions falls below a given threshold that we choose, we say that we have converged the solution up to a given precision.</p>
@@ -1314,7 +1103,7 @@ Solution converged with required precision for 513 grid points
 <p>The strategy of comparing the solutions while refining the grid worked very well. By doing so, we converged towards the exact solution and the L2 norm of the error is about <span class="math notranslate nohighlight">\(10^{-7}\)</span>.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">11.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In this notebook we have discretized the one dimensional heat equation and analyzed its stability. We have shown that the restriction on the time step is quite strong as it scales with <span class="math notranslate nohighlight">\(\Delta x^2\)</span>. We also provided a tutorial on how to control the flow of Python loop. We then explained how to monitor the accuracy of our numerical solution by using performing a <em>convergence study</em>. In this method, one checks the accuracy of the solution by refining the temporal and spatial discretization parameters until the solution remains unchanged up to a chosen accuracy. In the next notebook we will revisit the discretization of the heat equation using implicit time advancements schemes.</p>
 </section>
 </section>
@@ -1331,7 +1120,7 @@ Solution converged with required precision for 513 grid points
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./solving_pde_mooc/notebooks/04_PartialDifferentialEquations"
         },
         predefinedOutput: true
@@ -1339,50 +1128,116 @@ Solution converged with required precision for 513 grid points
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04_02_StabilityAnalysis.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>Matrix and modified wavenumber stability analysis</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_02_StabilityAnalysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Matrix and modified wavenumber stability analysis</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="04_04_Diffusion_Implicit.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="04_04_Diffusion_Implicit.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">12. </span>One dimensional heat equation: implicit methods</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-resolution-of-the-1d-heat-equation">11.2. Explicit resolution of the 1D heat equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-stability-analysis">11.2.1. Matrix stability analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-wavenumber-analysis">11.2.2. Modified wavenumber analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">11.2.3. Numerical solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-loops">11.3. Python loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-and-while-loops">11.3.1. <em>for</em> and <em>while</em> loops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break-and-continue-statements">11.3.2. <em>break</em> and <em>continue</em> statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#else-clause">11.3.3. <em>else</em> clause</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-of-the-numerical-solution">11.4. Convergence of the numerical solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.5. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By B. Knaepen & Y. Velizhanina<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By B. Knaepen & Y. Velizhanina
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
