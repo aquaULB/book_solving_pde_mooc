@@ -561,15 +561,6 @@ With this we conclude the chapter dedicated to **time integration**. In the foll
 
 +++
 
-# References
-
-(<a id="cit-Hairer1987" href="#call-Hairer1987">Hairer, Norsett <em>et al.</em>, 1987</a>) Ernst Hairer, Syvert Paul Norsett and Gerhard Wanner, ``_Solving Ordinary Differential Equations I: Nonstiff Problems: With 105 Figures_'',  1987.
-
-(<a id="cit-Butcher2008" href="#call-Butcher2008">Butcher and Goodwin, 2008</a>) John Charles Butcher and Nicolette Goodwin, ``_Numerical methods for ordinary differential equations_'',  2008.
-
-(<a id="cit-Butcher1996" href="#call-Butcher1996">Butcher, 1996</a>) Butcher J.C., ``_A history of Runge-Kutta methods_'', Applied Numerical Mathematics, vol. 20, number 3, pp. 247--260,  1996.
-
-(<a id="cit-Kutta1901" href="#call-Kutta1901">Kutta, 1901</a>) Kutta Wilhelm, ``_Beitrag zur naherungsweisen Integration totaler Differentialgleichungen_'', Z. Math. Phys., vol. 46, number , pp. 435--453,  1901.
-
+## References
 ```{footbibliography}
 ```

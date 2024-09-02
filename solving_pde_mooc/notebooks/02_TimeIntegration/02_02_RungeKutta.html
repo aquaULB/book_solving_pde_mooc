@@ -1,61 +1,49 @@
 
-
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>4. Runge-Kutta methods &#8212; Solving Partial Differential Equations - MOOC</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-  
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -63,106 +51,65 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'solving_pde_mooc/notebooks/02_TimeIntegration/02_02_RungeKutta';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6. First-order derivative and slicing" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html" />
+    <link rel="next" title="5. First-order derivative and slicing" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html" />
     <link rel="prev" title="3. Euler methods" href="02_01_EulerMethod.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    
 
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../../../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-
-<a class="navbar-brand logo" href="../01_Introduction/01_00_Preface.html">
-  
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Solving Partial Differential Equations - MOOC - Home"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Solving Partial Differential Equations - MOOC - Home"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -171,226 +118,408 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">1. Toolkit Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">2. Approximations and Taylor expansion</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
+   1. Toolkit Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
+   2. Approximations and Taylor expansion
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time integration</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Time integration
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="02_01_EulerMethod.html">3. Euler methods</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Runge-Kutta methods</a></li>
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_01_EulerMethod.html">
+   3. Euler methods
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Runge-Kutta methods
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite differences</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Finite differences
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">6. First-order derivative and slicing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">7. Higher order derivatives, functions and matrix formulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">8. Boundary value problems</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
+   5. First-order derivative and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
+   6. Higher order derivatives, functions and matrix formulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
+   7. Boundary value problems
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Partial differential equations
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">9. The first-order wave equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">10. Matrix and modified wavenumber stability analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">11. One dimensional heat equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">12. One dimensional heat equation: implicit methods</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_01_Advection.html">
+   8. The first-order wave equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_02_StabilityAnalysis.html">
+   9. Matrix and modified wavenumber stability analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html">
+   10. One dimensional heat equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_PartialDifferentialEquations/04_04_Diffusion_Implicit.html">
+   11. One dimensional heat equation: implicit methods
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iterative methods</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Iterative methods
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">13. Iteration methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">14. The conjugate gradient method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">15. Boosting Python</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
+   12. Iteration methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
+   13. The conjugate gradient method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
+   14. Boosting Python
+  </a>
+ </li>
 </ul>
 
     </div>
 </nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
     </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
+          
 
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
 
 
-<a href="https://github.com/aquaULB/solving_pde_mooc" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
-   title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/02_TimeIntegration/02_02_RungeKutta.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aquaULB/solving_pde_mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
   </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../../_sources/solving_pde_mooc/notebooks/02_TimeIntegration/02_02_RungeKutta.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/solving_pde_mooc/notebooks/02_TimeIntegration/02_02_RungeKutta.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
 >
   
 
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
-</li>
-      
-      
-      
+
+      </li>
       
       <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
+        <a href="../../../_sources/solving_pde_mooc/notebooks/02_TimeIntegration/02_02_RungeKutta.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="btn__text-container">.pdf</span>
+<span class="headerbtn__text-container">.pdf</span>
 </button>
-</li>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
 >
   
 
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
   </span>
 
-</button>
-
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
 </label>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Runge-Kutta methods</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   4.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">
+   4.2. A two-stage Runge-Kutta scheme
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">
+     4.2.1. Numerical stability of a two-stage Runge-Kutta scheme
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-runge-kutta-schemes">
+   4.3. General Runge-Kutta schemes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">
+   4.4. Implicit Runge-Kutta schemes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   4.5. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.6. References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Runge-Kutta methods</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   4.1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">
+   4.2. A two-stage Runge-Kutta scheme
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">
+     4.2.1. Numerical stability of a two-stage Runge-Kutta scheme
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-runge-kutta-schemes">
+   4.3. General Runge-Kutta schemes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">
+   4.4. Implicit Runge-Kutta schemes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   4.5. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.6. References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4. Runge-Kutta methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">4.2. A two-stage Runge-Kutta scheme</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">4.2.1. Numerical stability of a two-stage Runge-Kutta scheme</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-runge-kutta-schemes">4.3. General Runge-Kutta schemes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">4.4. Implicit Runge-Kutta schemes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5. Summary</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. References</a></li>
-</ul>
-
-            </nav>
-        </div>
-    </div>
-</div>
-
-              
+            <main id="main-content" role="main">
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
+              <div>
+                
   <section class="tex2jax_ignore mathjax_ignore" id="runge-kutta-methods">
-<h1><span class="section-number">4. </span>Runge-Kutta methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Runge-Kutta methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -411,7 +540,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(f\)</span> are vector valued functions.</p>
 </section>
 <section id="a-two-stage-runge-kutta-scheme">
-<h2><span class="section-number">4.2. </span>A two-stage Runge-Kutta scheme<a class="headerlink" href="#a-two-stage-runge-kutta-scheme" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>A two-stage Runge-Kutta scheme<a class="headerlink" href="#a-two-stage-runge-kutta-scheme" title="Permalink to this headline">#</a></h2>
 <p>The forward Euler method is defined through:</p>
 <div class="math notranslate nohighlight" id="equation-eq-forwardeuler3">
 <span class="eqno">(17)<a class="headerlink" href="#equation-eq-forwardeuler3" title="Permalink to this equation">#</a></span>\[y^{n+1} \equiv y^n + f(t^n,y^n) dt \;\;\;\; (\textrm{Forward Euler method}),\]</div>
@@ -433,7 +562,7 @@ document.write(`
          &amp; = y^n + dt y'^n + \frac{dt^2}{2}y''^n + O(dt^3),\end{split}\]</div>
 <p>where we have used the property: <span class="math notranslate nohighlight">\(y''=\partial_t f + f\partial_y f\)</span>. Combined with the fact that <span class="math notranslate nohighlight">\(y''' = \partial_{tt} f + 2f\partial_{yt}f + f^2 \partial_{yy} f + \partial_t f \partial_y f + f (\partial_y f)^2\)</span>, the last equation proves that the two-stage Runge-Kutta method is of third order for one time step. As a consequence, it is also in general second-order accurate for a complete time interval.</p>
 <section id="numerical-stability-of-a-two-stage-runge-kutta-scheme">
-<h3><span class="section-number">4.2.1. </span>Numerical stability of a two-stage Runge-Kutta scheme<a class="headerlink" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>Numerical stability of a two-stage Runge-Kutta scheme<a class="headerlink" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme" title="Permalink to this headline">#</a></h3>
 <p>Let us now discuss the stability of this two-stage Runge-Kutta method for a general autonomous linear system of differential equations. As usual, we may diagonalize the system defined through the matrix <span class="math notranslate nohighlight">\(f\)</span> and write:</p>
 <div class="math notranslate nohighlight">
 \[    z' = \Lambda z,\]</div>
@@ -483,7 +612,7 @@ document.write(`
     0 &amp; 0
 \end{pmatrix}.\end{split}\]</div>
 <p>As <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constant, the two-stage Runge-Kutta scheme applied to <a class="reference internal" href="#equation-eq-free-fall">(20)</a> becomes:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\displaystyle y^* = y^n + \frac{dt}{2} (Ly^n+b),\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\displaystyle y^{n+1} = y^n + dt(Ly^*+b).\)</span></p></li>
 </ol>
@@ -560,14 +689,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/d75de2f01126a2f05c550afb56fb78f839aab974a195e33c4d4266e0c611c652.png" src="../../../_images/d75de2f01126a2f05c550afb56fb78f839aab974a195e33c4d4266e0c611c652.png" />
+<img alt="../../../_images/02_02_RungeKutta_7_0.png" src="../../../_images/02_02_RungeKutta_7_0.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="general-runge-kutta-schemes">
-<h2><span class="section-number">4.3. </span>General Runge-Kutta schemes<a class="headerlink" href="#general-runge-kutta-schemes" title="Permalink to this heading">#</a></h2>
-<p>General Runge-Kutta schemes are defined as follows <a class="footnote-reference brackets" href="#footcite-hairer1987" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+<h2><span class="section-number">4.3. </span>General Runge-Kutta schemes<a class="headerlink" href="#general-runge-kutta-schemes" title="Permalink to this headline">#</a></h2>
+<p>General Runge-Kutta schemes are defined as follows <a class="footnote-reference brackets" href="#footcite-hairer1987" id="id1">1</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-rk-gen-exp">
 <span class="eqno">(21)<a class="headerlink" href="#equation-eq-rk-gen-exp" title="Permalink to this equation">#</a></span>\[\begin{split} y^{n+1} &amp;= y^n + dt(b_1 k_1 + \cdots + b_s k_s) \nonumber \\
  k_1 &amp; = f(t^n, y^n) \nonumber \\
@@ -576,11 +705,11 @@ document.write(`
  &amp; \cdots \nonumber \\
  k_s &amp; = f(t^n + c_s dt, y^n + dt(a_{s1}k_1+\cdots + a_{s,s-1}k_{s-1}))\end{split}\]</div>
 <p>Some constraints are then put on all the coefficients to achieve a given order of accuracy <span class="math notranslate nohighlight">\(O(dt^p)\)</span> for <span class="math notranslate nohighlight">\(y^{n+1}\)</span>. One says that the <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method is of order <span class="math notranslate nohighlight">\(p\)</span>.</p>
-<p>The construction of higher order Runge-Kutta schemes is in fact quite complicated, and has been the subject of a vast literature (some in-depth review of the Runge-Kutta methods may be found in <a class="footnote-reference brackets" href="#footcite-butcher2008" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> or <a class="footnote-reference brackets" href="#footcite-hairer1987" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>). There is no systematic way to obtain order <span class="math notranslate nohighlight">\(p\)</span> methods with a minimum number of stages <span class="math notranslate nohighlight">\(s\)</span>. One can achieve order <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(s=p\)</span> up to <span class="math notranslate nohighlight">\(p=4\)</span>. For <span class="math notranslate nohighlight">\(p=5\)</span> and <span class="math notranslate nohighlight">\(p=6\)</span> one needs at least <span class="math notranslate nohighlight">\(s=p+1\)</span> stages. For <span class="math notranslate nohighlight">\(p=7\)</span> and <span class="math notranslate nohighlight">\(p=8\)</span> the minimum number of stages are respectively <span class="math notranslate nohighlight">\(s=9\)</span> and <span class="math notranslate nohighlight">\(s=11\)</span>.</p>
+<p>The construction of higher order Runge-Kutta schemes is in fact quite complicated, and has been the subject of a vast literature (some in-depth review of the Runge-Kutta methods may be found in <a class="footnote-reference brackets" href="#footcite-butcher2008" id="id2">2</a> or <a class="footnote-reference brackets" href="#footcite-hairer1987" id="id3">1</a>). There is no systematic way to obtain order <span class="math notranslate nohighlight">\(p\)</span> methods with a minimum number of stages <span class="math notranslate nohighlight">\(s\)</span>. One can achieve order <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(s=p\)</span> up to <span class="math notranslate nohighlight">\(p=4\)</span>. For <span class="math notranslate nohighlight">\(p=5\)</span> and <span class="math notranslate nohighlight">\(p=6\)</span> one needs at least <span class="math notranslate nohighlight">\(s=p+1\)</span> stages. For <span class="math notranslate nohighlight">\(p=7\)</span> and <span class="math notranslate nohighlight">\(p=8\)</span> the minimum number of stages are respectively <span class="math notranslate nohighlight">\(s=9\)</span> and <span class="math notranslate nohighlight">\(s=11\)</span>.</p>
 <blockquote>
-<div><p>Above this, very little is known <a class="footnote-reference brackets" href="#footcite-butcher1996" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<div><p>Above this, very little is known <a class="footnote-reference brackets" href="#footcite-butcher1996" id="id4">3</a>.</p>
 </div></blockquote>
-<p>Therefore, we focus here our attention on a general purpose <strong>fourth-order Runge-Kutta scheme</strong>, that is accurate and stable enough for all the problems we consider in the rest of this course (from now on we call it <strong>RK4</strong>). It was introduced in 1901 by W. Kutta and reads <a class="footnote-reference brackets" href="#footcite-kutta1901" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>:</p>
+<p>Therefore, we focus here our attention on a general purpose <strong>fourth-order Runge-Kutta scheme</strong>, that is accurate and stable enough for all the problems we consider in the rest of this course (from now on we call it <strong>RK4</strong>). It was introduced in 1901 by W. Kutta and reads <a class="footnote-reference brackets" href="#footcite-kutta1901" id="id5">4</a>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}    y^{n+1} &amp; = y^n + \frac16 k_1 + \frac13(k_2 + k_3) + \frac16 k_4 \nonumber \\
     k_1 &amp; = dtf(t^n,y^n) \\
@@ -769,13 +898,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/93da1f96f4e0346e6b3b78bc27d1bb1a9b771db353f18c0c8bb112c8cddf6f16.png" src="../../../_images/93da1f96f4e0346e6b3b78bc27d1bb1a9b771db353f18c0c8bb112c8cddf6f16.png" />
+<img alt="../../../_images/02_02_RungeKutta_11_0.png" src="../../../_images/02_02_RungeKutta_11_0.png" />
 </div>
 </div>
 <p>We already pointed out that the forward Euler scheme is unstable if one of the eigenvalues of our system is purely imaginary (as in the case of the harmonic oscillator). Although the RK2 scheme’s domain of stability is larger, the scheme has the same property. Of all the schemes considered so far, RK4 has a significantly larger domain of stability and, more importantly, it does englobe a part of the imaginary axis, so, it can handle problems with purely imaginary eigenvalues!</p>
 </section>
 <section id="implicit-runge-kutta-schemes">
-<h2><span class="section-number">4.4. </span>Implicit Runge-Kutta schemes<a class="headerlink" href="#implicit-runge-kutta-schemes" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>Implicit Runge-Kutta schemes<a class="headerlink" href="#implicit-runge-kutta-schemes" title="Permalink to this headline">#</a></h2>
 <p>We have discussed that explicit Runge-Kutta schemes become quite complicated as the order of accuracy increases. Implicit Runge-Kutta methods might appear to be even more of a headache, especially at higher-order of accuracy <span class="math notranslate nohighlight">\(p\)</span>. We will give a very brief introduction into the subject, so that you get an impression.</p>
 <p>Generally speaking, RK methods can be defined as follows:</p>
 <div class="math notranslate nohighlight">
@@ -881,42 +1010,35 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/a23abeec78766baae4ec314fa17d7d0d2db46e19ef2c53258aed5b83014eba52.png" src="../../../_images/a23abeec78766baae4ec314fa17d7d0d2db46e19ef2c53258aed5b83014eba52.png" />
+<img alt="../../../_images/02_02_RungeKutta_17_0.png" src="../../../_images/02_02_RungeKutta_17_0.png" />
 </div>
 </div>
 </section>
 <section id="summary">
-<h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook we have introduced a family of Runge-Kutta explicit and implicit methods. While we won’t consider Runge-Kutta schemes of order higher than 4 in the course, we discussed the complexities one would face trying to construct equations for the coefficients <span class="math notranslate nohighlight">\(k_i\)</span> for higher-order schemes. We also gave insight into implicit Runge-Kutta schemes and provided an implementation of Qin and Zhang’s second-order implicit method.</p>
 <p>With this we conclude the chapter dedicated to <strong>time integration</strong>. In the following chapter we will consider the finite differences method to approximate derivatives in partial differential equations and convert them into a system of linear equations.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1><span class="section-number">5. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
-<p>(<a id="cit-Hairer1987" href="#call-Hairer1987">Hairer, Norsett <em>et al.</em>, 1987</a>) Ernst Hairer, Syvert Paul Norsett and Gerhard Wanner, ``<em>Solving Ordinary Differential Equations I: Nonstiff Problems: With 105 Figures</em>’’,  1987.</p>
-<p>(<a id="cit-Butcher2008" href="#call-Butcher2008">Butcher and Goodwin, 2008</a>) John Charles Butcher and Nicolette Goodwin, ``<em>Numerical methods for ordinary differential equations</em>’’,  2008.</p>
-<p>(<a id="cit-Butcher1996" href="#call-Butcher1996">Butcher, 1996</a>) Butcher J.C., ``<em>A history of Runge-Kutta methods</em>’’, Applied Numerical Mathematics, vol. 20, number 3, pp. 247–260,  1996.</p>
-<p>(<a id="cit-Kutta1901" href="#call-Kutta1901">Kutta, 1901</a>) Kutta Wilhelm, ``<em>Beitrag zur naherungsweisen Integration totaler Differentialgleichungen</em>’’, Z. Math. Phys., vol. 46, number , pp. 435–453,  1901.</p>
+<section id="references">
+<h2><span class="section-number">4.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id6">
-<aside class="footnote brackets" id="footcite-hairer1987" role="note">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
-<p>Ernst Hairer, Syvert Paul Norsett, and Gerhard Wanner. <em>Solving Ordinary Differential Equations I: Nonstiff Problems: With 105 Figures</em>. Springer-Verlag, 1987.</p>
-</aside>
-<aside class="footnote brackets" id="footcite-butcher2008" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>John Charles Butcher and Nicolette Goodwin. <em>Numerical methods for ordinary differential equations</em>. Wiley Online Library, 2008.</p>
-</aside>
-<aside class="footnote brackets" id="footcite-butcher1996" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
-<p>J.C. Butcher. A history of Runge-Kutta methods. <em>Applied Numerical Mathematics</em>, 20(3):247–260, 1996. <a class="reference external" href="https://doi.org/10.1016/0168-9274(95)00108-5">doi:10.1016/0168-9274(95)00108-5</a>.</p>
-</aside>
-<aside class="footnote brackets" id="footcite-kutta1901" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
-<p>Wilhelm Kutta. Beitrag zur naherungsweisen integration totaler differentialgleichungen. <em>Z. Math. Phys.</em>, 46:435–453, 1901.</p>
-</aside>
+<dl class="footnote brackets">
+<dt class="label" id="footcite-hairer1987"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Ernst Hairer, Syvert Paul Norsett, and Gerhard Wanner. <em>Solving Ordinary Differential Equations I: Nonstiff Problems: With 105 Figures</em>. Springer-Verlag, 1987.</p>
+</dd>
+<dt class="label" id="footcite-butcher2008"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>John Charles Butcher and Nicolette Goodwin. <em>Numerical methods for ordinary differential equations</em>. Wiley Online Library, 2008.</p>
+</dd>
+<dt class="label" id="footcite-butcher1996"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>J.C. Butcher. A history of Runge-Kutta methods. <em>Applied Numerical Mathematics</em>, 20(3):247–260, 1996. <a class="reference external" href="https://doi.org/10.1016/0168-9274(95)00108-5">doi:10.1016/0168-9274(95)00108-5</a>.</p>
+</dd>
+<dt class="label" id="footcite-kutta1901"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>Wilhelm Kutta. Beitrag zur naherungsweisen integration totaler differentialgleichungen. <em>Z. Math. Phys.</em>, 46:435–453, 1901.</p>
+</dd>
+</dl>
 </div>
 <hr class="footnotes docutils" />
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -931,7 +1053,7 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./solving_pde_mooc/notebooks/02_TimeIntegration"
         },
         predefinedOutput: true
@@ -939,114 +1061,50 @@ k_2 &amp;= f(t^n+\frac{3}{4}dt, y^n+dt(\frac{1}{2}k_1+\frac{1}{4}k_2)).\end{spli
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="02_01_EulerMethod.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Euler methods</p>
-      </div>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02_01_EulerMethod.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Euler methods</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>First-order derivative and slicing</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+        <p class="prev-next-title"><span class="section-number">5. </span>First-order derivative and slicing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4. Runge-Kutta methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-two-stage-runge-kutta-scheme">4.2. A two-stage Runge-Kutta scheme</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-stability-of-a-two-stage-runge-kutta-scheme">4.2.1. Numerical stability of a two-stage Runge-Kutta scheme</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-runge-kutta-schemes">4.3. General Runge-Kutta schemes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-runge-kutta-schemes">4.4. Implicit Runge-Kutta schemes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5. Summary</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. References</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By B. Knaepen & Y. Velizhanina
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
-    
-      © Copyright 2022.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+            </footer>
+        </div>
     </div>
-  </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By B. Knaepen & Y. Velizhanina<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <footer class="bd-footer">
-  </footer>
+
   </body>
 </html>
