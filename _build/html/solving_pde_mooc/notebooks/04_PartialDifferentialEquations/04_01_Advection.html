@@ -1,49 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>8. The first-order wave equation &#8212; Solving Partial Differential Equations - MOOC</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mycss.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,65 +63,106 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="9. Matrix and modified wavenumber stability analysis" href="04_02_StabilityAnalysis.html" />
     <link rel="prev" title="7. Boundary value problems" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../01_Introduction/01_00_Preface.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Solving Partial Differential Equations - MOOC</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Solving Partial Differential Equations - MOOC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Solving Partial Differential Equations - MOOC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,452 +171,227 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">
-   1. Toolkit Setup
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">
-   2. Approximations and Taylor expansion
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_01_ToolkitSetup.html">1. Toolkit Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01_02_TaylorExpansion.html">2. Approximations and Taylor expansion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Time integration
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time integration</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">
-   3. Euler methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">
-   4. Runge-Kutta methods
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02_TimeIntegration/02_01_EulerMethod.html">3. Euler methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_TimeIntegration/02_02_RungeKutta.html">4. Runge-Kutta methods</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Finite differences
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite differences</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">
-   5. First-order derivative and slicing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">
-   6. Higher order derivatives, functions and matrix formulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">
-   7. Boundary value problems
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_01_FirstOrderDerivative_and_Slicing.html">5. First-order derivative and slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_02_HigherOrderDerivative_and_Functions.html">6. Higher order derivatives, functions and matrix formulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html">7. Boundary value problems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Partial differential equations
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   8. The first-order wave equation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_02_StabilityAnalysis.html">
-   9. Matrix and modified wavenumber stability analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_03_Diffusion_Explicit.html">
-   10. One dimensional heat equation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_04_Diffusion_Implicit.html">
-   11. One dimensional heat equation: implicit methods
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. The first-order wave equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_02_StabilityAnalysis.html">9. Matrix and modified wavenumber stability analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_03_Diffusion_Explicit.html">10. One dimensional heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_04_Diffusion_Implicit.html">11. One dimensional heat equation: implicit methods</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Iterative methods
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iterative methods</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">
-   12. Iteration methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">
-   13. The conjugate gradient method
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">
-   14. Boosting Python
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_01_Iteration_and_2D.html">12. Iteration methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_02_Conjugate_Gradient.html">13. The conjugate gradient method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_IterativeMethods/05_03_Boosting_Python.html">14. Boosting Python</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/aquaULB/solving_pde_mooc/master?urlpath=tree/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/aquaULB/solving_pde_mooc" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/aquaULB/solving_pde_mooc"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
+  <ul class="dropdown-menu">
       
-      <li>
-        <a href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+      
+      
+      <li><a href="../../../_sources/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_01_Advection.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   8.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-modules">
-   8.2. Python modules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#advection-equation">
-   8.3. Advection equation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forward-euler-forward-finite-differentiation">
-     8.3.1. Forward Euler, forward finite differentiation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forward-euler-backward-finite-difference-differentiation">
-     8.3.2. Forward Euler, backward finite difference differentiation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#periodic-boundary-conditions">
-   8.4. Periodic boundary conditions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-usages">
-     8.4.1. Sample usages
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#advection-in-a-1d-periodic-domain">
-     8.4.2. Advection in a 1D periodic domain
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matplotlib-animations">
-   8.5. Matplotlib animations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   8.6. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   8.7. Exercises
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The first-order wave equation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   8.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-modules">
-   8.2. Python modules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#advection-equation">
-   8.3. Advection equation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forward-euler-forward-finite-differentiation">
-     8.3.1. Forward Euler, forward finite differentiation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forward-euler-backward-finite-difference-differentiation">
-     8.3.2. Forward Euler, backward finite difference differentiation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#periodic-boundary-conditions">
-   8.4. Periodic boundary conditions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-usages">
-     8.4.1. Sample usages
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#advection-in-a-1d-periodic-domain">
-     8.4.2. Advection in a 1D periodic domain
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matplotlib-animations">
-   8.5. Matplotlib animations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   8.6. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   8.7. Exercises
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The first-order wave equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-modules">8.2. Python modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advection-equation">8.3. Advection equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-euler-forward-finite-differentiation">8.3.1. Forward Euler, forward finite differentiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-euler-backward-finite-difference-differentiation">8.3.2. Forward Euler, backward finite difference differentiation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-boundary-conditions">8.4. Periodic boundary conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-usages">8.4.1. Sample usages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advection-in-a-1d-periodic-domain">8.4.2. Advection in a 1D periodic domain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-animations">8.5. Matplotlib animations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.6. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.7. Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="the-first-order-wave-equation">
-<h1><span class="section-number">8. </span>The first-order wave equation<a class="headerlink" href="#the-first-order-wave-equation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>The first-order wave equation<a class="headerlink" href="#the-first-order-wave-equation" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>For convenience, we start with importing some modules needed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -601,7 +429,7 @@ title="Print to PDF"
 <p>But before we start digging into the theory and show some examples, we introduce below the concept of Python modules.</p>
 </section>
 <section id="python-modules">
-<h2><span class="section-number">8.2. </span>Python modules<a class="headerlink" href="#python-modules" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2. </span>Python modules<a class="headerlink" href="#python-modules" title="Permalink to this heading">#</a></h2>
 <p>Up to now, we have always written all the necessary Python code parts for our examples and test cases inside each notebooks. This has the advantage of making all the necessary statements and steps visible to the reader. But in the long run, this approach also has its limitations. For example, if we need a function to compute the first-order derivative, we need to define it in each notebook and this is a repetitive task. Gladly, Python allows to overcome this through the use of <em>modules</em>.</p>
 <p>From the official Python documentation:</p>
 <blockquote>
@@ -616,7 +444,7 @@ title="Print to PDF"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">triangle_area</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the area of a triangle</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the area of a triangle</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    base : float</span>
@@ -633,7 +461,7 @@ title="Print to PDF"
     <span class="k">return</span> <span class="n">area</span>
 
 <span class="k">def</span> <span class="nf">twos</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a 1D array filled with the value 2</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a 1D array filled with the value 2</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    shape : integer</span>
@@ -742,13 +570,13 @@ title="Print to PDF"
 <p>Now that we know how to create and use modules, let’s return to the main topic of this chapter: partial differential equations.</p>
 </section>
 <section id="advection-equation">
-<h2><span class="section-number">8.3. </span>Advection equation<a class="headerlink" href="#advection-equation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.3. </span>Advection equation<a class="headerlink" href="#advection-equation" title="Permalink to this heading">#</a></h2>
 <p>We first consider advection with a constant velocity <span class="math notranslate nohighlight">\(c\)</span>. This process is described by equation <a class="reference internal" href="#equation-eq-advection">(32)</a>. If <span class="math notranslate nohighlight">\(u\)</span> is our unknown, the solution to the equation is:</p>
 <div class="math notranslate nohighlight">
 \[u(x,t) = u_0(x-ct),\]</div>
 <p>where <span class="math notranslate nohighlight">\(u_0(x) = u(x,0)\)</span> is the initial condition. At time <span class="math notranslate nohighlight">\(t\)</span>, the mathematical solution to the problem is therefore the initial condition shifted by an mount <span class="math notranslate nohighlight">\(ct\)</span>. To obtain this solution we don’t need a computer, so why bother trying to solve it numerically? It turns out that it constitutes a rich and interesting laboratory for developing general methods and analyze their shortcomings.</p>
 <section id="forward-euler-forward-finite-differentiation">
-<h3><span class="section-number">8.3.1. </span>Forward Euler, forward finite differentiation<a class="headerlink" href="#forward-euler-forward-finite-differentiation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.3.1. </span>Forward Euler, forward finite differentiation<a class="headerlink" href="#forward-euler-forward-finite-differentiation" title="Permalink to this heading">#</a></h3>
 <p>For our first attempt at solving equation <a class="reference internal" href="#equation-eq-advection">(32)</a>, we choose the forward Euler method for the time integration and the first-order accurate forward finite difference formula for the derivative.</p>
 <p>The discretization then proceeds as follows:</p>
 <div class="math notranslate nohighlight">
@@ -787,7 +615,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rhs_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the right-hand side of the wave</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the right-hand side of the wave</span>
 <span class="sd">    equation based on forward finite differences</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -885,7 +713,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/04_01_Advection_35_0.png" src="../../../_images/04_01_Advection_35_0.png" />
+<img alt="../../../_images/2aede5280a193c904fff519a5d0ffb59eb0dbd2bf81cd3a0e34478f5c52a1ced.png" src="../../../_images/2aede5280a193c904fff519a5d0ffb59eb0dbd2bf81cd3a0e34478f5c52a1ced.png" />
 </div>
 </div>
 <p>What is happening ? The solution rapidly deteriorates; it is not peacefully translated at constant wave speed <span class="math notranslate nohighlight">\(c\)</span>: the maximum increases and some wiggles appear at the trailing edge. If you were to run the simulation just a bit longer, the solution would completely blow up. Try it !</p>
@@ -893,12 +721,12 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <p>Here we just try another numerical scheme to see what happens.</p>
 </section>
 <section id="forward-euler-backward-finite-difference-differentiation">
-<h3><span class="section-number">8.3.2. </span>Forward Euler, backward finite difference differentiation<a class="headerlink" href="#forward-euler-backward-finite-difference-differentiation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.3.2. </span>Forward Euler, backward finite difference differentiation<a class="headerlink" href="#forward-euler-backward-finite-difference-differentiation" title="Permalink to this heading">#</a></h3>
 <p>In this section we replace the forward finite difference scheme with the backward finite difference scheme. The only change we need to make is in the discretization of the right-hand side of the equation. We replace it with the following function (make sure you understand the change):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rhs_backward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the right-hand side of the wave</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the right-hand side of the wave</span>
 <span class="sd">    equation based on backward finite differences</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -967,7 +795,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/04_01_Advection_43_0.png" src="../../../_images/04_01_Advection_43_0.png" />
+<img alt="../../../_images/d59a9c80a6dd65e4bae0257e315e6e68d498c47612a66ad2cdff27bbd808cc5e.png" src="../../../_images/d59a9c80a6dd65e4bae0257e315e6e68d498c47612a66ad2cdff27bbd808cc5e.png" />
 </div>
 </div>
 <p>This time, the solution does not seem to be unstable, but it’s still not what we would like: the maximum decreases as the wave is advected and close inspection reveals that the packet widens. By reducing the time step and grid spacing we can however reduce this phenomenon. You should however rerun this version of the discretization with a larger time step, for example <span class="math notranslate nohighlight">\(dt=0.05\)</span>. What happens in that case?</p>
@@ -975,9 +803,9 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </section>
 </section>
 <section id="periodic-boundary-conditions">
-<h2><span class="section-number">8.4. </span>Periodic boundary conditions<a class="headerlink" href="#periodic-boundary-conditions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.4. </span>Periodic boundary conditions<a class="headerlink" href="#periodic-boundary-conditions" title="Permalink to this heading">#</a></h2>
 <section id="sample-usages">
-<h3><span class="section-number">8.4.1. </span>Sample usages<a class="headerlink" href="#sample-usages" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.1. </span>Sample usages<a class="headerlink" href="#sample-usages" title="Permalink to this heading">#</a></h3>
 <p>The so-called periodic boundary conditions are used in several types of numerical simulations. Before showing how to implement them for our advection problem, we briefly describe a couple of scenarios.</p>
 <p>a) In many physical systems, events occurring in one place only influence what is happening in their vicinity. The distance over which this influence is exerted is called the correlation length. Regions of space separated by a distance much larger than the correlation length are largely independent of each other. Let’s take an example. Imagine you want to analyze the dynamics of a spiral arm located in the top-middle galaxy shown in <a class="reference external" href="https://phys.org/news/2019-10-dark-massive-spiral-galaxies-breakneck.html">this image</a>:</p>
 <a class="reference internal image-reference" href="../../../_images/superspirals.jpg"><img alt="../../../_images/superspirals.jpg" src="../../../_images/superspirals.jpg" style="width: 500px;" /></a>
@@ -990,7 +818,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <p>c) The final example we mention is of direct interest for the discussion of the wave equation. If we want to track the wave for a long time interval, we need a very long spatial domain. Using a fine numerical grid, this requires a very larger number of grid points. This is costly and inefficient as the wave packet only occupies a fraction of the domain at once. One way around this difficulty is to wrap the domain of propagation around itself. It then becomes a circle and the wave goes round and round around this circle. This is fine as long its circumference is large enough compared to length of the wave packet under consideration. In this setup, the direction of propagation is then periodic.</p>
 </section>
 <section id="advection-in-a-1d-periodic-domain">
-<h3><span class="section-number">8.4.2. </span>Advection in a 1D periodic domain<a class="headerlink" href="#advection-in-a-1d-periodic-domain" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.2. </span>Advection in a 1D periodic domain<a class="headerlink" href="#advection-in-a-1d-periodic-domain" title="Permalink to this heading">#</a></h3>
 <p>In this section we show how to simulate the first-order wave equation in a periodic domain. If the propagation direction is denoted <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(L\)</span> is the domain length:</p>
 <div class="math notranslate nohighlight">
 \[    u(x+L) = u(x),\; u'(x+L) = u'(x), \; u''(x+L) = u''(x), \; \hbox{etc.} \]</div>
@@ -1007,7 +835,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rhs_backward_periodic</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the right-hand side of the wave</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the right-hand side of the wave</span>
 <span class="sd">    equation based on backward finite differences</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1089,14 +917,14 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/04_01_Advection_55_0.png" src="../../../_images/04_01_Advection_55_0.png" />
+<img alt="../../../_images/a02c3962647dc3a690d350f8d06a50ef86c6393cc93f4601495a02bf16a73f98.png" src="../../../_images/a02c3962647dc3a690d350f8d06a50ef86c6393cc93f4601495a02bf16a73f98.png" />
 </div>
 </div>
 <p>Quite satisfactorily, the algorithm works as expected !</p>
 </section>
 </section>
 <section id="matplotlib-animations">
-<h2><span class="section-number">8.5. </span>Matplotlib animations<a class="headerlink" href="#matplotlib-animations" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.5. </span>Matplotlib animations<a class="headerlink" href="#matplotlib-animations" title="Permalink to this heading">#</a></h2>
 <p>Static plots are very useful to display the results of computations. They are used throughout many scientific disciplines. But when the problems considered contain time dependent data, we can often obtain extra insight into the results by creating animations.</p>
 <p>Matplotlib contains a (sub-)module designed to do exactly that. It can be imported using the command:</p>
 <div class="cell docutils container">
@@ -1137,7 +965,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/04_01_Advection_62_0.png" src="../../../_images/04_01_Advection_62_0.png" />
+<img alt="../../../_images/93676a803dcbe56822a26720a51b6a3bf368e5d4b4f3d601c922e777db8fa6f9.png" src="../../../_images/93676a803dcbe56822a26720a51b6a3bf368e5d4b4f3d601c922e777db8fa6f9.png" />
 </div>
 </div>
 <p>Now that we have created our template plot, we need to define a function to tell <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> how to modify it for each frame added to the animation. Here we call this function <code class="docutils literal notranslate"><span class="pre">animate</span></code> but you may give it whatever valid name you want. At minimum, it should contain one argument to indicate the value of an iterator.</p>
@@ -1145,7 +973,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Modifies the line representing u and</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modifies the line representing u and</span>
 <span class="sd">    the text indicating the corresponding time</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1186,7 +1014,7 @@ u^{n+1}_i = u^n_i -cdt \frac{u^n_{i+1} - u^n_i}{\Delta x}\end{split}\]</div>
 </div>
 </div>
 <p>We now have all needed ingredients to call <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code>. There are many ways to provide the necessary arguments. You should look up the documentation to learn more. Here we pass:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>the plot to update (fig)</p></li>
 <li><p>the function to call at each frame (animate)</p></li>
 <li><p>the interval in milliseconds  during which each frame should be displayed (interval)</p></li>
@@ -1395,42 +1223,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img70a934da0ce3452480d72950f260ed7d">
+  <img id="_anim_imgf2e1c179cc974832983eabd40e00e792">
   <div class="anim-controls">
-    <input id="_anim_slider70a934da0ce3452480d72950f260ed7d" type="range" class="anim-slider"
+    <input id="_anim_sliderf2e1c179cc974832983eabd40e00e792" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim70a934da0ce3452480d72950f260ed7d.set_frame(parseInt(this.value));">
+           oninput="animf2e1c179cc974832983eabd40e00e792.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim70a934da0ce3452480d72950f260ed7d.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animf2e1c179cc974832983eabd40e00e792.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim70a934da0ce3452480d72950f260ed7d.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animf2e1c179cc974832983eabd40e00e792.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim70a934da0ce3452480d72950f260ed7d.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animf2e1c179cc974832983eabd40e00e792.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim70a934da0ce3452480d72950f260ed7d.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animf2e1c179cc974832983eabd40e00e792.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim70a934da0ce3452480d72950f260ed7d.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animf2e1c179cc974832983eabd40e00e792.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim70a934da0ce3452480d72950f260ed7d.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animf2e1c179cc974832983eabd40e00e792.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim70a934da0ce3452480d72950f260ed7d.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animf2e1c179cc974832983eabd40e00e792.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim70a934da0ce3452480d72950f260ed7d.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animf2e1c179cc974832983eabd40e00e792.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim70a934da0ce3452480d72950f260ed7d.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animf2e1c179cc974832983eabd40e00e792.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select70a934da0ce3452480d72950f260ed7d"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectf2e1c179cc974832983eabd40e00e792"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_70a934da0ce3452480d72950f260ed7d"
+      <input type="radio" name="state" value="once" id="_anim_radio1_f2e1c179cc974832983eabd40e00e792"
              checked>
-      <label for="_anim_radio1_70a934da0ce3452480d72950f260ed7d">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_70a934da0ce3452480d72950f260ed7d"
+      <label for="_anim_radio1_f2e1c179cc974832983eabd40e00e792">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_f2e1c179cc974832983eabd40e00e792"
              >
-      <label for="_anim_radio2_70a934da0ce3452480d72950f260ed7d">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_70a934da0ce3452480d72950f260ed7d"
+      <label for="_anim_radio2_f2e1c179cc974832983eabd40e00e792">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_f2e1c179cc974832983eabd40e00e792"
              >
-      <label for="_anim_radio3_70a934da0ce3452480d72950f260ed7d">Reflect</label>
+      <label for="_anim_radio3_f2e1c179cc974832983eabd40e00e792">Reflect</label>
     </form>
   </div>
 </div>
@@ -1440,13 +1268,13 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img70a934da0ce3452480d72950f260ed7d";
-    var slider_id = "_anim_slider70a934da0ce3452480d72950f260ed7d";
-    var loop_select_id = "_anim_loop_select70a934da0ce3452480d72950f260ed7d";
+    var img_id = "_anim_imgf2e1c179cc974832983eabd40e00e792";
+    var slider_id = "_anim_sliderf2e1c179cc974832983eabd40e00e792";
+    var loop_select_id = "_anim_loop_selectf2e1c179cc974832983eabd40e00e792";
     var frames = new Array(101);
-
+    
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACN9klEQVR4nOzdd3gU5fo38O+W9N4rpNEJoYsICAgiKCiKFAEBKXY98mKvsfyO\
 Dc85Vqw0QZoFsdAOTXongRBaQioEAunZtN193j/iztmQbPpmtnw/17W67DzzzD2b2dm59ymjEEII\
 EBEREREREZGslHIHQERERERERERM0ImIiIiIiIgsAhN0IiIiIiIiIgvABJ2IiIiIiIjIAjBBJyIi\
@@ -2088,7 +1916,7 @@ AwAAQAUEOgAAAFRAoAMAAEAFBDoAAABUQKADAABABQQ6AAAAVECgAwAAQAX+BdPYLw7W8soEAAAA\
 AElFTkSuQmCC\
 "
   frames[1] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNXUlEQVR4nOzdd3xT5f4H8E+adO9BNx2U3ZYyxbKRIQiIXmQICAjidVwHF7dX\
 rXqvOOB6XYCLJchyIA6WZcheLS2UAkIppYVCobvpSvL8/qg5v3SkOz1p83m/XnkRcp7znO9JT07O\
 N884CiGEABERERERERHJykruAIiIiIiIiIiICToRERERERGRWWCCTkRERERERGQGmKATERERERER\
@@ -2727,7 +2555,7 @@ AIAMCHQAAADIgEAHAACADAh0AAAAyIBABwAAgAwIdAAAAMiAQAcAAIAMCHQAAADIgEAHAACADAh0\
 AAAAyMC/ANoN6UEdMbN7AAAAAElFTkSuQmCC\
 "
   frames[2] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMqElEQVR4nOzdd1xT5/4H8E8Ge4MsQYZ7gNta667WaqutvdZRta7aPf3ZPem4\
 t0tvb5d2uqp1XVtrh6uI1j0RFFGrgAiIosgMK8nz+wNzbhACARJOIJ/365WXMec5z/mecHJyvnnG\
 UQghBIiIiIiIiIhIVkq5AyAiIiIiIiIiJuhERERERERENoEJOhEREREREZENYIJOREREREREZAOY\
@@ -3363,7 +3191,7 @@ CHQAAABIgEAHAACABAh0AAAASIBABwAAgAQIdAAAAEiAQAcAAIAECHQAAABIgEAHAACABPwLQAzN\
 eHW7WgYAAAAASUVORK5CYII=\
 "
   frames[3] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOn0lEQVR4nOzdd3gU5doG8HtLeu+9ETqhg4iAgCBFQVGkCAhI8diVD3uN5Rwb\
 nnNsFEWaIM2CWGjSpEMgJBBCS08gJJCeTdvd+f6IO2dTNnU3s5u9f9e1sMm8884zm9nZefYtIxME\
 QQARERERERERSUoudQBERERERERExASdiIiIiIiIyCwwQSciIiIiIiIyA0zQiYiIiIiIiMwAE3Qi\
@@ -4008,7 +3836,7 @@ AKiAgA4AAAAVENABAACgAgI6AAAAVEBABwAAgAoI6AAAAFABAR0AAAAq8C/FBv6BRLBVmgAAAABJ\
 RU5ErkJggg==\
 "
   frames[4] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOiklEQVR4nOzdd3hUVf4G8HdKem8kJCGFXhIgFBFBAUEEBcVFioCAKK7dZbG7\
 aiw/K64drDRBmiKiK21p0mtoIYCQHggkpGfSZub8/ohzd1ImdSZ3yvt5ntkdc84993uHO3fmO6dc\
 hRBCgIiIiIiIiIhkpZQ7ACIiIiIiIiJigk5ERERERERkFZigExEREREREVkBJuhEREREREREVoAJ\
@@ -4652,7 +4480,7 @@ AAAAUAEBHQAAACogoAMAAEAFBHQAAACogIAOAAAAFRDQAQAAoAICOgAAAFRAQAcAAIAKCOgAAABQ\
 AQEdAAAAKiCgAwAAQAUEdAAAAKjAfwDxmG+I/JGH7QAAAABJRU5ErkJggg==\
 "
   frames[5] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACM/0lEQVR4nOzdd3xT5f4H8E+adKV70UEnu9ACZYgICggiKLiQISBTnNfBD71u\
 qeNeF16vC5wsQZYDcbBkKchqKQVKAaG7pazupivJ8/uj5tx0pE3btCdtPu/XKy9CznOe8z3pycn5\
 5hlHIYQQICIiIiIiIiJZ2ckdABERERERERExQSciIiIiIiKyCkzQiYiIiIiIiKwAE3QiIiIiIiIi\
@@ -5289,7 +5117,7 @@ AACQAIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACB\
 DgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQgH8B/rx9EKA3/wQAAAAASUVORK5CYII=\
 "
   frames[6] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMJElEQVR4nOzdd3wUZf4H8M+W9N5IIZXQSQghIEZQQBBBwXJIkS6IJ7aTQ892\
 KpafWOA8G1iQJkizIBaaNOkQCC0EEEIKgUBCes/uPr8/4s5tSDZ1N7PZ/bxfr32x7DzzzHc2s7Pz\
 3aeMQgghQERERERERESyUsodABERERERERExQSciIiIiIiKyCEzQiYiIiIiIiCwAE3QiIiIiIiIi\
@@ -5922,7 +5750,7 @@ QKADAABAAQQ6AAAAFECgAwAAQAEEOgAAABRAoAMAAEABBDoAAAAUQKADAABAAQQ6AAAAFECgAwAA\
 QAEEOgAAABRAoAMAAEABBDoAAAAUQKADAABAAQQ6AAAAFOA3939+nk7gkI4AAAAASUVORK5CYII=\
 "
   frames[7] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACL9klEQVR4nOzdd3wUZf4H8M+W9J4QEtJD6CRACAgICggiKCgeIkivntj5YfdU\
 1Dvb4Xk2sNIEaaKIBQRDkQ6BECAEkHQCIQnpPbv7/P6IO7ch2fTN7GY/79drXyw7zzzznc3s7Hz3\
 KaMQQggQERERERERkayUcgdAREREREREREzQiYiIiIiIiMwCE3QiIiIiIiIiM8AEnYiIiIiIiMgM\
@@ -6555,7 +6383,7 @@ gQ4AAAAFEOgAAABQAIEOAAAABRDoAAAAUACBDgAAAAUQ6AAAAFAAgQ4AAAAF+A9cbxn3PblEVwAA\
 AABJRU5ErkJggg==\
 "
   frames[8] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNWElEQVR4nOzdd3xT5f4H8E9G924p3Ys9WsoUKyAgiKDgQoaATPG6leu+3qt1\
 3OvC63WBOFiCLFHEwZIlGwpllQLS0hYKpS3dTVeS5/dHzfmltOlMepLm83698iLkPOc535OenJNv\
 nnEUQggBIiIiIiIiIpKVUu4AiIiIiIiIiIgJOhEREREREZFVYIJOREREREREZAWYoBMRERERERFZ\
@@ -7194,7 +7022,7 @@ DgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZ\
 +BdMEIqpr/86sgAAAABJRU5ErkJggg==\
 "
   frames[9] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNSElEQVR4nOzdd3xT5f4H8E+SpnsPuuiibFooS0BQQBBBQPEiQ0BAEK9bubiu\
 XhX1/px4rxOcLEGWA3GwLEP26gDKkm4KhZbupivJ8/uj5tyUNm3apj1p83m/XnkRcp7znO9JT07O\
 N89znkchhBAgIiIiIiIiIlkp5Q6AiIiIiIiIiJigExEREREREVkFJuhEREREREREVoAJOhERERER\
@@ -7833,7 +7661,7 @@ QAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAL+BVBg5HGOVoROAAAAAElF\
 TkSuQmCC\
 "
   frames[10] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNp0lEQVR4nOzdd3xT5f4H8E9G9160Bboom5ZVEFkCMgQFRZEhWxDn1asXvW6t\
 4zrxel3gZAmyRBEHCJYhe7aMUkDogpZCoXs3yfP7o+b80pE2bZOeNPm8X6+8CDnPec73pCcn55tn\
 HIUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBWYoBMRERERERFZASboRERERERERFaA\
@@ -8473,7 +8301,7 @@ yIBABwAAgAwIdAAAAMiAQAcAAIAMCHQAAADIgEAHAACADAh0AAAAyIBABwAAgAwIdAAAAMiAQAcA\
 AIAMCHQAAADIgEAHAACADAh0AAAAyMBfJCYdy24u5jQAAAAASUVORK5CYII=\
 "
   frames[11] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNH0lEQVR4nOzdd3xT9f4/8FfSdO+W0kHpYI8CZY+CTBEUFEU2AoJ4Ra+DH3rd\
 iuOKA+79usCBLEGWA3GwZMmGQssoBaQbSmlL926Sz++PmnPTkc6kJ2lez8ejD0I/n/M575OenOSd\
 zzgKIYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgsMEEnIiIiIiIiMgNM0ImIiIiIiIjM\
@@ -9111,7 +8939,7 @@ AwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEAC\
 /gUzRKZPenJ6RQAAAABJRU5ErkJggg==\
 "
   frames[12] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMYElEQVR4nOzdd3xT5f4H8E/SpntvKHSwNy1TllCKCAqKIoLsIV7HdfDDPeu4\
 jit4rwvEwRJkiSIOEGTJHqVllALSTUtpoXs3yfP7o+bclDadSU/SfN6vV16EnOc853vSk5PzzTOO\
 QgghQERERERERESyUsodABERERERERExQSciIiIiIiIyC0zQiYiIiIiIiMwAE3QiIiIiIiIiM8AE\
@@ -9746,7 +9574,7 @@ AAAAUACBDgAAAAUQ6AAAAFAAgQ4AAAAFEOgAAABQAIEOAAAABfgFzOGhV+5iNEgAAAAASUVORK5C\
 YII=\
 "
   frames[13] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOSUlEQVR4nOzdd1xT5/4H8E8SwggbRIbIEPdGHHUVrdZqq62ttVp3tba1u7/u\
 bdt7O23vvR3a6arWVVtrh+u66h6IC1ErWxAF2YSV5Pn9QXNuEAIBAieQz/v1ysuY85znfE84OTnf\
 POMohBACRERERERERCQrpdwBEBERERERERETdCIiIiIiIiKbwASdiIiIiIiIyAYwQSciIiIiIiKy\
@@ -10389,7 +10217,7 @@ AAAAUAGBDgAAABUQ6AAAAFABgQ4AAAAVEOgAAABQAYEOAAAAFRDoAAAAUAGBDgAAABUQ6AAAAFAB\
 gQ4AAAAVEOgAAABQgX8Bk6AYzCSJd08AAAAASUVORK5CYII=\
 "
   frames[14] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOLklEQVR4nOzdd1xTV/8H8E8We4MyVIa4FRXRWves1VZbW+uoWrW29ul4Ovx1\
 bzueTvt0a6erWleHtcNVReseiAtRqiwFUZRNWEnO7w+a+wQhECDhBvJ5v168jJxzz/3ecHOTb864\
 CiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjILjBBJyIiIiIiIrIDTNCJiIiIiIiI7AAT\
@@ -11032,7 +10860,7 @@ AACogEAHAACACgh0AAAAqIBABwAAgAoIdAAAAKiAQAcAAIAKCHQAAACowL8A1IUwXxo21ykAAAAA\
 SUVORK5CYII=\
 "
   frames[15] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACN+ElEQVR4nOzdd3xT5f4H8E9G9150QQdl0wKlTAEBQQQFRZEhIFNU3PzAvXBc\
 J17vdeBmCbJEEQdLlmwolFUKSCe0FCjdu0me3x8156a06Ux6kubzfr3yIuQ85znfk56ck2+ecRRC\
 CAEiIiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkUVggk5ERERERERkAZigExEREREREVkAJuhE\
@@ -11674,7 +11502,7 @@ EOgAAABQAYEOAAAAFRDoAAAAUAGBDgAAABUQ6AAAAFABgQ4AAAAVEOgAAABQgX8BuYUlelx3tXUA\
 AAAASUVORK5CYII=\
 "
   frames[16] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOR0lEQVR4nOzdd3gU5doG8Htbek8gIYEUQicIIbQIChhEUFAUKQICgnjsygGP\
 XVHPJxY8HisWpAnSLIiFJk06BEILTUglEEhI79nd9/sj7pwNyabuZrbcv+vaiyXzzjvP7M7O7LNv\
 GYUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBWYoBMRERERERFZASboRERERERERFaA\
@@ -12317,7 +12145,7 @@ AKiAQAcAAIAKCHQAAACogEAHAACACgh0AAAAqIBABwAAgAoIdAAAAKiAQAcAAIAKCHQAAACogEAH\
 AACACgh0AAAAqMC/AEqCrUaymns5AAAAAElFTkSuQmCC\
 "
   frames[17] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNnklEQVR4nOzdd3xT9f4/8FdG9x7QBR2UTRmlDJEtiKCgKDIEZLpw88PtVVHv\
 14nX6wInS5AlijhYlyV7tGWVTSctpZTupivJ5/dHb85NadOmbdKTNq/n45EHIedzPud90pNz8s5n\
 HIUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBOYoBMRERERERHZACboRERERERERDaA\
@@ -12957,7 +12785,7 @@ OgAAAFRAoAMAAEAFBDoAAABUQKADAABABQQ6AAAAVECgAwAAQAUEOgAAAFRAoAMAAEAFBDoAAABU\
 QKADAABABQQ6AAAAVOBfrf6+JeK1i5sAAAAASUVORK5CYII=\
 "
   frames[18] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOrElEQVR4nOzdd3xT5f4H8E+S7j3pgg7KpoxShggICCIoKIoMAZniFTc/9Lqu\
 WuVeJ143OJAlyHIgDpZlyIYOVtmd0FKgdO8meX5/1Jyb0qZN26QnbT7v1yuvpj3Pec73pCfn5Jtn\
 HIUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBGYoBMRERERERFZACboRERERERERBaA\
@@ -13602,7 +13430,7 @@ AAEdAAAAKkBABwAAgAoQ0AEAAKACBHQAAACoAAEdAAAAKkBABwAAgAoQ0AEAAKACBHQAAACogP8B\
 0lo2xEp/lykAAAAASUVORK5CYII=\
 "
   frames[19] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACPBklEQVR4nOzdd3xTVf8H8M9N070XHUAnmzIKBUTAgiCCguKDDAGZ4uNWfuB+\
 VByPE7eCkyXIciAOEGTJHm1ZZbe0ZRVaupuuJOf3R8190pHOtDdpPu/Xqy9Cz7nnfm96c5NvzriS\
 EEKAiIiIiIiIiBSlUjoAIiIiIiIiImKCTkRERERERGQRmKATERERERERWQAm6EREREREREQWgAk6\
@@ -14248,7 +14076,7 @@ ADIgoAMAAEAGBHQAAADIgIAOAAAAGRDQAQAAIAMCOgAAAGRAQAcAAIAMCOgAAACQAQEdAAAAMiCg\
 AwAAQAYEdAAAAMiAgA4AAAAZENABAAAgAwI6AAAAZOC/H78Nny/PruUAAAAASUVORK5CYII=\
 "
   frames[20] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNE0lEQVR4nOzdd3hTZf8/8HdW996sDsqGCrQgsgQsICi4UEBAQIbzcfBTH7fW\
 8RUHPj4uwMUSZIkiDpYs2VBaVlnSCYUCpbvpSnP//qg5T0qbNm2TnqR5v66rF6H3fe7zOenJST65\
 x1EIIQSIiIiIiIiISFZKuQMgIiIiIiIiIiboRERERERERDaBCToRERERERGRDWCCTkRERERERGQD\
@@ -14886,7 +14714,7 @@ QAcAAIAMCHQAAADIgEAHAACADAh0AAAAyIBABwAAgAwIdAAAAMiAQAcAAIAM/AvTRsmL3keFngAA\
 AABJRU5ErkJggg==\
 "
   frames[21] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMxUlEQVR4nOzdd3xT5f4H8E9G924pbRkdlE3LKCCUISCIoOC4yBAQkOF1X/nh\
 nqj3igOuV72CKLIEWaKIgyVL9mjLKgWkEwqFlg7apivJ8/uj5tx0pE3bpCdtPu/XKy9CznOe8z3p\
 ycn55hlHIYQQICIiIiIiIiJZKeUOgIiIiIiIiIiYoBMRERERERHZBCboRERERERERDaACToRERER\
@@ -15522,7 +15350,7 @@ AJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEO\
 AAAACRDoAAAAkACBDgAAAAkQ6AAAAJCAfwFpbZShuaTEkQAAAABJRU5ErkJggg==\
 "
   frames[22] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMW0lEQVR4nOzdd1xT5/4H8E8Ge4PIUoa4FQfuuqu12mprax11z97uW3/avei4\
 te21t7dLO13VujqsHa666h7gRNTKVBRF2YSV5Pn9QXNuEAIBEk4gn/frlZcx5znP+Z5wcpLvecZR\
 CCEEiIiIiIiIiEhWSrkDICIiIiIiIiIm6EREREREREQ2gQk6ERERERERkQ1ggk5ERERERERkA5ig\
@@ -16156,7 +15984,7 @@ AAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg\
 0AEAACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAH/AqUpjjOZrCJyAAAAAElFTkSuQmCC\
 "
   frames[23] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNb0lEQVR4nOzdd3xT5f4H8E9G994LOtgbWrZsQQQFRRFBQEAQr/vKD71uxXHF\
 gdfrAidLkOVAHCxZsqGDVcpqacsqpXQ3XUme3x8156YjbTrSkzSf9+uVFyHnOc/5nvTk5HzzjKMQ\
 QggQERERERERkayUcgdAREREREREREzQiYiIiIiIiKwCE3QiIiIiIiIiK8AEnYiIiIiIiMgKMEEn\
@@ -16795,7 +16623,7 @@ IAMCHQAAADIg0AEAACADAh0AAAAyINABAAAgAwIdAAAAMiDQAQAAIAMCHQAAADIg0AEAACADAh0A\
 AAAyINABAAAgAwIdAAAAMiDQAQAAIAP/ArNkp/CKyehBAAAAAElFTkSuQmCC\
 "
   frames[24] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNm0lEQVR4nOzdd3xT5f4H8E9G9160FOhkbyjDyhZEUFAUGQICgnjdynVvHD9R\
 L1434GIJshyIyrTsDS2zFJBOKBRaupuuJM/vj5pzU9p0Jj1J83m/Xn0Rep7znO9JT07yzbMUQggB\
 IiIiIiIiIpKVUu4AiIiIiIiIiIgJOhEREREREZFVYIJOREREREREZAWYoBMRERERERFZASboRERE\
@@ -17435,7 +17263,7 @@ gAwIdAAAAMiAQAcAAIAMCHQAAADIgEAHAACADAh0AAAAyIBABwAAgAwIdAAAAMiAQAcAAIAMCHQA\
 AADIgEAHAACADPwO5wL5ybaugeEAAAAASUVORK5CYII=\
 "
   frames[25] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNKklEQVR4nOzdd3hTZfsH8G+S7j3pgg7KpswyLBuLCAqKIkNAQBD34od71vE6\
 8fV14mQJshyIg2VZsqEtqxSQTiiUlu42XUme3x81x3SkOz1p8/1cVy5CznOec5/05CT3ecZRCCEE\
 iIiIiIiIiEhWSrkDICIiIiIiIiIm6ERERERERERmgQk6ERERERERkRlggk5ERERERERkBpigExER\
@@ -18073,7 +17901,7 @@ AJABgQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEO\
 AAAAGRDoAAAAkIF/AVjLwZpKjDgcAAAAAElFTkSuQmCC\
 "
   frames[26] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMnklEQVR4nOzdd3gU5doG8HtLeu8hgRRaKKGGFoqAIIKCDSkCAoJ4xHbkw16j\
 nmOF47GBlSZIsyAWmqFIhyTUEEBSIRASSO/Z3ff7I+6cTdnU3cwme/+uay+WnXfeeWYzO7vPvGUU\
 QggBIiIiIiIiIpKVUu4AiIiIiIiIiIgJOhEREREREZFFYIJOREREREREZAGYoBMRERERERFZACbo\
@@ -18709,7 +18537,7 @@ AAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAk4F811ntO+1R8dgAAAABJ\
 RU5ErkJggg==\
 "
   frames[27] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMR0lEQVR4nOzdd3xT5f4H8E+adC+6F3SwR8sqwzIEZAgCLmTIFtQrbq5br1r1\
 /sSB1+sCJ0uQJYo4WLJkQ1tmKaCd0FK6Z7qSPr8/as5NRzqTnrT5vF+vvgg9z3nO96QnJ/nmWQoh\
 hAARERERERERycpK7gCIiIiIiIiIiAk6ERERERERkVlggk5ERERERERkBpigExEREREREZkBJuhE\
@@ -19343,7 +19171,7 @@ AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRA\
 oAMAAEACBDoAAAAk4D+JAl9zziB7ewAAAABJRU5ErkJggg==\
 "
   frames[28] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNnklEQVR4nOzdd3xT5f4H8E+a7r0ndFA2lFUKlCEgiKCgKDIEBATxupWLe9bx\
 c6JeF4iDJchyIA7WZcmGll3K6oRCaUt305Xk+f1Rc2460p2epPm8X6+8CDnPec73pCcn+Z5nHIUQ\
 QoCIiIiIiIiIZGUldwBERERERERExASdiIiIiIiIyCQwQSciIiIiIiIyAUzQiYiIiIiIiEwAE3Qi\
@@ -19983,7 +19811,7 @@ AQAAIAMCHQAAADIg0AEAACADAh0AAAAyINABAAAgAwIdAAAAMiDQAQAAIAMCHQAAADIg0AEAACAD\
 Ah0AAAAyINABAAAgA38BL4izi2O6AN4AAAAASUVORK5CYII=\
 "
   frames[29] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNUUlEQVR4nOzdd3xT5f4H8E+S7j3oBDoomzJblqCAIIKC4kWG7CFecXPdelUc\
 P9fF6xYnS5AliqhMC0U2tOyypG1aKBS6V7qSPL8/enNMRzqTnrT5vF+vvIw9z3nO94STk3zzLIUQ\
 QoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBWYoBMRERERERFZASboRERERERERFaACToR\
@@ -20622,7 +20450,7 @@ AAAAyIBABwAAgAwIdAAAAMiAQAcAAIAMCHQAAADIgEAHAACADAh0AAAAyIBABwAAgAz8CzW9JbGp\
 5MC1AAAAAElFTkSuQmCC\
 "
   frames[30] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNs0lEQVR4nOzdd1xT5/4H8E8S9p6yVEDcggvQuqpWa7XVLuuoWrWO7uXP9na3\
 tr23U29vl9rlqtZVW2uH6ypat4IbcQEBRRGVTVhJnt8fNOcGIcyEE8jn/XrlZcx5znO+J5yc5Hue\
 cRRCCAEiIiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkVVggk5ERERERERkBZigExEREREREVkB\
@@ -21262,7 +21090,7 @@ BDoAAABUQKADAABABQQ6AAAAVECgAwAAQAUEOgAAAFRAoAMAAEAFBDoAAABUQKADAABABQQ6AAAA\
 VECgAwAAQAUEOgAAAFRAoAMAAEAFBDoAAABUQKADAABABf4FImRPvK7Ke1AAAAAASUVORK5CYII=\
 "
   frames[31] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNyElEQVR4nOzdd3xT5f4H8E/SdO89gA7KLpuWjUwRFFyIIFuGV9xc53Wi3p8T\
 r9eJKLIEWQ7EwbIM2dCyS5ltWigUWrp3kzy/P2rOTUc6k540+bxfr7wIOc95zvekJyf5nmcchRBC\
 gIiIiIiIiIhkpZQ7ACIiIiIiIiJigk5ERERERERkEZigExEREREREVkAJuhEREREREREFoAJOhER\
@@ -21903,7 +21731,7 @@ AIAKCHQAAACogEAHAACACgh0AAAAqIBABwAAgAoIdAAAAKiAQAcAAIAKCHQAAACogEAHAACACvwL\
 CmINik/kqykAAAAASUVORK5CYII=\
 "
   frames[32] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNiUlEQVR4nOzdd1xT5/4H8E8Ge8mSpQKiooITcFulWquttrbWUXcd3cuf3b1t\
 7bidens7rR2ual21tXa4imjdCm5ErUJAQURkE1aS8/uD5twghJlwQvJ5v155GXOe85zvCScn+Z5n\
 HJkgCAKIiIiIiIiISFJyqQMgIiIiIiIiIiboRERERERERBaBCToRERERERGRBWCCTkRERERERGQB\
@@ -22543,7 +22371,7 @@ AAAyINABAAAgAwIdAAAAMiDQAQAAIAMCHQAAADIg0AEAACADAh0AAAAyINABAAAgA38Anv69+t2u\
 ibwAAAAASUVORK5CYII=\
 "
   frames[33] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOk0lEQVR4nOzdd3xTVf8H8E+S7j3pYLSlbCirLUNAQBBBAVFkCAgI4iNuHnCv\
 Oh4nPj4uFEWWIMuBOFiyZNOWXcpqSQuFQqG76Upyfn/U3F860pn0ps3n/Xr1Reg599zvTW9u8s0Z\
 VyGEECAiIiIiIiIiWSnlDoCIiIiIiIiImKATERERERERWQUm6ERERERERERWgAk6ERERERERkRVg\
@@ -23187,7 +23015,7 @@ dAAAAKgAAR0AAAAqQEAHAACAChDQAQAAoAIEdAAAAKgAAR0AAAAqQEAHAACAChDQAQAAoAIEdAAA\
 AKgAAR0AAAAqQEAHAACAChDQAQAAoAIEdAAAAKiA/wFl62ToePnd2QAAAABJRU5ErkJggg==\
 "
   frames[34] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACPHElEQVR4nOzdd1xTV/8H8E9C2BtEljLELU7AUbVqsVZbtbbWUbVqHd3LX+fT\
 Pm3peDrt062drmpdtbV2uOreiltErUBARRRkE1aS8/uD5j5BCDPhBvJ5v168jJxzz/3ecHOTb864\
 CiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjIKjBBJyIiIiIiIrICTNCJiIiIiIiIrAAT\
@@ -23834,7 +23662,7 @@ IKADAABABgR0AAAAyICADgAAABkQ0AEAACADAjoAAABkQEAHAACADAjoAAAAkAEBHQAAADLwP7LO\
 ek19gLLlAAAAAElFTkSuQmCC\
 "
   frames[35] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMgElEQVR4nOzdd1xT5/4H8E8IewrIEFRA3IITtLgt1mqrrb3WUbVqHd3z173p\
 uJ329napXa5qXbW1driKo27BLeICAoqiIJuwkjy/P2jODSPMhBPI5/0qr0ae5zzne8LJSb55xlEI\
 IQSIiIiIiIiISFY2cgdAREREREREREzQiYiIiIiIiCwCE3QiIiIiIiIiC8AEnYiIiIiIiMgCMEEn\
@@ -24469,7 +24297,7 @@ AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRA\
 oAMAAEACBDoAAAAk4F/a5Gll9sGbhgAAAABJRU5ErkJggg==\
 "
   frames[36] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMYElEQVR4nOzdd1xT9/4/8FdC2HsJggq4B9SJittqrbbaZR11z97u8bO9Xbet\
 be+3097eLq0drmpdHdb21lVX3YJbxAUEFETZK6wkn98f3JwbhDATTkhez8eDh5HzOZ/zPuHkJO98\
 lkIIIUBEREREREREslLKHQARERERERERMUEnIiIiIiIisgpM0ImIiIiIiIisABN0IiIiIiIiIivA\
@@ -25104,7 +24932,7 @@ AAAASIBABwAAgAQIdAAAAEiAQAcAAIAECHQAAABIgEAHAACABPwLwXlyNHXmt2YAAAAASUVORK5C\
 YII=\
 "
   frames[37] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLpklEQVR4nOzdd3xT5f4H8E+SpnvQltIFdLFp2WVPQQQFRZEhIBuvuLluvSqO\
 nzjw3usCJ0uQJYo4WJYhm5ZNKSC0aaFQaOluOpPn90fNuSlt0pmepPm8X6+8CD3Pec73JCcn+Z5n\
 HIUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBWYoBMRERERERFZASboRERERERERFaA\
@@ -25735,7 +25563,7 @@ KIBABwAAgAIIdAAAACiAQAcAAIACCHQAAAAogEAHAACAAgh0AAAAKIBABwAAgAIIdAAAACiAQAcA\
 AIACCHQAAAAogEAHAACAAgh0AAAAKMAfdKgehYRub5gAAAAASUVORK5CYII=\
 "
   frames[38] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACM/0lEQVR4nOzdd3gU1foH8O+W9EYaqZCE0EnooYUqiKCgKFIEpOMV29Wf2Fss\
 99rwem1gQZogTRSx0KRJJ6ETAkgqBAKB9J7dPb8/4s7dkGz6ZrZ8P8+ThyXnzJl3NrOz++4poxBC\
 CBARERERERGRrJRyB0BERERERERETNCJiIiIiIiIzAITdCIiIiIiIiIzwASdiIiIiIiIyAwwQSci\
@@ -26372,7 +26200,7 @@ AABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIE\
 OgAAACRAoAMAAEACBDoAAAAkQKADAABAAv4FF6qDOUilCGoAAAAASUVORK5CYII=\
 "
   frames[39] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMz0lEQVR4nOzdd3xTVf8H8E+a7j1podDJpmUXhIKADEFBUQQqe/q4lR/uieN5\
 cODjBlwsQZYDUZmWIXvPUkA6oVC690xyfn/U3CcdadM26U2bz/v16ovQc+6535ve3OSbM65CCCFA\
 RERERERERLKykjsAIiIiIiIiImKCTkRERERERGQWmKATERERERERmQEm6ERERERERERmgAk6ERER\
@@ -27008,7 +26836,7 @@ EOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAA\
 kAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGfgXpH+Jz0JTdNMAAAAASUVORK5CYII=\
 "
   frames[40] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNnUlEQVR4nOzdd1xT5/4H8E8Swt6ILJXlVurEbdVqrVpt7bUqVatWa/fy2j3p\
 +F1ta++9XbZ2uKp11dba4SqOuvdE1MoQRUEBmWEleX5/0JwbRiBAwgnk8369eBl5nvOc7wknJ/nm\
 GUchhBAgIiIiIiIiIlkp5Q6AiIiIiIiIiJigExEREREREdkEJuhERERERERENoAJOhEREREREZEN\
@@ -27648,7 +27476,7 @@ AACogEAHAACACgh0AAAAqIBABwAAgAoIdAAAAKiAQAcAAIAKCHQAAACogEAHAACACgh0AAAAqIBA\
 BwAAgAoIdAAAAKjAvwD6ByMHCHlIxgAAAABJRU5ErkJggg==\
 "
   frames[41] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACM0UlEQVR4nOzdd3xT5f4H8E9G96JpS0sLtKVsKLtAKQgIIigoXkQQkCle0atX\
 L3hdV63jOvH6uw5wIEuQJYo4WJYhu+xRCkgnFLrobrqSPL8/as5NRzrTnrT5vF+vvAh5nvPke9KT\
 k3zzjKMQQggQERERERERkayUcgdAREREREREREzQiYiIiIiIiKwCE3QiIiIiIiIiK8AEnYiIiIiI\
@@ -28285,7 +28113,7 @@ AAAZEOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJCBPwCVEr+JAiGE3QAAAABJRU5ErkJg\
 gg==\
 "
   frames[42] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMWklEQVR4nOzdd3xT5f4H8E+adO9FB6MtZUPZZZUpiKDgQjYyxb244PYq6v2J\
 elGvC8TBEmRdEFGZsmTv2ZbVQaFQuuhMV5Ln90fNuelIZ9KTNJ/369UXoc9znvM96clJvnnGUQgh\
 BIiIiIiIiIhIVnZyB0BERERERERETNCJiIiIiIiILAITdCIiIiIiIiILwASdiIiIiIiIyAIwQSci\
@@ -28919,7 +28747,7 @@ AACQAIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACB\
 DgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACfgXRQaVlSE4gmUAAAAASUVORK5CYII=\
 "
   frames[43] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNxklEQVR4nOzdd3xTVf8H8E+apntvymgLlLJ3GRYEBBEUFEUE2YK49RFxzzp+\
 4sDHDaLIEgREFFGZsmTPskoBaZsWCqWTrnQlOb8/au6TjnQmvWnzeb9efRF6zj33e9Obm3xzxlUI\
 IQSIiIiIiIiISFZ2cgdAREREREREREzQiYiIiIiIiKwCE3QiIiIiIiIiK8AEnYiIiIiIiMgKMEEn\
@@ -29560,7 +29388,7 @@ FRDoAAAAUAGBDgAAABUQ6AAAAFABgQ4AAAAVEOgAAABQAYEOAAAAFRDoAAAAUAGBDgAAABX4F2Ci\
 9ULKxqJnAAAAAElFTkSuQmCC\
 "
   frames[44] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNkUlEQVR4nOzdd3xT5f4H8E/SvRfd0EHZtOwyBGWKIKAoMgQEBPGKmwvuq1a9\
 v4sDrxvEwRJkiSIq0zJklz1KWZ1QKKV7pCvJ8/uj5tx0pDPpSZvP+/XKi5DznOd8z+nJSb55xlEI\
 IQSIiIiIiIiISFZKuQMgIiIiIiIiIiboRERERERERGaBCToRERERERGRGWCCTkRERERERGQGmKAT\
@@ -30200,7 +30028,7 @@ AAAAUAGBDgAAABUQ6AAAAFABgQ4AAAAVEOgAAABQAYEOAAAAFRDoAAAAUAGBDgAAABUQ6AAAAFCB\
 fwHIODZw4sCUDQAAAABJRU5ErkJggg==\
 "
   frames[45] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNPUlEQVR4nOzdd3gU1foH8O+W9EYaaZBK772FKoigoChSBKSKXa/8sNdY7rWh\
 XisWpAnSRBELTQhIDb2FQCAVAiEhPdm0zZ7fH3Hnbsomm7KZTfb7eZ48LDlnzryzmZ3dd08ZhRBC\
 gIiIiIiIiIhkpZQ7ACIiIiIiIiJigk5ERERERERkEZigExEREREREVkAJuhEREREREREFoAJOhER\
@@ -30838,7 +30666,7 @@ ABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgA\
 AACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJCBPwFCja93qIydowAAAABJRU5ErkJggg==\
 "
   frames[46] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNkUlEQVR4nOzdd3gU1foH8O+W9N4LJY0eeg+hgwgCNqQISBUVOxe7V0W9P7Gg\
 XiuiSBOkiSIWmjSpobcktBQChJBGet3d8/sjd8cNyabuZjbZ7+d58rDknDnzzmZ2dt89ZRRCCAEi\
 IiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkUVggk5ERERERERkAZigExEREREREVkAJuhERERE\
@@ -31478,7 +31306,7 @@ HQAAACog0AEAAKACAh0AAAAqINABAACgAgIdAAAAKiDQAQAAoAICHQAAACog0AEAAKACAh0AAAAq\
 8C/4rNsgfksRMQAAAABJRU5ErkJggg==\
 "
   frames[47] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNA0lEQVR4nOzdd3hTZf8/8HeS7kkXndDFpuxRa0FAEEFBUGQIyMa9+IHbR+v4\
 igP1cYEDWYKAiCIq0zJklr1KWV1AobS0dKYryf37o+Y8KW06k560eb+uqxeh5z73+Zz05CSf3Esh\
 hBAgIiIiIiIiIlkp5Q6AiIiIiIiIiJigExEREREREVkEJuhEREREREREFoAJOhEREREREZEFYIJO\
@@ -32115,7 +31943,7 @@ MiDQAQAAIAMCHQAAADIg0AEAACADAh0AAAAyINABAAAgAwIdAAAAMiDQAQAAIAMCHQAAADIg0AEA\
 ACADAh0AAAAyINABAAAgAwIdAAAAMiDQAQAAIAN/AkTys1y0W0pVAAAAAElFTkSuQmCC\
 "
   frames[48] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACN9klEQVR4nOzdd3hT5dsH8G+S7kE3LS10UmbLhlLLFERQUBSBCsgUFTeve9fx\
 EwduBVFkCbJEEQfLMmSWvUpZHRQK3aUrXUnO+0fNMR3pTHrS5Pu5rlzGPs95zn3CyUnuPOPIBEEQ\
 QERERERERESSkksdABERERERERExQSciIiIiIiIyCUzQiYiIiIiIiEwAE3QiIiIiIiIiE8AEnYiI\
@@ -32757,7 +32585,7 @@ AAAAqIBABwAAgAoIdAAAAKiAQAcAAIAKCHQAAACogEAHAACACgh0AAAAqMC/AIDQH+H/qXaxAAAA\
 AElFTkSuQmCC\
 "
   frames[49] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACOM0lEQVR4nOzdd3gU5doG8HtLeu8NUgk1oUOAgIBBBAFFEUFAqqjYOdhrLJ+o\
 B48dG9IEaYKIKM3QW+gtBAKpEAhppG7a7s73R87O2ZBs6iazyd6/68rFknnnnWc2s7P77NtkgiAI\
 ICIiIiIiIiJJyaUOgIiIiIiIiIiYoBMRERERERGZBCboRERERERERCaACToRERERERGRCWCCTkRE\
@@ -33400,7 +33228,7 @@ KiCgAwAAQAUEdAAAAKiAgA4AAAAVENABAACgAgI6AAAAVEBABwAAgAoI6AAAAFCB/wDWATiJZWmU\
 xAAAAABJRU5ErkJggg==\
 "
   frames[50] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLnUlEQVR4nOzdd3xT5f4H8E9G96J7MLrYlA2WKSDIUHAhQ0A2XveVH+5ZxxVU\
 vF4XiIMlyBJFHCxLi6yWvUoB6aBQKHTQPZM8vz96c2460pn0pM3n/Xrl1bTPc558T3pykm+ecRRC\
 CAEiIiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkUVggk5ERERERERkAZigExEREREREVkAJuhE\
@@ -34031,7 +33859,7 @@ AQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg0AEAACAB\
 Ah0AAAASINABAAAgAf8BcD5bLMxUwW4AAAAASUVORK5CYII=\
 "
   frames[51] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLO0lEQVR4nOzdd3xT5f4H8E/SpHvQRUsZXWzKBguUaRFBwYUM2YJ43cpPHNdZ\
 9V5x4PW6wMkSZDkQB0soyCp7lgLSQaGldO+Z5Pn9UXNuOtKmbdKTNp/3y75Me57znO8JJyf55lkK\
 IYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgqMEEnIiIiIiIisgJM0ImIiIiIiIisABN0\
@@ -34660,7 +34488,7 @@ oAACHQAAAAog0AEAAKAAAh0AAAAKINABAACgAAIdAAAACiDQAQAAoAACHQAAAAog0AEAAKAAAh0A\
 AAAKINABAACgAAIdAAAACiDQAQAAoAACHQAAAArwB0u6Crr+FUhdAAAAAElFTkSuQmCC\
 "
   frames[52] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACJyElEQVR4nOzdd1xTV/8H8E/C3luWynIL7oXbYh2tdllH1brtXv60+2lLx1Nt\
 q0+fLu10VeuqrbXDVUTrAvdC1MoQRZElM8xwfn/Q3CcIgQAJN5DP+/XKy5hz7sn3hpubfHPGVQgh\
 BIiIiIiIiIhIVkq5AyAiIiIiIiIiJuhEREREREREJoEJOhEREREREZEJYIJOREREREREZAKYoBMR\
@@ -35283,7 +35111,7 @@ dAAAACiAQAcAAIACCHQAAAAogEAHAACAAgh0AAAAKIBABwAAgAIIdAAAACiAQAcAAIACCHQAAAAo\
 wA/5lO4JNcYg4wAAAABJRU5ErkJggg==\
 "
   frames[53] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACK+ElEQVR4nOzdd1xT5/4H8E8Ge8kSBJUlTnDhRkWLtdpqa2sdVatWa29367Xr\
 dtLxu3bY29ulna5qXR3WDlcRrQv3RFwMUZQtM8zk+f1Bc24Qwg4nkM/79crLkOc5T74nnpzkm2cc\
 hRBCgIiIiIiIiIhkpZQ7ACIiIiIiIiJigk5ERERERERkFpigExEREREREZkBJuhEREREREREZoAJ\
@@ -35911,7 +35739,7 @@ gQ4AAAAFCHQAAAAoQKADAABAAQIdAAAAChDoAAAAUIBABwAAgAIEOgAAABQg0AEAAKAAgQ4AAAAF\
 CHQAAAAoQKADAABAAQIdAAAACvgOsF9h6w8VloMAAAAASUVORK5CYII=\
 "
   frames[54] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACL/0lEQVR4nOzdd3xT5f4H8E/SdC+66AK62LTsXaAgyFBwIYKAbLxu5YfrOuu4\
 gorXDU6WIMuBqEwrRfaepTI6KBRKF3SlK8nz+6Pm3JQ2nUlP0nzer1dehJ7nPOd70tOTfPMshRBC\
 gIiIiIiIiIhkpZQ7ACIiIiIiIiJigk5ERERERERkEZigExEREREREVkAJuhEREREREREFoAJOhER\
@@ -36544,7 +36372,7 @@ kACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJCA/wB0\
 xZ/JWtvBYwAAAABJRU5ErkJggg==\
 "
   frames[55] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACJWElEQVR4nOzdd3hUZdrH8d+kV0ISIKEmIfReBQQEBBEU1F1EEBAQ1LWsrqx1\
 V1exvKuuuO7qip0mKIgVC00EpCsdQk+hBxICIYX08/6RzeyEZNKTM8l8P9c1F5N5nvPMfYYzZ+ae\
 pxyLYRiGAAAAAACAqVzMDgAAAAAAAJCgAwAAAADgEEjQAQAAAABwACToAAAAAAA4ABJ0AAAAAAAc\
@@ -37165,7 +36993,7 @@ INABAACgAAIdAAAACiDQAQAAoAACHQAAAAog0AEAAKAAAh0AAAAKINABAACgAAIdAAAACiDQAQAA\
 oAB/AcOhrrU/h04PAAAAAElFTkSuQmCC\
 "
   frames[56] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACJ1UlEQVR4nOzdd3wUZf4H8M9sSS+kkRBKGp3QQQgBAYMICooigoBU8cTOTz27\
 ot6JBe/OBmKhCdIsiIVmCEgJvYfQUggEElJI77vP74/czm3Kpu5mNtnP+/XaF5udZ575zjI7O999\
 ykhCCAEiIiIiIiIiUpRK6QCIiIiIiIiIiAk6ERERERERkVVggk5ERERERERkBZigExEREREREVkB\
@@ -37788,7 +37616,7 @@ dAAAACiAQAcAAIACCHQAAAAogEAHAACAAgh0AAAAKIBABwAAgAIIdAAAACiAQAcAAIACCHQAAAAo\
 gEAHAACAAgh0AAAAKMAPEmXtpmwx1MgAAAAASUVORK5CYII=\
 "
   frames[57] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACJhklEQVR4nOzddXxT5/4H8E+sLtSoIDWKF7fiDMZggxljMGDo2J1v3Lncjclv\
 CtudwRQbDJswJtiFwpDiXopVkJZSo5pakuf3R2/OTWlTTXqS5vN+vfJq2vOc53xPenJyvnnkKIQQ\
 AkREREREREQkK6XcARARERERERERE3QiIiIiIiIim8AEnYiIiIiIiMgGMEEnIiIiIiIisgFM0ImI\
@@ -38410,7 +38238,7 @@ AAAFEOgAAABQAIEOAAAABRDoAAAAUACBDgAAAAUQ6AAAAFAAgQ4AAAAFEOgAAABQgB8zYHNII8YU\
 2wAAAABJRU5ErkJggg==\
 "
   frames[58] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACK4ElEQVR4nOzddXxTV/8H8E+s7kJLC7SlOEWLFWcwBhvMGDJcxn5jzjPmxuSZ\
 smfPDCYMGwybMCbYgDJ8uJRiFaRQalRTS3J+f3S5T0qbatKbNJ/365UXac65J98bbm7yzZGrEEII\
 EBEREREREZGslHIHQERERERERERM0ImIiIiIiIhsAhN0IiIiIiIiIhvABJ2IiIiIiIjIBjBBJyIi\
@@ -39038,7 +38866,7 @@ gEAHAACAAgQ6AAAAFCDQAQAAoACBDgAAAAUIdAAAAChAoAMAAEABAh0AAAAKEOgAAABQwH8AnRbK\
 JOz7nzMAAAAASUVORK5CYII=\
 "
   frames[59] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLW0lEQVR4nOzddXgU1/oH8O9K3I0IkoQET3AKIVC0FArUKFKgaOmv3nKpt7el\
 cqv01qGKFYpVKBWsIaFIcA/BIgQCIUZ0Y7t7fn+kO3cjG9/MJvv9PE8eNjlnzryzzM7uu0dGIYQQ\
 ICIiIiIiIiJZKeUOgIiIiIiIiIiYoBMRERERERFZBCboRERERERERBaACToRERERERGRBWCCTkRE\
@@ -39668,7 +39496,7 @@ ACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAQId\
 AAAAEvAbZF0Tw8AJst4AAAAASUVORK5CYII=\
 "
   frames[60] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLkklEQVR4nOzdd3xTVf8H8E9G9160tEAXm7JBKAUBQQQFFzJkC+Je/HBPHI84\
 8PFxgThYgixR5FGm0CJ7z1JWB4VC6Z7pSnJ+f9TcJ6VNZ9KbNp/365UXIefck+9Nb27yzRlXIYQQ\
 ICIiIiIiIiJZKeUOgIiIiIiIiIiYoBMRERERERFZBSboRERERERERFaACToRERERERGRFWCCTkRE\
@@ -40299,7 +40127,7 @@ AIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAA\
 AAn4DZdgEIGtqToWAAAAAElFTkSuQmCC\
 "
   frames[61] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLTElEQVR4nOzdd1gU1/oH8O8WepMmTQVErNg1imgsGKOJphlL1KjRJDem52d6\
 NeXG5Mbc3DRNtUVji4kxxRZEo2LvIopSRFGQovS2u+f3B3fnLmVhgV1mYb+f59nHdc+ZM+8sszP7\
 7jlzRiGEECAiIiIiIiIiWSnlDoCIiIiIiIiImKATERERERERWQUm6ERERERERERWgAk6ERERERER\
@@ -40929,7 +40757,7 @@ AAIdAAAACiDQAQAAoAACHQAAAAog0AEAAKAAAh0AAAAKINABAACgAAIdAAAACvAbvS8VJW4FV5gA\
 AAAASUVORK5CYII=\
 "
   frames[62] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACK9ElEQVR4nOzdd1xT5/4H8E9C2EuWDAcgIg5w4SiOqtVabbXLuq2z9na3/rrH\
 bW17b+3Q9nZp7XBV66oddriKaN17IooyHCCyZIaV5Pn9wc25QQgz4STk8369eBl5nvOc7wknJ/nm\
 GUchhBAgIiIiIiIiIlkp5Q6AiIiIiIiIiJigExEREREREVkEJuhEREREREREFoAJOhEREREREZEF\
@@ -41557,7 +41385,7 @@ AAUIdAAAAChAoAMAAEABAh0AAAAKEOgAAABQgEAHAACAAgQ6AAAAFCDQAQAAoACBDgAAAAUIdAAA\
 AChAoAMAAEABAh0AAAAK+AMyESFob2ZtAwAAAABJRU5ErkJggg==\
 "
   frames[63] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMO0lEQVR4nOzdd1xT5/4H8E8S9pQliAMQceGeRRxYrNVWu6zbuu2t3d62t7u1\
 49YOe3u7tLbWVa2rttYOVxWsinuLuEBEQWTPsJI8vz+4Ob8ghJlwAvm8X6+8jDnPec73hJNz8s0z\
 jkIIIUBEREREREREslLKHQARERERERERMUEnIiIiIiIisghM0ImIiIiIiIgsABN0IiIiIiIiIgvA\
@@ -42191,7 +42019,7 @@ AwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEAC\
 /gUAtytcuivcIwAAAABJRU5ErkJggg==\
 "
   frames[64] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACM40lEQVR4nOzdd1gU1/oH8O8uvUsTxAKIiApWLLFFicZooomJNWqsMb/0xGt6\
 NeVekxtz0zWm2KKxxcSYYguCUbF3ERtVUaRJXdrunt8f3J27CAsL7DIL+/08zz6uO2fOvLPMzuy7\
 58w5CiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjIIjBBJyIiIiIiIrIATNCJiIiIiIiI\
@@ -42828,7 +42656,7 @@ IAMCHQAAADIg0AEAACADAh0AAAAyINABAAAgAwIdAAAAMiDQAQAAIAMCHQAAADIg0AEAACADfwFl\
 mnIYQ9h6ZgAAAABJRU5ErkJggg==\
 "
   frames[65] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMZ0lEQVR4nOzdd3gU1f4/8PeW9EYaCaEkIQktoYMYAgYEERQsFykCUsVrV37o\
 tSuWK6h4vdcCVpogTRSx0IQEgdA7IbQUAoEQ0sum7p7fH3HnuymbbJLdzCb7fj3PPix7zpz5zGZ2\
 Zj97zpxRCCEEiIiIiIiIiEhWSrkDICIiIiIiIiIm6ERERERERERWgQk6ERERERERkRVggk5ERERE\
@@ -43463,7 +43291,7 @@ AAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAAkIF/AYmPduOVcKSZAAAA\
 AElFTkSuQmCC\
 "
   frames[66] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMUklEQVR4nOzdd3QTV9oG8EfFXe42Nhhwo2M6hBjTIQQCpCyhBAg1ZEM6S7LJ\
 ppKyIYVsdlMgpNACoaUQUmgBQ8D0DsZA3DAYjBvuVdL9/nA0n4wtV8kjWc/vHB1k3Tt33hGjGb26\
 d+4ohBACRERERERERCQrpdwBEBERERERERETdCIiIiIiIiKrwASdiIiIiIiIyAowQSciIiIiIiKy\
@@ -44097,7 +43925,7 @@ ABIg0AEAACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINAB\
 AAAgAQIdAAAAEiDQAQAAIAECHQAAABLwLy2pSWrxWgyfAAAAAElFTkSuQmCC\
 "
   frames[67] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLlklEQVR4nOzdd3hTZf8/8PdJuvdejLa0zLZsZJRpEUFBUUQQkCk+buWH20fF\
 8YgDHx8XOFmCLFHEwRIKQtkbSlktpVAoXXTPJPfvj5rzTWnTmfSkzft1XbkIue9z53PSk5N8co8j\
 CSEEiIiIiIiIiEhRKqUDICIiIiIiIiIm6EREREREREQWgQk6ERERERERkQVggk5ERERERERkAZig\
@@ -44728,7 +44556,7 @@ AAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAAAAkQ\
 6AAAAJCAfwF0XikKXYHoAQAAAABJRU5ErkJggg==\
 "
   frames[68] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNDklEQVR4nOzdd1gU1/oH8O82ei+CoAKCFewtiF1jSTTN2I015qbf+DM9N4kp\
 NyY3JrlpmmJs0agxxZhiuyr2hl1EkSYKIiDS++75/cHduYuw1F1mYb+f59nHZc+ZM++sszP77jlz\
 RiGEECAiIiIiIiIiWSnlDoCIiIiIiIiImKATERERERERWQQm6EREREREREQWgAk6ERERERERkQVg\
@@ -45366,7 +45194,7 @@ BQQ6AAAAVECgAwAAQAUEOgAAAFRAoAMAAEAFBDoAAABUQKADAABABf4FUepunbKypoAAAAAASUVO\
 RK5CYII=\
 "
   frames[69] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMzUlEQVR4nOzdd1gU1/oH8O/s0qs0wQoIduwao6hIMEYTTbNGjTXmpif+TG56\
 YsqNKeama6otGjVGY0yxBcHexYYoSlUUaVKXunt+f5CduwhLX2Zhv5/n2cdxz5kz7yyzs/vuOXNG\
 EkIIEBEREREREZGiVEoHQERERERERERM0ImIiIiIiIjMAhN0IiIiIiIiIjPABJ2IiIiIiIjIDDBB\
@@ -46002,7 +45830,7 @@ AAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABkQ6AAAAJAB\
 gQ4AAAAZEOgAAACQAYEOAAAAGRDoAAAAkAGBDgAAABn4A5Upmgl5qsGcAAAAAElFTkSuQmCC\
 "
   frames[70] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLnklEQVR4nOzdd3QTV9oG8Eey3HvDhWIb21SbTiimxoQAgZQllNBLSN1kw5dk\
 0xOnbEghm02DVFogtIQQUmgxhoDpHYwpbhgMxjbGVW6S7veHV7Myttzlkaznd44OQvfOnXfk0Yxe\
 3Tt3FEIIASIiIiIiIiKSlVLuAIiIiIiIiIiICToRERERERGRWWCCTkRERERERGQGmKATERERERER\
@@ -46633,7 +46461,7 @@ BDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAA\
 JECgAwAAQAIEOgAAACTgX8C59jabyqocAAAAAElFTkSuQmCC\
 "
   frames[71] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACK8ElEQVR4nOzdd3gU1f4G8Hd303uvQBKSUBNa6AEBgwgKoiJSBQTx2pWfeO0a\
 yxX14vXawEoTpFkQC83Qe29JICQhlEBIQnrP7p7fH3Hnbkg2dTezyb6f51ld9pw5853N7Ox895w5\
 oxBCCBARERERERGRrJRyB0BERERERERETNCJiIiIiIiIzAITdCIiIiIiIiIzwASdiIiIiIiIyAww\
@@ -47261,7 +47089,7 @@ AAAFEOgAAABQAIEOAAAABRDoAAAAUACBDgAAAAUQ6AAAAFAAgQ4AAAAFEOgAAABQAIEOAAAABRDo\
 AAAAUACBDgAAAAX4E/Cr2epg41mSAAAAAElFTkSuQmCC\
 "
   frames[72] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACKd0lEQVR4nOzdd3gU1foH8O+W9N5IA5KQhJrQixCqIIKCooggIB2v/crPrlfF\
 ckW9eO+1gZUmSBNFLDQhIIQmHUIoaQQCaYT0urvn90fcuRuSTd3N7Ga/n+fZh2XPmTPvbGZn591z\
 5oxCCCFARERERERERLJSyh0AERERERERETFBJyIiIiIiIrIITNCJiIiIiIiILAATdCIiIiIiIiIL\
@@ -47887,7 +47715,7 @@ AABAAQIdAAAAChDoAAAAUIBABwAAgAIEOgAAABQg0AEAAKAAgQ4AAAAFCHQAAAAoQKADAABAAQId\
 AAAACvgLT96sWswppMEAAAAASUVORK5CYII=\
 "
   frames[73] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLwElEQVR4nOzdd1gU1/oH8O/u0nuVpgIiVuxdrMEYTTQxMZbYozE3PfFnctMT\
 Uu41uTE3XWOKLRpbijHFFiwRey+AIiKiKALSWdrunt8fZOcuwlJ3mYX9fp5nH9c9Z868s8zOzrvn\
 zBmFEEKAiIiIiIiIiGSllDsAIiIiIiIiImKCTkRERERERGQRmKATERERERERWQAm6EREREREREQW\
@@ -48519,7 +48347,7 @@ AJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJ+Bc3Wz5DFam0\
 TAAAAABJRU5ErkJggg==\
 "
   frames[74] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLvUlEQVR4nOzdd3gU1foH8O+W9N5IoSQhhZbQixCqQQQFRZEiIFX82ZWL7Vqx\
 XJErXjtgownSRBELTQgl9F5CKGmUQEJCSK+7e35/5O7cDcmmb2Y3+/08zz5s9pw5884yOzvvnjNn\
 FEIIASIiIiIiIiKSlVLuAIiIiIiIiIiICToRERERERGRWWCCTkRERERERGQGmKATERERERERmQEm\
@@ -49151,7 +48979,7 @@ Ah0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAAS8DtZ02TH4N2ksQAA\
 AABJRU5ErkJggg==\
 "
   frames[75] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLtUlEQVR4nOzdd1gU1/oH8O/u0qs0aSogYAW7MQpGDcZo1JjEWKLGmuSm33hN\
 bnpCyi+mmHtvmsYUWzS2FGOKLYhG7L0AVkAURECkLm13z+8P7s5dhKXuMgv7/TzPPi57zpx5Z52d\
 nXfPmTMKIYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgiMEEnIiIiIiIisgBM0ImIiIiI\
@@ -49783,7 +49611,7 @@ AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAkQKADAABAAv4FkqIWCx/PozkAAAAASUVORK5C\
 YII=\
 "
   frames[76] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACK70lEQVR4nOzdd3gU1foH8O+29EJ6oSSQhN6LCAGpIgiIihQBAUHseuUHXrvG\
 csWC12sDsdAEaRbEQjOEEnovIbQUSiA9pJKyu+f3R+7O3ZBs6m5mN/v9PM8+LHvOnHlnMzs7754z\
 ZxRCCAEiIiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkVVggk5ERERERERkBZigExEREREREVkB\
@@ -50411,7 +50239,7 @@ AAUQ6AAAAFAAgQ4AAAAFEOgAAABQAIEOAAAABRDoAAAAUACBDgAAAAUQ6AAAAFAAgQ4AAAAFEOgA\
 AABQAIEOAAAABfgVQ7fE0Ez11eMAAAAASUVORK5CYII=\
 "
   frames[77] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACKoklEQVR4nOzdd3gU1foH8O9uNr2RRhqQhCTUUAMiJNQggoCiSBEQEMQrdn5g\
 b1HvFb3ivdcGikoTpFkQlSqEEnovSWgplEAaCeltd8/vj9yduyHZ1N3MJvv9PM8+LHvOnHlnMzs7\
 754zZxRCCAEiIiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkVlggk5ERERERERkBpigExERERER\
@@ -51038,7 +50866,7 @@ AEABAh0AAAAKEOgAAABQgEAHAACAAgQ6AAAAFCDQAQAAoACBDgAAAAUIdAAAACjgBzn0x5iEbNDn\
 AAAAAElFTkSuQmCC\
 "
   frames[78] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLqUlEQVR4nOzdd1hUx/4G8HcLvTdBUAERO/YSFVswRqOmGbtRozG/9BuvyU1P\
 SLkxxdzcNE21RWNLMabYgqBi7wWJDRBFEZDO0nZ3fn+QPXcRlr6cXfb9POHJysyZ8z3L2bP73Zkz\
 oxBCCBARERERERGRrJRyB0BERERERERETNCJiIiIiIiILAITdCIiIiIiIiILwASdiIiIiIiIyAIw\
@@ -51669,7 +51497,7 @@ AACABAh0AAAASIBABwAAgAQIdAAAAEiAQAcAAIAECHQAAABIgEAHAACABAh0AAAASIBABwAAgAQI\
 dAAAAEiAQAcAAIAECHQAAABIgEAHAACABPwO1WX0LJp0glcAAAAASUVORK5CYII=\
 "
   frames[79] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMIklEQVR4nOzdd3xTVf8H8E/SdC+6J7SllFn2lllBBAFREUFApvi4lUd93FrH\
 T1Dx0ccB4mAJskQRlWlpkb1nKauDQqG0pXTPJOf3R801pU2btklv2nzer1dehNxzz/3e9ObmfnPO\
 PUchhBAgIiIiIiIiIlkp5Q6AiIiIiIiIiJigExEREREREVkEJuhEREREREREFoAJOhEREREREZEF\
@@ -52302,7 +52130,7 @@ AAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAAAAkQ\
 6AAAAJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkIDfAWYTVYG2ycn9AAAAAElFTkSuQmCC\
 "
   frames[80] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACL+ElEQVR4nOzdd1gU1/4G8HeXpTfpCCogIhbsGmPUWFCjUdOMJfaaelO8pldT\
 bkxu9OamaUyxRWMhJsYUWxBi7x1QFAQURUA6S909vz/47dxFWFhgYRb2/TzPJuueM2e+s8zO7nfO\
 mTMKIYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgsMEEnIiIiIiIiMgNM0ImIiIiIiIjM\
@@ -52935,7 +52763,7 @@ SIBABwAAgAQIdAAAAEiAQAcAAIAECHQAAABIgEAHAACABAh0AAAASIBABwAAgAT8C1GzbmxMzFM2\
 AAAAAElFTkSuQmCC\
 "
   frames[81] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACL6klEQVR4nOzdd1yT1/4H8E8GewmCLGWIiAv3qOLWWq3aZa1WrbP21m5/tre7\
 tePWttfe3i6tHa5qXbW1driKoLj3QgQVEQVZouyV5Pz+oHluEMJMeAL5vF+vvIw55zn5PuHJk3xz\
 znOOQgghQERERERERESyUsodABERERERERExQSciIiIiIiKyCEzQiYiIiIiIiCwAE3QiIiIiIiIi\
@@ -53567,7 +53395,7 @@ OgAAACRAoAMAAEACBDoAAAAkQKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEACBDoAAAAk\
 QKADAABAAgQ6AAAAJECgAwAAQAIEOgAAACRAoAMAAEAC/gWv7mFVPXwKjgAAAABJRU5ErkJggg==\
 "
   frames[82] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACKoUlEQVR4nOzdd1xT5/4H8E8g7L1kqYCIEyfubbEWW21trXVWraO3dvvT3q7b\
 lo7baW9v21vtdFXrqtXa4SqCdVsVF+AERFGWyJ5Jnt8f3JwbhECAhBPI5/165WXM85wn3xNOTvLN\
 M45CCCFARERERERERLKykjsAIiIiIiIiImKCTkRERERERGQWmKATERERERERmQEm6ERERERERERm\
@@ -54194,7 +54022,7 @@ ChDoAAAAUIBABwAAgAIEOgAAABQg0AEAAKAAgQ4AAAAFCHQAAAAoQKADAABAAX8Dth8nRS3O0vsA\
 AAAASUVORK5CYII=\
 "
   frames[83] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMgElEQVR4nOzdd1xTV/8H8E/C3nu5ABEXuLXWPbCOVltb66hatY4+tduf3ZOO\
 p9M+fbq0driqVWttrR2uIijuvRBBmYoiIMpeSc7vD5r7BCEQIOEG8nm/XrSRc+653xtubvLNOfcc\
 hRBCgIiIiIiIiIhkpZQ7ACIiIiIiIiJigk5ERERERERkFpigExEREREREZkBJuhEREREREREZoAJ\
@@ -54829,7 +54657,7 @@ AAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg\
 0AEAACABAh0AAAAS8C8B5nMd5dzyTQAAAABJRU5ErkJggg==\
 "
   frames[84] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACNQUlEQVR4nOzdd1gU1/oH8O8uvUtHUAEBG9g1xlhQMZaoiYmxRBNrzE1P/Jl2\
 401Cyo1Jrt500+3GlmJMYg2CvXcBRUEsKAIidWm7e35/kJ27lKUvs8t+P8+zj+OeM2feWWZn991z\
 5oxCCCFARERERERERLJSyh0AERERERERETFBJyIiIiIiIjIJTNCJiIiIiIiITAATdCIiIiIiIiIT\
@@ -55467,7 +55295,7 @@ gQ4AAAAVEOgAAABQAYEOAAAAFRDoAAAAUAGBDgAAABUQ6AAAAFABgQ4AAAAVEOgAAABQAYEOAAAA\
 FRDoAAAAUAGBDgAAABUQ6AAAAFABgQ4AAAAVEOgAAABQgX8B0t+eI6myclwAAAAASUVORK5CYII=\
 "
   frames[85] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACKp0lEQVR4nOzdd1yT1/4H8E9C2HsJgjJEcIBba52oWEerXdZt1Tp6a9ett+3t\
 bun41Q577+3S2uGq1tVh7XBVce+tiKKyFERARPZIcn5/cPPcIISZ8CTk83698jLmnOfk+4STJ/nm\
 nOc8CiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjILDBBJyIiIiIiIjIDTNCJiIiIiIiI\
@@ -56094,7 +55922,7 @@ FCDQAQAAoACBDgAAAAUIdAAAAChAoAMAAEABAh0AAAAKEOgAAABQgEAHAACAAgQ6AAAAFPAdSaSj\
 UsuT5S0AAAAASUVORK5CYII=\
 "
   frames[86] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACKmUlEQVR4nOzdd3zT1f4/8FeS7j3pYLQF2gIts+xVoIgg4EIEAZniFTc/9LoV\
 x1fUi9frAnGwBFmiiINlKXtvKIUyWgotXXTvJjm/P3rzuSltOpN+0ub1fDzyIOScz8n7k558knfO\
 +ZyPQgghQERERERERESyUsodABERERERERExQSciIiIiIiIyC0zQiYiIiIiIiMwAE3QiIiIiIiIi\
@@ -56721,7 +56549,7 @@ INABAACgAIEOAAAABQh0AAAAKECgAwAAQAECHQAAAAoQ6AAAAFDAd9GWBPfkEZc+AAAAAElFTkSu\
 QmCC\
 "
   frames[87] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACJv0lEQVR4nOzdd3yT1f4H8E+S7kn3YLQFWlaZBZFZsMhQcCFDQDZet/Jz61Vx\
 XHHg9bpAUVmCjIoiDpalZe9NKRQobaHQRXdDR5Lz+6M3z01p050+SfN5v155EXLOc/J90pMn+eac\
 5zwKIYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgsMEEnIiIiIiIiMgNM0ImIiIiIiIjM\
@@ -57344,7 +57172,7 @@ AAAFCHQAAAAoQKADAABAAQIdAAAAChDoAAAAUIBABwAAgAIEOgAAABQg0AEAAKCAvwDSboy8hGxl\
 0AAAAABJRU5ErkJggg==\
 "
   frames[88] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLI0lEQVR4nOzdd3yT1f4H8E+S7kn3YLSltKVQ9hIZBUGGggsZAgIyvOK6ch3X\
 cVUc14nXnwucLEGWA1GZlpa9N21pgS4olLa0dK8k5/dHzWM60p0+afJ5v155EXLOc/J90idP8s05\
 zzkKIYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgkMEEnIiIiIiIiMgFM0ImIiIiIiIhM\
@@ -57973,7 +57801,7 @@ AAAKINABAACgAAIdAAAACiDQAQAAoAACHQAAAAog0AEAAKAAAh0AAAAKINABAACgAAIdAAAACiDQ\
 AQAAoAB/AK+t7DMu6wQTAAAAAElFTkSuQmCC\
 "
   frames[89] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLUklEQVR4nOzdd3xTVf8H8E+S7kl3aYG2QFtG2UtkFCwiKCiKDAHZ+LiVH/ro\
 o4+K43E9+LjByRJkORCVaSl7WTalUKALCqUtpXsmOb8/aq4pbdq0TXqT5vN+vfIi5Jx77vfe3tzk\
 m3PuuQohhAARERERERERyUopdwBERERERERExASdiIiIiIiIyCIwQSciIiIiIiKyAEzQiYiIiIiI\
@@ -58603,7 +58431,7 @@ EOgAAABQAIEOAAAABRDoAAAAUACBDgAAAAUQ6AAAAFAAgQ4AAAAFEOgAAABQAIEOAAAABfgXuY4u\
 YQ7h2E4AAAAASUVORK5CYII=\
 "
   frames[90] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMOUlEQVR4nOzdd1xTV/8H8E/CDks24gBEQQX3qhOt1qrVLuu2btvaPh3W9ulu\
 6fjVDvv06dLa4bau2lo7XEVw7y2gqIAoioDI3sn5/UFznyAEAiTcQD7v1ysvY865J98bbm7yzTn3\
 HIUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBaYoBMRERERERGZASboRERERERERGaA\
@@ -59237,7 +59065,7 @@ ACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAf8C\
 8wBkXuQfho8AAAAASUVORK5CYII=\
 "
   frames[91] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLd0lEQVR4nOzdd1yT1/4H8E8GewmIoKiAKLhwW+tExVqt2tpat3XW3trttb3t\
 7aTjVzvs7e3STle1rtpaO1xFoO49AUUFRFGGgkwZSc7vD5rnBiEQIPAk5PN+vdLGnPOcfJ/w5Em+\
 Oec5RyGEECAiIiIiIiIiWSnlDoCIiIiIiIiImKATERERERERWQQm6EREREREREQWgAk6ERERERER\
@@ -59867,7 +59695,7 @@ AAAAKIBABwAAgAIIdAAAACiAQAcAAIACCHQAAAAogEAHAACAAgh0AAAAKIBABwAAgAIIdAAAACiA\
 QAcAAIACCHQAAAAogEAHAACAAgh0AAAAKIBABwAAgAL8C9Q8UyHOV2qbAAAAAElFTkSuQmCC\
 "
   frames[92] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLlElEQVR4nOzdd3hUVfoH8O/MpPdeCJCEEEIJvUkzQBBBQVGkIx1XxcZaV1eN\
 uruoi+vaQCx0pIkiFpqh996SQIAQAoGQQEidtJk5vz+yc38TkkmdyZ3JfD/PMw+XOeee+97JnTvz\
 zjn3XIUQQoCIiIiIiIiIZKWUOwAiIiIiIiIiYoJOREREREREZBGYoBMRERERERFZACboRERERERE\
@@ -60498,7 +60326,7 @@ AIAECHQAAABIgEAHAACABAh0AAAASIBABwAAgAQIdAAAAEiAQAcAAIAECHQAAABIgEAHAACABAh0\
 AAAASMBvC1M3cxA0hBoAAAAASUVORK5CYII=\
 "
   frames[93] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMYUlEQVR4nOzdd1yT1/4H8E/C3rIRVEBEVMA9ah1otY5WW1vrts7aX+321t6u\
 25aOWzvs7e3STle1aq3W2uEqgnXvCQhVBBRlySbM5Pz+oHluEAIBAk8gn/frlTbmnOfk+4QnT/LN\
 Oc85CiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjIJDBBJyIiIiIiIjIBTNCJiIiIiIiI\
@@ -61133,7 +60961,7 @@ BwAAgAQIdAAAAEiAQAcAAIAECHQAAABIgEAHAACABAh0AAAASMC/AEw4be0AIYQwAAAAAElFTkSu\
 QmCC\
 "
   frames[94] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMmUlEQVR4nOzdd1xTV/8H8E9C2Es2iAqIgntb6ypYraNqa2sdVeusfbpbn7ZP\
 d0vHr3bYp1s7XdW6amtt6yyCde8JCMoQRREU2Ts5vz9o7hOEQICEm5DP+/XKy5hz7sn3hpubfHPO\
 PUchhBAgIiIiIiIiIlkp5Q6AiIiIiIiIiJigExEREREREZkFJuhEREREREREZoAJOhEREREREZEZ\
@@ -61769,7 +61597,7 @@ AAAAGRDoAAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQgX8BfKrmQuSuQ1EAAAAASUVORK5C\
 YII=\
 "
   frames[95] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLm0lEQVR4nOzdd1xTV/8H8E/C3gKyVcCFCg6ctQ6wqHVWW+uoWrVa29rtz+5J\
 x1M77NOnS+1yVeuqrbWtswrWvSciVFmKIiiyZ5Lz+4Mn9wlCIEDCDeTzfr3yInDOPfnecHOTb865\
 5yiEEAJEREREREREJCul3AEQERERERERERN0IiIiIiIiIrPABJ2IiIiIiIjIDDBBJyIiIiIiIjID\
@@ -62400,7 +62228,7 @@ AJAAgQ4AAAAJEOgAAACQAIEOAAAACRDoAAAAkACBDgAAAAkQ6AAAAJAAgQ4AAAAJEOgAAACQAIEO\
 AAAACRDoAAAAkIC/AHKRUZU5vG8wAAAAAElFTkSuQmCC\
 "
   frames[96] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLvklEQVR4nOzdd1hUx/oH8O8uS28C0lVAVFTEXoIlQFCjUdOMJWqsMTem+4vp\
 zZQbk1xzc5PcaEyxRWOLiZpiC4Kx94oIKiAKIii9w+78/iB77iIsdZezsN/P8/C4MnPmvGc5e3bf\
 nTkzCiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjIJDBBJyIiIiIiIjIBTNCJiIiIiIiI\
@@ -63032,7 +62860,7 @@ AQIdAAAAEiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAQIdAAAAEvAbcioJlLs8DDwA\
 AAAASUVORK5CYII=\
 "
   frames[97] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLCUlEQVR4nOzdd1gU1/oH8O/u0quAVAsgKipiLzFqxGCMNc1YosYak5juT1Nu\
 cpOY5N5riklumsYUW+zExJhiC4Kx94qIShFFKYrUpe3u+f1Bdu4iLHWXWdjv53n2YWHOnHlnmZ2d\
 d8+ZcxRCCAEiIiIiIiIikpVS7gCIiIiIiIiIiAk6ERERERERkUVggk5ERERERERkAZigExERERER\
@@ -63661,7 +63489,7 @@ AACgAAIdAAAACiDQAQAAoAACHQAAAAog0AEAAKAAAh0AAAAK8AfCo/odhP9GiAAAAABJRU5ErkJg\
 gg==\
 "
   frames[98] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACLpklEQVR4nOzdd3hUVfoH8O9Meie9UJIQIJSEXkTABIJ0BEWKgFRxxbbyQ1ZX\
 V8WyiwW7glhogjRRxEIzJEjvNYQEUggEUiC9Z2bO74/s3J2QTOpM7iTz/TzPPJnknHvmvZM7d+ad\
 c+45CiGEABERERERERHJSil3AERERERERETEBJ2IiIiIiIjIJDBBJyIiIiIiIjIBTNCJiIiIiIiI\
@@ -64292,7 +64120,7 @@ EiDQAQAAIAECHQAAABIg0AEAACABAh0AAAASINABAAAgAQIdAAAAEiDQAQAAIAECHQAAABIg0AEA\
 ACABAh0AAAASINABAAAgAQIdAAAAEvAv7IKSgNBgInoAAAAASUVORK5CYII=\
 "
   frames[99] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMYElEQVR4nOzdd1xTV/8H8E/C3kPZylARB7hH3aDWUbXLOqrWWbuXT+fTPm3t\
 +NUO+3Rr7XBV66qtta2zCO69RQRliIIMRWZYSc7vD5r7BCFsuAn5vF+vvAicc0++N9zc5Jtz7jkK\
 IYQAEREREREREclKKXcARERERERERMQEnYiIiIiIiMgoMEEnIiIiIiIiMgJM0ImIiIiIiIiMABN0\
@@ -64927,7 +64755,7 @@ AAAAkAGBDgAAABkQ6AAAAJABgQ4AAAAZEOgAAACQAYEOAAAAGfgXZybDpzZOorYAAAAASUVORK5C\
 YII=\
 "
   frames[100] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAH0CAYAAACuKActAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjUuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/NK7nSAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAACMOklEQVR4nOzdd3gU1foH8O9m0yvpDUhCC5CEjoiAJAbpKIoUAemo6LXww15j\
 uYKK16tewUoTpIkiKlVIkN5rEoKQhJKQAiG97u75/ZG7czckm2yS3cwm+/08zz4sO2fOvLOZnZ13\
 z5lzFEIIASIiIiIiIiKSlZXcARARERERERERE3QiIiIiIiIis8AEnYiIiIiIiMgMMEEnIiIiIiIi\
@@ -65565,7 +65393,7 @@ AmBsmUsXErVxAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim70a934da0ce3452480d72950f260ed7d = new Animation(frames, img_id, slider_id, 100.0,
+        animf2e1c179cc974832983eabd40e00e792 = new Animation(frames, img_id, slider_id, 100.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -65575,7 +65403,7 @@ AmBsmUsXErVxAAAAAElFTkSuQmCC\
 <p>Isn’t this nice? We observe that our wave packet loops exactly as expected through the periodic domain.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">8.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In this notebook we have started to discuss the discretization of partial differential equations and introduced the concept of Python modules.</p>
 <p>We took the example of the first-order wave equation and using the technique of semi-discretization we simulated it using the forward Euler method with both forward and backward finite differentiation. The first algorithm proved to be unstable while the second one remained stable for the parameters used.</p>
 <p>We also introduced the notion of periodic boundary conditions and discussed some of the situations in which they are useful.</p>
@@ -65583,10 +65411,10 @@ AmBsmUsXErVxAAAAAElFTkSuQmCC\
 <p>In the next notebook, we discuss in detail how to determine the stability of the numerical algorithms obtained through semi-discretization.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">8.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
-<p><strong>Exercise 1:</strong> Using the same parameters as in Section <a class="reference external" href="#Advection-in-a-1D-periodic-domain">Section 4.2</a>, compute the solution of the first order wave equation at <span class="math notranslate nohighlight">\(t=0.68\)</span> using the explicit RK4 method for time discretization and second-order centered finite differentiation for the spatial derivative.</p>
+<h2><span class="section-number">8.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<p><strong>Exercise 1:</strong> Using the same parameters as in Section <span class="xref myst">Section 4.2</span>, compute the solution of the first order wave equation at <span class="math notranslate nohighlight">\(t=0.68\)</span> using the explicit RK4 method for time discretization and second-order centered finite differentiation for the spatial derivative.</p>
 <p><em>Constraints:</em></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>You must use and import the <code class="docutils literal notranslate"><span class="pre">rk4_step</span></code> function provided in the <code class="docutils literal notranslate"><span class="pre">steppers.py</span></code> module file</p></li>
 <li><p>You must implement a function for the right-hand side of <a class="reference internal" href="#equation-eq-semidiscrete">(33)</a> with proper boundary conditions (see above for examples)</p></li>
 </ol>
@@ -65594,7 +65422,7 @@ AmBsmUsXErVxAAAAAElFTkSuQmCC\
 <li><p>Plot your solution at time <span class="math notranslate nohighlight">\(t=0.68\)</span>.</p></li>
 <li><p>What is the maximum value of <span class="math notranslate nohighlight">\(u\)</span> at that time?</p></li>
 </ul>
-<p><strong>Exercise 2:</strong> Using the same parameters as in <a class="reference external" href="#Advection-in-a-1D-periodic-domain">Section 4.2</a>, rerun the simulation using the MacCormack method described in Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/MacCormack_method">https://en.wikipedia.org/wiki/MacCormack_method</a>.</p>
+<p><strong>Exercise 2:</strong> Using the same parameters as in <span class="xref myst">Section 4.2</span>, rerun the simulation using the MacCormack method described in Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/MacCormack_method">https://en.wikipedia.org/wiki/MacCormack_method</a>.</p>
 <ul class="simple">
 <li><p>Provide an animation of your solution up to <span class="math notranslate nohighlight">\(t=3\)</span>.</p></li>
 <li><p>What is the maximum value of <span class="math notranslate nohighlight">\(u\)</span> at that time?</p></li>
@@ -65614,7 +65442,7 @@ AmBsmUsXErVxAAAAAElFTkSuQmCC\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./solving_pde_mooc/notebooks/04_PartialDifferentialEquations"
         },
         predefinedOutput: true
@@ -65622,50 +65450,116 @@ AmBsmUsXErVxAAAAAElFTkSuQmCC\
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7. </span>Boundary value problems</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03_FiniteDifferences/03_03_BoundaryValueProblems.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Boundary value problems</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="04_02_StabilityAnalysis.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="04_02_StabilityAnalysis.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">9. </span>Matrix and modified wavenumber stability analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-modules">8.2. Python modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advection-equation">8.3. Advection equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-euler-forward-finite-differentiation">8.3.1. Forward Euler, forward finite differentiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-euler-backward-finite-difference-differentiation">8.3.2. Forward Euler, backward finite difference differentiation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-boundary-conditions">8.4. Periodic boundary conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-usages">8.4.1. Sample usages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advection-in-a-1d-periodic-domain">8.4.2. Advection in a 1D periodic domain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-animations">8.5. Matplotlib animations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.6. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.7. Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By B. Knaepen & Y. Velizhanina<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By B. Knaepen & Y. Velizhanina
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
